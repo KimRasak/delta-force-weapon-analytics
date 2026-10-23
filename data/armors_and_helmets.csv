@@ -1,0 +1,52 @@
+﻿item_id,type,name,level,max_durability,covered_areas,covers_abdomen,covers_upper_arm,market_price
+11050001001,防弹衣(Armor),摩托马甲,1,20,upperChest,False,False,2020
+11050001002,防弹衣(Armor),安保防弹衣,1,20,upperChest,False,False,2390
+11050001003,防弹衣(Armor),尼龙防弹衣,1,25,upperChest,False,False,3095
+11050001004,防弹衣(Armor),轻型防弹衣,1,30,upperChest,False,False,3880
+11050002001,防弹衣(Armor),简易防刺服,2,30,upperChest,False,False,6926
+11050002002,防弹衣(Armor),HT战术背心,2,35,upperChest,False,False,8756
+11050002003,防弹衣(Armor),TG战术防弹衣,2,40,upperChest,False,False,10949
+11050002004,防弹衣(Armor),通用战术背心,2,50,upperChest,False,False,14591
+11050003001,防弹衣(Armor),制式防弹背心,3,50,upperChest,False,False,33579
+11050003002,防弹衣(Armor),Hvk快拆防弹衣,3,60,upperChest,False,False,36455
+11050003003,防弹衣(Armor),TG-H防弹衣,3,75,upperChest+lowerChest,True,False,48389
+11050003004,防弹衣(Armor),射手战术背心,3,85,upperChest+lowerChest,True,False,55502
+11050004001,防弹衣(Armor),武士防弹背心,4,80,upperChest,False,False,106267
+11050004007,防弹衣(Armor),HMP特勤防弹衣,4,80,upperChest,False,False,114816
+11050004002,防弹衣(Armor),突击手防弹背心,4,90,upperChest+lowerChest,True,False,141920
+11050004003,防弹衣(Armor),DT-AVS防弹衣,4,100,upperChest+lowerChest,True,False,160711
+11050004004,防弹衣(Armor),MK-2战术背心,4,110,upperChest+lowerChest,True,False,181666
+11050005001,防弹衣(Armor),精英防弹背心,5,95,upperChest+lowerChest,True,False,357970
+11050005003,防弹衣(Armor),FS复合防弹衣,5,105,upperChest+lowerChest,True,False,363393
+11050005002,防弹衣(Armor),Hvk-2防弹衣,5,115,upperChest+lowerChest+upperArm,True,True,361284
+11050005004,防弹衣(Armor),重型突击背心,5,125,upperChest+lowerChest+upperArm,True,True,421306
+11050006002,防弹衣(Armor),HA-2重型防弹衣,6,115,upperChest+lowerChest+upperArm,True,True,5086836
+11050006003,防弹衣(Armor),特里克MAS2.0装甲,6,125,upperChest+lowerChest+upperArm,True,True,
+11050006001,防弹衣(Armor),金刚防弹衣,6,140,upperChest+lowerChest+upperArm,True,True,
+11050006004,防弹衣(Armor),泰坦防弹装甲,6,150,upperChest+lowerChest+upperArm,True,True,
+11010001001,头盔(Helmet),老式钢盔,1,10,head,False,False,1631
+11010001002,头盔(Helmet),安保头盔,1,10,head,False,False,1948
+11010001003,头盔(Helmet),奔尼帽,1,10,head,False,False,2272
+11010001004,头盔(Helmet),户外棒球帽,1,12,head,False,False,10110
+11010002002,头盔(Helmet),H01 战术头盔,2,12,head,False,False,7632
+11010002003,头盔(Helmet),DRO 战术头盔,2,15,head,False,False,8352
+11010002001,头盔(Helmet),复古摩托头盔,2,18,head,False,False,9189
+11010002004,头盔(Helmet),MC 防弹头盔,2,20,head,False,False,
+11010003002,头盔(Helmet),H07 战术头盔,3,20,head,False,False,25947
+11010003001,头盔(Helmet),防暴头盔,3,28,head,False,False,23467
+11010003004,头盔(Helmet),MC201 防弹头盔,3,34,head,False,False,47621
+11010003003,头盔(Helmet),DAS 防弹头盔,3,40,head,False,False,38126
+11010004002,头盔(Helmet),MHS 战术头盔,4,30,head,False,False,130963
+11010004003,头盔(Helmet),DICH 训练头盔,4,35,head,False,False,169014
+11010004004,头盔(Helmet),GT1 战术头盔,4,48,head,False,False,146826
+11010004001,头盔(Helmet),D6 战术头盔,4,55,head,False,False,65248
+11010005010,头盔(Helmet),GN 久战重型夜视头盔,5,20,head,False,False,224818
+11010005003,头盔(Helmet),DICH-1战术头盔,5,40,head,False,False,308151
+11010005002,头盔(Helmet),H09 防暴头盔,5,45,head,False,False,297151
+11010005004,头盔(Helmet),GN 重型头盔,5,50,head,False,False,313640
+11010005009,头盔(Helmet),GN 重型夜视头盔,5,50,head,False,False,692630
+11010005001,头盔(Helmet),Mask-1铁壁头盔,5,75,head,False,False,136869
+11010006003,头盔(Helmet),DICH-9重型头盔,6,50,head,False,False,
+11010006002,头盔(Helmet),H70 精英头盔,6,55,head,False,False,2420581
+11010006007,头盔(Helmet),H70 夜视精英头盔,6,55,head,False,False,
+11010006004,头盔(Helmet),GT5 指挥官头盔,6,60,head,False,False,
