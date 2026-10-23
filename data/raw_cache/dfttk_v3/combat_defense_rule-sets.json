@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 3,
+  "kind": "combatRuleSets",
+  "ruleSets": {
+    "firefight-v3-initial-1": {
+      "killAssumption": "singleMagazineNoReload",
+      "healthDamagePrecision": "preserveFullPrecision",
+      "displayNumberPolicy": "formatOnlyNoCalculationEffect",
+      "armorDamageRounding": "preservePrecision",
+      "armorBreakTransfer": "proportionalRemainingDurability",
+      "armorDamageCoefficient": "ammoMultiplierTimesDefenseCorrection",
+      "missingOfficialAmmoInteraction": "returnExplicitStatus",
+      "multiProjectilePolicy": "unverifiedReturnExplicitStatus"
+    }
+  }
+}

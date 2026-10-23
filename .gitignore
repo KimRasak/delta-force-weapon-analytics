@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 .DS_Store
+data/raw_cache/dfttk_v3/combat_weapons/
+data/raw_cache/dfttk_v3/rankings_ff/
+data/raw_cache/dfttk_v3/library_sol.json

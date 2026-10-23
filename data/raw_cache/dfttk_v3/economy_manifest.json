@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 2,
+  "priceVersion": "2026-10-23T01:06:55.447222Z",
+  "source": {
+    "kind": "orzice-work-api",
+    "method": "GET",
+    "endpoint": "/v1/sjz_api/item_price_all",
+    "priceField": "price",
+    "dataVersion": "20261015-bd-balance.1",
+    "capturedFrom": "2026-10-14T02:32:54Z",
+    "capturedTo": "2026-10-23T01:06:31Z",
+    "fetchedAt": "2026-10-23T01:06:55.447222Z",
+    "catalogObservedAt": "2026-10-23T01:06:54Z"
+  },
+  "records": 720,
+  "unavailableItems": 41
+}

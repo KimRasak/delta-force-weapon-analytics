@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 3,
+  "kind": "helmetDefenseProfiles",
+  "sources": {
+    "frontend/public/data/firefight/helmets.json": {
+      "sha256": "13b2b14dbf2bd0346fe757d6d17fd7eddb434d6a6908d93cea66e2fb1b9e5b50",
+      "authority": "DeltaForceDataEditorPublishedDataSynchronizedCopy"
+    }
+  },
+  "profiles": {
+    "11010001001": {
+      "helmetItemId": "11010001001",
+      "name": "老式钢盔",
+      "level": 1,
+      "maxDurability": 10,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "1001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010001001.png"
+    },
+    "11010001002": {
+      "helmetItemId": "11010001002",
+      "name": "安保头盔",
+      "level": 1,
+      "maxDurability": 10,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "1002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010001002.png"
+    },
+    "11010001003": {
+      "helmetItemId": "11010001003",
+      "name": "奔尼帽",
+      "level": 1,
+      "maxDurability": 10,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "1003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010001003.png"
+    },
+    "11010001004": {
+      "helmetItemId": "11010001004",
+      "name": "户外棒球帽",
+      "level": 1,
+      "maxDurability": 12,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "1004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010001004.png"
+    },
+    "11010002001": {
+      "helmetItemId": "11010002001",
+      "name": "复古摩托头盔",
+      "level": 2,
+      "maxDurability": 18,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "2001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010002001.png"
+    },
+    "11010002002": {
+      "helmetItemId": "11010002002",
+      "name": "H01 战术头盔",
+      "level": 2,
+      "maxDurability": 12,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "2002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010002002.png"
+    },
+    "11010002003": {
+      "helmetItemId": "11010002003",
+      "name": "DRO 战术头盔",
+      "level": 2,
+      "maxDurability": 15,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "2003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010002003.png"
+    },
+    "11010002004": {
+      "helmetItemId": "11010002004",
+      "name": "MC 防弹头盔",
+      "level": 2,
+      "maxDurability": 20,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "2004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010002004.png"
+    },
+    "11010003001": {
+      "helmetItemId": "11010003001",
+      "name": "防暴头盔",
+      "level": 3,
+      "maxDurability": 28,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "3001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010003001.png"
+    },
+    "11010003002": {
+      "helmetItemId": "11010003002",
+      "name": "H07 战术头盔",
+      "level": 3,
+      "maxDurability": 20,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "3002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010003002.png"
+    },
+    "11010003003": {
+      "helmetItemId": "11010003003",
+      "name": "DAS 防弹头盔",
+      "level": 3,
+      "maxDurability": 40,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "3003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010003003.png"
+    },
+    "11010003004": {
+      "helmetItemId": "11010003004",
+      "name": "MC201 防弹头盔",
+      "level": 3,
+      "maxDurability": 34,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "3004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010003004.png"
+    },
+    "11010004001": {
+      "helmetItemId": "11010004001",
+      "name": "D6 战术头盔",
+      "level": 4,
+      "maxDurability": 55,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "4001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010004001.png"
+    },
+    "11010004002": {
+      "helmetItemId": "11010004002",
+      "name": "MHS 战术头盔",
+      "level": 4,
+      "maxDurability": 30,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "4002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010004002.png"
+    },
+    "11010004003": {
+      "helmetItemId": "11010004003",
+      "name": "DICH 训练头盔",
+      "level": 4,
+      "maxDurability": 35,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "4003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010004003.png"
+    },
+    "11010004004": {
+      "helmetItemId": "11010004004",
+      "name": "GT1 战术头盔",
+      "level": 4,
+      "maxDurability": 48,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "4004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010004004.png"
+    },
+    "11010005001": {
+      "helmetItemId": "11010005001",
+      "name": "Mask-1铁壁头盔",
+      "level": 5,
+      "maxDurability": 75,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005001.png"
+    },
+    "11010005002": {
+      "helmetItemId": "11010005002",
+      "name": "H09 防暴头盔",
+      "level": 5,
+      "maxDurability": 45,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005002.png"
+    },
+    "11010005003": {
+      "helmetItemId": "11010005003",
+      "name": "DICH-1战术头盔",
+      "level": 5,
+      "maxDurability": 40,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005003.png"
+    },
+    "11010005004": {
+      "helmetItemId": "11010005004",
+      "name": "GN 重型头盔",
+      "level": 5,
+      "maxDurability": 50,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005004.png"
+    },
+    "11010005009": {
+      "helmetItemId": "11010005009",
+      "name": "GN 重型夜视头盔",
+      "level": 5,
+      "maxDurability": 50,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5006",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005009.png"
+    },
+    "11010005010": {
+      "helmetItemId": "11010005010",
+      "name": "GN 久战重型夜视头盔",
+      "level": 5,
+      "maxDurability": 20,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "5005",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010005010.png"
+    },
+    "11010006002": {
+      "helmetItemId": "11010006002",
+      "name": "H70 精英头盔",
+      "level": 6,
+      "maxDurability": 55,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "6002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010006002.png"
+    },
+    "11010006003": {
+      "helmetItemId": "11010006003",
+      "name": "DICH-9重型头盔",
+      "level": 6,
+      "maxDurability": 50,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "6001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010006003.png"
+    },
+    "11010006004": {
+      "helmetItemId": "11010006004",
+      "name": "GT5 指挥官头盔",
+      "level": 6,
+      "maxDurability": 60,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "6004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010006004.png"
+    },
+    "11010006007": {
+      "helmetItemId": "11010006007",
+      "name": "H70 夜视精英头盔",
+      "level": 6,
+      "maxDurability": 55,
+      "coveredHitAreas": [
+        "head"
+      ],
+      "sourceLegacyId": "6003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11010006007.png"
+    }
+  }
+}

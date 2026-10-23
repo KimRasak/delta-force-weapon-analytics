@@ -23,11 +23,13 @@ for old_f in ["practical_gunsmith_builds.json", "practical_gunsmith_builds.csv",
     if p.exists():
         p.unlink()
 
-RESEARCH_DIR = Path("/tmp/df_research")
+RAW_CACHE_DIR = ROOT / "data" / "raw_cache"
+RESEARCH_DIR = RAW_CACHE_DIR if (RAW_CACHE_DIR / "dfttk_v3").exists() else Path("/tmp/df_research")
 V3_DIR = RESEARCH_DIR / "dfttk_v3"
-CANY_FILE = RESEARCH_DIR / "cany_vue3" / "public" / "data.json"
-ORZICE_FILE = RESEARCH_DIR / "orzice" / "price.json"
-AGENT_ATT_FILE = RESEARCH_DIR / "agent" / "attachments.json"
+CANY_FILE = (RAW_CACHE_DIR / "cany_data.json") if (RAW_CACHE_DIR / "cany_data.json").exists() else (RESEARCH_DIR / "cany_vue3" / "public" / "data.json")
+ORZICE_FILE = (RAW_CACHE_DIR / "orzice_archive_price.json") if (RAW_CACHE_DIR / "orzice_archive_price.json").exists() else (RESEARCH_DIR / "orzice" / "price.json")
+ORZICE_LIVE_AMMO_FILE = RAW_CACHE_DIR / "orzice_live_ammo.json"
+AGENT_ATT_FILE = (RAW_CACHE_DIR / "agent_attachments.json") if (RAW_CACHE_DIR / "agent_attachments.json").exists() else (RESEARCH_DIR / "agent" / "attachments.json")
 
 
 def load_json(path):
@@ -490,6 +492,16 @@ def main():
             orzice_by_name[nm] = item["price"]
             orzice_by_name[nm.replace(" ", "").upper()] = item["price"]
 
+    orzice_live_ammo_map = {}
+    if ORZICE_LIVE_AMMO_FILE.exists():
+        live_doc = load_json(ORZICE_LIVE_AMMO_FILE)
+        for item in live_doc.get("items", []):
+            nm = item.get("name", "").replace("&#43;", "+").strip()
+            pr = item.get("price")
+            if nm and pr:
+                orzice_live_ammo_map[nm] = pr
+                orzice_live_ammo_map[nm.replace(" ", "").upper()] = pr
+
     cany_ammo_map = {}
     for b in cany_data["bullets"]:
         cal = b["caliber"].replace(" ", "").replace("*", "x").upper()
@@ -531,8 +543,22 @@ def main():
             elif "箭" in name:
                 cal_clean = "Arrow"
 
-        price = econ_prices.get(aid)
-        price_source = "dfttk_live_20261023" if price is not None else ""
+        # Check live orzice SSR ammo table first, then dfttk_v3 economy/market-prices.json
+        price = None
+        price_source = ""
+        cand_keys = [
+            f"{cal_clean} {name}".replace(" ", "").upper(),
+            name.replace(" ", "").upper(),
+            f".300BLK_{level}" if "300BLK" in cal_clean.upper() else "",
+        ]
+        for ck in cand_keys:
+            if ck and ck in orzice_live_ammo_map:
+                price = orzice_live_ammo_map[ck]
+                price_source = "orzice_live_ssr"
+                break
+        if price is None and econ_prices.get(aid) is not None:
+            price = econ_prices.get(aid)
+            price_source = "dfttk_live_20261023"
         if price is None and aid in econ_avail and econ_avail[aid].get("lastKnownPrice"):
             price = econ_avail[aid]["lastKnownPrice"]
             price_source = "dfttk_last_known"

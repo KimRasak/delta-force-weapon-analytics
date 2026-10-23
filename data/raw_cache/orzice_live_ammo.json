@@ -1,0 +1,436 @@
+{
+  "scrapedAt": "2026-10-23T12:22:51.176733+00:00",
+  "count": 86,
+  "items": [
+    {
+      "name": "7.62x51mm LS",
+      "price": 6350,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x51mm M62",
+      "price": 5567,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm AP ST",
+      "price": 5526,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x54R BT",
+      "price": 5374,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12.7x55mm PS12B",
+      "price": 5323,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.8x42mm DVC12",
+      "price": 5215,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "6.8x51mm Hybrid",
+      "price": 5169,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".300BLK_5",
+      "price": 5118,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x39mm AP",
+      "price": 5046,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm SS190",
+      "price": 5027,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP Super",
+      "price": 4937,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.56x45mm M995",
+      "price": 4797,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "碳纤维穿甲箭矢",
+      "price": 4779,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.45x39mm BS",
+      "price": 4639,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x39mm BP",
+      "price": 4484,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm AP SX",
+      "price": 4052,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "45-70 Govt FTX",
+      "price": 3835,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12.7x55mm PD12双头弹",
+      "price": 3067,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "碳纤维刺骨箭矢",
+      "price": 1924,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm CT",
+      "price": 1813,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x54R LPS",
+      "price": 1810,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm HT&#43;",
+      "price": 1806,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP AP",
+      "price": 1785,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.8x42mm DBP10",
+      "price": 1778,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge 龙息弹",
+      "price": 1760,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".300BLK_4",
+      "price": 1757,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "6.8x51mm FMJ",
+      "price": 1754,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x39mm SP6",
+      "price": 1721,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x39mm BP",
+      "price": 1716,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.45x39mm BT",
+      "price": 1716,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm SS193",
+      "price": 1713,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.56x45mm M855A1",
+      "price": 1641,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x19mm PBP",
+      "price": 1636,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12.7x55mm PS12",
+      "price": 1602,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm FMJ SX",
+      "price": 1345,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm FMJ ST",
+      "price": 1322,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x51mm M80",
+      "price": 1218,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "45-70 Govt FMJ",
+      "price": 1083,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".50 AE FMJ",
+      "price": 785,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP RIP",
+      "price": 740,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x19mm RIP",
+      "price": 708,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "玻纤柳叶箭矢",
+      "price": 649,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm HT",
+      "price": 632,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge独头 AP-20",
+      "price": 551,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".357 Magnum FMJ",
+      "price": 545,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".300BLK_3",
+      "price": 542,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge 箭形弹",
+      "price": 538,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x51mm BPZ",
+      "price": 528,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12.7x55mm PS12A",
+      "price": 519,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.8x42mm DVP88",
+      "price": 508,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm R37.F",
+      "price": 507,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x54R T46M",
+      "price": 502,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.56x45mm M855",
+      "price": 496,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge DART",
+      "price": 480,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm L191",
+      "price": 480,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "45-70 Govt RN",
+      "price": 464,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x39mm PS",
+      "price": 401,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP FMJ",
+      "price": 401,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.45x39mm PS",
+      "price": 399,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x19mm AP6.3",
+      "price": 396,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge 8.5毫米鹿弹",
+      "price": 373,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge独头 FTX",
+      "price": 339,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".357 Magnum JHP",
+      "price": 339,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x39mm SP5",
+      "price": 324,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".50 AE JHP",
+      "price": 284,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".357 Magnum 9号霰射&#34;鼠弹&#34;",
+      "price": 278,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".50 AE HP",
+      "price": 164,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "4.6x30mm Subsonic SX",
+      "price": 162,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".357 Magnum HP",
+      "price": 162,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge独头 RIP",
+      "price": 133,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x51mm Ultra Nosler",
+      "price": 114,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x39mm T45M",
+      "price": 111,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP JHP",
+      "price": 111,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.8x42mm DBP87",
+      "price": 104,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.45x39mm T",
+      "price": 100,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm SS197SR",
+      "price": 97,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x19mm Pst",
+      "price": 85,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.56x45mm FMJ",
+      "price": 79,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge独头 GT",
+      "price": 65,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "7.62x39mm LP",
+      "price": 43,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": ".45 ACP HS",
+      "price": 43,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.45x39mm PRS",
+      "price": 40,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.7x28mm SS198LF",
+      "price": 38,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "5.56x45mm RRLP",
+      "price": 35,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "9x19mm PSO",
+      "price": 32,
+      "source": "orzice_live_ssr"
+    },
+    {
+      "name": "12 Gauge 7毫米鹿弹",
+      "price": 28,
+      "source": "orzice_live_ssr"
+    }
+  ]
+}

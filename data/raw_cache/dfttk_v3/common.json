@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 3,
+  "kind": "runtimeCommon",
+  "categories": {
+    "assaultRifle": {
+      "objectType": "weapon",
+      "nameKey": "categories.assaultRifle"
+    },
+    "battleRifle": {
+      "objectType": "weapon",
+      "nameKey": "categories.battleRifle"
+    },
+    "submachineGun": {
+      "objectType": "weapon",
+      "nameKey": "categories.submachineGun"
+    },
+    "lightMachineGun": {
+      "objectType": "weapon",
+      "nameKey": "categories.lightMachineGun"
+    },
+    "marksmanRifle": {
+      "objectType": "weapon",
+      "nameKey": "categories.marksmanRifle"
+    },
+    "sniperRifle": {
+      "objectType": "weapon",
+      "nameKey": "categories.sniperRifle"
+    },
+    "shotgun": {
+      "objectType": "weapon",
+      "nameKey": "categories.shotgun"
+    },
+    "pistol": {
+      "objectType": "weapon",
+      "nameKey": "categories.pistol"
+    },
+    "specialWeapon": {
+      "objectType": "weapon",
+      "nameKey": "categories.specialWeapon"
+    },
+    "barrel": {
+      "objectType": "part",
+      "nameKey": "categories.barrel"
+    },
+    "muzzle": {
+      "objectType": "part",
+      "nameKey": "categories.muzzle"
+    },
+    "foregrip": {
+      "objectType": "part",
+      "nameKey": "categories.foregrip"
+    },
+    "rearGrip": {
+      "objectType": "part",
+      "nameKey": "categories.rearGrip"
+    },
+    "stock": {
+      "objectType": "part",
+      "nameKey": "categories.stock"
+    },
+    "handguard": {
+      "objectType": "part",
+      "nameKey": "categories.handguard"
+    },
+    "magazine": {
+      "objectType": "part",
+      "nameKey": "categories.magazine"
+    },
+    "scope": {
+      "objectType": "part",
+      "nameKey": "categories.scope"
+    },
+    "functional": {
+      "objectType": "part",
+      "nameKey": "categories.functional"
+    }
+  },
+  "mainAttributes": {
+    "0": {
+      "key": "internalAttribute0",
+      "visibility": "internal"
+    },
+    "1": {
+      "key": "fireRate",
+      "visibility": "internal"
+    },
+    "2": {
+      "key": "effectiveRange",
+      "visibility": "panel"
+    },
+    "3": {
+      "key": "recoilControl",
+      "visibility": "panel"
+    },
+    "4": {
+      "key": "waistAccuracy",
+      "visibility": "panel"
+    },
+    "5": {
+      "key": "handling",
+      "visibility": "panel"
+    },
+    "6": {
+      "key": "stability",
+      "visibility": "panel"
+    }
+  },
+  "ruleTargets": {
+    "AimingId.RecoilId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "recoilProfile"
+    },
+    "AimingId.SpreadId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "spreadProfile"
+    },
+    "AimMoveGunSway": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "AttackerValueId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "attackerProfile"
+    },
+    "AttackerValueId.DamageIdGameMode01": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "damageProfile"
+    },
+    "AttackerValueId.DamageIdGameMode02": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "damageProfile"
+    },
+    "AttackerValueId.DefaultDamageId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "damageProfile"
+    },
+    "BattlefieldMovementSpeedId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "movementProfile"
+    },
+    "bCanRangeScope": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "bCanSideAiming": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "BehitGunSway": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "bEnableAimOnReloading": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "bEnableVariableFireRate": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "bSupportFireStartRotFromView": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "BulletFlyingId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "bulletProfile"
+    },
+    "bUseParallelBarrel": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "CameraSwayBeHitScale": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "CBowId.ChargeDuration": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ChamberTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ChangeClipMode": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ChangeClipTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ChangeClipTimewhenEmpty": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "CharacterStateId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "DamagePointId.HeadDamageRate": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DefaultFireMode": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DisplayAttrValues.2": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DisplayAttrValues.3": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DisplayAttrValues.4": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DisplayAttrValues.5": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "DisplayAttrValues.6": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "FireCD": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "FireDelayTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "FireInterval": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "FireRateMode": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GAiming_ADSTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBreathRecoil": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBreathScale": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBreathTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBullet_OnlyRange": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBullet_Range": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GBullet_Velocity": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GFiremode": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GGunkick_ADSRecoilH": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GGunkickH": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GGunkickRandom": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GGunkickSpring": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GGunkickV": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GMagCapacity": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GMovement_ADSSpeed": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GMovement_SilentWalkSpeed": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRange_OnlySpeed": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRateOfFire": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_H": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_H_singleorburst": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_Hip": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_HShake": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_V": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_V_singleorburst": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoil_VShake": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GRecoilRecovery": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GReload_Time": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GSpread_ADS": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GSpread_Hip": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GSpread_Hip_Continuous": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GSprintToFireTime": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "GunSwayBeHitscale": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "IK3PLeftArmYaw": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "IK3PLeftShoulerPitch": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Max_Tension_Points": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "MaxCarriedAmmoCount": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "MaxCarriedAmmoCount_BombDefusal": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "MaxValidBulletNumPershot": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Mod_Reel_Distance_Scalar": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Mod_Reel_Speed_Reducer": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Mod_Reel_Stamina_Drain": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Mod_Tension_Gain_Reducer": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "Mod_Tension_Recovery_Bonus": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "MovementSpeedId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "movementProfile"
+    },
+    "ParallelBulletAimOffsetCm": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ProjectileNumPerShot": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ScopeCameraTuneDistance": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ScopeZoomTuneRate": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ShotDistance": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "SprintToFireSpeed": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "SuperSprintToFireSpeed": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "SuppportFireModes": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "VariableFireRateCurveIndex": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "ViewId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WaistShootCrossHairId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WaistShootRecoilId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "recoilProfile"
+    },
+    "WaistShootRecoilId.ContinueShootRecoil.Vertical": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WaistShootRecoilId.ContinueShootRecoilLoop.Vertical": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WaistShootRecoilId.SingleorBurstShootRecoil.Vertical": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WaistShootSpreadId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "spreadProfile"
+    },
+    "WeaponAmmoCost": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.AdditiveAnimId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.AnimId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.bNeedDoubleHandOverride": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.FireShakerID": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.FiringAnimId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.FiringAnimMode": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.FXId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.GunSwayId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponAppearanceTable.HoldBreathId.CrouchBreathFactor": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.HoldBreathId.ProneBreathFactor": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.HoldBreathId.StandBreathFactor": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.ScopeZoomRateScale": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.SupineLeftShoulerPitch": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.SupineRightShoulerPitch": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponAppearanceTable.WeaponAnimId": {
+      "valueKind": "reference",
+      "unit": null,
+      "referenceKind": "gameRecord"
+    },
+    "WeaponMainAttribute.MainAttrValues.2": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponMainAttribute.MainAttrValues.3": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponMainAttribute.MainAttrValues.4": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponMainAttribute.MainAttrValues.5": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    },
+    "WeaponMainAttribute.MainAttrValues.6": {
+      "valueKind": "number",
+      "unit": null,
+      "referenceKind": null
+    }
+  }
+}

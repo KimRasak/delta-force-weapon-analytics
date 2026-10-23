@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 3,
+  "kind": "armorDefenseProfiles",
+  "sources": {
+    "frontend/public/data/firefight/armors.json": {
+      "sha256": "b06870449075b6c89eba38488c7ff4ac415f08be1fff5ff5a7c75ee14570d242",
+      "authority": "DeltaForceDataEditorPublishedDataSynchronizedCopy"
+    }
+  },
+  "profiles": {
+    "11050001001": {
+      "armorItemId": "11050001001",
+      "name": "摩托马甲",
+      "level": 1,
+      "maxDurability": 20,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "1001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050001001.png"
+    },
+    "11050001002": {
+      "armorItemId": "11050001002",
+      "name": "安保防弹衣",
+      "level": 1,
+      "maxDurability": 20,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "1002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050001002.png"
+    },
+    "11050001003": {
+      "armorItemId": "11050001003",
+      "name": "尼龙防弹衣",
+      "level": 1,
+      "maxDurability": 25,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "1003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050001003.png"
+    },
+    "11050001004": {
+      "armorItemId": "11050001004",
+      "name": "轻型防弹衣",
+      "level": 1,
+      "maxDurability": 30,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "1004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050001004.png"
+    },
+    "11050002001": {
+      "armorItemId": "11050002001",
+      "name": "简易防刺服",
+      "level": 2,
+      "maxDurability": 30,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "2001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050002001.png"
+    },
+    "11050002002": {
+      "armorItemId": "11050002002",
+      "name": "HT战术背心",
+      "level": 2,
+      "maxDurability": 35,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "2002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050002002.png"
+    },
+    "11050002003": {
+      "armorItemId": "11050002003",
+      "name": "TG战术防弹衣",
+      "level": 2,
+      "maxDurability": 40,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "2003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050002003.png"
+    },
+    "11050002004": {
+      "armorItemId": "11050002004",
+      "name": "通用战术背心",
+      "level": 2,
+      "maxDurability": 50,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "2004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050002004.png"
+    },
+    "11050003001": {
+      "armorItemId": "11050003001",
+      "name": "制式防弹背心",
+      "level": 3,
+      "maxDurability": 50,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "3001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050003001.png"
+    },
+    "11050003002": {
+      "armorItemId": "11050003002",
+      "name": "Hvk快拆防弹衣",
+      "level": 3,
+      "maxDurability": 60,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "3002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050003002.png"
+    },
+    "11050003003": {
+      "armorItemId": "11050003003",
+      "name": "TG-H防弹衣",
+      "level": 3,
+      "maxDurability": 75,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "3003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050003003.png"
+    },
+    "11050003004": {
+      "armorItemId": "11050003004",
+      "name": "射手战术背心",
+      "level": 3,
+      "maxDurability": 85,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "3004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050003004.png"
+    },
+    "11050004001": {
+      "armorItemId": "11050004001",
+      "name": "武士防弹背心",
+      "level": 4,
+      "maxDurability": 80,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "4001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050004001.png"
+    },
+    "11050004002": {
+      "armorItemId": "11050004002",
+      "name": "突击手防弹背心",
+      "level": 4,
+      "maxDurability": 90,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "4003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050004002.png"
+    },
+    "11050004003": {
+      "armorItemId": "11050004003",
+      "name": "DT-AVS防弹衣",
+      "level": 4,
+      "maxDurability": 100,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "4004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050004003.png"
+    },
+    "11050004004": {
+      "armorItemId": "11050004004",
+      "name": "MK-2战术背心",
+      "level": 4,
+      "maxDurability": 110,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "4005",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050004004.png"
+    },
+    "11050004007": {
+      "armorItemId": "11050004007",
+      "name": "HMP特勤防弹衣",
+      "level": 4,
+      "maxDurability": 80,
+      "coveredHitAreas": [
+        "upperChest"
+      ],
+      "sourceLegacyId": "4002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050004007.png"
+    },
+    "11050005001": {
+      "armorItemId": "11050005001",
+      "name": "精英防弹背心",
+      "level": 5,
+      "maxDurability": 95,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "5001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050005001.png"
+    },
+    "11050005002": {
+      "armorItemId": "11050005002",
+      "name": "Hvk-2防弹衣",
+      "level": 5,
+      "maxDurability": 115,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "5003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050005002.png"
+    },
+    "11050005003": {
+      "armorItemId": "11050005003",
+      "name": "FS复合防弹衣",
+      "level": 5,
+      "maxDurability": 105,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest"
+      ],
+      "sourceLegacyId": "5002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050005003.png"
+    },
+    "11050005004": {
+      "armorItemId": "11050005004",
+      "name": "重型突击背心",
+      "level": 5,
+      "maxDurability": 125,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "5004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050005004.png"
+    },
+    "11050006001": {
+      "armorItemId": "11050006001",
+      "name": "金刚防弹衣",
+      "level": 6,
+      "maxDurability": 140,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "6003",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050006001.png"
+    },
+    "11050006002": {
+      "armorItemId": "11050006002",
+      "name": "HA-2重型防弹衣",
+      "level": 6,
+      "maxDurability": 115,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "6001",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050006002.png"
+    },
+    "11050006003": {
+      "armorItemId": "11050006003",
+      "name": "特里克MAS2.0装甲",
+      "level": 6,
+      "maxDurability": 125,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "6002",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050006003.png"
+    },
+    "11050006004": {
+      "armorItemId": "11050006004",
+      "name": "泰坦防弹装甲",
+      "level": 6,
+      "maxDurability": 150,
+      "coveredHitAreas": [
+        "upperChest",
+        "lowerChest",
+        "upperArm"
+      ],
+      "sourceLegacyId": "6004",
+      "imagePath": "https://playerhub.df.qq.com/playerhub/60004/object/11050006004.png"
+    }
+  }
+}
