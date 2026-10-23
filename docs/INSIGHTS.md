@@ -20,6 +20,7 @@
 4. [全零件「隐藏底层独立乘区」图鉴表](#四全零件隐藏底层独立乘区图鉴表)
 5. [全口径弹药(114种)穿甲矩阵与价格总表](#五全口径弹药114种穿甲矩阵与价格总表)
 6. [防弹衣防护部位(护胸/护腹/护上臂)与耐久总表](#六防弹衣防护部位护胸护腹护上臂与耐久总表)
+7. [数据爬取、双通道实时价格架构与底层逆向踩坑心得](#七数据爬取双通道实时价格架构与底层逆向踩坑心得)
 
 ---
 
@@ -674,3 +675,39 @@
 | 防弹衣(Armor) | **特里克MAS2.0装甲** | Lv6 | 125 | `upperChest+lowerChest+upperArm` | ✅ | ✅ | - |
 | 防弹衣(Armor) | **金刚防弹衣** | Lv6 | 140 | `upperChest+lowerChest+upperArm` | ✅ | ✅ | - |
 | 防弹衣(Armor) | **泰坦防弹装甲** | Lv6 | 150 | `upperChest+lowerChest+upperArm` | ✅ | ✅ | - |
+
+---
+
+## 七、数据爬取、双通道实时价格架构与底层逆向踩坑心得
+
+> 完整专题技术笔记请见 [`docs/CRAWLING_NOTES.md`](CRAWLING_NOTES.md)。
+
+### 1. 权威数据源发现路径（GitHub 开源生态反推）
+通过 GitHub 代码搜索特征字段（如 `"腾龙" "fireRate"`、`"冲锋枪回声消音器"`、`"新式腾龙高速导气箍"`），从社区活跃维护的 TTK 计算器与行情工具仓库中顺藤摸瓜锁定了两个最权威的上游源站：
+- **底层机制与 577 个零件解包源**：`https://dfttk.com`（提供客户端 SDK 导出的运行时数据包）
+- **实时交易行物价源**：`https://orzice.com`（三角洲数据帝 / 小涛查，提供实时交易行行情）
+
+### 2. 从「无头浏览器模拟点击」到「纯 HTTP 并发直拉」的降维打击
+- 检查 `dfttk.com` 的 `<head>` 时发现了 `<link rel="alternate" type="text/plain" href="/llms.txt" />`，顺着指引直接拿到 **`https://dfttk.com/data/v3/manifest.json`**。
+- 全站所有枪支目录（`catalog/weapons.json`）、577个零件底层指令（`library/sol.json`）、单枪精校曲线与伤害/弹道包（`packs/combat/weapons/*.json`）、114种子弹穿甲矩阵（`combat/defense/ammo-interactions.json`）以及每日同步的交易行物价（`economy/market-prices.json`）均以静态 JSON 托管。
+- 用 12 线程并发 HTTP 请求替代笨重的 Playwright 模拟点击，**无需登录态，仅需 2~10 秒即可无损拉取全游戏完整客户端解包数据**。
+
+### 3. 交易行实时价格「双通道互补」策略
+- **通道一（`dfttk.com/data/v3/economy/market-prices.json`）**：后台每日定时同步 `orzice-work-api` 的 `/v1/sjz_api/item_price_all`，直接以 **11 位官方物品 ID** 映射价格，精准覆盖了 **575/577 个零件** 与全部可交易裸枪，彻底避免中文同名/别名歧义。
+- **通道二（`orzice.com/v/ammo` SSR HTML 实时爬取）**：针对通道一中标记为 `providerCatalogUnavailable` 的特殊口径（如 `.300BLK`、`12.7x55mm`、新赛季特种弹），利用 `orzice.com/v/ammo?a=ammo&top=2-2&p={1..9}` 服务端直出渲染（SSR HTML）的特性，5 线程并发请求 9 页 HTML（耗时 **0.8 秒**）正则提取 86 种可交易子弹的分钟级实时均价。
+- **清洗细节**：处理了 HTML 实体转义（如 `5.7x28mm HT+` 被编码为 `&#43;`）、不间断空格 ` `、以及 `.300BLK` 在交易行网页端被命名为 `.300BLK_3 / _4 / _5`（而非游戏内 `V-Max / BCP-FMJ / TAC-TX`）的异构命名映射。
+
+### 4. 客户端底层字段逆向的「四大踩坑心得」
+1. **`GRateOfFire` 实为「射击间隔乘数」而非「射速乘数」**：高速导气箍的 `GRateOfFire = -0.07` 代表射击间隔缩短 7%，真实射速公式为 $	ext{新射速} = 	ext{原射速} / (1 + 	ext{GRateOfFire})$（`705.88 / 0.93 = 759.0 RPM`），若按字面直接相乘会完全算反。
+2. **区分 `value = 0` 的无效占位符与 `Initial = 0` 的核心机制覆写**：过滤冗余 `+0` 属性时必须保留 `modifier == "Initial"` 的指令，否则会误删 `FireDelayTime(Initial) = 0`（消除机枪 50ms 开膛延迟）和 `FireRateMode(Initial) = 0`（解锁全自动模式）等核心质变词条。
+3. **激光镭指的双 `MainAttrValues.5` 冲突分离**：同一镭指的 `operations` 中同时存在 `操控 -4`（常驻重量惩罚）与 `操控 +16 / 腰射 +12`（开启激光激活加成），直接累加会导致常驻操控算错，必须做双态分离。
+4. **面板五维之外的 15 项「隐藏独立乘区」**：诸如 `堡垒水平补偿器`、`沙暴垂直补偿器`、`RK-0`、`CR棱镜阻手器`、`枢机稳固枪托` 等配件的面板后坐力控制均为 `0`，其真正强度全部藏在 `GRecoil_V/H`、`GRecoil_VShake/HShake`、`GGunkickRandom/Spring`、`GAiming_ADSTime` 等底层独立乘区中。
+
+### 5. 一键实时爬虫更新命令
+```bash
+# 快速刷新今日实时交易行物价与核心表（约 2~3 秒）
+python3 scripts/fetch_live_data.py --skip-combat-packs
+
+# 赛季大更新后全量重爬（含 68 把武器 combat 运行时包，约 10 秒）
+python3 scripts/fetch_live_data.py
+```
