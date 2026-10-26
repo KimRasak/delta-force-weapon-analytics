@@ -449,6 +449,28 @@ def main():
     lib_sol = load_json(V3_DIR / "library_sol.json")
     lib_weapons = lib_sol["weapons"]
     lib_parts = lib_sol["parts"]
+
+    # Normalize unlocalized placeholders, abbreviated translations, and casing mismatches
+    # against official attachment names in agent_attachments.json / orzice_archive_price.json
+    part_name_overrides = {
+        "13120000380": "QJB201专属75发弹盒",
+        "13120000256": "AUG60发弹鼓",
+        "13110000099": "1p33 2/4倍瞄准镜",
+        "13020000531": "QCQ171新式狡兔短枪管组合",
+        "13020000532": "QCQ171新式红缨战术长枪管",
+        "13110000091": "灵眼3/7弹道计算狙击镜",
+        "13110000092": "灵眼6/12弹道计算狙击镜",
+        "13020000402": "SVD实用长枪管",
+        "13020000423": "SMG45实用重枪管",
+        "13020000569": "ASh-12战斧重型枪管",
+        "13030000124": "SVD聚合物一体枪托",
+        "13050000249": "SVD聚合物护木",
+        "13110000061": "OKP-7反射瞄准镜",
+    }
+    for pid, canonical_name in part_name_overrides.items():
+        items_loc[pid] = canonical_name
+        if pid in lib_parts:
+            lib_parts[pid]["name"] = canonical_name
     cany_data = load_json(CANY_FILE)
     orzice_list = load_json(ORZICE_FILE)
     agent_nodes = load_json(AGENT_ATT_FILE)["nodes"]
@@ -1376,7 +1398,7 @@ def main():
             )
 
         for sp_id, sp_name, sp_cat in special_parts:
-            if "内部配件" in sp_name:
+            if "内部配件" in sp_name or sp_id == "13120000380":
                 continue
             res = apply_parts_to_weapon([sp_id])
             mod_variant_rows.append(

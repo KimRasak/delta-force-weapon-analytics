@@ -2215,7 +2215,7 @@
   },
   {
     "part_id": "13020000402",
-    "name": "svd实用长枪管",
+    "name": "SVD实用长枪管",
     "category_cn": "枪管(Barrel)",
     "category_en": "barrel",
     "rarity": "蓝",
@@ -2755,7 +2755,7 @@
   },
   {
     "part_id": "13020000423",
-    "name": "smg45实用重枪管",
+    "name": "SMG45实用重枪管",
     "category_cn": "枪管(Barrel)",
     "category_en": "barrel",
     "rarity": "绿",
@@ -6373,13 +6373,13 @@
   },
   {
     "part_id": "13020000531",
-    "name": "QCQ171新式狡兔短枪管",
+    "name": "QCQ171新式狡兔短枪管组合",
     "category_cn": "枪管(Barrel)",
     "category_en": "barrel",
     "rarity": "紫",
     "market_price": 35910,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.35,
+    "grid_size": "1x2",
     "compatible_non_sniper_count": 1,
     "compatible_all_weapons_count": 1,
     "compatible_weapons": "QCQ171",
@@ -6422,18 +6422,18 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": false,
     "tune_details": "",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "后坐力控制+4；操控速度+8；腰际射击精度+8",
+    "tooltip_disadvantages": "据枪稳定性-6"
   },
   {
     "part_id": "13020000532",
-    "name": "QCQ171新式红缨战术枪管",
+    "name": "QCQ171新式红缨战术长枪管",
     "category_cn": "枪管(Barrel)",
     "category_en": "barrel",
     "rarity": "紫",
     "market_price": 69337,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.35,
+    "grid_size": "1x2",
     "compatible_non_sniper_count": 1,
     "compatible_all_weapons_count": 1,
     "compatible_weapons": "QCQ171",
@@ -6476,8 +6476,8 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": true,
     "tune_details": "长度[GBullet_Velocity(-0.09..0.09)]",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "有效射程与枪口初速+6；后坐力控制+9；据枪稳定性+4",
+    "tooltip_disadvantages": "操控速度-7；腰际射击精度-12"
   },
   {
     "part_id": "13020000533",
@@ -7399,7 +7399,7 @@
   },
   {
     "part_id": "13020000569",
-    "name": "ASH-12战斧重型枪管",
+    "name": "ASh-12战斧重型枪管",
     "category_cn": "枪管(Barrel)",
     "category_en": "barrel",
     "rarity": "紫",
@@ -13825,7 +13825,7 @@
   },
   {
     "part_id": "13050000249",
-    "name": "svd聚合物护木",
+    "name": "SVD聚合物护木",
     "category_cn": "护木(Handguard)",
     "category_en": "handguard",
     "rarity": "蓝",
@@ -16309,13 +16309,13 @@
   },
   {
     "part_id": "13120000256",
-    "name": "aug60发",
+    "name": "AUG60发弹鼓",
     "category_cn": "弹匣/弹鼓(Magazine)",
     "category_en": "magazine",
     "rarity": "蓝",
     "market_price": 24254,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.19,
+    "grid_size": "2x1",
     "compatible_non_sniper_count": 1,
     "compatible_all_weapons_count": 1,
     "compatible_weapons": "AUG",
@@ -16358,8 +16358,8 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": false,
     "tune_details": "",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "60 发容弹量",
+    "tooltip_disadvantages": "操控速度-8；换弹时间惩罚"
   },
   {
     "part_id": "13120000258",
@@ -19225,7 +19225,7 @@
   },
   {
     "part_id": "13120000380",
-    "name": "内部配件 13120000380",
+    "name": "QJB201专属75发弹盒",
     "category_cn": "弹匣/弹鼓(Magazine)",
     "category_en": "magazine",
     "rarity": "",
@@ -24733,7 +24733,7 @@
   },
   {
     "part_id": "13110000061",
-    "name": "okp-7反射瞄准镜",
+    "name": "OKP-7反射瞄准镜",
     "category_cn": "瞄准镜/镜座(Scope)",
     "category_en": "scope",
     "rarity": "蓝",
@@ -25975,13 +25975,13 @@
   },
   {
     "part_id": "13110000091",
-    "name": "灵眼3/7测距狙击瞄准镜",
+    "name": "灵眼3/7弹道计算狙击镜",
     "category_cn": "瞄准镜/镜座(Scope)",
     "category_en": "scope",
     "rarity": "紫",
     "market_price": 69687,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.6,
+    "grid_size": "1x2",
     "compatible_non_sniper_count": 53,
     "compatible_all_weapons_count": 58,
     "compatible_weapons": "M4A1 / AKM / QBZ95-1 / AKS-74U / ASh-12 / K416 / M16A4 / AUG / M7 / SG552 / AK12 / SCAR-H / G3 / PTR-32 / CAR-15 / AS-Val / 腾龙 / K437 / KC17 / MK47 / MCX-LT / RM277 / MDR突击步枪 / MP5 / P90 / Vector / UZI / 野牛 / SMG-45 / SR-3M / 勇士 / MP7 / QCQ171 / MK4 / 汤姆逊冲锋枪 / M1014霰弹枪 / S12K霰弹枪 / M870霰弹枪 / 725双管霰弹枪 / PKM / M249 / M250 / Mini-14 / VSS / SVD / M14 / SKS / SR25 / SR9 / PSG-1 / Marlin杠杆步枪 / SVCH / .357左轮",
@@ -26024,18 +26024,18 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": false,
     "tune_details": "",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "据枪稳定性+6；主动弹道下坠计算；高倍率光学放大视野",
+    "tooltip_disadvantages": "操控速度-8；举镜瞄准时敌人可见反光：中"
   },
   {
     "part_id": "13110000092",
-    "name": "灵眼6/12测距狙击瞄准镜",
+    "name": "灵眼6/12弹道计算狙击镜",
     "category_cn": "瞄准镜/镜座(Scope)",
     "category_en": "scope",
     "rarity": "紫",
     "market_price": 86732,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.6,
+    "grid_size": "1x2",
     "compatible_non_sniper_count": 10,
     "compatible_all_weapons_count": 15,
     "compatible_weapons": "MP7 / Mini-14 / VSS / SVD / M14 / SR25 / SR9 / PSG-1 / Marlin杠杆步枪 / SVCH",
@@ -26078,8 +26078,8 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": false,
     "tune_details": "",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "据枪稳定性+6；主动弹道下坠计算；高倍率光学放大视野",
+    "tooltip_disadvantages": "操控速度-8；举镜瞄准时敌人可见反光：中"
   },
   {
     "part_id": "13110000093",
@@ -26299,13 +26299,13 @@
   },
   {
     "part_id": "13110000099",
-    "name": "1p33 2/4倍望远镜",
+    "name": "1p33 2/4倍瞄准镜",
     "category_cn": "瞄准镜/镜座(Scope)",
     "category_en": "scope",
     "rarity": "紫",
     "market_price": 46703,
-    "weight_kg": null,
-    "grid_size": "",
+    "weight_kg": 0.6,
+    "grid_size": "1x2",
     "compatible_non_sniper_count": 55,
     "compatible_all_weapons_count": 60,
     "compatible_weapons": "M4A1 / AKM / QBZ95-1 / AKS-74U / ASh-12 / K416 / M16A4 / AUG / M7 / SG552 / AK12 / SCAR-H / G3 / PTR-32 / CAR-15 / AS-Val / 腾龙 / K437 / KC17 / MK47 / MCX-LT / AR57 / RM277 / MDR突击步枪 / MP5 / P90 / Vector / UZI / 野牛 / SMG-45 / SR-3M / 勇士 / MP7 / QCQ171 / MK4 / 汤姆逊冲锋枪 / M1014霰弹枪 / S12K霰弹枪 / M870霰弹枪 / 725双管霰弹枪 / PKM / M249 / M250 / QJB201 / Mini-14 / VSS / SVD / M14 / SKS / SR25 / SR9 / PSG-1 / Marlin杠杆步枪 / SVCH / .357左轮",
@@ -26348,8 +26348,8 @@
     "hidden_mechanics_summary": "",
     "is_combat_tunable": false,
     "tune_details": "",
-    "tooltip_advantages": "",
-    "tooltip_disadvantages": ""
+    "tooltip_advantages": "据枪稳定性+4；中等倍率光学放大视野；多倍率可调瞄准镜",
+    "tooltip_disadvantages": "操控速度-6；举镜瞄准时敌人可见反光：弱"
   },
   {
     "part_id": "13110000102",
@@ -26839,7 +26839,7 @@
   },
   {
     "part_id": "13030000124",
-    "name": "svd聚合物一体枪托",
+    "name": "SVD聚合物一体枪托",
     "category_cn": "枪托(Stock)",
     "category_en": "stock",
     "rarity": "紫",

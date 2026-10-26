@@ -412,6 +412,9 @@ python3 scripts/fetch_live_data.py
 
     readme_content = f"""# Delta Force Weapon & Parts Analytics (`三角洲行动` 全非狙击枪支与全零件底层数据库)
 
+> 🌐 **在线交互式配枪与底层数据看板（免安装网页版）**：[**https://kimrasak.github.io/delta-force-weapon-analytics/**](https://kimrasak.github.io/delta-force-weapon-analytics/)  
+> （包含：9套巴克什实战版本答案一键模拟器、577个零件隐藏乘区多维检索、226种改装形态多距离TTK天梯、62把武器全槽位实时改装沙盒）
+
 本仓库收录并解析了《三角洲行动》（Delta Force）最新赛季（S10/S11，`2026-10-15` 官方引擎运行时数据 & `2026-10-23` 交易行实时物价）中除栓动/重型狙击枪外的 **全部 62 把枪支**、**全部 577 个枪械零件（配件）**、**6,774 条「枪械×零件」装枪属性映射记录**、**226 种核心战斗改装形态**、**114 种全口径子弹** 及 **51 种护甲/头盔** 的完整底层数据与深度量化洞察。
 
 ---
@@ -420,10 +423,12 @@ python3 scripts/fetch_live_data.py
 
 | 文件 / 目录路径 | 记录数 | 内容说明 |
 | :--- | :---: | :--- |
+| [`index.html`](index.html) / [`web_data.js`](web_data.js) | **全量网页** | **零外部CDN依赖的交互式Web应用**：支持直接双击本地预览或 GitHub Pages / Cloudflare Pages 静态托管 |
 | [`docs/INSIGHTS.md`](docs/INSIGHTS.md) | - | **深度分析报告（必读）**：包含六大核心 Insight、全枪械基础属性表、质变零件TTK对比表、隐藏独立乘区零件表、全弹药穿甲价格表与护甲部位表 |
 | [`docs/CUSTOM_LOADOUT_GUIDE.md`](docs/CUSTOM_LOADOUT_GUIDE.md) | - | **绝密巴克什（外围+塔内）定制配枪指南**：针对麦晓雯/深蓝/旅人组排玩家，提供 35w~50w+ 高容错主力轮椅方案与 14w~25w 低战损破局方案 |
 | [`docs/CRAWLING_NOTES.md`](docs/CRAWLING_NOTES.md) | - | **数据爬取与底层逆向心得**：详细记录数据源发现路径、`llms.txt` 静态 Manifest 并发直拉、双通道实时价格架构与 4 大底层字段逆向踩坑笔记 |
 | [`scripts/fetch_live_data.py`](scripts/fetch_live_data.py) | - | **一键实时爬虫与更新脚本**：并发拉取 `dfttk.com/data/v3` 与 `orzice.com/v/ammo` 实时行情并全自动重建所有数据表与文档 |
+| [`scripts/build_web.py`](scripts/build_web.py) | - | **网页数据包编译脚本**：将全部 JSON 数据集与 Markdown 报告预渲染打包为 `web_data.js` |
 | [`data/all_parts_catalog_sol.csv`](data/all_parts_catalog_sol.csv) / [`.json`](data/all_parts_catalog_sol.json) | **577 个零件** | **全枪械零件图鉴总表**：含每个零件的ID、名称、类别、品质、实时价格、重量、占格、适配枪械列表、**面板五维加成**、**核心战斗/弹匣修正**、**15项底层隐藏独立乘区（独立垂直/水平后坐、垂直/水平晃动、枪身随机跳动、回弹抖动、独立开镜时间、开镜移速、受击晃动、纯射程等）** 及精校范围 |
 | [`data/weapon_part_relations_sol.csv`](data/weapon_part_relations_sol.csv) / [`.json`](data/weapon_part_relations_sol.json) | **6,774 条配对** | **「枪械 × 可装零件」全量明细表**：列出 62 把非狙击枪每一把枪可安装的所有零件，以及装上该零件后该枪的射速、肉伤/甲伤、部位倍率、初速、距离衰减与隐藏乘区变化 |
 | [`data/per_weapon_parts/`](data/per_weapon_parts/) | **62 个 CSV 文件** | **单枪专属零件库**：按每把枪拆分的独立 CSV 文件（如 `18010000038_腾龙_parts.csv`、`18010000016_M7_parts.csv`、`18010000001_M4A1_parts.csv` 等），方便直接查阅任意一把枪的全部可用零件与价格 |
