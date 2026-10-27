@@ -24,17 +24,22 @@ for old_f in ["practical_gunsmith_builds.json", "practical_gunsmith_builds.csv",
         p.unlink()
 
 RAW_CACHE_DIR = ROOT / "data" / "raw_cache"
-RESEARCH_DIR = RAW_CACHE_DIR if (RAW_CACHE_DIR / "dfttk_v3").exists() else Path("/tmp/df_research")
+RESEARCH_DIR = RAW_CACHE_DIR
 V3_DIR = RESEARCH_DIR / "dfttk_v3"
-CANY_FILE = (RAW_CACHE_DIR / "cany_data.json") if (RAW_CACHE_DIR / "cany_data.json").exists() else (RESEARCH_DIR / "cany_vue3" / "public" / "data.json")
-ORZICE_FILE = (RAW_CACHE_DIR / "orzice_archive_price.json") if (RAW_CACHE_DIR / "orzice_archive_price.json").exists() else (RESEARCH_DIR / "orzice" / "price.json")
+CANY_FILE = RAW_CACHE_DIR / "cany_data.json"
+ORZICE_FILE = RAW_CACHE_DIR / "orzice_archive_price.json"
 ORZICE_LIVE_AMMO_FILE = RAW_CACHE_DIR / "orzice_live_ammo.json"
-AGENT_ATT_FILE = (RAW_CACHE_DIR / "agent_attachments.json") if (RAW_CACHE_DIR / "agent_attachments.json").exists() else (RESEARCH_DIR / "agent" / "attachments.json")
+AGENT_ATT_FILE = RAW_CACHE_DIR / "agent_attachments.json"
 
 
 def load_json(path):
     with open(path, "r", encoding="utf-8-sig") as f:
         return json.load(f)
+
+
+def write_open(path, **kwargs):
+    Path(path).unlink(missing_ok=True)
+    return open(path, "w", **kwargs)
 
 
 def calc_chest_btk_ttk(
@@ -182,6 +187,44 @@ PART_CAT_CN = {
     "scope": "瞄准镜/镜座(Scope)",
     "optic": "组合瞄具(Optic)",
     "functional": "功能配件(Functional:导气/枪机/扳机/镭指/脚架/贴片)",
+}
+
+SLOT_BY_PREFIX = {
+    "1302": ("barrel", "枪管(Barrel)"),
+    "1313": ("muzzle", "枪口(Muzzle)"),
+    "1339": ("gasBlock", "导气箍(GasBlock)"),
+    "1356": ("gasBlock", "导气箍(GasBlock)"),
+    "1342": ("bolt", "枪机/杠杆(Bolt/Lever)"),
+    "1352": ("bolt", "枪机/杠杆(Bolt/Lever)"),
+    "1325": ("trigger", "扳机/击锤(Trigger)"),
+    "1338": ("trigger", "扳机/击锤(Trigger)"),
+    "1343": ("chargingHandle", "拉机柄帽(ChargingHandle)"),
+    "1305": ("handguard", "护木/枪身套件(Handguard)"),
+    "1320": ("handguard", "护木/枪身套件(Handguard)"),
+    "1322": ("handguard", "护木/枪身套件(Handguard)"),
+    "1340": ("handguard", "护木/枪身套件(Handguard)"),
+    "1341": ("handguard", "护木/枪身套件(Handguard)"),
+    "1314": ("foregrip", "前握把/阻手器(Foregrip)"),
+    "1317": ("bipod", "两脚架/平衡杆(Bipod)"),
+    "1351": ("bipod", "两脚架/平衡杆(Bipod)"),
+    "1312": ("magazine", "弹匣/弹鼓(Magazine)"),
+    "1334": ("magAssist", "弹匣快拔套(MagAssist)"),
+    "1303": ("rearGrip", "后握把(RearGrip)"),
+    "1333": ("gripMount", "握把片/底座(GripPanel)"),
+    "1354": ("gripMount", "握把片/底座(GripPanel)"),
+    "1345": ("gripMount", "握把片/底座(GripPanel)"),
+    "1304": ("stock", "枪托(Stock)"),
+    "1324": ("stockAcc", "托腮板/托垫/子弹袋(StockAcc)"),
+    "1329": ("stockAcc", "托腮板/托垫/子弹袋(StockAcc)"),
+    "1353": ("stockAcc", "托腮板/托垫/子弹袋(StockAcc)"),
+    "1311": ("optic", "瞄准镜(Optic)"),
+    "1321": ("opticAcc", "增高架/遮光罩(OpticAcc)"),
+    "1337": ("opticAcc", "增高架/遮光罩(OpticAcc)"),
+    "1316": ("laser", "激光镭指/手电(Laser)"),
+    "1332": ("patch", "护木贴片(RailPatch)"),
+    "1344": ("bowPart", "复合弓配件(BowPart)"),
+    "1347": ("bowPart", "复合弓配件(BowPart)"),
+    "1350": ("bowPart", "复合弓配件(BowPart)"),
 }
 
 
@@ -643,9 +686,9 @@ def main():
             if str(at_id) not in rip_ammo_by_type or row["flesh_damage_mult"] > rip_ammo_by_type[str(at_id)]["flesh_damage_mult"]:
                 rip_ammo_by_type[str(at_id)] = row
 
-    with open(DATA_DIR / "ammo_catalog_and_prices.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "ammo_catalog_and_prices.json", encoding="utf-8") as f:
         json.dump(ammo_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "ammo_catalog_and_prices.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "ammo_catalog_and_prices.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(ammo_rows[0].keys()))
         writer.writeheader()
         writer.writerows(ammo_rows)
@@ -681,9 +724,9 @@ def main():
             "covers_upper_arm": False,
             "market_price": p,
         })
-    with open(DATA_DIR / "armors_and_helmets.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "armors_and_helmets.json", encoding="utf-8") as f:
         json.dump(defense_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "armors_and_helmets.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "armors_and_helmets.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(defense_rows[0].keys()))
         writer.writeheader()
         writer.writerows(defense_rows)
@@ -697,8 +740,10 @@ def main():
     all_parts_rows = []
     for pid, p_obj in sorted(lib_parts.items(), key=lambda x: (x[1].get("category", ""), x[0])):
         pname = p_obj.get("name", pid)
-        pcat_en = p_obj.get("category", "unknown")
-        pcat_cn = PART_CAT_CN.get(pcat_en, pcat_en)
+        raw_cat_en = p_obj.get("category", "unknown")
+        slot_en, slot_cn = SLOT_BY_PREFIX.get(pid[:4], (raw_cat_en, PART_CAT_CN.get(raw_cat_en, raw_cat_en)))
+        pcat_en = slot_en
+        pcat_cn = slot_cn
         rarity = p_obj.get("rarity", "")
         p_price = (
             econ_prices.get(pid)
@@ -739,6 +784,8 @@ def main():
             "hipfire_accuracy": attrs["hipfire_accuracy"],
             "handling": attrs["handling"],
             "stability": attrs["stability"],
+            "laser_active_hipfire_bonus": attrs["laser_active_hipfire_bonus"],
+            "laser_active_handling_bonus": attrs["laser_active_handling_bonus"],
             "net_panel_points": net_pts,
             "price_per_positive_point": price_per_pt,
             "rof_interval_pct": attrs["rof_interval_pct"],
@@ -749,6 +796,7 @@ def main():
             "mag_capacity_add": attrs["mag_capacity_add"],
             "reload_time_pct": attrs["reload_time_pct"],
             "reload_time_set_s": attrs["reload_time_set_s"],
+            "empty_reload_set_s": attrs["empty_reload_set_s"],
             "hidden_recoil_v_pct": attrs["hidden_recoil_v_pct"],
             "hidden_recoil_h_pct": attrs["hidden_recoil_h_pct"],
             "hidden_recoil_v_single_pct": attrs["hidden_recoil_v_single_pct"],
@@ -777,9 +825,9 @@ def main():
         }
         all_parts_rows.append(part_row)
 
-    with open(DATA_DIR / "all_parts_catalog_sol.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "all_parts_catalog_sol.json", encoding="utf-8") as f:
         json.dump(all_parts_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "all_parts_catalog_sol.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "all_parts_catalog_sol.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(all_parts_rows[0].keys()))
         writer.writeheader()
         writer.writerows(all_parts_rows)
@@ -1154,7 +1202,7 @@ def main():
 
         safe_wname = wname.replace(" ", "_").replace("/", "_")
         if per_gun_rows:
-            with open(PER_GUN_DIR / f"{wid}_{safe_wname}_parts.csv", "w", encoding="utf-8-sig", newline="") as f:
+            with write_open(PER_GUN_DIR / f"{wid}_{safe_wname}_parts.csv", encoding="utf-8-sig", newline="") as f:
                 writer = csv.DictWriter(f, fieldnames=list(per_gun_rows[0].keys()))
                 writer.writeheader()
                 writer.writerows(per_gun_rows)
@@ -1491,30 +1539,30 @@ def main():
                 )
             )
 
-    with open(DATA_DIR / "weapons_base_sol.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "weapons_base_sol.json", encoding="utf-8") as f:
         json.dump(base_sol_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "weapons_base_sol.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "weapons_base_sol.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(base_sol_rows[0].keys()))
         writer.writeheader()
         writer.writerows(base_sol_rows)
 
-    with open(DATA_DIR / "weapons_base_mp.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "weapons_base_mp.json", encoding="utf-8") as f:
         json.dump(base_mp_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "weapons_base_mp.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "weapons_base_mp.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(base_mp_rows[0].keys()))
         writer.writeheader()
         writer.writerows(base_mp_rows)
 
-    with open(DATA_DIR / "weapon_mod_variants_sol.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "weapon_mod_variants_sol.json", encoding="utf-8") as f:
         json.dump(mod_variant_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "weapon_mod_variants_sol.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "weapon_mod_variants_sol.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(mod_variant_rows[0].keys()))
         writer.writeheader()
         writer.writerows(mod_variant_rows)
 
-    with open(DATA_DIR / "weapon_part_relations_sol.json", "w", encoding="utf-8") as f:
+    with write_open(DATA_DIR / "weapon_part_relations_sol.json", encoding="utf-8") as f:
         json.dump(weapon_part_relation_rows, f, ensure_ascii=False, indent=2)
-    with open(DATA_DIR / "weapon_part_relations_sol.csv", "w", encoding="utf-8-sig", newline="") as f:
+    with write_open(DATA_DIR / "weapon_part_relations_sol.csv", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(weapon_part_relation_rows[0].keys()))
         writer.writeheader()
         writer.writerows(weapon_part_relation_rows)
