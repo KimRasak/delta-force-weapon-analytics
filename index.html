@@ -3148,6 +3148,330 @@
       flex-shrink: 0;
       box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
     }
+
+    /* ==================== v6.2 MOBILE-FIRST READING & TOUCH UX SYSTEM ==================== */
+    .loadout-core-metrics {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr 0.85fr;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .loadout-core-parts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 5px;
+    }
+    .duel-fighter-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    /* Tablet & Mobile Builder Stack: Eliminate nested scroll trap on .summary-card */
+    @media (max-width: 1180px) {
+      .summary-card {
+        position: static !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        padding: 14px;
+      }
+    }
+
+    /* Mobile & Small Tablet Touch Optimization (<= 768px) */
+    @media (max-width: 768px) {
+      .hide-on-mobile,
+      .brand-sub,
+      .cmd-kbd,
+      .tonal-palette-label {
+        display: none !important;
+      }
+      .header-inner {
+        padding: 7px 12px 0;
+      }
+      .brand-row {
+        gap: 6px;
+        padding-bottom: 6px;
+        flex-wrap: nowrap;
+      }
+      .brand-title {
+        min-width: 0;
+        flex: 1;
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+      .brand-badge {
+        padding: 2px 6px;
+        font-size: 10px;
+        flex-shrink: 0;
+      }
+      .brand-title h1 {
+        font-size: 14px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .header-actions {
+        gap: 6px;
+        flex-shrink: 0;
+      }
+      .cmd-search-trigger {
+        padding: 4px 9px;
+        font-size: 11.5px;
+        gap: 4px;
+      }
+      .tonal-palette-bar {
+        padding: 2px 4px;
+        gap: 2px;
+      }
+      .tonal-swatch-btn {
+        padding: 3px 6px;
+        font-size: 10.5px;
+        gap: 3px;
+      }
+
+      /* Compact single-row navigation tabs */
+      .nav-tabs {
+        gap: 2px;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+      }
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-tab {
+        padding: 7px 10px;
+        font-size: 12.5px;
+        gap: 4px;
+      }
+      .nav-tab .tab-badge {
+        display: none;
+      }
+
+      /* Single-row horizontal touch-swipe Pill Bars */
+      .pill-bar {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 4px;
+        gap: 6px;
+      }
+      .pill-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .pill-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 6px 11px;
+        font-size: 12px;
+      }
+
+      /* Filter Bars & Form Controls */
+      .filter-bar {
+        padding: 10px 12px;
+        gap: 8px;
+      }
+      .filter-group {
+        width: 100%;
+        gap: 6px;
+      }
+      .filter-group .input-control {
+        min-width: 0 !important;
+        width: 100%;
+        flex: 1 1 100%;
+        font-size: 13px;
+      }
+      .filter-group .select-control {
+        min-width: 0 !important;
+        flex: 1 1 calc(50% - 4px);
+        max-width: 100% !important;
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+
+      /* Tables & Bottom-Sheet Modals */
+      .table-scroll {
+        -webkit-overflow-scrolling: touch;
+        max-height: 68vh !important;
+      }
+      table.data-table th,
+      table.data-table td {
+        padding: 7px 8px;
+        font-size: 11.5px;
+      }
+      .modal-backdrop {
+        padding-top: 2vh;
+        align-items: flex-end;
+      }
+      .cmd-modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 16px 16px 0 0;
+        max-height: 88vh;
+      }
+      .cmd-results {
+        max-height: 74vh !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .pk-floating-bar {
+        width: calc(100% - 20px);
+        bottom: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+
+    /* Phone Portrait Reading Experience (<= 580px) */
+    @media (max-width: 580px) {
+      .loadout-card {
+        padding: 13px 12px;
+        gap: 10px;
+      }
+      .loadout-head {
+        gap: 8px;
+      }
+      .loadout-title {
+        font-size: 15px;
+        gap: 6px;
+      }
+      .loadout-price .price-val {
+        font-size: 15.5px;
+      }
+      .weapon-stage {
+        min-height: 128px !important;
+        padding: 28px 10px 28px !important;
+      }
+      .branch-tabs {
+        gap: 5px;
+      }
+      .branch-btn {
+        flex: 1 1 auto;
+        text-align: center;
+        padding: 6px 8px;
+        font-size: 11.5px;
+      }
+      /* Hero full-width primary TTK metric + 2-col secondary metrics on phone */
+      .loadout-core-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+      .loadout-core-metrics > .metric-box:first-child {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 7px 10px !important;
+      }
+      .loadout-core-metrics > .metric-box:first-child .m-val {
+        margin-top: 0;
+        font-size: 13.5px !important;
+      }
+      /* 2-Column attachment tiles on phone so names & prices never truncate */
+      .loadout-core-parts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+      }
+      .topo-part-node {
+        padding: 6px 7px;
+        gap: 7px;
+      }
+      /* Thumb-friendly stacked action buttons */
+      .loadout-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 7px;
+        padding-top: 10px;
+      }
+      .loadout-actions > div {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        width: 100%;
+      }
+      .loadout-actions .btn {
+        justify-content: center;
+        padding: 8px 10px;
+        font-size: 12px;
+        width: 100%;
+      }
+
+      /* Duel Simulator Mobile Refinements */
+      .duel-sim-box {
+        padding: 12px;
+      }
+      .duel-sim-header > div:last-child {
+        width: 100%;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+      }
+      #duel-variant-select,
+      #duel-ammo-select {
+        grid-column: 1 / -1;
+        max-width: 100% !important;
+        width: 100%;
+      }
+      #duel-armor-select,
+      #duel-dist-select {
+        max-width: 100% !important;
+        width: 100%;
+        min-width: 0;
+      }
+      .duel-fighter-metrics {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      .duel-Shots-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      /* Builder & Card Grids on Phone */
+      .builder-panel {
+        padding: 12px;
+      }
+      #builder-weapon-select {
+        min-width: 0 !important;
+        width: 100%;
+        flex: 1 1 100%;
+      }
+      #builder-codes-list {
+        grid-template-columns: 1fr !important;
+      }
+      .parts-card-grid,
+      .armor-gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .md-h1 {
+        font-size: 17px;
+        margin-bottom: 12px;
+      }
+      .md-h2 {
+        font-size: 14.5px;
+      }
+    }
+
+    /* Ultra-Narrow Phone Header Dot-Mode (<= 480px) */
+    @media (max-width: 480px) {
+      .brand-badge {
+        display: none;
+      }
+      .tonal-swatch-btn {
+        font-size: 0;
+        padding: 5px;
+        gap: 0;
+      }
+      .swatch-dot {
+        width: 10px;
+        height: 10px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3163,7 +3487,7 @@
         </div>
         <div class="header-actions">
           <button class="cmd-search-trigger" onclick="openCmdModal()" title="全局快速检索 (快捷键 Cmd+K 或 /)">
-            <span>🔍 搜武器 / 配件 / 弹药 / 改枪码...</span>
+            <span>🔍 搜武器<span class="hide-on-mobile"> / 配件 / 弹药 / 改枪码...</span></span>
             <span class="cmd-kbd">⌘K</span>
           </button>
           <div class="tonal-palette-bar" role="group" aria-label="大师色调预设">
@@ -4417,7 +4741,7 @@
             <!-- Layer 3: Branch Switcher + 3 Key Metrics + 6 Core Attachments -->
             <div class="branch-tabs">${branchButtonsHtml}</div>
 
-            <div style="display:grid; grid-template-columns:1.25fr 0.9fr 0.85fr; gap:6px; margin-bottom:10px">
+            <div class="loadout-core-metrics">
               <div class="metric-box" style="padding:6px 9px">
                 <span class="m-label">💀 5甲胸口 TTK</span>
                 <span class="m-val hi" style="font-size:12.5px">${br.ttk5v5}</span>
@@ -4437,7 +4761,7 @@
                 <span>🧩 核心灵魂改件 (${sortedCoreParts.length} / 全套 ${resolvedParts.length} 件)</span>
                 <span style="color:var(--text-dim)">点击配件看隐藏属性</span>
               </div>
-              <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:5px">
+              <div class="loadout-core-parts-grid">
                 ${coreGridHtml}
               </div>
             </div>
@@ -4664,7 +4988,7 @@
                   </div>
                 </div>
               </div>
-              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px">
+              <div class="duel-fighter-metrics">
                 <div class="metric-box" style="padding:6px 8px">
                   <span class="m-label">🎯 击杀枪数</span>
                   <span class="m-val hi">${killShot.shot} 发</span>
