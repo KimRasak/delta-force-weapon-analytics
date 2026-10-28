@@ -289,7 +289,6 @@ SLOT_BY_PREFIX = {
 
 def main():
     weapons = load_json(DATA_DIR / "weapons_base_sol.json")
-    weapons_mp = load_json(DATA_DIR / "weapons_base_mp.json")
     variants = load_json(DATA_DIR / "weapon_mod_variants_sol.json")
     parts = load_json(DATA_DIR / "all_parts_catalog_sol.json")
     ammo = load_json(DATA_DIR / "ammo_catalog_and_prices.json")
@@ -299,15 +298,29 @@ def main():
     lib_sol_path = DATA_DIR / "raw_cache" / "dfttk_v3" / "library_sol.json"
     lib_parts = load_json(lib_sol_path).get("parts", {}) if lib_sol_path.exists() else {}
 
+    orz_archive_path = DATA_DIR / "raw_cache" / "orzice_archive_price.json"
+    orz_by_name = {}
+    orz_armor_cond = {}
+    if orz_archive_path.exists():
+        for x in load_json(orz_archive_path):
+            nm = x.get("name", "")
+            pr = x.get("price") or 0
+            orz_by_name[nm] = pr
+            if x.get("secondClassCN") in ("头盔", "护甲"):
+                base_nm = nm.split(" (")[0].split("（")[0].strip()
+                orz_armor_cond.setdefault(base_nm, {})
+                if "几乎全新" in nm:
+                    orz_armor_cond[base_nm]["like_new"] = pr
+                elif "破损" in nm:
+                    orz_armor_cond[base_nm]["damaged"] = pr
+                else:
+                    orz_armor_cond[base_nm]["new"] = pr
+
     weapon_img_map = {}
     for w in weapons:
         wid = str(w["weapon_id"])
         w["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{wid}.png"
         weapon_img_map[w["name"]] = w["image"]
-
-    for wmp in weapons_mp:
-        wid = str(wmp["weapon_id"])
-        wmp["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{wid}.png"
 
     part_img_map = {}
     for p in parts:
@@ -322,6 +335,10 @@ def main():
         if p_obj and not p.get("rarity") and p_obj.get("rarity"):
             p["rarity"] = p_obj["rarity"]
         part_img_map[p["name"]] = p["image"]
+        po = orz_by_name.get(p["name"], 0)
+        mp = p.get("market_price") or 0
+        if po > mp > 0:
+            p["anchor_eval_price"] = po
         if p_obj and p_obj.get("effects"):
             ops = p_obj["effects"][0].get("data", {}).get("operations", [])
             passive_hip = 0
@@ -383,6 +400,11 @@ def main():
     for ar in armors:
         iid = str(ar.get("item_id", ""))
         ar["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{iid}.png"
+        cond = orz_armor_cond.get(ar.get("name", ""), {})
+        if cond.get("like_new"):
+            ar["price_like_new"] = cond["like_new"]
+        if cond.get("damaged"):
+            ar["price_damaged"] = cond["damaged"]
 
     for am in ammo:
         aid = str(am.get("ammo_id", ""))
@@ -433,7 +455,10 @@ def main():
 
     custom_guide_md = (DOCS_DIR / "CUSTOM_LOADOUT_GUIDE.md").read_text(encoding="utf-8")
     insights_md = (DOCS_DIR / "INSIGHTS.md").read_text(encoding="utf-8")
-    readme_md = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme_md = "\n".join(
+        line for line in (ROOT / "README.md").read_text(encoding="utf-8").splitlines()
+        if "全面战场" not in line and "weapons_base_mp" not in line
+    )
 
     cg_html, cg_toc = md_to_html_and_toc(custom_guide_md, "cg", weapon_img_map, part_img_map)
     in_html, in_toc = md_to_html_and_toc(insights_md, "in", weapon_img_map, part_img_map)
@@ -442,7 +467,6 @@ def main():
     payload = {
         "updated_at": "2026-10 (最新SDK底层解包 + 交易行实时物价校准)",
         "weapons": weapons,
-        "weapons_mp": weapons_mp,
         "variants": variants,
         "parts": parts,
         "ammo": ammo,

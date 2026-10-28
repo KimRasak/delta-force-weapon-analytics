@@ -2013,7 +2013,7 @@
           🛠️ 单枪全槽位模拟器 & 改枪码 <span class="tab-badge">103组改枪码</span>
         </button>
         <button class="nav-tab" data-tab="tab-docs" onclick="switchTab('tab-docs')">
-          🛡️ 弹药·护甲·双模式与深度报告 <span class="tab-badge">全量百科</span>
+          🛡️ 弹药·护甲图鉴与深度报告 <span class="tab-badge">烽火全百科</span>
         </button>
       </nav>
     </div>
@@ -2378,7 +2378,7 @@
           </div>
 
           <!-- Total Cost Box -->
-          <div style="background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(18,26,38,0.92)); border:1px solid rgba(251,191,36,0.4); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center">
+          <div style="background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(18,26,38,0.92)); border:1px solid rgba(251,191,36,0.4); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
             <div>
               <div style="font-size:11px; color:var(--text-muted)">已装配件总造价 (不含裸枪)</div>
               <div class="price-text" style="font-size:21px" id="sum-total-price">0 哈夫币</div>
@@ -2388,6 +2388,9 @@
               <div class="mono" style="font-size:13.5px; font-weight:700; color:var(--accent)" id="sum-net-points">+0 点</div>
             </div>
           </div>
+
+          <!-- Operations Readiness & Ammo Burn Rate HUD -->
+          <div id="builder-ops-economy" style="margin-bottom:12px"></div>
 
           <!-- Dual-Polygon 6-Axis Radar & Live Recoil / Hipfire Target Visualizer -->
           <div class="visual-analytics-grid" id="builder-visual-analytics"></div>
@@ -2415,12 +2418,12 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 5: AMMO, ARMOR, MP VS SOL & DEEP REPORTS ==================== -->
+    <!-- ==================== TAB 5: AMMO, ARMOR & DEEP REPORTS ==================== -->
     <section id="tab-docs" class="tab-panel">
       <div class="docs-layout">
         <aside class="docs-sidebar">
           <div style="font-size:11.5px; font-weight:700; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px">
-            战术数据库与深度报告切换
+            烽火地带数据库与深度报告
           </div>
           <button class="doc-switch-btn active" id="btn-doc-ammo_matrix" onclick="switchDoc('ammo_matrix')">
             <span>🧱 114种弹药穿甲与物价总表</span>
@@ -2428,8 +2431,8 @@
           <button class="doc-switch-btn" id="btn-doc-armor_catalog" onclick="switchDoc('armor_catalog')">
             <span>🛡️ 51款防弹衣与头盔性价比图鉴</span>
           </button>
-          <button class="doc-switch-btn" id="btn-doc-mp_vs_sol" onclick="switchDoc('mp_vs_sol')">
-            <span>⚔️ 烽火地带 vs 全面战场双模式对比</span>
+          <button class="doc-switch-btn" id="btn-doc-readiness_econ" onclick="switchDoc('readiness_econ')">
+            <span>💰 烽火卡战备与头甲折损精算</span>
           </button>
           <button class="doc-switch-btn" id="btn-doc-custom_guide" onclick="switchDoc('custom_guide')">
             <span>🎯 绝密巴克什定制配枪指南</span>
@@ -2502,7 +2505,7 @@
   <script src="web_data.js"></script>
   <script>
     const DATA = window.DF_DATA || {
-      weapons: [], weapons_mp: [], variants: [], parts: [], ammo: [], armors: [],
+      weapons: [], variants: [], parts: [], ammo: [], armors: [],
       weapon_part_effects: {}, build_codes: [], docs: {}
     };
 
@@ -2524,14 +2527,6 @@
       if (w.stability === undefined) w.stability = w.panel_stability_stat ?? 50;
       WEAPONS_BY_ID[w.weapon_id] = w;
       WEAPONS_BY_NAME[w.name] = w;
-    });
-
-    (DATA.weapons_mp || []).forEach(mp => {
-      if (mp.flesh_dmg === undefined) mp.flesh_dmg = mp.base_flesh_damage;
-      if (mp.range_step1_m === undefined && mp.falloff_segments) {
-        const m = String(mp.falloff_segments).match(/^0-(\d+(?:\.\d+)?)m/);
-        if (m) mp.range_step1_m = Number(m[1]);
-      }
     });
 
     (DATA.ammo || []).forEach(a => {
@@ -3804,6 +3799,9 @@
           const effHnd = p.laser_active_handling_bonus ? p.laser_active_handling_bonus : (p.handling || 0);
           const rvText = p.range_velocity_pct ? `射程/初速 ${p.range_velocity_pct > 0 ? '+' : ''}${p.range_velocity_pct}%` : (p.only_range_pct ? `射程 +${p.only_range_pct}%` : '');
           const hidSummary = [rvText, p.hidden_mechanics_summary].filter(Boolean).join(' · ');
+          const evalBoost = (p.anchor_eval_price && p.market_price && p.anchor_eval_price > p.market_price * 1.35)
+            ? `<span class="badge badge-blue" title="交易行买价 ¥${fmtPrice(p.market_price)}，系统战备评估锚定 ¥${fmtPrice(p.anchor_eval_price)}，虚增战备 +¥${fmtPrice(p.anchor_eval_price - p.market_price)}">💰战备¥${fmtPrice(p.anchor_eval_price)}</span>`
+            : '';
 
           return `
             <div class="part-armory-card ${rClass}">
@@ -3818,6 +3816,7 @@
                     <span class="price-text" style="font-size:13px">${fmtPrice(p.market_price)} 币</span>
                     ${tierObj.html}
                     ${p.is_combat_tunable ? '<span class="badge badge-purple">🎛️精调</span>' : ''}
+                    ${evalBoost}
                   </div>
                 </div>
               </div>
@@ -4821,6 +4820,60 @@
       const pppText = netPoints > 0 ? ` (${fmtPrice(Math.round(totalPrice / netPoints))}币/点)` : '';
       document.getElementById('sum-net-points').textContent = `${netPoints >= 0 ? '+' : ''}${netPoints} 点${pppText}`;
 
+      // Render Operations Readiness & Ammo Burn Rate HUD (#builder-ops-economy)
+      const opsEconEl = document.getElementById('builder-ops-economy');
+      if (opsEconEl) {
+        const barePrice = w.bare_gun_price || 55000;
+        const fullBuyPrice = barePrice + totalPrice;
+        let evalPartsTotal = 0;
+        equippedParts.forEach(({ part: p, mult }) => {
+          evalPartsTotal += (p.anchor_eval_price || p.market_price || 0) * mult;
+        });
+        const fullEvalPrice = barePrice + evalPartsTotal;
+        const evalBonus = Math.max(0, fullEvalPrice - fullBuyPrice);
+
+        const lv4Ammo = DATA.ammo.find(a => a.caliber === w.caliber && a.penetration_level === 4 && a.market_price) || DATA.ammo.find(a => a.caliber === w.caliber && a.penetration_level === 3);
+        const lv5Ammo = DATA.ammo.find(a => a.caliber === w.caliber && a.penetration_level === 5 && a.market_price);
+        const rps = liveRof / 60;
+        const burn4PerSec = lv4Ammo?.market_price ? Math.round(rps * lv4Ammo.market_price) : 0;
+        const burn5PerSec = lv5Ammo?.market_price ? Math.round(rps * lv5Ammo.market_price) : 0;
+        const mag4Cost = lv4Ammo?.market_price ? Math.round(liveMag * lv4Ammo.market_price) : 0;
+        const mag5Cost = lv5Ammo?.market_price ? Math.round(liveMag * lv5Ammo.market_price) : 0;
+
+        const pct18w = Math.min(100, Math.round((fullEvalPrice / 187500) * 100));
+        const pct35w = Math.min(100, Math.round((fullEvalPrice / 350000) * 100));
+
+        opsEconEl.innerHTML = `
+          <div style="background:rgba(8,13,21,0.85); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px 12px; display:flex; flex-direction:column; gap:8px">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px">
+              <div>
+                <div style="font-size:10.5px; color:var(--text-dim); font-weight:700">🔫 整枪入手总价 (裸枪¥${fmtPrice(barePrice)}+配件)</div>
+                <div class="mono" style="font-size:14px; font-weight:900; color:#fff">¥${fmtPrice(fullBuyPrice)} ${evalBonus > 5000 ? `<span class="badge badge-pos" style="margin-left:4px">战备评估 ¥${fmtPrice(fullEvalPrice)} (+¥${fmtPrice(evalBonus)})</span>` : ''}</div>
+              </div>
+              <div style="text-align:right">
+                <div style="font-size:10.5px; color:var(--text-dim); font-weight:700">🔥 烽火连发烧钱速度 (${liveRof} RPM)</div>
+                <div class="mono" style="font-size:11.5px; font-weight:800">
+                  <span style="color:#c084fc">4级弹 ¥${fmtPrice(burn4PerSec)}/秒</span> · <span style="color:var(--gold)">5级弹 ${burn5PerSec ? '¥' + fmtPrice(burn5PerSec) + '/秒' : '无售'}</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:10.5px; color:var(--text-muted); margin-bottom:3px">
+                <span>🎯 主武器占【机密巴克什 18.75w】战备比: <strong style="color:var(--accent)">${pct18w}%</strong></span>
+                <span>占【绝密巴克什 35w】: <strong style="color:var(--blue)">${pct35w}%</strong></span>
+              </div>
+              <div style="height:6px; background:rgba(255,255,255,0.06); border-radius:3px; overflow:hidden; display:flex">
+                <div style="height:100%; width:${pct18w}%; background:linear-gradient(90deg, var(--accent), var(--blue)); transition:width 0.25s"></div>
+              </div>
+              <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-dim); margin-top:4px">
+                <span>一梭子(${liveMag}发)4级弹成本: <strong style="color:#c084fc">¥${fmtPrice(mag4Cost)}</strong></span>
+                <span>一梭子(${liveMag}发)5级弹成本: <strong style="color:var(--gold)">${mag5Cost ? '¥' + fmtPrice(mag5Cost) : '-'}</strong></span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
       // Render Bare vs Modded Progress Bars
       const barsData = [
         { label: "后坐力控制 (Recoil)", base: w.recoil_control, mod: Math.min(100, Math.max(0, w.recoil_control + dRecoil)), delta: dRecoil, max: 100 },
@@ -5174,7 +5227,7 @@
       showToast(`🛠️ 已载入【${v.weapon_name} · ${v.variant_label}】核心改装件`);
     }
 
-    // ==================== TAB 5: AMMO, ARMOR, MP VS SOL & DEEP REPORTS ====================
+    // ==================== TAB 5: AMMO, ARMOR & DEEP REPORTS ====================
     let currentDocKey = 'ammo_matrix';
 
     function switchDoc(docKey) {
@@ -5192,13 +5245,13 @@
         return;
       }
       if (docKey === 'armor_catalog') {
-        tocEl.innerHTML = `<li class="toc-item"><a href="javascript:void(0)">涵盖 51 款防弹衣与头盔耐久、防护部位与每点耐久单价</a></li>`;
+        tocEl.innerHTML = `<li class="toc-item"><a href="javascript:void(0)">涵盖 51 款防弹衣与头盔耐久、防护部位 SVG 示意图与全新/几新/破损三档价格</a></li>`;
         renderArmorCatalogView(contentEl);
         return;
       }
-      if (docKey === 'mp_vs_sol') {
-        tocEl.innerHTML = `<li class="toc-item"><a href="javascript:void(0)">62 把武器在【烽火地带(SOL)】与【全面战场(MP)】双模式底层差异对比</a></li>`;
-        renderMpVsSolView(contentEl);
+      if (docKey === 'readiness_econ') {
+        tocEl.innerHTML = `<li class="toc-item"><a href="javascript:void(0)">机密/绝密战备门槛、高溢价卡战备配件 TOP 16 与零折旧改枪方案</a></li>`;
+        renderReadinessEconView(contentEl);
         return;
       }
 
@@ -5335,9 +5388,35 @@
       }).join('');
     }
 
+    function getArmorCoverageSvg(ar) {
+      if (ar.category === 'helmet') {
+        return `<span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; color:var(--blue); font-weight:700" title="防护部位: 头部">
+          <svg width="18" height="22" viewBox="0 0 24 28"><circle cx="12" cy="9" r="6.5" fill="rgba(56,189,248,0.35)" stroke="#38bdf8" stroke-width="1.8"/><path d="M5,24 C5,18 19,18 19,24" fill="none" stroke="rgba(148,163,184,0.25)" stroke-width="1.5"/></svg>
+          <span>护头</span>
+        </span>`;
+      }
+      const covAbd = Boolean(ar.covers_abdomen);
+      const covArm = Boolean(ar.covers_upper_arm);
+      const label = covArm ? '胸+腹+臂' : (covAbd ? '护胸+腹' : '仅护上胸');
+      const col = covArm ? '#00f2a9' : (covAbd ? '#38bdf8' : '#fbbf24');
+      return `<span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; color:${col}; font-weight:700" title="防护部位: ${label}">
+        <svg width="20" height="24" viewBox="0 0 28 32">
+          <circle cx="14" cy="5" r="3.5" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="1.2"/>
+          <!-- Upper Arms -->
+          <rect x="3" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(0,242,169,0.45)' : 'rgba(148,163,184,0.12)'}" stroke="${covArm ? '#00f2a9' : 'rgba(148,163,184,0.25)'}" stroke-width="1"/>
+          <rect x="21" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(0,242,169,0.45)' : 'rgba(148,163,184,0.12)'}" stroke="${covArm ? '#00f2a9' : 'rgba(148,163,184,0.25)'}" stroke-width="1"/>
+          <!-- Upper Chest -->
+          <rect x="8" y="10" width="12" height="8" rx="1.5" fill="rgba(56,189,248,0.45)" stroke="${col}" stroke-width="1.3"/>
+          <!-- Abdomen -->
+          <rect x="8.5" y="19" width="11" height="7" rx="1.5" fill="${covAbd ? 'rgba(56,189,248,0.45)' : 'rgba(148,163,184,0.1)'}" stroke="${covAbd ? col : 'rgba(148,163,184,0.25)'}" stroke-width="1.2"/>
+        </svg>
+        <span>${label}</span>
+      </span>`;
+    }
+
     function renderArmorCatalogView(container) {
       container.innerHTML = `
-        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔视觉图鉴、耐久与性价比表</h1>
+        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔视觉图鉴、防护部位 SVG 与全新/几新/破损精算表</h1>
         <div class="filter-bar" style="margin-bottom:14px">
           <div class="filter-group">
             <input type="text" id="armor-search-input" class="input-control" placeholder="🔍 搜索护甲/头盔名称 (如: 达里安, 武士, Hvk, 重型)..." oninput="filterArmorTable()" />
@@ -5351,6 +5430,7 @@
               <option value="6">🔴 6级顶级护甲/头盔</option>
               <option value="5">🟡 5级主力护甲/头盔</option>
               <option value="4">🟣 4级高性价护甲/头盔</option>
+              <option value="3">🔵 3级卡战备护甲/头盔</option>
             </select>
           </div>
           <div class="result-counter" id="armor-count-label"></div>
@@ -5361,13 +5441,13 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>类型</th>
+                <th>类型与防护部位</th>
                 <th>防具立绘与名称</th>
                 <th>防护等级</th>
                 <th>满耐久度</th>
-                <th>交易行均价</th>
-                <th>每点耐久单价</th>
-                <th>实战评析</th>
+                <th>全新均价 (每耐久)</th>
+                <th>几乎全新 / 破损均价</th>
+                <th>烽火实战与资产折损评析</th>
               </tr>
             </thead>
             <tbody id="armor-catalog-tbody"></tbody>
@@ -5407,7 +5487,7 @@
               <div class="avc-body">
                 <div style="display:flex; justify-content:space-between; align-items:center">
                   <span class="badge ${lvBadge}">${ar.armor_level}级${ar.category === 'helmet' ? '头盔' : '胸甲'}</span>
-                  <span class="mono" style="font-size:12px; font-weight:800; color:var(--accent)">${ar.durability} 耐久</span>
+                  ${getArmorCoverageSvg(ar)}
                 </div>
                 <div style="font-size:13px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${ar.name}</div>
                 <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden">
@@ -5415,7 +5495,7 @@
                 </div>
                 <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted)">
                   <span class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + '币' : '制作/绑定'}</span>
-                  <span class="mono">${ppd ? ppd + '币/耐久' : ''}</span>
+                  <span class="mono" style="color:var(--accent)">${ar.durability}耐久 ${ppd ? `(${ppd}/点)` : ''}</span>
                 </div>
               </div>
             </div>
@@ -5428,9 +5508,18 @@
       tbody.innerHTML = list.map(ar => {
         const ppd = ar.market_price && ar.durability ? Math.round(ar.market_price / ar.durability) : null;
         const lvBadge = ar.armor_level >= 6 ? 'badge-neg' : (ar.armor_level === 5 ? 'badge-gold' : (ar.armor_level === 4 ? 'badge-purple' : 'badge-neu'));
+        const lnPrice = ar.price_like_new ? `几新: ¥${fmtPrice(ar.price_like_new)}` : '';
+        const dmgPrice = ar.price_damaged ? `破损: ¥${fmtPrice(ar.price_damaged)}` : '';
+        const dmgRatio = (ar.price_damaged && ar.market_price) ? Math.round((ar.price_damaged / ar.market_price) * 100) : null;
+        let econTip = '常规制式防具';
+        if (ar.armor_level === 5 && ar.durability >= 110) econTip = '🔥 绝密巴克什重型高容错推荐';
+        else if (dmgRatio && dmgRatio >= 65) econTip = `⚠️ 破损价占全新 ${dmgRatio}%，买全新更保值`;
+        else if (dmgRatio && dmgRatio <= 48 && ar.armor_level >= 5) econTip = `💎 破损仅占全新 ${dmgRatio}%，适合低成本抗5弹`;
+        else if (ppd && ppd < 1600 && ar.armor_level >= 4) econTip = '💰 高性价比实战推荐';
+
         return `
           <tr>
-            <td><span class="badge badge-blue">${ar.category === 'helmet' ? '🪖 头盔' : '🦺 防弹衣'}</span></td>
+            <td>${getArmorCoverageSvg(ar)}</td>
             <td style="font-weight:700; color:#fff">
               <div style="display:flex; align-items:center; gap:8px">
                 <img src="${ar.image || ''}" alt="${ar.name}" loading="lazy" style="width:32px; height:32px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:5px; padding:2px" onerror="this.style.display='none'" />
@@ -5439,60 +5528,122 @@
             </td>
             <td><span class="badge ${lvBadge}">${ar.armor_level} 级防护</span></td>
             <td class="mono" style="font-weight:800; color:var(--accent)">${ar.durability} 耐久</td>
-            <td class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + ' 币' : '<span style="color:var(--text-dim)">绑定/制作</span>'}</td>
-            <td class="mono">${ppd ? fmtPrice(ppd) + ' 币/耐久' : '-'}</td>
-            <td style="font-size:12px; color:var(--text-muted)">${ar.armor_level === 5 && ar.durability >= 110 ? '🔥 巴克什重型高容错推荐' : (ppd && ppd < 1600 && ar.armor_level >= 4 ? '💰 高性价比实战推荐' : '常规制式防具')}</td>
+            <td class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + ' 币' : '<span style="color:var(--text-dim)">绑定/制作</span>'} ${ppd ? `<span class="mono" style="font-size:11px; color:var(--text-muted)">(${fmtPrice(ppd)}/点)</span>` : ''}</td>
+            <td class="mono" style="font-size:11.5px; color:var(--text-muted)">${[lnPrice, dmgPrice].filter(Boolean).join(' · ') || '-'}</td>
+            <td style="font-size:12px; color:var(--text-muted)">${econTip}</td>
           </tr>
         `;
       }).join('');
     }
 
-    function renderMpVsSolView(container) {
-      const mpMap = {};
-      (DATA.weapons_mp || []).forEach(w => { mpMap[w.weapon_id] = w; });
+    function renderReadinessEconView(container) {
+      const arbParts = [...DATA.parts]
+        .filter(p => p.anchor_eval_price && p.market_price && p.market_price >= 3000 && p.market_price <= 45000 && p.anchor_eval_price > p.market_price)
+        .map(p => ({
+          ...p,
+          diff: p.anchor_eval_price - p.market_price,
+          ratio: p.anchor_eval_price / p.market_price
+        }))
+        .sort((a, b) => b.diff - a.diff)
+        .slice(0, 16);
 
-      const rows = DATA.weapons.map(sol => {
-        const mp = mpMap[sol.weapon_id] || {};
-        const dmgDiff = (mp.flesh_dmg || 0) - (sol.flesh_dmg || 0);
-        const rangeDiff = (mp.range_step1_m || 0) - (sol.range_step1_m || 0);
-        return `
-          <tr>
-            <td style="font-weight:800; color:#fff">
-              <div style="display:flex; align-items:center; gap:8px">
-                <img src="${sol.image || ''}" alt="${sol.name}" loading="lazy" style="width:54px; height:22px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:4px; padding:1px 3px" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(sol.category_cn, sol.name)}'" />
-                <div>${sol.name} <span style="font-size:11px; color:var(--text-dim)">(${sol.category_cn})</span></div>
-              </div>
-            </td>
-            <td class="mono">${sol.rof_rpm} RPM</td>
-            <td class="mono" style="color:var(--accent)">${sol.flesh_dmg} (头×${sol.head_mult})</td>
-            <td class="mono" style="color:var(--blue)">${mp.flesh_dmg ?? '-'} (头×${mp.head_mult ?? '-'})</td>
-            <td class="mono">${fmtSigned(dmgDiff)}</td>
-            <td class="mono">${sol.range_step1_m}m</td>
-            <td class="mono">${mp.range_step1_m ?? '-'}m (${fmtSigned(rangeDiff, 'm')})</td>
-            <td class="mono">${sol.muzzle_velocity_mps} vs ${mp.muzzle_velocity_mps ?? '-'} m/s</td>
-          </tr>
-        `;
-      }).join('');
+      const budgetVariants = DATA.variants
+        .map((v, idx) => ({ ...v, _idx: idx }))
+        .filter(v => !v.is_base && (v.base_plus_mod_price || 0) >= 85000 && (v.base_plus_mod_price || 0) <= 175000 && v.ttk_4v4_0m_ms)
+        .sort((a, b) => (a.ttk_4v4_0m_ms || 9999) - (b.ttk_4v4_0m_ms || 9999))
+        .slice(0, 12);
 
       container.innerHTML = `
-        <h1 class="md-h1">⚔️ 烽火地带 (摸金SOL) vs 全面战场 (大战场MP) 62 把武器双模式底层对比</h1>
-        <p class="md-p">同一把枪在【烽火地带】与【全面战场】拥有两套独立的底层伤害、爆头倍率、一段衰减射程与枪口初速。下表直接并排对比全部 62 把武器的双模式参数差异：</p>
-        <div class="table-scroll">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>武器立绘与名称</th>
-                <th>基础射速</th>
-                <th>烽火地带 (SOL) 肉伤/爆头</th>
-                <th>全面战场 (MP) 肉伤/爆头</th>
-                <th>模式伤害差</th>
-                <th>烽火一段射程</th>
-                <th>战场一段射程</th>
-                <th>双模式初速对比 (SOL vs MP)</th>
-              </tr>
-            </thead>
-            <tbody>${rows}</tbody>
-          </table>
+        <h1 class="md-h1">💰 烽火地带「卡战备门槛」与零折旧资产精算看板</h1>
+        <div class="doc-infographic-banner" style="grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); margin-bottom:18px">
+          <div class="dib-card">
+            <div class="dib-icon">🏞️</div>
+            <div>
+              <div class="dib-val" style="color:var(--accent)">¥112,500</div>
+              <div class="dib-lbl">机密零号大坝 / 长弓溪谷准入线</div>
+            </div>
+          </div>
+          <div class="dib-card">
+            <div class="dib-icon">🕌</div>
+            <div>
+              <div class="dib-val" style="color:var(--blue)">¥187,500</div>
+              <div class="dib-lbl">机密巴克什 / 航天基地准入线</div>
+            </div>
+          </div>
+          <div class="dib-card">
+            <div class="dib-icon">🗼</div>
+            <div>
+              <div class="dib-val" style="color:var(--gold)">¥350,000</div>
+              <div class="dib-lbl">绝密巴克什高强度准入线</div>
+            </div>
+          </div>
+          <div class="dib-card">
+            <div class="dib-icon">🚀</div>
+            <div>
+              <div class="dib-val" style="color:var(--red)">¥450,000</div>
+              <div class="dib-lbl">绝密航天基地终极准入线</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="md-h2"><span>🧩 一、热门「低买价 · 高战备评估」卡战备神器配件 TOP 16</span></h2>
+        <p class="md-p">以下配件在交易行实际入手单价极低，但游戏内系统战备评估锚定值极高，非常适合装在主武器空余导轨或二号位副武器上低成本跨过 <strong>18.75w / 35w</strong> 战备门槛，且撤离后可 <strong>100% 挂回交易行变现</strong>：</p>
+        <div class="parts-card-grid" style="margin-bottom:24px">
+          ${arbParts.map(p => {
+            const rClass = getRarityClass(p);
+            const catShort = (p.category_cn || '').split('(')[0];
+            return `
+              <div class="part-armory-card ${rClass}">
+                <div class="pac-top">
+                  <div class="pac-img-box">
+                    <img src="${p.image || ''}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
+                  </div>
+                  <div class="pac-title-wrap">
+                    <div class="pac-cat">${catShort} · ${(p.compatible_weapons || '通用').split(' / ').slice(0, 2).join('/')}</div>
+                    <div class="pac-name">${p.name}</div>
+                    <div class="pac-price-row">
+                      <span class="price-text" style="font-size:12.5px">买价 ¥${fmtPrice(p.market_price)}</span>
+                      <span class="badge badge-pos">评估 ¥${fmtPrice(p.anchor_eval_price)}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pac-hidden-pill" style="display:flex; justify-content:space-between; align-items:center">
+                  <span>📈 虚增战备: <strong>+¥${fmtPrice(p.diff)}</strong></span>
+                  <span class="mono" style="color:var(--gold); font-weight:800">${p.ratio.toFixed(2)}x 溢价</span>
+                </div>
+                <div class="pac-footer">
+                  <span class="mono" style="font-size:11px; color:var(--text-muted)">四维净点: ${p.net_panel_points >= 0 ? '+' : ''}${p.net_panel_points}</span>
+                  <button class="btn btn-sm" style="padding:3px 8px; font-size:11px" onclick="equipPartInBuilderFromTab2('${p.part_id}')">🛠️ 装入军械台</button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+
+        <h2 class="md-h2"><span>🔫 二、10万~17万预算「零折旧·可挂交易行」机密实战 T0 改枪方案</span></h2>
+        <p class="md-p">相比购买高折损的破损头甲（打完变死资产），直接将预算投入在 <strong>10w~17w 战力的核心枪管/枪机改装主武器</strong> 上，不仅正面 0~25m 对枪 TTK 达到 T0 梯队，撤离后整枪配件还能随时拆卖回血：</p>
+        <div class="parts-card-grid">
+          ${budgetVariants.map(v => `
+            <div class="part-armory-card rarity-4" style="cursor:pointer" onclick="openVariantInBuilder(${v._idx})">
+              <div class="pac-top">
+                <div class="pac-img-box" style="width:76px; height:48px">
+                  <img src="${v.image || ''}" alt="${v.weapon_name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
+                </div>
+                <div class="pac-title-wrap">
+                  <div class="pac-cat">${v.category_cn} · ${v.caliber}</div>
+                  <div class="pac-name">${v.weapon_name} · ${v.variant_label}</div>
+                  <div class="pac-price-row">
+                    <span class="price-text" style="font-size:12.5px">整枪 ¥${fmtPrice(v.base_plus_mod_price)}</span>
+                    <span class="badge badge-pos">0m TTK ${Math.round(v.ttk_4v4_0m_ms)}ms</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pac-footer">
+                <span class="mono" style="font-size:11px; color:var(--text-muted)">裸枪¥${fmtPrice(v.bare_gun_price)} + 配件¥${fmtPrice(v.mod_parts_price)}</span>
+                <span style="font-size:11px; color:var(--accent); font-weight:700">🛠️ 载入改装台 →</span>
+              </div>
+            </div>
+          `).join('')}
         </div>
       `;
     }
