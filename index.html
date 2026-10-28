@@ -3157,54 +3157,48 @@
     <div class="header-inner">
       <div class="brand-row">
         <div class="brand-title">
-          <span class="brand-badge">DF ANALYTICS v3.0</span>
-          <h1>三角洲行动 · 武器与配件底层数据终端</h1>
+          <span class="brand-badge">DF ANALYTICS</span>
+          <h1>三角洲行动 · 烽火地带改枪与数据终端</h1>
           <span class="brand-sub" id="updated-at-badge">SDK全量解包 + 实时物价校准</span>
         </div>
         <div class="header-actions">
+          <button class="cmd-search-trigger" onclick="openCmdModal()" title="全局快速检索 (快捷键 Cmd+K 或 /)">
+            <span>🔍 搜武器 / 配件 / 弹药 / 改枪码...</span>
+            <span class="cmd-kbd">⌘K</span>
+          </button>
           <div class="tonal-palette-bar" role="group" aria-label="大师色调预设">
-            <span class="tonal-palette-label">🎨 色调</span>
-            <button type="button" class="tonal-swatch-btn active" data-theme-btn="gti" onclick="setMasterTheme('gti')" title="G.T.I. 钛黑翡翠 · 阳极氧化石墨与青瓷翠 (默认)">
+            <span class="tonal-palette-label">🎨</span>
+            <button type="button" class="tonal-swatch-btn active" data-theme-btn="gti" onclick="setMasterTheme('gti')" title="G.T.I. 钛黑翡翠 (默认)">
               <span class="swatch-dot" style="background:linear-gradient(135deg,#2ed3a2,#5ab0e8)"></span>钛翡
             </button>
-            <button type="button" class="tonal-swatch-btn" data-theme-btn="haavk" onclick="setMasterTheme('haavk')" title="哈夫克黑金 · 奢华暖曜黑与香槟赤金">
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="haavk" onclick="setMasterTheme('haavk')" title="哈夫克黑金">
               <span class="swatch-dot" style="background:linear-gradient(135deg,#e2b45c,#8f6b29)"></span>黑金
             </button>
-            <button type="button" class="tonal-swatch-btn" data-theme-btn="ahsarah" onclick="setMasterTheme('ahsarah')" title="阿萨拉砂岩 · 玄武钛灰与战术赤铜珀">
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="ahsarah" onclick="setMasterTheme('ahsarah')" title="阿萨拉砂岩">
               <span class="swatch-dot" style="background:linear-gradient(135deg,#e68a4c,#42c79a)"></span>砂珀
             </button>
-            <button type="button" class="tonal-swatch-btn" data-theme-btn="cobalt" onclick="setMasterTheme('cobalt')" title="深空钴蓝 · 航太冷石墨与极光冰青">
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="cobalt" onclick="setMasterTheme('cobalt')" title="深空钴蓝">
               <span class="swatch-dot" style="background:linear-gradient(135deg,#4ec2f2,#34d3a2)"></span>钴蓝
             </button>
-          </div>
-          <button class="cmd-search-trigger" onclick="openCmdModal()" title="全局快速检索 (快捷键 Cmd+K 或 /)">
-            <span>🔍 全局检索武器 / 配件 / 弹药 / 改枪码...</span>
-            <span class="cmd-kbd">⌘K /</span>
-          </button>
-          <div class="kpi-pills">
-            <div class="kpi-pill" onclick="switchTab('tab-loadouts')" title="查看12套实战精选配装">精选配枪 <strong id="kpi-loadouts">12</strong></div>
-            <div class="kpi-pill" onclick="switchTab('tab-variants')" title="查看62把武器与226种改装形态">武器/形态 <strong id="kpi-weapons">62/226</strong></div>
-            <div class="kpi-pill" onclick="switchTab('tab-parts')" title="查看577个配件全属性">配件库 <strong id="kpi-parts">577</strong></div>
-            <div class="kpi-pill" onclick="switchTab('tab-docs'); switchDoc('ammo_matrix')" title="查看114种弹药与51款护甲">弹药/护甲 <strong id="kpi-ammo">114/51</strong></div>
           </div>
         </div>
       </div>
 
       <nav class="nav-tabs" role="tablist">
         <button class="nav-tab active" data-tab="tab-loadouts" onclick="switchTab('tab-loadouts')">
-          🎯 实战配枪拓扑 <span class="tab-badge">12套T0</span>
-        </button>
-        <button class="nav-tab" data-tab="tab-parts" onclick="switchTab('tab-parts')">
-          🧩 配件图鉴 & PK <span class="tab-badge">577件</span>
-        </button>
-        <button class="nav-tab" data-tab="tab-variants" onclick="switchTab('tab-variants')">
-          ⚔️ TTK 天梯曲线 <span class="tab-badge">226形态</span>
+          🎯 实战T0配枪 <span class="tab-badge">12套作业</span>
         </button>
         <button class="nav-tab" data-tab="tab-builder" onclick="switchTab('tab-builder')">
-          🛠️ 拓扑改枪台 <span class="tab-badge">103改枪码</span>
+          🛠️ 拓扑改枪台 <span class="tab-badge">62枪模拟</span>
+        </button>
+        <button class="nav-tab" data-tab="tab-variants" onclick="switchTab('tab-variants')">
+          📈 TTK衰减曲线 <span class="tab-badge">226形态</span>
+        </button>
+        <button class="nav-tab" data-tab="tab-parts" onclick="switchTab('tab-parts')">
+          🧩 配件库 & PK <span class="tab-badge">577件</span>
         </button>
         <button class="nav-tab" data-tab="tab-docs" onclick="switchTab('tab-docs')">
-          🛡️ 穿甲·护甲·战备 <span class="tab-badge">图解百科</span>
+          🛡️ 弹药·护甲·战备 <span class="tab-badge">速查表</span>
         </button>
       </nav>
     </div>
@@ -3215,39 +3209,29 @@
 
     <!-- ==================== TAB 1: CURATED LOADOUTS & DUEL SIMULATOR ==================== -->
     <section id="tab-loadouts" class="tab-panel active">
-      <div class="hero-banner compact-hud">
-        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-          <h2>🎯 烽火地带 · 实战配枪拓扑终端</h2>
-          <span class="badge badge-pos">62 武器立绘</span>
-          <span class="badge badge-blue">3阶改装拓扑</span>
-          <span class="badge badge-gold">阶梯射程/五维雷达</span>
+      <!-- Single-Row Filter & Quick Jump Bar -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px">
+        <div class="pill-bar" id="loadout-filter-pills" style="margin-bottom:0">
+          <button class="pill-btn active" onclick="filterCuratedLoadouts('all', this)">🔥 全部 T0 配装 (12)</button>
+          <button class="pill-btn" onclick="filterCuratedLoadouts('main', this)">👑 满改主力 (30w~42w)</button>
+          <button class="pill-btn" onclick="filterCuratedLoadouts('budget', this)">💰 以小博大 (13w~22w)</button>
+          <button class="pill-btn" onclick="filterCuratedLoadouts('cqb', this)">⚡ 室内 CQB 瞬秒</button>
+          <button class="pill-btn" onclick="filterCuratedLoadouts('flesh', this)">🦵 夺舍修脚 / 一枪秒5头</button>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn btn-sm" onclick="switchTab('tab-docs'); switchDoc('readiness_econ')">💰 卡战备套利榜</button>
-          <button class="btn btn-sm btn-primary" onclick="switchTab('tab-builder')">🛠️ 空间拓扑改枪台 →</button>
+          <button class="btn btn-sm" onclick="document.getElementById('duel-simulator-section')?.scrollIntoView({behavior:'smooth'})">🩸 靶场逐枪推演 ↓</button>
+          <button class="btn btn-sm btn-primary" onclick="switchTab('tab-builder')">🛠️ 进入自由改枪台 →</button>
         </div>
-      </div>
-
-      <!-- Interactive Range-Zone Decision Topology Tree -->
-      <div id="meta-zone-strip-container"></div>
-
-      <!-- Category Filter Pills -->
-      <div class="pill-bar" id="loadout-filter-pills">
-        <button class="pill-btn active" onclick="filterCuratedLoadouts('all', this)">🔥 全部 T0 配装 (12)</button>
-        <button class="pill-btn" onclick="filterCuratedLoadouts('main', this)">👑 满改主力 (30w~42w)</button>
-        <button class="pill-btn" onclick="filterCuratedLoadouts('budget', this)">💰 以小博大 (13w~22w)</button>
-        <button class="pill-btn" onclick="filterCuratedLoadouts('cqb', this)">⚡ 室内 CQB 瞬秒</button>
-        <button class="pill-btn" onclick="filterCuratedLoadouts(' flesh', this)">🦵 无损扒甲 (修脚/一枪头)</button>
       </div>
 
       <!-- Loadout Cards Grid -->
       <div class="loadout-grid" id="curated-loadouts-grid"></div>
 
       <!-- Interactive Shot-by-Shot Enemy HP & Armor Durability Visualizer -->
-      <div class="duel-sim-box" id="duel-simulator-section">
+      <div class="duel-sim-box" id="duel-simulator-section" style="margin-top:20px">
         <div class="duel-sim-header">
           <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-            <h3 style="font-size:15px; font-weight:800; color:#fff; margin:0">
+            <h3 style="font-size:15px; font-weight:800; color:var(--text-bright); margin:0">
               🩸 人形靶部位受击 & 碎甲逐枪推演
             </h3>
             <span class="badge badge-neu">点击靶纸部位切换落点</span>
@@ -3274,51 +3258,10 @@
         <div id="duel-sim-summary" style="margin-bottom:12px"></div>
         <div class="duel-Shots-grid" id="duel-shots-grid"></div>
       </div>
-
-      <!-- Quick Comparison Matrix -->
-      <div class="table-container">
-        <div style="padding:10px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px">
-          <h3 style="font-size:14.5px; font-weight:800; color:#fff; margin:0">📊 12 大 T0 满改矩阵 · 核心件拓扑与 TTK 速查</h3>
-          <span class="badge badge-neu">点击任意行载入靶场推演</span>
-        </div>
-        <div class="table-scroll">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>流派</th>
-                <th>武器立绘与形态</th>
-                <th>整枪预算</th>
-                <th>射速 / 延迟</th>
-                <th>射程阶梯</th>
-                <th>5弹打5甲 TTK</th>
-                <th>4弹打5甲 / 特种</th>
-                <th>核心质变件拓扑 (点击看配件)</th>
-              </tr>
-            </thead>
-            <tbody id="matrix-comparison-tbody"></tbody>
-          </table>
-        </div>
-      </div>
     </section>
 
     <!-- ==================== TAB 2: 577 PARTS EXPLORER & PK ==================== -->
     <section id="tab-parts" class="tab-panel">
-      <div class="hero-banner compact-hud">
-        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-          <h2>🧩 577 配件视觉图鉴 & 19 槽位横评</h2>
-          <span class="badge badge-pos">四维进度条</span>
-          <span class="badge badge-purple">底层暗改微章</span>
-          <span class="badge badge-blue">战备溢价标识</span>
-        </div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
-          <div class="view-mode-switch">
-            <button class="view-mode-btn active" id="btn-parts-view-cards" onclick="setPartsViewMode('cards')">🖼️ 图鉴卡片</button>
-            <button class="view-mode-btn" id="btn-parts-view-table" onclick="setPartsViewMode('table')">📋 数据全表</button>
-          </div>
-          <button class="btn btn-sm" onclick="exportPartsCSV()">📥 CSV</button>
-        </div>
-      </div>
-
       <!-- Quick Slot Pills -->
       <div class="pill-bar" id="parts-slot-pills">
         <button class="pill-btn active" onclick="quickFilterPartSlot('ALL', this)">全部 (577)</button>
@@ -3339,7 +3282,7 @@
       <div class="filter-bar">
         <div class="filter-group">
           <input type="text" id="parts-search" class="input-control" placeholder="🔍 检索配件 / 枪械 (腾龙, 沙暴, 兵锋)..." oninput="renderPartsTable()" />
-          <select id="parts-cat" class="select-control" onchange="renderPartsTable()">
+          <select id="parts-cat" class="select-control" onchange="renderPartsTable()" style="display:none">
             <option value="ALL">全部槽位 (19类)</option>
           </select>
           <select id="parts-weapon" class="select-control" onchange="renderPartsTable()">
@@ -3359,12 +3302,14 @@
             <input type="checkbox" id="parts-hidden-only" onchange="renderPartsTable()" />
             含底层暗改
           </label>
-          <label class="checkbox-label">
-            <input type="checkbox" id="parts-tunable-only" onchange="renderPartsTable()" />
-            🎛️可精调
-          </label>
         </div>
-        <div class="result-counter" id="parts-count-label">577 件</div>
+        <div style="display:flex; align-items:center; gap:8px">
+          <span class="result-counter" id="parts-count-label">577 件</span>
+          <div class="view-mode-switch">
+            <button class="view-mode-btn active" id="btn-parts-view-cards" onclick="setPartsViewMode('cards')">🖼️ 卡片</button>
+            <button class="view-mode-btn" id="btn-parts-view-table" onclick="setPartsViewMode('table')">📋 表格</button>
+          </div>
+        </div>
       </div>
 
       <!-- Visual Armory Card Grid View -->
@@ -3401,22 +3346,12 @@
 
     <!-- ==================== TAB 3: 226 WEAPON VARIANTS & MULTI-WEAPON CURVE CHART ==================== -->
     <section id="tab-variants" class="tab-panel">
-      <div class="hero-banner compact-hud">
-        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-          <h2>⚔️ 226 改装形态视觉天梯 & 0~100m 阶梯曲线</h2>
-          <span class="badge badge-pos">点击立绘叠加曲线</span>
-        </div>
-      </div>
-
-      <!-- Visual Meta Tier Board -->
-      <div class="tier-board" id="variants-tier-board"></div>
-
-      <!-- Interactive Multi-Weapon Curve Chart Box -->
-      <div class="duel-sim-box" style="margin-bottom:18px">
+      <!-- Interactive Multi-Weapon Curve Chart Box (Top Priority) -->
+      <div class="duel-sim-box" style="margin-bottom:14px">
         <div class="duel-sim-header" style="margin-bottom:10px; padding-bottom:10px">
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap">
-            <h3 style="font-size:14.5px; font-weight:800; color:#fff; margin:0">📈 多武器 0m ~ 100m 阶梯衰减曲线对比</h3>
-            <span class="badge badge-neu">最多叠加 5 把</span>
+            <h3 style="font-size:15px; font-weight:800; color:var(--text-bright); margin:0">📈 多武器 0m ~ 100m 阶梯衰减曲线对比</h3>
+            <span class="badge badge-neu">在下表勾选最多 5 把武器叠加对比</span>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
             <select id="chart-metric-mode" class="select-control" onchange="renderVariantComparisonChart()">
@@ -3432,6 +3367,14 @@
         <div id="variant-chart-legend" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px"></div>
         <div id="variant-chart-container" style="width:100%; overflow-x:auto"></div>
       </div>
+
+      <!-- Collapsible Visual Meta Tier Board so it doesn't clutter the screen -->
+      <details style="margin-bottom:14px; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:8px 14px">
+        <summary style="cursor:pointer; font-size:12.5px; font-weight:800; color:var(--text-main); user-select:none">
+          🏆 展开 S+ / S / A 梯度视觉速选看板（点击武器卡片可直接加入上方曲线）
+        </summary>
+        <div class="tier-board" id="variants-tier-board" style="margin-top:10px; margin-bottom:4px"></div>
+      </details>
 
       <div class="filter-bar">
         <div class="filter-group">
@@ -3489,16 +3432,8 @@
 
     <!-- ==================== TAB 4: SINGLE-GUN FULL-SLOT BUILDER & BUILD CODES ==================== -->
     <section id="tab-builder" class="tab-panel">
-      <div class="hero-banner compact-hud">
-        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
-          <h2>🛠️ 武器空间拓扑改枪台 · 弹道雷达 & 战备精算</h2>
-          <span class="badge badge-pos">点击拓扑节点直换配件</span>
-          <span class="badge badge-blue">六维雷达 + 弹道散布</span>
-        </div>
-      </div>
-
       <div class="builder-layout">
-        <!-- Left: Weapon & Slot Selector -->
+        <!-- Left: Weapon & Spatial Topology Blueprint + Build Codes -->
         <div class="builder-panel">
           <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; padding-bottom:10px; border-bottom:1px solid var(--border)">
             <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap; flex:1">
@@ -3517,7 +3452,6 @@
           <!-- Interactive Gunsmith Attachment Topology Viewport -->
           <div class="gunsmith-viewport" id="builder-gunsmith-viewport"></div>
 
-          <!-- Hidden legacy base bar to avoid duplicate text clutter -->
           <div id="builder-weapon-base-info" style="display:none"></div>
 
           <!-- Posture & Patch Multipliers Bar -->
@@ -3536,34 +3470,39 @@
             </div>
           </div>
 
-          <!-- 19 Attachment Slots Grid -->
-          <div class="slot-grid" id="builder-slots-grid"></div>
-
-          <!-- In-Game Build Codes Vault for Selected Weapon -->
-          <div style="margin-top:18px; padding-top:14px; border-top:1px solid var(--border)">
+          <!-- In-Game Build Codes Vault (Moved right below blueprint so users see it immediately!) -->
+          <div style="margin-top:14px; padding-top:12px; border-top:1px solid var(--border)">
             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px">
-              <h3 style="font-size:13.5px; font-weight:800; color:#fff; margin:0">📋 游戏内改枪码库</h3>
+              <h3 style="font-size:13.5px; font-weight:800; color:var(--text-bright); margin:0">📋 游戏内改枪码直拷库</h3>
               <button class="btn btn-sm" onclick="saveCurrentBuildToLocal()">⭐ 收藏当前配装</button>
             </div>
-            <div id="builder-codes-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:8px"></div>
+            <div id="builder-codes-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:8px"></div>
           </div>
 
           <!-- User Saved Custom Builds -->
-          <div id="saved-builds-container" style="margin-top:14px; display:none">
+          <div id="saved-builds-container" style="margin-top:12px; display:none">
             <h4 style="font-size:12px; color:var(--gold); margin-bottom:6px">⭐ 本地收藏配装</h4>
             <div id="saved-builds-list" style="display:flex; flex-wrap:wrap; gap:6px"></div>
           </div>
+
+          <!-- Collapsible Full 19-Slot Dropdown Grid for Fine-Tuning -->
+          <details style="margin-top:14px; padding-top:10px; border-top:1px dashed var(--border)">
+            <summary style="cursor:pointer; font-size:12px; font-weight:700; color:var(--text-muted); user-select:none">
+              🔽 展开全部附属槽位下拉表（托腮板 / 增高架 / 快拔套 / 握把片等细节微调）
+            </summary>
+            <div class="slot-grid" id="builder-slots-grid" style="margin-top:10px"></div>
+          </details>
         </div>
 
-        <!-- Right: Live Combat & Stat Summary Sidebar -->
+        <!-- Right: Clean 4-Block Live Combat & Stat Summary Sidebar -->
         <div class="summary-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px solid var(--border)">
-            <h3 style="font-size:14.5px; font-weight:800; color:#fff; margin:0">📊 弹道雷达与乘区拓扑</h3>
-            <button class="btn btn-sm btn-primary" onclick="copyBuilderShareText()">📋 复制清单</button>
+            <h3 style="font-size:14.5px; font-weight:800; color:var(--text-bright); margin:0">📊 改装面板 & 战备精算</h3>
+            <button class="btn btn-sm btn-primary" onclick="copyBuilderShareText()">📋 复制配装单</button>
           </div>
 
-          <!-- Total Cost Box -->
-          <div style="background:linear-gradient(135deg, rgba(var(--gold-rgb),0.14), rgba(18,26,38,0.92)); border:1px solid rgba(var(--gold-rgb),0.4); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
+          <!-- 1. Total Cost & Net Points Box -->
+          <div style="background:linear-gradient(135deg, rgba(var(--gold-rgb),0.14), rgba(var(--surface-rgb),0.92)); border:1px solid rgba(var(--gold-rgb),0.38); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
             <div>
               <div style="font-size:10.5px; color:var(--text-muted)">配件造价</div>
               <div class="price-text" style="font-size:19px" id="sum-total-price">0 哈夫币</div>
@@ -3574,17 +3513,18 @@
             </div>
           </div>
 
-          <!-- Operations Readiness & Ammo Burn Rate HUD -->
+          <!-- 2. Operations Readiness & Ammo Burn Rate HUD -->
           <div id="builder-ops-economy" style="margin-bottom:10px"></div>
 
-          <!-- Dual-Polygon 6-Axis Radar & Live Recoil / Hipfire Target Visualizer -->
+          <!-- 3. Dual-Polygon 6-Axis Radar & Live Recoil / Hipfire Target Visualizer -->
           <div class="visual-analytics-grid" id="builder-visual-analytics"></div>
 
-          <!-- Bare vs Modded Progress Bars -->
-          <div id="sum-comparison-bars" style="margin-bottom:12px"></div>
+          <!-- Hidden legacy bars & multiplier diagram to eliminate visual duplication -->
+          <div id="sum-comparison-bars" style="display:none"></div>
+          <div id="sum-stats-list" style="display:none"></div>
 
-          <!-- Live Ammo & Target TTK Simulation inside Builder -->
-          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px; margin-bottom:12px">
+          <!-- 4. Live Ammo & Target TTK Simulation inside Builder -->
+          <div style="background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-sm); padding:10px; margin-bottom:10px">
             <div style="display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:6px">
               <span style="font-size:11.5px; font-weight:800; color:var(--blue)">🎯 实战穿甲 TTK</span>
               <select id="builder-ammo-select" class="select-control" style="padding:2px 6px; font-size:11px; max-width:185px" onchange="recalculateBuilder()"></select>
@@ -3592,48 +3532,30 @@
             <div id="builder-live-ttk-grid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; text-align:center"></div>
           </div>
 
-          <!-- Detailed Engine Multipliers Topology -->
-          <div id="sum-stats-list"></div>
-
-          <div style="margin-top:12px">
-            <div style="font-size:11.5px; font-weight:700; color:var(--text-muted); margin-bottom:5px">已装配件 (<span id="sum-parts-count">0</span>):</div>
+          <!-- Equipped Parts List -->
+          <div>
+            <div style="font-size:11.5px; font-weight:700; color:var(--text-muted); margin-bottom:5px">已装配件 (<span id="sum-parts-count">0</span> · 点击可更换):</div>
             <div id="sum-equipped-list" style="display:flex; flex-direction:column; gap:4px"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== TAB 5: AMMO, ARMOR & DEEP REPORTS ==================== -->
+    <!-- ==================== TAB 5: AMMO, ARMOR & READINESS TOOLS (FULL WIDTH, NO SIDEBAR CLUTTER) ==================== -->
     <section id="tab-docs" class="tab-panel">
-      <div class="docs-layout">
-        <aside class="docs-sidebar">
-          <div style="font-size:11px; font-weight:700; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px; letter-spacing:0.5px">
-            烽火图解百科
-          </div>
-          <button class="doc-switch-btn active" id="btn-doc-ammo_matrix" onclick="switchDoc('ammo_matrix')">
-            <span>🧱 114种弹药热力总表</span>
-          </button>
-          <button class="doc-switch-btn" id="btn-doc-armor_catalog" onclick="switchDoc('armor_catalog')">
-            <span>🛡️ 51款头甲防护图鉴</span>
-          </button>
-          <button class="doc-switch-btn" id="btn-doc-readiness_econ" onclick="switchDoc('readiness_econ')">
-            <span>💰 卡战备与折损拓扑</span>
-          </button>
-          <button class="doc-switch-btn" id="btn-doc-custom_guide" onclick="switchDoc('custom_guide')">
-            <span>🎯 巴克什配枪图鉴</span>
-          </button>
-          <button class="doc-switch-btn" id="btn-doc-insights" onclick="switchDoc('insights')">
-            <span>🔬 底层乘区机制图解</span>
-          </button>
-          <button class="doc-switch-btn" id="btn-doc-readme" onclick="switchDoc('readme')">
-            <span>📊 62武器基线总表</span>
-          </button>
-
-          <ul class="toc-list" id="doc-toc-list"></ul>
-        </aside>
-
-        <article class="docs-content" id="doc-article-content"></article>
+      <div class="pill-bar" style="margin-bottom:14px">
+        <button class="pill-btn doc-switch-btn active" id="btn-doc-ammo_matrix" onclick="switchDoc('ammo_matrix')">
+          🧱 114种全口径弹药穿甲矩阵
+        </button>
+        <button class="pill-btn doc-switch-btn" id="btn-doc-armor_catalog" onclick="switchDoc('armor_catalog')">
+          🛡️ 51款防弹衣与头盔耐久图鉴
+        </button>
+        <button class="pill-btn doc-switch-btn" id="btn-doc-readiness_econ" onclick="switchDoc('readiness_econ')">
+          💰 卡战备神器 TOP16 & 零折损配枪
+        </button>
       </div>
+      <ul id="doc-toc-list" style="display:none"></ul>
+      <article class="docs-content" id="doc-article-content" style="max-width:100%"></article>
     </section>
 
   </main>
@@ -4380,7 +4302,6 @@
     }
 
     function renderCuratedLoadouts() {
-      renderMetaZoneStrip();
       const grid = document.getElementById('curated-loadouts-grid');
       if (!grid) return;
 
@@ -4417,20 +4338,6 @@
         const totalGunCost = item.barePrice + partsCost;
         const isBudget = item.group.includes('budget');
 
-        // Compute 5-axis radar values (0..100)
-        const rofNum = parseInt(br.rof, 10) || wObj.rof_rpm || 650;
-        const rangeNum = parseInt(br.range, 10) || wObj.range_step1_m || 35;
-        const ttkNum = parseInt((br.ttk5v5.match(/(\d+)\s*ms/) || [])[1], 10) || 260;
-        const radarStats = {
-          dmg: Math.min(100, Math.round(((wObj.flesh_dmg || 32) / 55) * 100)),
-          rof: Math.min(100, Math.round((rofNum / 980) * 100)),
-          range: Math.min(100, Math.round((rangeNum / 75) * 100)),
-          ctrl: Math.min(100, Math.max(25, Math.round((wObj.recoil_control || 45) + netRec + (1 - randMult) * 45))),
-          mob: Math.min(100, Math.max(25, Math.round((wObj.handling || 45) + netHnd + netHip * 0.4)))
-        };
-        const miniRadarHtml = renderMiniRadarSvg(radarStats, 90, isBudget ? 'var(--blue)' : 'var(--accent)');
-        const rangeStepSvgHtml = renderRangeStepMiniSvg(wObj, rangeNum, isBudget ? 'var(--gold)' : 'var(--accent)');
-
         const branchButtonsHtml = item.branches.map((b, bIdx) => {
           const shortLbl = b.label.replace(/流派[AB]:\s*/g, '').replace(/\s*\(.*?\)/g, '');
           return `
@@ -4440,87 +4347,49 @@
           `;
         }).join('');
 
-        // Group parts into 3 Topological Stages: 1. 机制核心 ➔ 2. 乘区防抖 ➔ 3. 机动续航
-        const stage1Core = [];
-        const stage2Stab = [];
-        const stage3Tact = [];
-        resolvedParts.forEach(p => {
-          if (['barrel', 'gasBlock', 'bolt', 'trigger', 'handguard', 'bowPart'].includes(p.category_en)) {
-            stage1Core.push(p);
-          } else if (['muzzle', 'foregrip', 'stock', 'bipod', 'stockAcc'].includes(p.category_en)) {
-            stage2Stab.push(p);
-          } else {
-            stage3Tact.push(p);
-          }
-        });
+        // Prioritize the 6 most impactful soul attachments so the card stays clean & uncluttered
+        const priorityOrder = ['barrel', 'gasBlock', 'bolt', 'trigger', 'muzzle', 'foregrip', 'magazine', 'stock', 'laser', 'optic', 'rearGrip', 'patch'];
+        const sortedCoreParts = [...resolvedParts].sort((a, b) => {
+          const ia = priorityOrder.indexOf(a.category_en);
+          const ib = priorityOrder.indexOf(b.category_en);
+          return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+        }).slice(0, 6);
 
-        const renderStageNode = p => {
+        const coreGridHtml = sortedCoreParts.map(p => {
           const catShort = (p.category_cn || '').split('(')[0].replace('护木贴片', '贴片').replace('激光镭指', '镭指');
           const countTag = p.category_en === 'patch' ? '×2' : '';
-          const shortName = p.name.replace(/^[A-Za-z0-9-\s]+/, '').slice(0, 7) || p.name.slice(0, 7);
+          const shortName = p.name.replace(/^[A-Za-z0-9-\s]+/, '').slice(0, 8) || p.name.slice(0, 8);
           const priceStr = fmtWan((p.market_price || 0) * (p.category_en === 'patch' ? 2 : 1));
           return `
             <div class="topo-part-node" onclick="inspectPartInTab2('${p.name.replace(/'/g, "\\'")}')" title="${p.name} (${priceStr}) — ${p.hidden_mechanics_summary || '点击查看配件详情'}">
               <img src="${p.image || ''}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
               <div style="min-width:0; flex:1">
                 <div style="display:flex; justify-content:space-between; align-items:center">
-                  <span style="font-size:9px; color:var(--text-dim); font-weight:700">${catShort}${countTag}</span>
+                  <span style="font-size:9.5px; color:var(--text-dim); font-weight:700">${catShort}${countTag}</span>
                   <span class="mono" style="font-size:9.5px; color:var(--gold); font-weight:700">${priceStr}</span>
                 </div>
-                <div style="font-size:10.5px; font-weight:800; color:#e2e8f0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${shortName}</div>
+                <div style="font-size:11px; font-weight:800; color:var(--text-bright); white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${shortName}</div>
               </div>
             </div>
           `;
-        };
+        }).join('');
 
-        const topoStagesHtml = `
-          <div class="loadout-topo-flow">
-            <div class="topo-stage-col">
-              <div class="topo-stage-head">
-                <span style="color:var(--accent)">⚡ 1.机制核心</span>
-                <span class="mono" style="color:var(--text-dim)">${stage1Core.length}</span>
-              </div>
-              <div class="topo-stage-nodes">${stage1Core.map(renderStageNode).join('')}</div>
-            </div>
-            <div class="topo-flow-arrow">➔</div>
-            <div class="topo-stage-col">
-              <div class="topo-stage-head">
-                <span style="color:var(--blue)">🛡️ 2.乘区防抖</span>
-                <span class="mono" style="color:var(--text-dim)">${stage2Stab.length}</span>
-              </div>
-              <div class="topo-stage-nodes">${stage2Stab.map(renderStageNode).join('')}</div>
-            </div>
-            <div class="topo-flow-arrow">➔</div>
-            <div class="topo-stage-col">
-              <div class="topo-stage-head">
-                <span style="color:var(--gold)">🔋 3.机动续航</span>
-                <span class="mono" style="color:var(--text-dim)">${stage3Tact.length}</span>
-              </div>
-              <div class="topo-stage-nodes">${stage3Tact.map(renderStageNode).join('')}</div>
-            </div>
-          </div>
-        `;
-
-        const rofPct = Math.min(100, Math.round((rofNum / 1000) * 100));
-        const rangePct = Math.min(100, Math.round((rangeNum / 90) * 100));
-        const gkPct = Math.min(100, Math.max(15, Math.round((1.2 - randMult) * 140)));
-        const ttkPct = Math.min(100, Math.max(15, Math.round(((450 - ttkNum) / 350) * 100)));
         const cleanTitle = item.name.split(' · ')[0];
+        const delayTag = br.delay && !br.delay.includes('0ms') ? ` · 延迟${br.delay}` : (br.delay.includes('消除') ? ' · 0ms零延迟' : '');
 
         return `
           <div class="loadout-card ${isBudget ? 'budget-card' : ''}">
+            <!-- Layer 1: Clean Header -->
             <div class="loadout-head">
               <div>
                 <div class="loadout-title">
                   <span>${cleanTitle}</span>
                   <span class="loadout-tag ${item.tagType}">${item.tag}</span>
                 </div>
-                <div style="font-size:11px; color:var(--text-muted); margin-top:4px; display:flex; gap:5px; flex-wrap:wrap; align-items:center">
-                  <span class="mono">裸<b style="color:#fff">${fmtWan(item.barePrice)}</b>+改<b style="color:var(--accent)">${fmtWan(partsCost)}</b></span>
-                  <span class="badge badge-neu">后${netRec>=0?'+'+netRec:netRec}</span>
-                  <span class="badge badge-neu">腰${netHip>=0?'+'+netHip:netHip}</span>
-                  <span class="badge badge-neu">操${netHnd>=0?'+'+netHnd:netHnd}</span>
-                  <span class="badge badge-neu">稳${netStb>=0?'+'+netStb:netStb}</span>
+                <div style="font-size:11.5px; color:var(--text-muted); margin-top:4px; display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+                  <span class="mono">裸枪 <b style="color:var(--text-bright)">${fmtWan(item.barePrice)}</b> + 改件 <b style="color:var(--accent)">${fmtWan(partsCost)}</b></span>
+                  <span class="mono" style="color:var(--text-dim)">|</span>
+                  <span class="mono" style="font-size:11px">后${netRec>=0?'+'+netRec:netRec} · 腰${netHip>=0?'+'+netHip:netHip} · 操${netHnd>=0?'+'+netHnd:netHnd}</span>
                 </div>
               </div>
               <div class="loadout-price">
@@ -4529,110 +4398,63 @@
               </div>
             </div>
 
-            <!-- Visual Weapon Showcase Stage + Range Step SVG + 5-Axis Radar -->
-            <div class="weapon-stage">
+            <!-- Layer 2: Spacious Studio Weapon Showcase Stage -->
+            <div class="weapon-stage" onclick="openPresetInBuilder(${idx})" style="cursor:pointer; min-height:112px" title="点击进入拓扑改枪台查看全套槽位">
               <div class="weapon-stage-tags">
                 <span class="stage-hud-tag">${wObj.caliber || ''}</span>
                 <span class="stage-hud-tag" style="color:var(--accent)">📦 ${moddedMag}发</span>
               </div>
               <div class="weapon-stage-watermark">${cleanTitle.split(' ')[0]}</div>
-              <div class="weapon-stage-img-wrap" onclick="openPresetInBuilder(${idx})" style="cursor:pointer" title="点击在拓扑改枪台中打开">
+              <div class="weapon-stage-img-wrap" style="height:86px">
                 <img class="weapon-stage-img" src="${wObj.image || ''}" alt="${cleanTitle}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(wObj.category_cn, cleanTitle)}'" />
               </div>
-              <div style="display:flex; align-items:center; gap:4px; z-index:2">
-                ${rangeStepSvgHtml}
-                <div class="weapon-stage-radar" title="五维雷达: 威力 / 射速 / 射程 / 控枪 / 机动">
-                  ${miniRadarHtml}
-                </div>
+              <div style="position:absolute; right:10px; bottom:7px; display:flex; gap:5px; z-index:2">
+                <span class="stage-hud-tag" style="color:var(--text-bright)">⚡ ${br.rof}${delayTag}</span>
+                <span class="stage-hud-tag" style="color:var(--blue)">🎯 ${br.range}</span>
               </div>
             </div>
 
+            <!-- Layer 3: Branch Switcher + 3 Key Metrics + 6 Core Attachments -->
             <div class="branch-tabs">${branchButtonsHtml}</div>
 
-            <div class="loadout-metrics">
-              <div class="metric-box">
-                <span class="m-label">⚡ 射速 / 延迟</span>
-                <span class="m-val hi">${br.rof} <span style="font-size:10px;color:var(--text-muted)">(${br.delay.replace(' (消除!)', '')})</span></span>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${rofPct}%; background:var(--accent)"></div></div>
-              </div>
-              <div class="metric-box">
-                <span class="m-label">🎯 一段无衰减</span>
-                <span class="m-val">${br.range}</span>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${rangePct}%; background:var(--blue)"></div></div>
-              </div>
-              <div class="metric-box">
-                <span class="m-label">🛡️ 随机枪跳乘区</span>
-                <span class="m-val" style="color:${randMult < 1 ? 'var(--accent)' : 'var(--text-main)'}">${randMult.toFixed(2)}×</span>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${gkPct}%; background:var(--purple)"></div></div>
-              </div>
-              <div class="metric-box">
+            <div style="display:grid; grid-template-columns:1.25fr 0.9fr 0.85fr; gap:6px; margin-bottom:10px">
+              <div class="metric-box" style="padding:6px 9px">
                 <span class="m-label">💀 5甲胸口 TTK</span>
-                <span class="m-val hi" style="font-size:11.5px">${br.ttk5v5}</span>
-                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${ttkPct}%; background:var(--gold)"></div></div>
+                <span class="m-val hi" style="font-size:12.5px">${br.ttk5v5}</span>
+              </div>
+              <div class="metric-box" style="padding:6px 9px">
+                <span class="m-label">🎯 4甲胸口 TTK</span>
+                <span class="m-val" style="font-size:12px; color:var(--blue)">${br.ttk4v4}</span>
+              </div>
+              <div class="metric-box" style="padding:6px 9px">
+                <span class="m-label">🛡️ 随机枪跳乘区</span>
+                <span class="m-val" style="font-size:12.5px; color:${randMult < 1 ? 'var(--accent)' : 'var(--text-main)'}">${randMult.toFixed(2)}×</span>
               </div>
             </div>
 
-            <!-- 3-Stage Attachment Topology Flow -->
-            ${topoStagesHtml}
+            <div style="margin-bottom:12px">
+              <div style="display:flex; justify-content:space-between; align-items:center; font-size:10.5px; color:var(--text-muted); margin-bottom:5px; font-weight:700">
+                <span>🧩 核心灵魂改件 (${sortedCoreParts.length} / 全套 ${resolvedParts.length} 件)</span>
+                <span style="color:var(--text-dim)">点击配件看隐藏属性</span>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:5px">
+                ${coreGridHtml}
+              </div>
+            </div>
 
+            <!-- Layer 4: Action Footer -->
             <div class="loadout-actions">
               <div style="display:flex; gap:6px; flex-wrap:wrap">
-                <button class="btn btn-sm" onclick="loadWeaponIntoDuel('${item.weaponId}')">🩸 靶场测试</button>
-                <button class="btn btn-sm" onclick="copyLoadoutSummary(${idx})">📋 清单</button>
+                <button class="btn btn-sm" onclick="loadWeaponIntoDuel('${item.weaponId}')">🩸 靶场PK</button>
+                <button class="btn btn-sm" onclick="copyLoadoutSummary(${idx})">📋 复制配装</button>
               </div>
               <button class="btn btn-sm btn-primary" onclick="openPresetInBuilder(${idx})">
-                🛠️ 拓扑改枪台 (${resolvedParts.length}件) →
+                🛠️ 拓扑改枪台 (全${resolvedParts.length}件) →
               </button>
             </div>
           </div>
         `;
       }).join('');
-
-      const tbody = document.getElementById('matrix-comparison-tbody');
-      if (tbody && !tbody.innerHTML) {
-        tbody.innerHTML = COMPARISON_MATRIX_ROWS.map((r, rIdx) => {
-          const wMatch = WEAPONS_BY_NAME[r.variantMatch] || DATA.weapons.find(w => r.weapon.includes(w.name)) || {};
-          const loadoutObj = CURATED_LOADOUTS[rIdx] || CURATED_LOADOUTS.find(c => c.weaponId === wMatch.weapon_id);
-          const coreParts = (loadoutObj?.branches?.[0]?.presetIds || []).map(pid => PARTS_BY_ID[pid]).filter(Boolean).slice(0, 4);
-          const ttkMs = parseInt((r.ttk5.match(/(\d+)\s*ms/) || [])[1], 10) || 260;
-          const barW = Math.min(100, Math.max(12, Math.round(((420 - ttkMs) / 360) * 100)));
-          const rangeNum = parseInt(r.range, 10) || 35;
-          const rangeW = Math.min(100, Math.round((rangeNum / 90) * 100));
-          const coreTopoHtml = coreParts.map(cp => `
-            <span style="display:inline-flex; align-items:center; gap:4px; background:rgba(11,17,26,0.9); border:1px solid var(--border); border-radius:4px; padding:2px 5px; font-size:10.5px" onclick="event.stopPropagation(); inspectPartInTab2('${cp.name.replace(/'/g, "\\'")}')" title="${cp.name}">
-              <img src="${cp.image || ''}" style="width:20px; height:20px; object-fit:contain" onerror="this.style.display='none'" />
-              <span style="color:#e2e8f0; max-width:65px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${cp.name.replace(/^[A-Za-z0-9-\s]+/, '') || cp.name}</span>
-            </span>
-          `).join('<span style="color:var(--accent); font-size:10px; margin:0 2px">➔</span>');
-
-          return `
-          <tr style="cursor:pointer" onclick="loadWeaponNameIntoDuel('${r.variantMatch}')">
-            <td><span class="badge ${r.tier.includes('低战损') || r.tier.includes('一枪') || r.tier.includes('越级') || r.tier.includes('静音') ? 'badge-gold' : 'badge-pos'}">${r.tier}</span></td>
-            <td>
-              <div style="display:flex; align-items:center; gap:8px">
-                <img src="${wMatch.image || ''}" alt="${r.weapon}" style="width:62px; height:24px; object-fit:contain; background:rgba(9,14,22,0.85); border:1px solid var(--border); border-radius:4px; padding:1px 3px" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(wMatch.category_cn, r.variantMatch)}'" />
-                <span style="font-weight:700; color:#fff">${r.weapon.split(' ')[0]} <span style="font-size:11px; color:var(--text-muted); font-weight:500">${(r.weapon.match(/\(.*\)/) || [''])[0]}</span></span>
-              </div>
-            </td>
-            <td class="price-text">${r.cost}</td>
-            <td class="mono">${r.rof}</td>
-            <td>
-              <div class="mono" style="font-weight:700; color:var(--blue)">${r.range}</div>
-              <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; margin-top:3px; width:68px; overflow:hidden">
-                <div style="height:100%; width:${rangeW}%; background:var(--blue)"></div>
-              </div>
-            </td>
-            <td>
-              <div class="mono ttk-fast">${r.ttk5}</div>
-              <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; margin-top:3px; width:100px; overflow:hidden">
-                <div style="height:100%; width:${barW}%; background:var(--accent)"></div>
-              </div>
-            </td>
-            <td class="mono" style="color:var(--blue)">${r.ttk4}</td>
-            <td><div style="display:flex; align-items:center; flex-wrap:wrap; gap:2px">${coreTopoHtml}</div></td>
-          </tr>
-        `}).join('');
-      }
     }
 
     function copyLoadoutSummary(idx) {
@@ -6874,9 +6696,17 @@
       </span>`;
     }
 
+    let armorViewMode = 'cards';
+    function setArmorViewMode(mode) {
+      armorViewMode = mode;
+      document.getElementById('armor-view-cards')?.classList.toggle('active', mode === 'cards');
+      document.getElementById('armor-view-table')?.classList.toggle('active', mode === 'table');
+      filterArmorTable();
+    }
+
     function renderArmorCatalogView(container) {
       container.innerHTML = `
-        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔视觉图鉴、防护部位 SVG 与全新/几新/破损精算表</h1>
+        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔视觉图鉴、防护部位 SVG 与全新/几新/破损精算</h1>
         <div class="filter-bar" style="margin-bottom:14px">
           <div class="filter-group">
             <input type="text" id="armor-search-input" class="input-control" placeholder="🔍 搜索护甲/头盔名称 (如: 达里安, 武士, Hvk, 重型)..." oninput="filterArmorTable()" />
@@ -6893,11 +6723,17 @@
               <option value="3">🔵 3级卡战备护甲/头盔</option>
             </select>
           </div>
-          <div class="result-counter" id="armor-count-label"></div>
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap">
+            <div class="view-mode-switch">
+              <button class="view-mode-btn ${armorViewMode === 'cards' ? 'active' : ''}" id="armor-view-cards" onclick="setArmorViewMode('cards')">🖼️ 视觉卡片图鉴</button>
+              <button class="view-mode-btn ${armorViewMode === 'table' ? 'active' : ''}" id="armor-view-table" onclick="setArmorViewMode('table')">📋 破损折旧明细表</button>
+            </div>
+            <div class="result-counter" id="armor-count-label"></div>
+          </div>
         </div>
         <!-- Visual Armor & Helmet Gallery -->
-        <div class="armor-gallery-grid" id="armor-visual-gallery"></div>
-        <div class="table-scroll">
+        <div class="armor-gallery-grid" id="armor-visual-gallery" style="display:${armorViewMode === 'cards' ? 'grid' : 'none'}"></div>
+        <div class="table-scroll" id="armor-table-wrap" style="display:${armorViewMode === 'table' ? 'block' : 'none'}">
           <table class="data-table">
             <thead>
               <tr>
@@ -6933,12 +6769,18 @@
       if (lbl) lbl.textContent = `显示 ${list.length} / ${(DATA.armors || []).length} 款防具`;
 
       const galleryEl = document.getElementById('armor-visual-gallery');
+      const tableWrap = document.getElementById('armor-table-wrap');
+      if (galleryEl) galleryEl.style.display = armorViewMode === 'cards' ? 'grid' : 'none';
+      if (tableWrap) tableWrap.style.display = armorViewMode === 'table' ? 'block' : 'none';
+
       if (galleryEl) {
-        galleryEl.innerHTML = list.slice(0, 24).map(ar => {
+        galleryEl.innerHTML = list.map(ar => {
           const ppd = ar.market_price && ar.durability ? Math.round(ar.market_price / ar.durability) : null;
           const lvBadge = ar.armor_level >= 6 ? 'badge-neg' : (ar.armor_level === 5 ? 'badge-gold' : (ar.armor_level === 4 ? 'badge-purple' : 'badge-neu'));
           const rClass = `rarity-${Math.min(6, Math.max(2, ar.armor_level || 4))}`;
           const durPct = Math.min(100, Math.round(((ar.durability || 50) / 150) * 100));
+          const lnPrice = ar.price_like_new ? `几新 ¥${fmtPrice(ar.price_like_new)}` : '';
+          const dmgPrice = ar.price_damaged ? `破损 ¥${fmtPrice(ar.price_damaged)}` : '';
           return `
             <div class="armor-visual-card ${rClass}">
               <div class="avc-img-box">
@@ -6949,14 +6791,15 @@
                   <span class="badge ${lvBadge}">${ar.armor_level}级${ar.category === 'helmet' ? '头盔' : '胸甲'}</span>
                   ${getArmorCoverageSvg(ar)}
                 </div>
-                <div style="font-size:13px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${ar.name}</div>
+                <div style="font-size:13px; font-weight:800; color:var(--text-bright); white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${ar.name}</div>
                 <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden">
                   <div style="height:100%; width:${durPct}%; background:var(--blue)"></div>
                 </div>
                 <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted)">
-                  <span class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + '币' : '制作/绑定'}</span>
+                  <span class="price-text">${ar.market_price ? '全新 ¥' + fmtPrice(ar.market_price) : '制作/绑定'}</span>
                   <span class="mono" style="color:var(--accent)">${ar.durability}耐久 ${ppd ? `(${ppd}/点)` : ''}</span>
                 </div>
+                ${(lnPrice || dmgPrice) ? `<div class="mono" style="font-size:10px; color:var(--text-dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${[lnPrice, dmgPrice].filter(Boolean).join(' · ')}</div>` : ''}
               </div>
             </div>
           `;
@@ -6980,7 +6823,7 @@
         return `
           <tr>
             <td>${getArmorCoverageSvg(ar)}</td>
-            <td style="font-weight:700; color:#fff">
+            <td style="font-weight:700; color:var(--text-bright)">
               <div style="display:flex; align-items:center; gap:8px">
                 <img src="${ar.image || ''}" alt="${ar.name}" loading="lazy" style="width:32px; height:32px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:5px; padding:2px" onerror="this.style.display='none'" />
                 <span>${ar.name}</span>
@@ -7231,13 +7074,10 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      if (DATA.updated_at) {
-        document.getElementById('updated-at-badge').textContent = DATA.updated_at;
+      const updatedEl = document.getElementById('updated-at-badge');
+      if (DATA.updated_at && updatedEl) {
+        updatedEl.textContent = DATA.updated_at;
       }
-      document.getElementById('kpi-loadouts').textContent = CURATED_LOADOUTS.length;
-      document.getElementById('kpi-weapons').textContent = `${DATA.weapons.length}/${DATA.variants.length}`;
-      document.getElementById('kpi-parts').textContent = DATA.parts.length;
-      document.getElementById('kpi-ammo').textContent = `${DATA.ammo.length}/${(DATA.armors || []).length}`;
 
       renderCuratedLoadouts();
       initDuelSimulator();
