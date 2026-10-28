@@ -2273,7 +2273,7 @@
     /* Engine Multiplier Synthesis Topology in Builder Sidebar */
     .mult-topo-grid {
       display: grid;
-      grid-template-columns: 1fr 22px 112px;
+      grid-template-columns: 1fr 24px 128px;
       align-items: center;
       gap: 4px;
       background: rgba(8, 12, 20, 0.85);
@@ -2286,7 +2286,8 @@
       flex-direction: column;
       gap: 5px;
     }
-    .mult-in-node {
+    .mult-in-node,
+    .mult-topo-node {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -2295,18 +2296,547 @@
       border-radius: 5px;
       padding: 4px 7px;
       font-size: 11px;
+      gap: 6px;
+      min-width: 0;
     }
     .mult-out-col {
       display: flex;
       flex-direction: column;
       gap: 6px;
     }
-    .mult-out-node {
+    .mult-out-node,
+    .mult-topo-out {
       background: linear-gradient(135deg, rgba(0, 242, 169, 0.14), rgba(56, 189, 248, 0.08));
       border: 1px solid rgba(0, 242, 169, 0.4);
       border-radius: 6px;
       padding: 6px;
       text-align: center;
+      min-width: 0;
+    }
+
+    /* ==================== v5.1 RESPONSIVE IMAGE & CONTAINER NORMALIZATION ==================== */
+    img, svg {
+      max-width: 100%;
+    }
+    table.data-table td img,
+    table.md-table td img {
+      flex-shrink: 0;
+      object-fit: contain;
+    }
+
+    /* Tab 1: Weapon Stage & HUD Tags inside Loadout Cards */
+    .weapon-stage-tags {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .stage-hud-tag {
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(7, 10, 15, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-muted);
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+    .weapon-stage-img-wrap {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+      padding: 16px 6px 2px;
+      overflow: hidden;
+    }
+    .weapon-stage-img {
+      max-width: min(230px, 100%);
+      max-height: 92px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 242, 169, 0.15));
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .loadout-card:hover .weapon-stage-img {
+      transform: scale(1.05) translateY(-2px);
+    }
+    .weapon-stage-radar {
+      width: 82px;
+      height: 82px;
+      flex-shrink: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 10, 15, 0.55);
+      border: 1px solid rgba(44, 64, 90, 0.55);
+      border-radius: 8px;
+    }
+    .metric-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+
+    /* Tab 1: Duel Simulator Fighter & Mannequin Visual Boxes */
+    .duel-fighter-card {
+      background:
+        radial-gradient(circle at 20% 25%, rgba(0, 242, 169, 0.08), transparent 65%),
+        var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 10px;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .duel-fighter-img-box {
+      width: 116px;
+      height: 60px;
+      flex-shrink: 0;
+      background: rgba(7, 10, 15, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+      overflow: hidden;
+    }
+    .duel-fighter-img-box img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.8));
+    }
+    .duel-mannequin-card {
+      background:
+        radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.1), transparent 70%),
+        var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+    }
+    .mannequin-svg {
+      width: 108px;
+      height: 140px;
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Tab 2 / Tab 4 Modal / Tab 5: Part Armory Card (.pac-*) */
+    .pac-img-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      background: rgba(7, 10, 15, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 4px;
+      overflow: hidden;
+    }
+    .pac-img-box img,
+    .pac-img-box svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.78));
+    }
+    .pac-title-wrap {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .pac-cat {
+      font-size: 10px;
+      color: var(--text-dim);
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pac-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pac-price-row {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: 1px;
+    }
+    .pac-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px 10px;
+      background: rgba(7, 10, 15, 0.65);
+      padding: 7px 9px;
+      border-radius: 6px;
+      border: 1px solid rgba(44, 64, 90, 0.45);
+    }
+    .pac-stat-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+    .pac-stat-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 2px;
+    }
+    .pac-stat-fill {
+      height: 100%;
+      border-radius: 99px;
+    }
+    .pac-hidden-pill {
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(0, 242, 169, 0.08);
+      border: 1px solid rgba(0, 242, 169, 0.24);
+      border-radius: 5px;
+      padding: 4px 8px;
+      line-height: 1.35;
+    }
+    .pac-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+      padding-top: 4px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.07);
+    }
+
+    /* Tab 3: Tier Board Weapon Cards (.tier-weapons-strip & .twc-*) */
+    .tier-weapons-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 10px;
+      align-items: center;
+      min-width: 0;
+    }
+    .tier-sub {
+      font-size: 10px;
+      font-weight: 700;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+    .twc-img {
+      width: 60px;
+      height: 28px;
+      max-width: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.85));
+    }
+    .twc-info {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .twc-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .twc-meta {
+      font-size: 10px;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+
+    /* Tab 4: Gunsmith Spatial Topology Node Cards (.gtnc-* & .bp-part-thumb & .analytics-svg-box) */
+    .gtnc-img {
+      width: 34px;
+      height: 34px;
+      border-radius: 5px;
+      background: rgba(6, 9, 15, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 2px;
+      overflow: hidden;
+    }
+    .gtnc-img img,
+    .gtnc-img svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8));
+    }
+    .gtnc-info {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+      overflow: hidden;
+    }
+    .gtnc-slot {
+      font-size: 9.5px;
+      color: var(--text-dim);
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gtnc-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .gtnc-stat {
+      font-size: 9.5px;
+      font-family: var(--font-mono);
+      color: var(--gold);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .bp-part-thumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(9, 14, 22, 0.9);
+      border: 1px solid var(--border-light);
+      border-radius: 5px;
+      padding: 3px 7px;
+      font-size: 10.5px;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.15s;
+      max-width: 100%;
+    }
+    .bp-part-thumb:hover {
+      border-color: var(--accent);
+      background: rgba(0, 242, 169, 0.1);
+    }
+    .bp-part-thumb img,
+    .bp-part-thumb svg {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+    }
+    .gun-topo-center-stage .blueprint-gun-img {
+      width: 54%;
+      max-width: 340px;
+      max-height: 116px;
+      height: auto;
+      object-fit: contain;
+      position: relative;
+      z-index: 2;
+      display: block;
+    }
+    .analytics-svg-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .analytics-svg-box svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    .analytics-box-title {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    /* Tab 5: Armor Visual Cards (.avc-*) & Doc Infographic Banner (.dib-*) */
+    .avc-img-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      background: rgba(7, 10, 15, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      padding: 4px;
+      overflow: hidden;
+    }
+    .avc-img-box img,
+    .avc-img-box svg {
+      max-width: 100%;
+      max-height: 100%;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.8));
+    }
+    .avc-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dib-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(8, 13, 21, 0.82);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      min-width: 0;
+    }
+    .dib-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .dib-val {
+      font-size: 15px;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+    .dib-lbl {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Multi-Breakpoint Screen Size Adaptations (Ultrawide / Laptop / Tablet / Mobile) */
+    @media (max-width: 1360px) {
+      .gun-topo-node-card {
+        padding: 4px 5px;
+        gap: 5px;
+      }
+      .gtnc-img {
+        width: 28px;
+        height: 28px;
+      }
+      .gtnc-img img, .gtnc-img svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    @media (max-width: 820px) {
+      .loadout-grid {
+        grid-template-columns: 1fr;
+      }
+      .gun-topo-ring-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .gun-topo-svg-overlay {
+        display: none;
+      }
+      .gun-topo-center-stage {
+        height: 115px;
+      }
+      .gun-topo-center-stage .blueprint-gun-img {
+        width: 78%;
+        max-height: 100px;
+      }
+      .mult-topo-grid {
+        grid-template-columns: 1fr;
+      }
+      .mult-topo-grid > div:nth-child(2) {
+        display: none !important;
+      }
+    }
+    @media (max-width: 580px) {
+      .main-container {
+        padding: 12px 12px 48px;
+      }
+      .header-inner {
+        padding: 10px 12px 0;
+      }
+      .weapon-stage {
+        height: auto;
+        min-height: 124px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        padding: 28px 10px 10px;
+      }
+      .weapon-stage-img-wrap {
+        width: 100%;
+        flex: 1 1 100%;
+        padding: 4px 0;
+      }
+      .weapon-stage-img {
+        max-width: 210px;
+        max-height: 82px;
+      }
+      .loadout-metrics {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .topo-leaf-list {
+        grid-template-columns: 1fr;
+      }
+      .visual-analytics-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -3173,7 +3703,7 @@
                       const w = WEAPONS_BY_ID[pk.wid] || {};
                       return `
                         <div class="topo-leaf-card" onclick="loadWeaponIntoDuel('${pk.wid}')" title="点击在靶场测试【${pk.name}】">
-                          <img src="${w.image || ''}" alt="${pk.name}" loading="lazy" onerror="this.style.display='none'" />
+                          <img src="${w.image || ''}" alt="${pk.name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(w.category_cn, pk.name)}'" />
                           <div style="min-width:0">
                             <div style="font-size:11px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${pk.name}</div>
                             <div class="mono" style="font-size:9.5px; color:${z.color}; font-weight:700">${pk.stat}</div>
@@ -5452,18 +5982,18 @@
       const vpEl = document.getElementById('builder-gunsmith-viewport');
       if (vpEl) {
         const TOPO_TOP_SLOTS = [
-          { key: 'muzzle', label: '枪口', x1: 80, y1: 12, ax: 195, ay: 108 },
-          { key: 'barrel', label: '枪管', x1: 240, y1: 12, ax: 275, ay: 104 },
-          { key: 'gasBlock', label: '导气', x1: 400, y1: 12, ax: 338, ay: 96 },
-          { key: 'optic', label: '瞄具', x1: 560, y1: 12, ax: 430, ay: 78 },
-          { key: 'bolt', label: '枪机/扳机', x1: 720, y1: 12, ax: 478, ay: 112 }
+          { key: 'muzzle', label: '枪口', x1: 80, y1: 0, ax: 215, ay: 108 },
+          { key: 'barrel', label: '枪管', x1: 240, y1: 0, ax: 285, ay: 104 },
+          { key: 'gasBlock', label: '导气', x1: 400, y1: 0, ax: 342, ay: 96 },
+          { key: 'optic', label: '瞄具', x1: 560, y1: 0, ax: 430, ay: 78 },
+          { key: 'bolt', label: '枪机/扳机', x1: 720, y1: 0, ax: 478, ay: 112 }
         ];
         const TOPO_BOT_SLOTS = [
-          { key: 'handguard', label: '护木/贴片', x1: 80, y1: 208, ax: 295, ay: 122 },
-          { key: 'foregrip', label: '前握把', x1: 240, y1: 208, ax: 350, ay: 142 },
-          { key: 'magazine', label: '弹匣/座', x1: 400, y1: 208, ax: 425, ay: 156 },
-          { key: 'rearGrip', label: '后握把', x1: 560, y1: 208, ax: 502, ay: 152 },
-          { key: 'stock', label: '枪托/托腮', x1: 720, y1: 208, ax: 605, ay: 115 }
+          { key: 'handguard', label: '护木/贴片', x1: 80, y1: 220, ax: 298, ay: 122 },
+          { key: 'foregrip', label: '前握把', x1: 240, y1: 220, ax: 352, ay: 142 },
+          { key: 'magazine', label: '弹匣/座', x1: 400, y1: 220, ax: 425, ay: 156 },
+          { key: 'rearGrip', label: '后握把', x1: 560, y1: 220, ax: 500, ay: 152 },
+          { key: 'stock', label: '枪托/托腮', x1: 720, y1: 220, ax: 585, ay: 115 }
         ];
 
         const renderTopoSlotCard = (slotDef) => {
@@ -5526,11 +6056,11 @@
         ` : '';
 
         const svgLines = allResolved.map(n => {
-          const strokeCol = n.equipped ? 'rgba(0,242,169,0.75)' : 'rgba(148,163,184,0.25)';
+          const strokeCol = n.equipped ? 'rgba(0,242,169,0.75)' : 'rgba(148,163,184,0.28)';
           const dotCol = n.equipped ? '#00f2a9' : '#64748b';
-          const midY = n.y1 < 100 ? n.y1 + 28 : n.y1 - 28;
+          const midY = n.y1 < 100 ? 32 : 188;
           return `
-            <polyline points="${n.x1},${n.y1} ${n.x1},${midY} ${n.ax},${n.ay}" fill="none" stroke="${strokeCol}" stroke-width="${n.equipped ? '1.8' : '1'}" stroke-dasharray="${n.equipped ? 'none' : '3,3'}" />
+            <polyline vector-effect="non-scaling-stroke" points="${n.x1},${n.y1} ${n.x1},${midY} ${n.ax},${n.ay}" fill="none" stroke="${strokeCol}" stroke-width="${n.equipped ? '1.8' : '1.1'}" stroke-dasharray="${n.equipped ? 'none' : '3,3'}" />
             <circle cx="${n.ax}" cy="${n.ay}" r="${n.equipped ? '4' : '2.5'}" fill="${dotCol}" stroke="#06090f" stroke-width="1.2" />
             ${n.equipped ? `<circle cx="${n.ax}" cy="${n.ay}" r="7.5" fill="none" stroke="rgba(0,242,169,0.45)" stroke-width="1" />` : ''}
           `;
