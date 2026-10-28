@@ -3472,6 +3472,213 @@
         height: 10px;
       }
     }
+
+    /* ==================== v6.3 SCENARIO TTK RACING LEADERBOARD SYSTEM ==================== */
+    .ttk-scenario-panel {
+      background:
+        radial-gradient(600px circle at 10% 0%, rgba(var(--accent-rgb), 0.08), transparent 65%),
+        linear-gradient(180deg, rgba(22, 30, 44, 0.94) 0%, rgba(14, 20, 30, 0.97) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow);
+    }
+    .ttk-scenario-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .ttk-scenario-label {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: var(--text-muted);
+      min-width: 68px;
+      flex-shrink: 0;
+      letter-spacing: 0.3px;
+    }
+    .ttk-insight-banner {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .ttk-insight-card {
+      background: linear-gradient(135deg, rgba(16, 23, 35, 0.92), rgba(10, 15, 24, 0.95));
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+    .ttk-insight-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+    .ttk-race-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+    .ttk-race-row {
+      display: grid;
+      grid-template-columns: 58px 245px 1fr 205px;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, rgba(19, 27, 40, 0.95) 0%, rgba(14, 20, 31, 0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 9px 12px;
+      transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+    }
+    .ttk-race-row:hover {
+      border-color: var(--border-light);
+      background: rgba(25, 35, 52, 0.96);
+    }
+    .ttk-race-row.rank-top1 {
+      border-left: 3px solid var(--gold);
+      background: linear-gradient(90deg, rgba(var(--gold-rgb), 0.12) 0%, rgba(16, 23, 35, 0.95) 35%);
+    }
+    .ttk-race-row.rank-top2 {
+      border-left: 3px solid var(--accent);
+      background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.09) 0%, rgba(16, 23, 35, 0.95) 35%);
+    }
+    .ttk-race-row.rank-top3 {
+      border-left: 3px solid var(--blue);
+      background: linear-gradient(90deg, rgba(var(--blue-rgb), 0.09) 0%, rgba(16, 23, 35, 0.95) 35%);
+    }
+    .ttk-rank-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+      text-align: center;
+    }
+    .ttk-rank-num {
+      font-family: var(--font-mono);
+      font-size: 14.5px;
+      font-weight: 900;
+      color: var(--text-bright);
+      line-height: 1.1;
+    }
+    .ttk-rank-tier {
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 1px 5px;
+      border-radius: 3px;
+      letter-spacing: 0.4px;
+    }
+    .ttk-weapon-col {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .ttk-weapon-thumb {
+      width: 66px;
+      height: 34px;
+      border-radius: 6px;
+      background: rgba(7, 11, 18, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 4px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .ttk-weapon-thumb img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.85));
+    }
+    .ttk-bar-col {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-width: 0;
+    }
+    .ttk-bar-meta-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .ttk-race-track {
+      position: relative;
+      height: 12px;
+      background: rgba(7, 11, 18, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .ttk-race-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+    }
+    .ttk-race-tick {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.16);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .ttk-action-col {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-left: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-left: 12px;
+    }
+    @media (max-width: 960px) {
+      .ttk-insight-banner {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+      .ttk-race-row {
+        grid-template-columns: 44px 1fr;
+        gap: 8px 10px;
+        padding: 10px 11px;
+      }
+      .ttk-bar-col {
+        grid-column: 1 / -1;
+      }
+      .ttk-action-col {
+        grid-column: 1 / -1;
+        border-left: none;
+        border-top: 1px dashed rgba(255, 255, 255, 0.08);
+        padding-left: 0;
+        padding-top: 7px;
+      }
+    }
+    @media (max-width: 580px) {
+      .ttk-scenario-panel {
+        padding: 11px 12px;
+      }
+      .ttk-scenario-row {
+        gap: 4px;
+        margin-bottom: 6px;
+      }
+      .ttk-scenario-label {
+        font-size: 11px;
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
@@ -3516,7 +3723,7 @@
           🛠️ 拓扑改枪台 <span class="tab-badge">62枪模拟</span>
         </button>
         <button class="nav-tab" data-tab="tab-variants" onclick="switchTab('tab-variants')">
-          📈 TTK衰减曲线 <span class="tab-badge">226形态</span>
+          🏆 TTK天梯 & 曲线 <span class="tab-badge">62枪排位</span>
         </button>
         <button class="nav-tab" data-tab="tab-parts" onclick="switchTab('tab-parts')">
           🧩 配件库 & PK <span class="tab-badge">577件</span>
@@ -3543,6 +3750,7 @@
           <button class="pill-btn" onclick="filterCuratedLoadouts('flesh', this)">🦵 夺舍修脚 / 一枪秒5头</button>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap">
+          <button class="btn btn-sm" onclick="switchTab('tab-variants')">🏆 全枪械TTK天梯榜 →</button>
           <button class="btn btn-sm" onclick="document.getElementById('duel-simulator-section')?.scrollIntoView({behavior:'smooth'})">🩸 靶场逐枪推演 ↓</button>
           <button class="btn btn-sm btn-primary" onclick="switchTab('tab-builder')">🛠️ 进入自由改枪台 →</button>
         </div>
@@ -3668,14 +3876,154 @@
       </div>
     </section>
 
-    <!-- ==================== TAB 3: 226 WEAPON VARIANTS & MULTI-WEAPON CURVE CHART ==================== -->
+    <!-- ==================== TAB 3: SCENARIO TTK RACING LEADERBOARD & MULTI-WEAPON CURVE CHART ==================== -->
     <section id="tab-variants" class="tab-panel">
-      <!-- Interactive Multi-Weapon Curve Chart Box (Top Priority) -->
+      <!-- 1. SCENARIO TTK RACING CONSOLE (Top Priority Killer Feature) -->
+      <div class="ttk-scenario-panel">
+        <div class="ttk-scenario-header">
+          <div>
+            <div class="ttk-scenario-title">
+              🏆 实战场景「TTK 动态竞速天梯榜」
+              <span class="badge badge-pos">含子弹飞行时间 & 扳机延迟</span>
+            </div>
+            <div class="ttk-scenario-sub">
+              点选「交战距离 × 弹甲对局 × 枪种/预算」，毫秒级重排 62 把武器 / 226 种核心枪管导气形态的真实理论击杀用时与击杀弹药成本
+            </div>
+          </div>
+          <div class="ttk-view-switch">
+            <button type="button" class="ttk-view-btn active" id="ttk-view-btn-race" onclick="setVariantsViewMode('race')">🏆 竞速天梯条</button>
+            <button type="button" class="ttk-view-btn" id="ttk-view-btn-table" onclick="setVariantsViewMode('table')">📋 完整参数表</button>
+          </div>
+        </div>
+
+        <div class="ttk-scenario-grid">
+          <div class="ttk-scenario-row">
+            <div class="ttk-scenario-label">① 交战距离</div>
+            <div class="ttk-pill-group" id="ttk-dist-pills">
+              <button type="button" class="ttk-pill active" data-dist="0m" onclick="setTtkScenarioDist('0m', this)">⚡ 0m 贴脸CQB <span class="pill-sub">室内/转角</span></button>
+              <button type="button" class="ttk-pill" data-dist="25m" onclick="setTtkScenarioDist('25m', this)">🏙️ 25m 街区中近 <span class="pill-sub">行政楼/中控</span></button>
+              <button type="button" class="ttk-pill" data-dist="45m" onclick="setTtkScenarioDist('45m', this)">🎯 45m 中远对枪 <span class="pill-sub">林间/走廊</span></button>
+              <button type="button" class="ttk-pill" data-dist="70m" onclick="setTtkScenarioDist('70m', this)">🦅 70m 远距架点 <span class="pill-sub">大坝/撤离点</span></button>
+            </div>
+          </div>
+
+          <div class="ttk-scenario-row">
+            <div class="ttk-scenario-label">② 弹甲对局</div>
+            <div class="ttk-pill-group" id="ttk-matchup-pills">
+              <button type="button" class="ttk-pill active" data-matchup="5v5" onclick="setTtkScenarioMatchup('5v5', this)">🔥 5弹打5甲 <span class="pill-sub">绝密主力</span></button>
+              <button type="button" class="ttk-pill" data-matchup="4v4" onclick="setTtkScenarioMatchup('4v4', this)">⚔️ 4弹打4甲 <span class="pill-sub">机密常规</span></button>
+              <button type="button" class="ttk-pill" data-matchup="4v5" onclick="setTtkScenarioMatchup('4v5', this)">🛡️ 4弹越级打5甲 <span class="pill-sub">机密抗压</span></button>
+              <button type="button" class="ttk-pill" data-matchup="5v6" onclick="setTtkScenarioMatchup('5v6', this)">👑 5弹打6甲 <span class="pill-sub">红甲Boss</span></button>
+              <button type="button" class="ttk-pill" data-matchup="head" onclick="setTtkScenarioMatchup('head', this)">💀 同级弹爆头 <span class="pill-sub">秒头线</span></button>
+              <button type="button" class="ttk-pill" data-matchup="limb" onclick="setTtkScenarioMatchup('limb', this)">🦵 四肢修脚 <span class="pill-sub">无视护甲</span></button>
+            </div>
+          </div>
+
+          <div class="ttk-scenario-row">
+            <div class="ttk-scenario-label">③ 枪种范围</div>
+            <div class="ttk-pill-group" id="ttk-cat-pills">
+              <button type="button" class="ttk-pill active" data-cat="AUTO_MAIN" onclick="setTtkScenarioCat('AUTO_MAIN', this)">🔥 全自动/连发主力 <span class="pill-sub">排除喷子单发</span></button>
+              <button type="button" class="ttk-pill" data-cat="突击步枪" onclick="setTtkScenarioCat('突击步枪', this)">🎯 突击步枪</button>
+              <button type="button" class="ttk-pill" data-cat="冲锋枪" onclick="setTtkScenarioCat('冲锋枪', this)">⚡ 冲锋枪</button>
+              <button type="button" class="ttk-pill" data-cat="轻/通用机枪" onclick="setTtkScenarioCat('轻/通用机枪', this)">🛡️ 轻/通用机枪</button>
+              <button type="button" class="ttk-pill" data-cat="精确射手步枪" onclick="setTtkScenarioCat('精确射手步枪', this)">🔭 精确射手步枪</button>
+              <button type="button" class="ttk-pill" data-cat="霰弹枪" onclick="setTtkScenarioCat('霰弹枪', this)">💥 霰弹枪</button>
+              <button type="button" class="ttk-pill" data-cat="手枪" onclick="setTtkScenarioCat('手枪', this)">🔫 手枪</button>
+              <button type="button" class="ttk-pill" data-cat="ALL" onclick="setTtkScenarioCat('ALL', this)">🌐 全部62枪</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-bar" style="margin-top:10px; margin-bottom:0; padding-top:10px; border-top:1px solid rgba(44,64,90,0.45); background:transparent; border-left:none; border-right:none; border-bottom:none; border-radius:0; padding-left:0; padding-right:0; padding-bottom:0">
+          <div class="filter-group">
+            <input type="text" id="variants-search" class="input-control" placeholder="🔍 搜枪名或改件 (PKM, MP7, 腾龙, HVK)..." oninput="renderVariantsTable()" />
+            <select id="variants-cat" class="select-control" onchange="syncCatPillFromSelect(); renderVariantsTable()" style="display:none">
+              <option value="AUTO_MAIN">全自动/连发主力</option>
+              <option value="ALL">全部枪种</option>
+            </select>
+            <select id="variants-caliber" class="select-control" onchange="renderVariantsTable()">
+              <option value="ALL">全部口径</option>
+            </select>
+            <select id="variants-budget" class="select-control" onchange="renderVariantsTable()">
+              <option value="ALL">💰 预算: 不限造价</option>
+              <option value="250000">💎 整枪 ≤ 25万 (实战甜点)</option>
+              <option value="150000">⚖️ 整枪 ≤ 15万 (高性价比)</option>
+              <option value="90000">🪙 整枪 ≤ 9万 (卡战备/低损)</option>
+            </select>
+            <select id="variants-dist" class="select-control" onchange="renderVariantsTable()" style="display:none">
+              <option value="0m">距离: 0m (贴脸)</option>
+              <option value="25m">距离: 25m (街区)</option>
+              <option value="45m">距离: 45m (中远)</option>
+              <option value="70m">距离: 70m (远距)</option>
+            </select>
+            <label class="checkbox-label" title="勾选后每把武器只展示在当前场景下最快的那套改装形态，避免同一把枪不同枪管刷屏">
+              <input type="checkbox" id="variants-dedup-weapon" checked onchange="renderVariantsTable()" />
+              👑 每把枪仅取最快形态 (62枪排位)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="variants-base-only" onchange="renderVariantsTable()" />
+              仅原厂裸枪
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="variants-mod-only" onchange="renderVariantsTable()" />
+              仅改装形态
+            </label>
+          </div>
+          <div class="result-counter" id="variants-count-label">排位计算中...</div>
+        </div>
+      </div>
+
+      <!-- 2. DYNAMIC TOP-3 SCENARIO INSIGHT BANNER -->
+      <div class="ttk-insight-banner" id="ttk-leaderboard-insight"></div>
+
+      <!-- 3A. VISUAL RACING BAR LEADERBOARD VIEW (Default) -->
+      <div id="ttk-leaderboard-wrap" class="ttk-race-list">
+        <div class="ttk-race-header">
+          <div>排位 / 梯队</div>
+          <div>武器 & 当前场景最快改装</div>
+          <div>实测 TTK 竞速条 (含弹速飞行 + 扳机延迟) & 核心参数</div>
+          <div>整枪造价 / 杀1人弹药费 & 操作</div>
+        </div>
+        <div id="ttk-leaderboard-rows"></div>
+        <div id="ttk-leaderboard-more-wrap" style="padding:10px 14px; text-align:center; background:rgba(10,15,24,0.85); border-top:1px solid var(--border); display:none">
+          <button type="button" class="btn btn-sm" id="ttk-leaderboard-more-btn" onclick="toggleTtkShowAll()"></button>
+        </div>
+      </div>
+
+      <!-- 3B. FULL 14-COLUMN DATA TABLE VIEW (Toggled via '📋 完整参数表') -->
+      <div class="table-container" id="variants-table-container" style="display:none; margin-bottom:14px">
+        <div class="table-scroll" style="max-height: 74vh">
+          <table class="data-table" id="variants-table">
+            <thead>
+              <tr>
+                <th style="width:44px; text-align:center">曲线</th>
+                <th class="sortable" onclick="sortVariants('weapon_name')">武器立绘</th>
+                <th class="sortable" onclick="sortVariants('variant_label')">核心改装</th>
+                <th class="sortable" onclick="sortVariants('mod_cost')">改件价</th>
+                <th class="sortable" onclick="sortVariants('rof_rpm')">射速</th>
+                <th class="sortable" onclick="sortVariants('trigger_delay_ms')">延迟</th>
+                <th class="sortable" onclick="sortVariants('flesh_dmg')">肉/甲伤</th>
+                <th class="sortable" onclick="sortVariants('head_mult')">部位倍率</th>
+                <th class="sortable" onclick="sortVariants('range_step1_m')">一段</th>
+                <th class="sortable sorted-asc" onclick="sortVariants('active_ttk')">当前场景TTK</th>
+                <th class="sortable" onclick="sortVariants('active_ttk_same')">5弹打5甲</th>
+                <th class="sortable" onclick="sortVariants('active_ttk_4v5')">4弹打5甲</th>
+                <th class="sortable" onclick="sortVariants('ttk_0m_head_same_ms')">爆头TTK</th>
+                <th class="sortable" onclick="sortVariants('ttk_0m_limb_ms')">修脚TTK</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="variants-tbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4. INTERACTIVE MULTI-WEAPON 0m~100m STEP-DECAY CURVE CHART -->
       <div class="duel-sim-box" style="margin-bottom:14px">
         <div class="duel-sim-header" style="margin-bottom:10px; padding-bottom:10px">
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap">
             <h3 style="font-size:15px; font-weight:800; color:var(--text-bright); margin:0">📈 多武器 0m ~ 100m 阶梯衰减曲线对比</h3>
-            <span class="badge badge-neu">在下表勾选最多 5 把武器叠加对比</span>
+            <span class="badge badge-neu">在上方天梯点击「+曲线」最多叠加 5 把武器对比</span>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
             <select id="chart-metric-mode" class="select-control" onchange="renderVariantComparisonChart()">
@@ -3692,66 +4040,13 @@
         <div id="variant-chart-container" style="width:100%; overflow-x:auto"></div>
       </div>
 
-      <!-- Collapsible Visual Meta Tier Board so it doesn't clutter the screen -->
+      <!-- 5. Collapsible Visual Meta Tier Board -->
       <details style="margin-bottom:14px; background:var(--bg-panel); border:1px solid var(--border); border-radius:var(--radius); padding:8px 14px">
         <summary style="cursor:pointer; font-size:12.5px; font-weight:800; color:var(--text-main); user-select:none">
           🏆 展开 S+ / S / A 梯度视觉速选看板（点击武器卡片可直接加入上方曲线）
         </summary>
         <div class="tier-board" id="variants-tier-board" style="margin-top:10px; margin-bottom:4px"></div>
       </details>
-
-      <div class="filter-bar">
-        <div class="filter-group">
-          <input type="text" id="variants-search" class="input-control" placeholder="🔍 检索武器或改件 (PKM, 腾龙, HVK)..." oninput="renderVariantsTable()" />
-          <select id="variants-cat" class="select-control" onchange="renderVariantsTable()">
-            <option value="ALL">全部枪种</option>
-          </select>
-          <select id="variants-caliber" class="select-control" onchange="renderVariantsTable()">
-            <option value="ALL">全部口径</option>
-          </select>
-          <select id="variants-dist" class="select-control" onchange="renderVariantsTable()">
-            <option value="0m">距离: 0m (贴脸)</option>
-            <option value="25m">距离: 25m (街区)</option>
-            <option value="45m">距离: 45m (中远)</option>
-            <option value="70m">距离: 70m (远距)</option>
-          </select>
-          <label class="checkbox-label">
-            <input type="checkbox" id="variants-base-only" onchange="renderVariantsTable()" />
-            仅原厂裸枪
-          </label>
-          <label class="checkbox-label">
-            <input type="checkbox" id="variants-mod-only" onchange="renderVariantsTable()" />
-            仅改装形态
-          </label>
-        </div>
-        <div class="result-counter" id="variants-count-label">226 形态</div>
-      </div>
-
-      <div class="table-container">
-        <div class="table-scroll" style="max-height: 74vh">
-          <table class="data-table" id="variants-table">
-            <thead>
-              <tr>
-                <th style="width:44px; text-align:center">曲线</th>
-                <th class="sortable" onclick="sortVariants('weapon_name')">武器立绘</th>
-                <th class="sortable" onclick="sortVariants('variant_label')">核心改装</th>
-                <th class="sortable" onclick="sortVariants('mod_cost')">改件价</th>
-                <th class="sortable" onclick="sortVariants('rof_rpm')">射速</th>
-                <th class="sortable" onclick="sortVariants('trigger_delay_ms')">延迟</th>
-                <th class="sortable" onclick="sortVariants('flesh_dmg')">肉/甲伤</th>
-                <th class="sortable" onclick="sortVariants('head_mult')">部位倍率</th>
-                <th class="sortable" onclick="sortVariants('range_step1_m')">一段</th>
-                <th class="sortable sorted-asc" onclick="sortVariants('active_ttk_same')">5弹打5甲</th>
-                <th class="sortable" onclick="sortVariants('active_ttk_4v5')">4弹打5甲</th>
-                <th class="sortable" onclick="sortVariants('ttk_0m_head_same_ms')">爆头TTK</th>
-                <th class="sortable" onclick="sortVariants('ttk_0m_limb_ms')">修脚TTK</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody id="variants-tbody"></tbody>
-          </table>
-        </div>
-      </div>
     </section>
 
     <!-- ==================== TAB 4: SINGLE-GUN FULL-SLOT BUILDER & BUILD CODES ==================== -->
@@ -3983,6 +4278,7 @@
       if (v.is_base === undefined) v.is_base = (v.variant_type === '原厂基础' || v.mod_parts === '原厂裸枪');
       if (v.variant_label === undefined) v.variant_label = v.is_base ? '【基线】无改装' : (v.mod_parts || v.variant_name || '');
       if (v.mod_cost === undefined) v.mod_cost = v.mod_parts_price || 0;
+      if (v.total_price === undefined) v.total_price = v.base_plus_mod_price || ((v.gun_base_price || 45000) + (v.mod_cost || 0));
       if (v.flesh_dmg === undefined) v.flesh_dmg = v.flesh_damage;
       if (v.armor_dmg === undefined) v.armor_dmg = v.armor_damage;
       if (v.limb_mult === undefined) v.limb_mult = v.thigh_mult ?? v.upper_arm_mult ?? 0.4;
@@ -3992,24 +4288,67 @@
 
       const intervalMs = v.shot_interval_ms || (60000 / Math.max(60, v.rof_rpm || 600));
       const delayMs = v.trigger_delay_ms || 0;
+      const velMps = Math.max(180, v.muzzle_velocity_mps || 600);
+      const hsEff0m = (v.headshot_damage_0m || ((v.flesh_dmg || 30) * (v.head_mult || 1.9))) * 0.78;
+      const limbDmg0m = (v.flesh_dmg || 30) * (v.limb_mult || 0.4);
 
-      // Map 0m, 25m, 45m, 70m TTK & BTK
+      // Map 0m, 25m, 45m, 70m TTK & BTK across all 6 tactical matchups (including bullet flight time)
       ['0m', '25m', '45m', '70m'].forEach(dist => {
         const dNum = parseInt(dist, 10);
+        const flightMs = dNum > 0 ? (dNum / velMps) * 1000 : 0;
         const mult = dNum > (v.range_step2_m || 60) ? v.dmg_mult_step3 : (dNum > (v.range_step1_m || 35) ? v.dmg_mult_step1 : 1.0);
-        v[`ttk_${dist}_same_lv_ms`] = v[`ttk_5v5_${dist}_ms`] ?? v[`ttk_4v4_${dist}_ms`];
-        v[`btk_${dist}_same_lv`] = v[`btk_5v5_${dist}`] ?? v[`btk_4v4_${dist}`];
-        if (dist === '0m' && v.ttk_4v5_0m_ms !== undefined) {
-          v[`ttk_${dist}_lv4_vs_lv5_ms`] = v.ttk_4v5_0m_ms;
-          v[`btk_${dist}_lv4_vs_lv5`] = v.btk_4v5_0m;
+
+        // 1) 5v5 (or fallback to 4v4 for calibers without Lv5 ammo)
+        v[`ttk_${dist}_5v5_ms`] = v[`ttk_5v5_${dist}_ms`] ?? v[`ttk_4v4_${dist}_ms`];
+        v[`btk_${dist}_5v5`] = v[`btk_5v5_${dist}`] ?? v[`btk_4v4_${dist}`];
+        v[`ttk_${dist}_same_lv_ms`] = v[`ttk_${dist}_5v5_ms`];
+        v[`btk_${dist}_same_lv`] = v[`btk_${dist}_5v5`];
+
+        // 2) 4v4
+        v[`ttk_${dist}_4v4_ms`] = v[`ttk_4v4_${dist}_ms`] ?? v[`ttk_5v5_${dist}_ms`];
+        v[`btk_${dist}_4v4`] = v[`btk_4v4_${dist}`] ?? v[`btk_5v5_${dist}`];
+
+        // 3) 4v5 (Lv4 ammo vs Lv5 armor)
+        if (dist === '0m' && v.ttk_4v5_0m_ms !== undefined && v.ttk_4v5_0m_ms !== null) {
+          v[`ttk_${dist}_4v5_ms`] = v.ttk_4v5_0m_ms;
+          v[`btk_${dist}_4v5`] = v.btk_4v5_0m;
         } else {
-          const baseBtk4v5 = v.btk_4v5_0m || 6;
+          const baseBtk4v5 = v.btk_4v5_0m || (v.btk_4v4_0m ? v.btk_4v4_0m + 2 : 6);
           const btkDist = Math.max(baseBtk4v5, Math.ceil(baseBtk4v5 / Math.max(0.35, mult)));
-          v[`btk_${dist}_lv4_vs_lv5`] = btkDist;
-          v[`ttk_${dist}_lv4_vs_lv5_ms`] = Math.round((btkDist - 1) * intervalMs + delayMs);
+          v[`btk_${dist}_4v5`] = btkDist;
+          v[`ttk_${dist}_4v5_ms`] = Math.round(((btkDist - 1) * intervalMs + delayMs + flightMs) * 10) / 10;
+        }
+        v[`ttk_${dist}_lv4_vs_lv5_ms`] = v[`ttk_${dist}_4v5_ms`];
+        v[`btk_${dist}_lv4_vs_lv5`] = v[`btk_${dist}_4v5`];
+
+        // 4) 5v6 (Lv5 ammo vs Lv6 red armor)
+        if (dist === '0m' && v.ttk_5v6_0m_ms !== undefined && v.ttk_5v6_0m_ms !== null) {
+          v[`ttk_${dist}_5v6_ms`] = v.ttk_5v6_0m_ms;
+          v[`btk_${dist}_5v6`] = v.btk_5v6_0m;
+        } else {
+          const baseBtk5v6 = v.btk_5v6_0m || (v[`btk_0m_5v5`] ? v[`btk_0m_5v5`] + 2 : 6);
+          const btkDist = Math.max(baseBtk5v6, Math.ceil(baseBtk5v6 / Math.max(0.35, mult)));
+          v[`btk_${dist}_5v6`] = btkDist;
+          v[`ttk_${dist}_5v6_ms`] = Math.round(((btkDist - 1) * intervalMs + delayMs + flightMs) * 10) / 10;
+        }
+
+        // 5) Headshot (Same-level ammo vs Helmet)
+        const btkHead = Math.max(1, Math.ceil(100 / Math.max(1, hsEff0m * mult)));
+        v[`btk_${dist}_head`] = btkHead;
+        v[`ttk_${dist}_head_ms`] = Math.round(((btkHead - 1) * intervalMs + delayMs + flightMs) * 10) / 10;
+
+        // 6) Limb (Leg meta, ignores armor)
+        if (dist === '0m' && v.ttk_limb_0m_ms !== undefined && v.ttk_limb_0m_ms !== null) {
+          v[`ttk_${dist}_limb_ms`] = v.ttk_limb_0m_ms;
+          v[`btk_${dist}_limb`] = v.btk_limb_0m;
+        } else {
+          const btkLimb = Math.max(1, Math.ceil(100 / Math.max(1, limbDmg0m * mult)));
+          v[`btk_${dist}_limb`] = btkLimb;
+          v[`ttk_${dist}_limb_ms`] = Math.round(((btkLimb - 1) * intervalMs + delayMs + flightMs) * 10) / 10;
         }
       });
-      // Aliases for 35m / 60m if selected
+
+      // Legacy aliases for 35m / 60m & 0m head/limb
       v.ttk_35m_same_lv_ms = v.ttk_25m_same_lv_ms;
       v.btk_35m_same_lv = v.btk_25m_same_lv;
       v.ttk_35m_lv4_vs_lv5_ms = v.ttk_25m_lv4_vs_lv5_ms;
@@ -4018,13 +4357,10 @@
       v.btk_60m_same_lv = v.btk_45m_same_lv;
       v.ttk_60m_lv4_vs_lv5_ms = v.ttk_45m_lv4_vs_lv5_ms;
       v.btk_60m_lv4_vs_lv5 = v.btk_45m_lv4_vs_lv5;
-
-      // Headshot 0m & Limb 0m
-      const hsEff = (v.headshot_damage_0m || ((v.flesh_dmg || 30) * (v.head_mult || 1.9))) * 0.78;
-      v.btk_0m_head_same = Math.max(1, Math.ceil(100 / Math.max(1, hsEff)));
-      v.ttk_0m_head_same_ms = Math.round((v.btk_0m_head_same - 1) * intervalMs + delayMs);
-      v.btk_0m_limb = v.btk_limb_0m;
-      v.ttk_0m_limb_ms = v.ttk_limb_0m_ms;
+      v.btk_0m_head_same = v.btk_0m_head;
+      v.ttk_0m_head_same_ms = v.ttk_0m_head_ms;
+      v.btk_0m_limb = v.btk_0m_limb;
+      v.ttk_0m_limb_ms = v.ttk_0m_limb_ms;
     });
 
     function showToast(msg) {
@@ -5513,12 +5849,31 @@
       showToast(`📥 已导出 ${list.length} 个配件 CSV 数据表`);
     }
 
-    // ==================== TAB 3: 226 WEAPON VARIANTS & MULTI-WEAPON CURVE CHART ====================
-    let variantsSortKey = 'active_ttk_same';
+    // ==================== TAB 3: SCENARIO TTK RACING LEADERBOARD & MULTI-WEAPON CURVE CHART ====================
+    let variantsSortKey = 'active_ttk';
     let variantsSortAsc = true;
+    let ttkScenarioMatchup = '5v5';
+    let variantsViewMode = 'race';
+    let ttkShowAll = false;
     let chartComparedIndices = [];
 
     const CHART_COLORS = ['var(--pos)', 'var(--blue)', 'var(--gold)', 'var(--red)', 'var(--purple)'];
+
+    const TTK_MATCHUP_META = {
+      '5v5': { label: '5级弹打5级甲', short: '5弹打5甲', unit: '枪死', ammoLv: 5 },
+      '4v4': { label: '4级弹打4级甲', short: '4弹打4甲', unit: '枪死', ammoLv: 4 },
+      '4v5': { label: '4级弹越级打5级甲', short: '4弹越级打5甲', unit: '枪死', ammoLv: 4 },
+      '5v6': { label: '5级弹打6级红甲', short: '5弹打6甲', unit: '枪死', ammoLv: 5 },
+      'head': { label: '同级弹打头盔 (爆头线)', short: '同级弹爆头', unit: '枪头', ammoLv: 5 },
+      'limb': { label: '四肢修脚 (无视护甲)', short: '四肢修脚', unit: '枪肢', ammoLv: 4 }
+    };
+
+    const TTK_DIST_META = {
+      '0m': '0m 贴脸CQB',
+      '25m': '25m 街区中近',
+      '45m': '45m 中远对枪',
+      '70m': '70m 远距架点'
+    };
 
     function initVariantsFilters() {
       const catSelect = document.getElementById('variants-cat');
@@ -5541,6 +5896,60 @@
 
       setPresetChartComparison('t0_main', true);
       renderVariantsTierBoard();
+    }
+
+    function setTtkScenarioDist(dist, btnEl) {
+      const distSelect = document.getElementById('variants-dist');
+      if (distSelect) distSelect.value = dist;
+      document.querySelectorAll('#ttk-dist-pills .ttk-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-dist') === dist);
+      });
+      renderVariantsTable();
+    }
+
+    function setTtkScenarioMatchup(matchup, btnEl) {
+      ttkScenarioMatchup = matchup;
+      document.querySelectorAll('#ttk-matchup-pills .ttk-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-matchup') === matchup);
+      });
+      // Keep active_ttk as primary sort when switching scenario matchup
+      variantsSortKey = 'active_ttk';
+      variantsSortAsc = true;
+      renderVariantsTable();
+    }
+
+    function setTtkScenarioCat(cat, btnEl) {
+      const catSelect = document.getElementById('variants-cat');
+      if (catSelect) catSelect.value = cat;
+      document.querySelectorAll('#ttk-cat-pills .ttk-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-cat') === cat);
+      });
+      ttkShowAll = false;
+      renderVariantsTable();
+    }
+
+    function syncCatPillFromSelect() {
+      const cat = document.getElementById('variants-cat')?.value || 'AUTO_MAIN';
+      document.querySelectorAll('#ttk-cat-pills .ttk-pill').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-cat') === cat);
+      });
+    }
+
+    function setVariantsViewMode(mode) {
+      variantsViewMode = mode;
+      const raceBtn = document.getElementById('ttk-view-btn-race');
+      const tableBtn = document.getElementById('ttk-view-btn-table');
+      const raceWrap = document.getElementById('ttk-leaderboard-wrap');
+      const tableWrap = document.getElementById('variants-table-container');
+      if (raceBtn) raceBtn.classList.toggle('active', mode === 'race');
+      if (tableBtn) tableBtn.classList.toggle('active', mode === 'table');
+      if (raceWrap) raceWrap.style.display = mode === 'race' ? '' : 'none';
+      if (tableWrap) tableWrap.style.display = mode === 'table' ? '' : 'none';
+    }
+
+    function toggleTtkShowAll() {
+      ttkShowAll = !ttkShowAll;
+      renderVariantsTable();
     }
 
     function renderVariantsTierBoard() {
@@ -5791,29 +6200,251 @@
       renderVariantsTable();
     }
 
+    function renderTtkLeaderboard(filtered, dist, matchup) {
+      const insightEl = document.getElementById('ttk-leaderboard-insight');
+      const rowsEl = document.getElementById('ttk-leaderboard-rows');
+      const moreWrap = document.getElementById('ttk-leaderboard-more-wrap');
+      const moreBtn = document.getElementById('ttk-leaderboard-more-btn');
+      if (!rowsEl) return;
+
+      const meta = TTK_MATCHUP_META[matchup] || TTK_MATCHUP_META['5v5'];
+      const distLabel = TTK_DIST_META[dist] || dist;
+
+      // Sort a copy strictly by active_ttk ASC for the racing leaderboard
+      const raceList = [...filtered].filter(v => v.active_ttk !== null && v.active_ttk !== undefined).sort((a, b) => {
+        if (a.active_ttk !== b.active_ttk) return a.active_ttk - b.active_ttk;
+        if ((a.total_price || 0) !== (b.total_price || 0)) return (a.total_price || 0) - (b.total_price || 0);
+        return (b.rof_rpm || 0) - (a.rof_rpm || 0);
+      });
+
+      if (raceList.length === 0) {
+        if (insightEl) insightEl.innerHTML = '';
+        rowsEl.innerHTML = `<div style="padding:32px; text-align:center; color:var(--text-dim)">当前筛选条件下暂无匹配武器，请放宽预算或枪种筛选</div>`;
+        if (moreWrap) moreWrap.style.display = 'none';
+        return;
+      }
+
+      const fastest = raceList[0];
+      const bestTime = fastest.active_ttk || 0;
+
+      // Find best value <= 150,000 total_price (or cheapest among top 15 if budget filter is tight)
+      const budget15w = raceList.find(v => (v.total_price || 999999) <= 150000) || raceList[Math.min(1, raceList.length - 1)];
+
+      // Find lowest ammo kill cost among top-tier competitive guns (within +90ms of #1)
+      const competitivePool = raceList.filter(v => (v.active_ttk - bestTime) <= 95 && v.active_ammo_cost > 0);
+      const ecoPool = competitivePool.length > 0 ? competitivePool : raceList.filter(v => v.active_ammo_cost > 0);
+      const cheapestKill = ecoPool.length > 0
+        ? [...ecoPool].sort((a, b) => a.active_ammo_cost - b.active_ammo_cost || a.active_ttk - b.active_ttk)[0]
+        : fastest;
+
+      if (insightEl) {
+        const wFast = WEAPONS_BY_ID[fastest.weapon_id] || WEAPONS_BY_NAME[fastest.weapon_name] || {};
+        const wVal = WEAPONS_BY_ID[budget15w.weapon_id] || WEAPONS_BY_NAME[budget15w.weapon_name] || {};
+        const wEco = WEAPONS_BY_ID[cheapestKill.weapon_id] || WEAPONS_BY_NAME[cheapestKill.weapon_name] || {};
+        insightEl.innerHTML = `
+          <div class="ttk-insight-card" onclick="openVariantInBuilder(${fastest._globalIdx})" style="cursor:pointer" title="点击去满槽改枪台模拟此形态">
+            <img src="${fastest.image || wFast.image || ''}" alt="${fastest.weapon_name}" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(fastest.category_cn, fastest.weapon_name)}'" />
+            <div style="min-width:0">
+              <div class="tic-kicker" style="color:var(--gold)">👑 ${distLabel} · ${meta.short} 理论最快霸主</div>
+              <div class="tic-title">${fastest.weapon_name} <span style="font-size:11.5px; color:var(--accent); font-weight:700">${fastest.is_base ? '原厂基线' : fastest.variant_label}</span></div>
+              <div class="tic-meta"><strong style="color:var(--pos)">${fastest.active_ttk} ms</strong> (${fastest.active_btk}${meta.unit}) · ${fastest.rof_rpm}RPM · 整枪 ~${fmtWan(fastest.total_price)}</div>
+            </div>
+          </div>
+          <div class="ttk-insight-card" onclick="openVariantInBuilder(${budget15w._globalIdx})" style="cursor:pointer" title="点击去满槽改枪台模拟此形态">
+            <img src="${budget15w.image || wVal.image || ''}" alt="${budget15w.weapon_name}" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(budget15w.category_cn, budget15w.weapon_name)}'" />
+            <div style="min-width:0">
+              <div class="tic-kicker" style="color:var(--pos)">💎 ≤15万造价 · 性价比战神</div>
+              <div class="tic-title">${budget15w.weapon_name} <span style="font-size:11.5px; color:var(--accent); font-weight:700">${budget15w.is_base ? '原厂基线' : budget15w.variant_label}</span></div>
+              <div class="tic-meta"><strong style="color:var(--pos)">${budget15w.active_ttk} ms</strong> (${budget15w.active_btk}${meta.unit}) · 整枪仅 <strong style="color:var(--gold)">~${fmtWan(budget15w.total_price)}</strong></div>
+            </div>
+          </div>
+          <div class="ttk-insight-card" onclick="openVariantInBuilder(${cheapestKill._globalIdx})" style="cursor:pointer" title="点击去满槽改枪台模拟此形态">
+            <img src="${cheapestKill.image || wEco.image || ''}" alt="${cheapestKill.weapon_name}" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(cheapestKill.category_cn, cheapestKill.weapon_name)}'" />
+            <div style="min-width:0">
+              <div class="tic-kicker" style="color:var(--blue)">🪙 第一梯队 · 单次击杀最省弹药</div>
+              <div class="tic-title">${cheapestKill.weapon_name} <span style="font-size:11.5px; color:var(--accent); font-weight:700">${cheapestKill.is_base ? '原厂基线' : cheapestKill.variant_label}</span></div>
+              <div class="tic-meta">杀1人仅耗 <strong style="color:var(--gold)">¥${fmtPrice(cheapestKill.active_ammo_cost)}</strong> (${cheapestKill.active_btk}发) · TTK <strong>${cheapestKill.active_ttk} ms</strong></div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Scale racing bar: fastest = ~22% bar width (or 8% if 0ms), 520ms+ = 100% bar width
+      const maxScaleMs = Math.max(480, Math.min(750, (raceList[Math.min(raceList.length - 1, 25)]?.active_ttk || 480) * 1.08));
+      const limit = ttkShowAll ? raceList.length : Math.min(30, raceList.length);
+      const visibleRows = raceList.slice(0, limit);
+
+      rowsEl.innerHTML = visibleRows.map((v, idx) => {
+        const rank = idx + 1;
+        const deltaMs = Math.round((v.active_ttk - bestTime) * 10) / 10;
+        const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
+        const inChart = chartComparedIndices.includes(v._globalIdx);
+
+        // Tier badge based on delta vs #1 & absolute TTK
+        let tierBadge = '';
+        let barColor = 'linear-gradient(90deg, rgba(var(--accent-rgb), 0.88), rgba(var(--blue-rgb), 0.72))';
+        if (deltaMs <= 42 || v.active_ttk <= 255) {
+          tierBadge = `<span class="badge badge-pos" style="font-size:10px; padding:1px 6px">T0 统治</span>`;
+          barColor = 'linear-gradient(90deg, #00e6a8, #00b8d4)';
+        } else if (deltaMs <= 95 || v.active_ttk <= 315) {
+          tierBadge = `<span class="badge badge-blue" style="font-size:10px; padding:1px 6px">T1 主力</span>`;
+          barColor = 'linear-gradient(90deg, #38bdf8, #3b82f6)';
+        } else if (deltaMs <= 165 || v.active_ttk <= 385) {
+          tierBadge = `<span class="badge badge-gold" style="font-size:10px; padding:1px 6px">T2 常规</span>`;
+          barColor = 'linear-gradient(90deg, #f59e0b, #d97706)';
+        } else {
+          tierBadge = `<span class="badge badge-neu" style="font-size:10px; padding:1px 6px">T3 慢速</span>`;
+          barColor = 'linear-gradient(90deg, #64748b, #475569)';
+        }
+
+        const rankCls = rank === 1 ? 'top-1' : (rank === 2 ? 'top-2' : (rank === 3 ? 'top-3' : ''));
+        const medal = rank === 1 ? '🥇 1' : (rank === 2 ? '🥈 2' : (rank === 3 ? '🥉 3' : `#${rank}`));
+        const fillPct = v.active_ttk <= 0 ? 7 : Math.min(98, Math.max(14, Math.round((v.active_ttk / maxScaleMs) * 96)));
+        const tick250Pct = Math.round((250 / maxScaleMs) * 96);
+        const tick350Pct = Math.round((350 / maxScaleMs) * 96);
+
+        const modDisplay = v.is_base
+          ? `<span class="badge badge-neu" style="font-size:10.5px">原厂裸枪基线</span>`
+          : `<span class="ttk-mod-tag" title="${v.variant_label}">🔧 ${v.variant_label}</span>`;
+
+        const deltaHtml = rank === 1
+          ? `<span class="ttk-race-delta" style="color:var(--gold); font-weight:800">👑 当前场景最快</span>`
+          : `<span class="ttk-race-delta">慢 +${deltaMs}ms</span>`;
+
+        const dNum = parseInt(dist, 10);
+        const flightMs = dNum > 0 ? Math.round((dNum / Math.max(180, v.muzzle_velocity_mps || 600)) * 1000) : 0;
+
+        return `
+          <div class="ttk-race-row ${rank <= 3 ? 'rank-' + rank : ''}">
+            <div class="ttk-rank-cell">
+              <span class="ttk-rank-num ${rankCls}">${medal}</span>
+              ${tierBadge}
+            </div>
+
+            <div class="ttk-weapon-cell">
+              <img class="ttk-weapon-thumb" src="${v.image || wObj.image || ''}" alt="${v.weapon_name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
+              <div class="ttk-weapon-info">
+                <div class="ttk-weapon-name">
+                  <span>${v.weapon_name}</span>
+                  <span style="font-size:10.5px; color:var(--text-dim); font-weight:500">${v.caliber}</span>
+                </div>
+                <div class="ttk-weapon-sub">
+                  ${modDisplay}
+                  ${v._altCount > 1 ? `<span style="font-size:10px; color:var(--text-dim)">(共${v._altCount}种形态)</span>` : ''}
+                </div>
+              </div>
+            </div>
+
+            <div class="ttk-bar-cell">
+              <div class="ttk-race-track">
+                <div class="ttk-race-tick" style="left:${tick250Pct}%" title="250ms T0分水岭"></div>
+                <div class="ttk-race-tick" style="left:${tick350Pct}%" title="350ms 常规线"></div>
+                <div class="ttk-race-fill" style="width:${fillPct}%; background:${barColor}"></div>
+                <div class="ttk-race-label">
+                  <div>
+                    <span class="ttk-race-ms">${v.active_ttk} ms</span>
+                    <span class="ttk-race-btk">${v.active_btk} ${meta.unit}</span>
+                  </div>
+                  ${deltaHtml}
+                </div>
+              </div>
+              <div class="ttk-sub-metrics">
+                <span>⚡ 射速 <strong>${v.rof_rpm}</strong> RPM</span>
+                <span>📏 一段 <strong>${v.range_step1_m}m</strong></span>
+                <span>💥 肉/甲伤 <strong>${v.flesh_dmg}/${v.armor_dmg}</strong></span>
+                ${flightMs > 0 ? `<span>🚀 ${dist}飞行 <strong>+${flightMs}ms</strong> (${v.muzzle_velocity_mps || 600}m/s)</span>` : `<span>🚀 初速 <strong>${v.muzzle_velocity_mps || 600}m/s</strong></span>`}
+                ${v.trigger_delay_ms > 0 ? `<span style="color:var(--gold)">⏳ 扳机延迟 <strong>+${v.trigger_delay_ms}ms</strong></span>` : ''}
+              </div>
+            </div>
+
+            <div class="ttk-cost-cell">
+              <div class="ttk-cost-block">
+                <div class="ttk-cost-main" title="裸枪+核心改件总造价">整枪 ~${fmtWan(v.total_price)}</div>
+                <div class="ttk-cost-sub" title="当前场景击杀1名敌人所需子弹费用 (${v.active_btk}发)">
+                  杀1人弹药: ${v.active_ammo_cost ? `<strong style="color:var(--gold)">¥${fmtPrice(v.active_ammo_cost)}</strong>` : '无数据'}
+                </div>
+              </div>
+              <div style="display:flex; gap:5px; align-items:center">
+                <button type="button" class="btn btn-sm ${inChart ? 'btn-primary' : ''}" style="padding:4px 8px; font-size:11px" onclick="toggleVariantChartCompare(${v._globalIdx}); renderVariantsTable()" title="加入下方 0m~100m 距离衰减曲线对比">
+                  ${inChart ? '📈 已加' : '📈 +曲线'}
+                </button>
+                <button type="button" class="btn btn-sm" style="padding:4px 8px; font-size:11px" onclick="openVariantInBuilder(${v._globalIdx})" title="在单枪满槽改枪台中打开此武器形态">
+                  🛠️ 改枪
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (moreWrap && moreBtn) {
+        if (raceList.length > 30) {
+          moreWrap.style.display = '';
+          moreBtn.textContent = ttkShowAll
+            ? `🔼 收起排位列表 (仅看 Top 30)`
+            : `📋 展开全部 ${raceList.length} 款武器/形态排位 (当前显示 Top 30)`;
+        } else {
+          moreWrap.style.display = 'none';
+        }
+      }
+    }
+
     function renderVariantsTable() {
       const q = (document.getElementById('variants-search')?.value || '').trim().toLowerCase();
-      const cat = document.getElementById('variants-cat')?.value || 'ALL';
+      const cat = document.getElementById('variants-cat')?.value || 'AUTO_MAIN';
       const cal = document.getElementById('variants-caliber')?.value || 'ALL';
       const dist = document.getElementById('variants-dist')?.value || '0m';
+      const budgetVal = document.getElementById('variants-budget')?.value || 'ALL';
+      const maxBudget = budgetVal === 'ALL' ? Infinity : Number(budgetVal);
+      const dedupWeapon = document.getElementById('variants-dedup-weapon')?.checked;
       const baseOnly = document.getElementById('variants-base-only')?.checked;
       const modOnly = document.getElementById('variants-mod-only')?.checked;
 
+      const matchup = ttkScenarioMatchup || '5v5';
+      const activeTtkKey = `ttk_${dist}_${matchup}_ms`;
+      const activeBtkKey = `btk_${dist}_${matchup}`;
       const sameKey = `ttk_${dist}_same_lv_ms`;
       const btkSameKey = `btk_${dist}_same_lv`;
       const lv4Key = `ttk_${dist}_lv4_vs_lv5_ms`;
       const btk4Key = `btk_${dist}_lv4_vs_lv5`;
 
-      const filtered = DATA.variants.map((v, globalIdx) => ({
-        ...v,
-        _globalIdx: globalIdx,
-        active_ttk_same: v[sameKey],
-        active_btk_same: v[btkSameKey],
-        active_ttk_4v5: v[lv4Key],
-        active_btk_4v5: v[btk4Key],
-      })).filter(v => {
-        if (cat !== 'ALL' && v.category_cn !== cat) return false;
+      const useLv4Price = (matchup === '4v4' || matchup === '4v5' || matchup === 'limb');
+
+      // Count how many variants each weapon has in total
+      const weaponVariantCounts = {};
+      DATA.variants.forEach(v => {
+        weaponVariantCounts[v.weapon_name] = (weaponVariantCounts[v.weapon_name] || 0) + 1;
+      });
+
+      let candidates = DATA.variants.map((v, globalIdx) => {
+        const activeTtk = v[activeTtkKey] ?? v[sameKey];
+        const activeBtk = v[activeBtkKey] ?? v[btkSameKey] ?? 4;
+        const unitBulletPrice = useLv4Price
+          ? (v.eval_ammo_lv4_price || v.eval_ammo_lv5_price || 0)
+          : (v.eval_ammo_lv5_price || v.eval_ammo_lv4_price || 0);
+        const activeAmmoCost = unitBulletPrice > 0 ? Math.round(unitBulletPrice * activeBtk) : 0;
+
+        return {
+          ...v,
+          _globalIdx: globalIdx,
+          _altCount: weaponVariantCounts[v.weapon_name] || 1,
+          active_ttk: activeTtk,
+          active_btk: activeBtk,
+          active_ammo_cost: activeAmmoCost,
+          active_ttk_same: v[sameKey],
+          active_btk_same: v[btkSameKey],
+          active_ttk_4v5: v[lv4Key],
+          active_btk_4v5: v[btk4Key],
+        };
+      }).filter(v => {
+        if (cat === 'AUTO_MAIN') {
+          if (v.category_cn === '霰弹枪') return false;
+          if ((v.rof_rpm || 0) < 300) return false;
+        } else if (cat !== 'ALL' && v.category_cn !== cat) {
+          return false;
+        }
         if (cal !== 'ALL' && v.caliber !== cal) return false;
+        if ((v.total_price || 0) > maxBudget) return false;
         if (baseOnly && v.variant_label !== '【基线】无改装') return false;
         if (modOnly && v.variant_label === '【基线】无改装') return false;
         if (q) {
@@ -5822,6 +6453,26 @@
         }
         return true;
       });
+
+      // Smart per-weapon deduplication: keep each weapon's fastest variant for this exact scenario
+      if (dedupWeapon) {
+        const bestByWeapon = new Map();
+        candidates.forEach(v => {
+          const prev = bestByWeapon.get(v.weapon_name);
+          if (!prev) {
+            bestByWeapon.set(v.weapon_name, v);
+          } else {
+            const vTtk = v.active_ttk ?? 9999;
+            const pTtk = prev.active_ttk ?? 9999;
+            if (vTtk < pTtk || (vTtk === pTtk && (v.range_step1_m || 0) > (prev.range_step1_m || 0)) || (vTtk === pTtk && (v.total_price || 0) < (prev.total_price || 0))) {
+              bestByWeapon.set(v.weapon_name, v);
+            }
+          }
+        });
+        candidates = Array.from(bestByWeapon.values());
+      }
+
+      const filtered = candidates;
 
       filtered.sort((a, b) => {
         let va = a[variantsSortKey];
@@ -5834,9 +6485,20 @@
         return variantsSortAsc ? va - vb : vb - va;
       });
 
-      document.getElementById('variants-count-label').textContent = `当前显示: ${filtered.length} / ${DATA.variants.length} 种形态`;
+      const meta = TTK_MATCHUP_META[matchup] || TTK_MATCHUP_META['5v5'];
+      const countEl = document.getElementById('variants-count-label');
+      if (countEl) {
+        countEl.textContent = dedupWeapon
+          ? `当前排位: ${filtered.length} 把武器 (${dist} · ${meta.short})`
+          : `当前排位: ${filtered.length} / ${DATA.variants.length} 种形态`;
+      }
 
+      // Render Visual Racing Bar Leaderboard & Top-3 Insight Cards
+      renderTtkLeaderboard(filtered, dist, matchup);
+
+      // Render 14-Column Full Parameter Table
       const tbody = document.getElementById('variants-tbody');
+      if (!tbody) return;
       tbody.innerHTML = filtered.map(v => {
         const isBase = v.variant_label === '【基线】无改装';
         const labelHtml = isBase
@@ -5847,12 +6509,12 @@
           : `<span style="color:var(--text-dim)">0</span>`;
         const inChart = chartComparedIndices.includes(v._globalIdx);
         const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
-        const sameBarW = Math.min(100, Math.max(10, Math.round(((460 - (v.active_ttk_same || 350)) / 380) * 100)));
+        const activeBarW = Math.min(100, Math.max(10, Math.round(((460 - (v.active_ttk || 350)) / 380) * 100)));
 
         return `
           <tr>
             <td style="text-align:center">
-              <input type="checkbox" ${inChart ? 'checked' : ''} onchange="toggleVariantChartCompare(${v._globalIdx}, this)" title="加入上方距离-TTK衰减曲线对比" style="accent-color:var(--accent); cursor:pointer" />
+              <input type="checkbox" ${inChart ? 'checked' : ''} onchange="toggleVariantChartCompare(${v._globalIdx}, this)" title="加入下方距离-TTK衰减曲线对比" style="accent-color:var(--accent); cursor:pointer" />
             </td>
             <td style="font-weight:800; color:#fff">
               <div style="display:flex; align-items:center; gap:8px">
@@ -5871,11 +6533,12 @@
             <td class="mono" style="font-size:11.5px; color:var(--text-muted)">${v.head_mult}/${v.chest_mult}/${v.abdomen_mult}/${v.limb_mult}</td>
             <td class="mono">${v.range_step1_m}m</td>
             <td>
-              <div class="mono ${ttkClass(v.active_ttk_same)}">${v.active_ttk_same} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_same}枪)</span></div>
+              <div class="mono ${ttkClass(v.active_ttk)}">${v.active_ttk} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk}${meta.unit})</span></div>
               <div style="height:3.5px; width:92px; background:rgba(255,255,255,0.06); border-radius:2px; margin-top:3px; overflow:hidden">
-                <div style="height:100%; width:${sameBarW}%; background:${v.active_ttk_same <= 260 ? 'var(--accent)' : (v.active_ttk_same <= 340 ? 'var(--blue)' : 'var(--gold)')}"></div>
+                <div style="height:100%; width:${activeBarW}%; background:${v.active_ttk <= 260 ? 'var(--accent)' : (v.active_ttk <= 340 ? 'var(--blue)' : 'var(--gold)')}"></div>
               </div>
             </td>
+            <td class="mono ${ttkClass(v.active_ttk_same)}">${v.active_ttk_same} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_same}枪)</span></td>
             <td class="mono ${ttkClass(v.active_ttk_4v5)}">${v.active_ttk_4v5} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_4v5}枪)</span></td>
             <td class="mono ${ttkClass(v.ttk_0m_head_same_ms)}">${v.ttk_0m_head_same_ms} ms <span style="font-size:11px;color:var(--text-dim)">(${v.btk_0m_head_same}头)</span></td>
             <td class="mono">${v.ttk_0m_limb_ms} ms <span style="font-size:11px;color:var(--text-dim)">(${v.btk_0m_limb}肢)</span></td>
