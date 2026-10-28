@@ -6,38 +6,174 @@
   <title>三角洲行动 (Delta Force) 武器·配件·弹甲底层数据终端 & 满改模拟器</title>
   <meta name="description" content="三角洲行动 (Delta Force) 62把武器、226种核心改装形态、577个配件底层解包参数、114种弹药、51种护甲头盔与103组游戏内改枪码全量交互式战术终端。" />
   <style>
-    :root {
-      --bg-base: #070a0f;
-      --bg-panel: #0d131c;
-      --bg-card: #121a26;
-      --bg-card-hover: #172232;
-      --bg-elevated: #1b2738;
-      --bg-glass: rgba(13, 19, 28, 0.86);
-      --border: #1f2d40;
-      --border-light: #2c405a;
-      --border-glow: rgba(0, 242, 169, 0.35);
-      --text-main: #e8f0f8;
-      --text-muted: #8fa3b8;
-      --text-dim: #5c7087;
-      --accent: #00f2a9;
-      --accent-dim: rgba(0, 242, 169, 0.12);
-      --accent-hover: #26ffbe;
-      --blue: #38bdf8;
-      --blue-dim: rgba(56, 189, 248, 0.14);
-      --gold: #fbbf24;
-      --gold-dim: rgba(251, 191, 36, 0.14);
-      --red: #fb7185;
-      --red-dim: rgba(251, 113, 133, 0.14);
-      --purple: #c084fc;
-      --purple-dim: rgba(192, 132, 252, 0.14);
-      --orange: #fb923c;
+    :root,
+    [data-theme="gti"] {
+      /* 60% Dominant Surface: Anodized Titanium & Carbon Obsidian (Low-Chroma Neutral Dark) */
+      --bg-base: #090b0e;
+      --bg-panel: #0e1116;
+      --bg-card: #13171e;
+      --bg-card-hover: #181e27;
+      --bg-elevated: #1e2530;
+      --bg-glass: rgba(14, 17, 22, 0.88);
+      --surface-rgb: 19, 23, 30;
+      --stage-rgb: 9, 11, 15;
+
+      /* Specular Hairline Borders & Studio Lighting */
+      --border: rgba(226, 234, 245, 0.075);
+      --border-light: rgba(226, 234, 245, 0.135);
+      --border-glow: rgba(46, 211, 162, 0.35);
+      --specular-inset: inset 0 1px 0 rgba(255, 255, 255, 0.055);
+
+      /* 30% Alabaster & Brushed Steel Typography (Zero Halation) */
+      --text-bright: #f4f6f9;
+      --text-main: #e4e9f0;
+      --text-muted: #93a0b0;
+      --text-dim: #5f6c7d;
+
+      /* 10% Master OKLCH-Calibrated Chromatic Accents (Iso-Luminant L≈0.79, Controlled Chroma) */
+      --accent: #2ed3a2;
+      --accent-rgb: 46, 211, 162;
+      --accent-dim: rgba(46, 211, 162, 0.12);
+      --accent-hover: #4ae2b5;
+
+      --pos: #2ed3a2;
+      --pos-rgb: 46, 211, 162;
+
+      --blue: #5ab0e8;
+      --blue-rgb: 90, 176, 232;
+      --blue-dim: rgba(90, 176, 232, 0.13);
+
+      --gold: #e5b65b;
+      --gold-rgb: 229, 182, 91;
+      --gold-dim: rgba(229, 182, 91, 0.13);
+
+      --red: #e86464;
+      --red-rgb: 232, 100, 100;
+      --red-dim: rgba(232, 100, 100, 0.13);
+
+      --purple: #ae85f2;
+      --purple-rgb: 174, 133, 242;
+      --purple-dim: rgba(174, 133, 242, 0.13);
+
+      --orange: #e69253;
       --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --font-mono: "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
       --radius: 10px;
       --radius-sm: 6px;
       --radius-lg: 14px;
-      --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.55);
-      --shadow-glow: 0 0 24px rgba(0, 242, 169, 0.15);
+      --shadow: 0 12px 32px -6px rgba(0, 0, 0, 0.65);
+      --shadow-glow: 0 0 22px rgba(var(--accent-rgb), 0.16);
+    }
+
+    /* Preset 2: Haavk Burnished Gold & Onyx (哈夫克黑金 · 奢华黑曜与香槟赤金) */
+    [data-theme="haavk"] {
+      --bg-base: #0b0a09;
+      --bg-panel: #11100e;
+      --bg-card: #171512;
+      --bg-card-hover: #1e1b17;
+      --bg-elevated: #25211c;
+      --bg-glass: rgba(17, 16, 14, 0.89);
+      --surface-rgb: 23, 21, 18;
+      --stage-rgb: 11, 10, 9;
+      --border: rgba(242, 232, 215, 0.08);
+      --border-light: rgba(242, 232, 215, 0.145);
+      --border-glow: rgba(226, 180, 92, 0.36);
+      --text-bright: #f8f5ef;
+      --text-main: #ebe6dc;
+      --text-muted: #a39b8e;
+      --text-dim: #6e675c;
+      --accent: #e2b45c;
+      --accent-rgb: 226, 180, 92;
+      --accent-dim: rgba(226, 180, 92, 0.13);
+      --accent-hover: #edc472;
+      --pos: #38c998;
+      --pos-rgb: 56, 201, 152;
+      --blue: #68b5e8;
+      --blue-rgb: 104, 181, 232;
+      --blue-dim: rgba(104, 181, 232, 0.13);
+      --gold: #e8be6b;
+      --gold-rgb: 232, 190, 107;
+      --gold-dim: rgba(232, 190, 107, 0.14);
+      --red: #e56b64;
+      --red-rgb: 229, 107, 100;
+      --red-dim: rgba(229, 107, 100, 0.13);
+      --purple: #b48cf0;
+      --purple-rgb: 180, 140, 240;
+      --purple-dim: rgba(180, 140, 240, 0.13);
+    }
+
+    /* Preset 3: Ahsarah Desert Titanium & Copper (阿萨拉战术砂岩 · 玄武钛灰与赤铜暖珀) */
+    [data-theme="ahsarah"] {
+      --bg-base: #0c0b0a;
+      --bg-panel: #131110;
+      --bg-card: #191715;
+      --bg-card-hover: #211e1b;
+      --bg-elevated: #282420;
+      --bg-glass: rgba(19, 17, 16, 0.89);
+      --surface-rgb: 25, 23, 21;
+      --stage-rgb: 12, 11, 10;
+      --border: rgba(238, 226, 214, 0.08);
+      --border-light: rgba(238, 226, 214, 0.145);
+      --border-glow: rgba(230, 138, 76, 0.36);
+      --text-bright: #f7f3ee;
+      --text-main: #e9e3dc;
+      --text-muted: #a1988e;
+      --text-dim: #6c645b;
+      --accent: #e68a4c;
+      --accent-rgb: 230, 138, 76;
+      --accent-dim: rgba(230, 138, 76, 0.13);
+      --accent-hover: #f09c62;
+      --pos: #42c79a;
+      --pos-rgb: 66, 199, 154;
+      --blue: #64b2e6;
+      --blue-rgb: 100, 178, 230;
+      --blue-dim: rgba(100, 178, 230, 0.13);
+      --gold: #e5bc66;
+      --gold-rgb: 229, 188, 102;
+      --gold-dim: rgba(229, 188, 102, 0.14);
+      --red: #e66262;
+      --red-rgb: 230, 98, 98;
+      --red-dim: rgba(230, 98, 98, 0.13);
+      --purple: #b088ed;
+      --purple-rgb: 176, 136, 237;
+      --purple-dim: rgba(176, 136, 237, 0.13);
+    }
+
+    /* Preset 4: Aerospace Cobalt & Cryo Cyan (深空极光钴蓝 · 航太石墨与冰川青) */
+    [data-theme="cobalt"] {
+      --bg-base: #080a0f;
+      --bg-panel: #0d1118;
+      --bg-card: #121721;
+      --bg-card-hover: #171e2b;
+      --bg-elevated: #1d2636;
+      --bg-glass: rgba(13, 17, 24, 0.89);
+      --surface-rgb: 18, 23, 33;
+      --stage-rgb: 8, 10, 15;
+      --border: rgba(216, 230, 248, 0.08);
+      --border-light: rgba(216, 230, 248, 0.145);
+      --border-glow: rgba(78, 194, 242, 0.36);
+      --text-bright: #f4f7fb;
+      --text-main: #e3eaf4;
+      --text-muted: #8fa0b5;
+      --text-dim: #5b6b80;
+      --accent: #4ec2f2;
+      --accent-rgb: 78, 194, 242;
+      --accent-dim: rgba(78, 194, 242, 0.13);
+      --accent-hover: #6dd0f8;
+      --pos: #34d3a2;
+      --pos-rgb: 52, 211, 162;
+      --blue: #5ab2ee;
+      --blue-rgb: 90, 178, 238;
+      --blue-dim: rgba(90, 178, 238, 0.13);
+      --gold: #e6ba62;
+      --gold-rgb: 230, 186, 98;
+      --gold-dim: rgba(230, 186, 98, 0.14);
+      --red: #e86666;
+      --red-rgb: 232, 102, 102;
+      --red-dim: rgba(232, 102, 102, 0.13);
+      --purple: #ae86f2;
+      --purple-rgb: 174, 134, 242;
+      --purple-dim: rgba(174, 134, 242, 0.13);
     }
 
     * {
@@ -53,11 +189,11 @@
     body {
       background-color: var(--bg-base);
       background-image:
-        radial-gradient(circle at 15% 0%, rgba(0, 242, 169, 0.06) 0%, transparent 40%),
-        radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.06) 0%, transparent 40%),
-        linear-gradient(rgba(31, 45, 64, 0.18) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(31, 45, 64, 0.18) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+        radial-gradient(ellipse 75% 45% at 15% -5%, rgba(var(--accent-rgb), 0.065) 0%, transparent 65%),
+        radial-gradient(ellipse 65% 40% at 85% 5%, rgba(var(--blue-rgb), 0.05) 0%, transparent 65%),
+        linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
       color: var(--text-main);
       font-family: var(--font-sans);
       line-height: 1.55;
@@ -66,6 +202,7 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.2s ease;
     }
 
     ::-webkit-scrollbar {
@@ -86,13 +223,13 @@
     /* Sticky Tactical Header */
     .app-header {
       background: var(--bg-glass);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 200;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 8px 28px -6px rgba(0, 0, 0, 0.58);
     }
 
     .header-inner {
@@ -117,22 +254,22 @@
     }
 
     .brand-badge {
-      background: linear-gradient(135deg, #00f2a9 0%, #0ea5e9 100%);
-      color: #041014;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--blue) 100%);
+      color: #080b0e;
       font-weight: 900;
       font-size: 11px;
       padding: 4px 9px;
       border-radius: 4px;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      box-shadow: 0 0 14px rgba(0, 242, 169, 0.35);
+      box-shadow: 0 0 16px rgba(var(--accent-rgb), 0.28);
     }
 
     .brand-title h1 {
       font-size: 18px;
       font-weight: 800;
       letter-spacing: 0.3px;
-      color: #fff;
+      color: var(--text-bright);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -258,7 +395,7 @@
       color: var(--text-muted);
     }
     .nav-tab.active .tab-badge {
-      background: rgba(0, 242, 169, 0.2);
+      background: rgba(var(--accent-rgb), 0.2);
       color: var(--accent);
     }
 
@@ -286,7 +423,7 @@
 
     /* Section Banner */
     .hero-banner {
-      background: linear-gradient(135deg, rgba(0, 242, 169, 0.09) 0%, rgba(56, 189, 248, 0.05) 55%, rgba(18, 26, 38, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.09) 0%, rgba(var(--blue-rgb), 0.05) 55%, rgba(18, 26, 38, 0.95) 100%);
       border: 1px solid var(--border-light);
       border-left: 4px solid var(--accent);
       border-radius: var(--radius);
@@ -346,7 +483,7 @@
       background: var(--accent-dim);
       border-color: var(--accent);
       color: var(--accent);
-      box-shadow: 0 0 12px rgba(0, 242, 169, 0.18);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.18);
     }
 
     /* Filter Toolbar */
@@ -419,7 +556,7 @@
     .btn-primary:hover {
       background: var(--accent-hover);
       color: #04120e;
-      box-shadow: 0 0 14px rgba(0, 242, 169, 0.4);
+      box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.4);
     }
     .btn-sm {
       padding: 4px 9px;
@@ -521,22 +658,22 @@
       border-radius: 4px;
       background: var(--accent-dim);
       color: var(--accent);
-      border: 1px solid rgba(0, 242, 169, 0.3);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
     }
     .loadout-tag.gold {
       background: var(--gold-dim);
       color: var(--gold);
-      border-color: rgba(251, 191, 36, 0.35);
+      border-color: rgba(var(--gold-rgb), 0.35);
     }
     .loadout-tag.blue {
       background: var(--blue-dim);
       color: var(--blue);
-      border-color: rgba(56, 189, 248, 0.35);
+      border-color: rgba(var(--blue-rgb), 0.35);
     }
     .loadout-tag.red {
       background: var(--red-dim);
       color: var(--red);
-      border-color: rgba(251, 113, 133, 0.35);
+      border-color: rgba(var(--red-rgb), 0.35);
     }
     .loadout-tag.purple {
       background: var(--purple-dim);
@@ -650,8 +787,8 @@
       font-size: 10.5px;
     }
     .part-chip.core {
-      border-color: rgba(0, 242, 169, 0.4);
-      background: rgba(0, 242, 169, 0.06);
+      border-color: rgba(var(--accent-rgb), 0.4);
+      background: rgba(var(--accent-rgb), 0.06);
     }
 
     .loadout-desc {
@@ -710,7 +847,7 @@
     }
     .shot-card.kill-shot {
       border-color: var(--accent);
-      background: rgba(0, 242, 169, 0.06);
+      background: rgba(var(--accent-rgb), 0.06);
     }
     .shot-bar-wrap {
       height: 7px;
@@ -763,7 +900,7 @@
     }
     table.data-table th.sortable:hover {
       color: var(--accent);
-      background: rgba(0, 242, 169, 0.05);
+      background: rgba(var(--accent-rgb), 0.05);
     }
     table.data-table th.sorted-asc::after {
       content: " ▲";
@@ -796,14 +933,14 @@
       white-space: nowrap;
     }
     .badge-pos {
-      background: rgba(0, 242, 169, 0.12);
+      background: rgba(var(--accent-rgb), 0.12);
       color: var(--accent);
-      border: 1px solid rgba(0, 242, 169, 0.28);
+      border: 1px solid rgba(var(--accent-rgb), 0.28);
     }
     .badge-neg {
-      background: rgba(251, 113, 133, 0.12);
+      background: rgba(var(--red-rgb), 0.12);
       color: var(--red);
-      border: 1px solid rgba(251, 113, 133, 0.28);
+      border: 1px solid rgba(var(--red-rgb), 0.28);
     }
     .badge-neu {
       background: rgba(143, 163, 184, 0.1);
@@ -812,12 +949,12 @@
     .badge-gold {
       background: var(--gold-dim);
       color: var(--gold);
-      border: 1px solid rgba(251, 191, 36, 0.35);
+      border: 1px solid rgba(var(--gold-rgb), 0.35);
     }
     .badge-blue {
       background: var(--blue-dim);
       color: var(--blue);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      border: 1px solid rgba(var(--blue-rgb), 0.35);
     }
     .badge-purple {
       background: var(--purple-dim);
@@ -836,7 +973,7 @@
     }
 
     /* TTK Color Scale */
-    .ttk-fast { color: #00f2a9; font-weight: 800; }
+    .ttk-fast { color: var(--accent); font-weight: 800; }
     .ttk-good { color: #38bdf8; font-weight: 700; }
     .ttk-mid  { color: #fbbf24; }
     .ttk-slow { color: #fb7185; }
@@ -877,8 +1014,8 @@
       transition: border-color 0.15s, background 0.15s;
     }
     .slot-box.equipped {
-      border-color: rgba(0, 242, 169, 0.45);
-      background: linear-gradient(180deg, rgba(0, 242, 169, 0.05) 0%, var(--bg-card) 100%);
+      border-color: rgba(var(--accent-rgb), 0.45);
+      background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.05) 0%, var(--bg-card) 100%);
     }
     .slot-header {
       display: flex;
@@ -1096,7 +1233,7 @@
       color: var(--text-muted);
     }
     .md-blockquote {
-      background: rgba(56, 189, 248, 0.07);
+      background: rgba(var(--blue-rgb), 0.07);
       border-left: 4px solid var(--blue);
       padding: 12px 16px;
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
@@ -1214,7 +1351,7 @@
       align-items: center;
       gap: 14px;
       z-index: 400;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 242, 169, 0.25);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(var(--accent-rgb), 0.25);
     }
     .pk-floating-bar.visible {
       display: flex;
@@ -1258,16 +1395,16 @@
       --rarity-5: #fbbf24;
       --rarity-4: #c084fc;
       --rarity-3: #38bdf8;
-      --rarity-2: #00f2a9;
+      --rarity-2: var(--accent);
       --rarity-1: #94a3b8;
     }
 
     /* Rarity Borders & Glows */
     .rarity-6, .rarity-red { border-color: rgba(255, 77, 79, 0.55) !important; background: linear-gradient(145deg, rgba(255, 77, 79, 0.14), rgba(14, 20, 30, 0.92)) !important; }
-    .rarity-5, .rarity-gold { border-color: rgba(251, 191, 36, 0.55) !important; background: linear-gradient(145deg, rgba(251, 191, 36, 0.14), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-5, .rarity-gold { border-color: rgba(var(--gold-rgb), 0.55) !important; background: linear-gradient(145deg, rgba(var(--gold-rgb), 0.14), rgba(14, 20, 30, 0.92)) !important; }
     .rarity-4, .rarity-purple { border-color: rgba(192, 132, 252, 0.5) !important; background: linear-gradient(145deg, rgba(192, 132, 252, 0.13), rgba(14, 20, 30, 0.92)) !important; }
-    .rarity-3, .rarity-blue { border-color: rgba(56, 189, 248, 0.45) !important; background: linear-gradient(145deg, rgba(56, 189, 248, 0.11), rgba(14, 20, 30, 0.92)) !important; }
-    .rarity-2, .rarity-green { border-color: rgba(0, 242, 169, 0.4) !important; background: linear-gradient(145deg, rgba(0, 242, 169, 0.09), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-3, .rarity-blue { border-color: rgba(var(--blue-rgb), 0.45) !important; background: linear-gradient(145deg, rgba(var(--blue-rgb), 0.11), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-2, .rarity-green { border-color: rgba(var(--accent-rgb), 0.4) !important; background: linear-gradient(145deg, rgba(var(--accent-rgb), 0.09), rgba(14, 20, 30, 0.92)) !important; }
     .rarity-1, .rarity-white { border-color: rgba(148, 163, 184, 0.3) !important; background: linear-gradient(145deg, rgba(148, 163, 184, 0.07), rgba(14, 20, 30, 0.92)) !important; }
 
     /* Visual Range-Zone Meta Strip (Tab 1 Hero Upgrade) */
@@ -1282,7 +1419,7 @@
     }
     .meta-zone-card {
       background:
-        radial-gradient(circle at 88% 20%, rgba(0, 242, 169, 0.11), transparent 55%),
+        radial-gradient(circle at 88% 20%, rgba(var(--accent-rgb), 0.11), transparent 55%),
         linear-gradient(135deg, rgba(17, 25, 38, 0.96), rgba(10, 15, 23, 0.98));
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
@@ -1325,7 +1462,7 @@
     .meta-zone-gun:hover {
       border-color: var(--accent);
       transform: translateY(-1px);
-      background: rgba(0, 242, 169, 0.08);
+      background: rgba(var(--accent-rgb), 0.08);
     }
     .meta-zone-gun img, .meta-zone-gun svg {
       width: 64px;
@@ -1341,11 +1478,11 @@
       height: 128px;
       border-radius: var(--radius-sm);
       background:
-        radial-gradient(ellipse at 42% 55%, rgba(0, 242, 169, 0.14), rgba(14, 21, 32, 0.2) 65%),
+        radial-gradient(ellipse at 42% 55%, rgba(var(--accent-rgb), 0.14), rgba(14, 21, 32, 0.2) 65%),
         repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
         repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
         linear-gradient(180deg, #090d14 0%, #101824 100%);
-      border: 1px solid rgba(56, 189, 248, 0.22);
+      border: 1px solid rgba(var(--blue-rgb), 0.22);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1354,11 +1491,11 @@
     }
     .budget-card .weapon-stage {
       background:
-        radial-gradient(ellipse at 42% 55%, rgba(251, 191, 36, 0.16), rgba(14, 21, 32, 0.2) 65%),
+        radial-gradient(ellipse at 42% 55%, rgba(var(--gold-rgb), 0.16), rgba(14, 21, 32, 0.2) 65%),
         repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
         repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
         linear-gradient(180deg, #0b0e14 0%, #161820 100%);
-      border-color: rgba(251, 191, 36, 0.28);
+      border-color: rgba(var(--gold-rgb), 0.28);
     }
     .weapon-stage-watermark {
       position: absolute;
@@ -1388,7 +1525,7 @@
       width: auto;
       height: auto;
       object-fit: contain;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 242, 169, 0.15));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.15));
       transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .loadout-card:hover .weapon-render-img {
@@ -1466,7 +1603,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
     .visual-part-tile.core-part {
-      box-shadow: inset 0 0 12px rgba(0, 242, 169, 0.12);
+      box-shadow: inset 0 0 12px rgba(var(--accent-rgb), 0.12);
     }
     .vp-thumb {
       width: 34px;
@@ -1540,19 +1677,19 @@
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 4px;
-      background: rgba(0, 242, 169, 0.11);
+      background: rgba(var(--accent-rgb), 0.11);
       color: var(--accent);
-      border: 1px solid rgba(0, 242, 169, 0.25);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
     }
     .hl-pill.gold {
-      background: rgba(251, 191, 36, 0.12);
+      background: rgba(var(--gold-rgb), 0.12);
       color: var(--gold);
-      border-color: rgba(251, 191, 36, 0.3);
+      border-color: rgba(var(--gold-rgb), 0.3);
     }
     .hl-pill.blue {
-      background: rgba(56, 189, 248, 0.12);
+      background: rgba(var(--blue-rgb), 0.12);
       color: var(--blue);
-      border-color: rgba(56, 189, 248, 0.3);
+      border-color: rgba(var(--blue-rgb), 0.3);
     }
     .hl-summary-text {
       font-size: 11.5px;
@@ -1576,7 +1713,7 @@
     }
     .duel-visual-card {
       background:
-        radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.09), transparent 70%),
+        radial-gradient(circle at 50% 25%, rgba(var(--blue-rgb), 0.09), transparent 70%),
         var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
@@ -1758,8 +1895,8 @@
     }
     .tier-weapon-card:hover, .tier-weapon-card.active-in-chart {
       border-color: var(--accent);
-      background: rgba(0, 242, 169, 0.1);
-      box-shadow: 0 0 12px rgba(0, 242, 169, 0.15);
+      background: rgba(var(--accent-rgb), 0.1);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.15);
     }
     .tier-weapon-card img, .tier-weapon-card svg {
       width: 58px;
@@ -1773,11 +1910,11 @@
       margin-top: 14px;
       border-radius: var(--radius-md);
       background:
-        radial-gradient(ellipse at 50% 45%, rgba(0, 242, 169, 0.15), rgba(9, 14, 22, 0.4) 70%),
-        repeating-linear-gradient(0deg, rgba(56, 189, 248, 0.03) 0px, rgba(56, 189, 248, 0.03) 1px, transparent 1px, transparent 20px),
-        repeating-linear-gradient(90deg, rgba(56, 189, 248, 0.03) 0px, rgba(56, 189, 248, 0.03) 1px, transparent 1px, transparent 20px),
+        radial-gradient(ellipse at 50% 45%, rgba(var(--accent-rgb), 0.15), rgba(9, 14, 22, 0.4) 70%),
+        repeating-linear-gradient(0deg, rgba(var(--blue-rgb), 0.03) 0px, rgba(var(--blue-rgb), 0.03) 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(90deg, rgba(var(--blue-rgb), 0.03) 0px, rgba(var(--blue-rgb), 0.03) 1px, transparent 1px, transparent 20px),
         linear-gradient(180deg, #070b12 0%, #0f1724 100%);
-      border: 1px solid rgba(0, 242, 169, 0.32);
+      border: 1px solid rgba(var(--accent-rgb), 0.32);
       padding: 14px 18px;
       position: relative;
       overflow: hidden;
@@ -1802,7 +1939,7 @@
       max-width: 340px;
       max-height: 130px;
       object-fit: contain;
-      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.9)) drop-shadow(0 0 18px rgba(0,242,169,0.2));
+      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.9)) drop-shadow(0 0 18px rgba(var(--accent-rgb),0.2));
     }
     .blueprint-equipped-strip {
       display: flex;
@@ -1848,8 +1985,8 @@
     }
     .slot-box.equipped .slot-icon-box {
       border-style: solid;
-      border-color: rgba(0, 242, 169, 0.5);
-      background: radial-gradient(circle, rgba(0,242,169,0.12), rgba(7,10,15,0.9));
+      border-color: rgba(var(--accent-rgb), 0.5);
+      background: radial-gradient(circle, rgba(var(--accent-rgb),0.12), rgba(7,10,15,0.9));
     }
     .slot-icon-box:hover {
       border-color: var(--accent);
@@ -1934,8 +2071,8 @@
       display: inline-flex;
       align-items: center;
       vertical-align: middle;
-      background: rgba(0, 242, 169, 0.1);
-      border: 1px solid rgba(0, 242, 169, 0.35);
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.35);
       border-radius: 6px;
       padding: 2px 8px;
       margin-right: 8px;
@@ -1968,7 +2105,7 @@
       gap: 10px;
       margin-bottom: 18px;
       padding: 14px;
-      background: linear-gradient(135deg, rgba(0, 242, 169, 0.08), rgba(56, 189, 248, 0.05));
+      background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.08), rgba(var(--blue-rgb), 0.05));
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
     }
@@ -1990,7 +2127,7 @@
 
     /* Tab 1: Interactive Tactical Decision Topology Tree */
     .tactical-topo-board {
-      background: radial-gradient(circle at 18% 50%, rgba(0, 242, 169, 0.09), rgba(9, 14, 22, 0.96) 70%);
+      background: radial-gradient(circle at 18% 50%, rgba(var(--accent-rgb), 0.09), rgba(9, 14, 22, 0.96) 70%);
       border: 1px solid var(--border-light);
       border-radius: var(--radius-md);
       padding: 12px 14px;
@@ -2014,12 +2151,12 @@
       }
     }
     .topo-root-node {
-      background: linear-gradient(135deg, rgba(0, 242, 169, 0.16), rgba(13, 21, 32, 0.95));
+      background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.16), rgba(13, 21, 32, 0.95));
       border: 1.5px solid var(--accent);
       border-radius: 10px;
       padding: 12px 10px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0, 242, 169, 0.15);
+      box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.15);
     }
     .topo-branches-col {
       display: flex;
@@ -2072,7 +2209,7 @@
     .topo-leaf-card:hover {
       border-color: var(--accent);
       transform: translateY(-1px);
-      background: rgba(0, 242, 169, 0.09);
+      background: rgba(var(--accent-rgb), 0.09);
     }
     .topo-leaf-card img {
       width: 44px;
@@ -2139,7 +2276,7 @@
     }
     .topo-part-node:hover {
       border-color: var(--accent);
-      background: rgba(0, 242, 169, 0.1);
+      background: rgba(var(--accent-rgb), 0.1);
     }
     .topo-part-node img, .topo-part-node svg {
       width: 26px;
@@ -2163,12 +2300,12 @@
     .gun-topo-canvas {
       position: relative;
       background:
-        radial-gradient(circle at 50% 50%, rgba(0, 242, 169, 0.12), transparent 65%),
+        radial-gradient(circle at 50% 50%, rgba(var(--accent-rgb), 0.12), transparent 65%),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(0deg, rgba(255,255,255,0.025) 1px, transparent 1px),
         #070b12;
       background-size: 100% 100%, 20px 20px, 20px 20px;
-      border: 1px solid rgba(0, 242, 169, 0.32);
+      border: 1px solid rgba(var(--accent-rgb), 0.32);
       border-radius: 10px;
       padding: 10px 12px;
       margin-top: 8px;
@@ -2212,14 +2349,14 @@
     }
     .gun-topo-node-card.equipped {
       border-style: solid;
-      border-color: rgba(0, 242, 169, 0.55);
-      background: linear-gradient(135deg, rgba(0, 242, 169, 0.11), rgba(12, 19, 30, 0.95));
-      box-shadow: 0 2px 10px rgba(0, 242, 169, 0.1);
+      border-color: rgba(var(--accent-rgb), 0.55);
+      background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.11), rgba(12, 19, 30, 0.95));
+      box-shadow: 0 2px 10px rgba(var(--accent-rgb), 0.1);
     }
     .gun-topo-node-card:hover {
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0, 242, 169, 0.22);
+      box-shadow: 0 4px 14px rgba(var(--accent-rgb), 0.22);
     }
     .gun-topo-node-thumb {
       width: 34px;
@@ -2255,19 +2392,19 @@
       font-weight: 700;
       padding: 1.5px 6px;
       border-radius: 4px;
-      background: rgba(0, 242, 169, 0.1);
+      background: rgba(var(--accent-rgb), 0.1);
       color: var(--accent);
-      border: 1px solid rgba(0, 242, 169, 0.28);
+      border: 1px solid rgba(var(--accent-rgb), 0.28);
     }
     .mech-chip.warn {
-      background: rgba(251, 113, 133, 0.1);
+      background: rgba(var(--red-rgb), 0.1);
       color: var(--red);
-      border-color: rgba(251, 113, 133, 0.28);
+      border-color: rgba(var(--red-rgb), 0.28);
     }
     .mech-chip.blue {
-      background: rgba(56, 189, 248, 0.1);
+      background: rgba(var(--blue-rgb), 0.1);
       color: var(--blue);
-      border-color: rgba(56, 189, 248, 0.28);
+      border-color: rgba(var(--blue-rgb), 0.28);
     }
 
     /* Engine Multiplier Synthesis Topology in Builder Sidebar */
@@ -2306,8 +2443,8 @@
     }
     .mult-out-node,
     .mult-topo-out {
-      background: linear-gradient(135deg, rgba(0, 242, 169, 0.14), rgba(56, 189, 248, 0.08));
-      border: 1px solid rgba(0, 242, 169, 0.4);
+      background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.14), rgba(var(--blue-rgb), 0.08));
+      border: 1px solid rgba(var(--accent-rgb), 0.4);
       border-radius: 6px;
       padding: 6px;
       text-align: center;
@@ -2366,7 +2503,7 @@
       height: auto;
       object-fit: contain;
       display: block;
-      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 242, 169, 0.15));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.15));
       transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .loadout-card:hover .weapon-stage-img {
@@ -2396,7 +2533,7 @@
     /* Tab 1: Duel Simulator Fighter & Mannequin Visual Boxes */
     .duel-fighter-card {
       background:
-        radial-gradient(circle at 20% 25%, rgba(0, 242, 169, 0.08), transparent 65%),
+        radial-gradient(circle at 20% 25%, rgba(var(--accent-rgb), 0.08), transparent 65%),
         var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
@@ -2432,7 +2569,7 @@
     }
     .duel-mannequin-card {
       background:
-        radial-gradient(circle at 50% 45%, rgba(56, 189, 248, 0.1), transparent 70%),
+        radial-gradient(circle at 50% 45%, rgba(var(--blue-rgb), 0.1), transparent 70%),
         var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius-sm);
@@ -2533,8 +2670,8 @@
     .pac-hidden-pill {
       font-size: 11px;
       color: var(--accent);
-      background: rgba(0, 242, 169, 0.08);
-      border: 1px solid rgba(0, 242, 169, 0.24);
+      background: rgba(var(--accent-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-rgb), 0.24);
       border-radius: 5px;
       padding: 4px 8px;
       line-height: 1.35;
@@ -2664,7 +2801,7 @@
     }
     .bp-part-thumb:hover {
       border-color: var(--accent);
-      background: rgba(0, 242, 169, 0.1);
+      background: rgba(var(--accent-rgb), 0.1);
     }
     .bp-part-thumb img,
     .bp-part-thumb svg {
@@ -2838,6 +2975,179 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ==================== v6.0 MASTER TONAL PALETTE & STUDIO LIGHTING SYSTEM ==================== */
+    :root {
+      --rarity-6: var(--red);
+      --rarity-5: var(--gold);
+      --rarity-4: var(--purple);
+      --rarity-3: var(--blue);
+      --rarity-2: var(--pos);
+      --rarity-1: #8e9bae;
+    }
+
+    /* Master Specular Micro-Borders & Tactile Elevation */
+    .loadout-card,
+    .part-card,
+    .part-armory-card,
+    .armor-visual-card,
+    .duel-sim-box,
+    .table-container,
+    .tactical-topo-board,
+    .builder-left,
+    .builder-right,
+    .doc-content,
+    .doc-sidebar,
+    .dib-card,
+    .analytics-svg-box {
+      box-shadow: var(--specular-inset), var(--shadow);
+      background-color: var(--bg-card);
+      border-color: var(--border);
+    }
+
+    .loadout-card:hover,
+    .part-card:hover,
+    .part-armory-card:hover,
+    .armor-visual-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.42);
+      box-shadow: var(--specular-inset), 0 14px 34px -8px rgba(0, 0, 0, 0.72), 0 0 20px rgba(var(--accent-rgb), 0.12);
+    }
+
+    /* 3-Point Studio Rim Lighting for Weapon & Attachment Stages */
+    .weapon-stage,
+    .gun-topo-center-stage {
+      background:
+        radial-gradient(ellipse 64% 58% at 48% 52%, rgba(244, 246, 249, 0.06) 0%, rgba(var(--accent-rgb), 0.06) 42%, rgba(var(--stage-rgb), 0.94) 100%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.014) 0px, rgba(255, 255, 255, 0.014) 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.014) 0px, rgba(255, 255, 255, 0.014) 1px, transparent 1px, transparent 20px),
+        linear-gradient(180deg, var(--bg-base) 0%, var(--bg-panel) 100%) !important;
+      border: 1px solid var(--border-light) !important;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), inset 0 -12px 24px rgba(0, 0, 0, 0.45);
+    }
+    .budget-card .weapon-stage {
+      background:
+        radial-gradient(ellipse 64% 58% at 48% 52%, rgba(244, 246, 249, 0.055) 0%, rgba(var(--gold-rgb), 0.075) 45%, rgba(var(--stage-rgb), 0.94) 100%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.014) 0px, rgba(255, 255, 255, 0.014) 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.014) 0px, rgba(255, 255, 255, 0.014) 1px, transparent 1px, transparent 20px),
+        linear-gradient(180deg, var(--bg-base) 0%, var(--bg-panel) 100%) !important;
+      border-color: rgba(var(--gold-rgb), 0.28) !important;
+    }
+
+    .weapon-stage-img,
+    .weapon-render-img,
+    .blueprint-gun-img {
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.88)) drop-shadow(0 0 14px rgba(var(--accent-rgb), 0.14)) !important;
+    }
+
+    /* Harmonized Rarity Surfaces (OKLCH Perceptual Balance) */
+    .rarity-6, .rarity-red {
+      border-color: rgba(var(--red-rgb), 0.48) !important;
+      background: linear-gradient(145deg, rgba(var(--red-rgb), 0.14), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+    .rarity-5, .rarity-gold {
+      border-color: rgba(var(--gold-rgb), 0.48) !important;
+      background: linear-gradient(145deg, rgba(var(--gold-rgb), 0.14), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+    .rarity-4, .rarity-purple {
+      border-color: rgba(var(--purple-rgb), 0.45) !important;
+      background: linear-gradient(145deg, rgba(var(--purple-rgb), 0.13), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+    .rarity-3, .rarity-blue {
+      border-color: rgba(var(--blue-rgb), 0.42) !important;
+      background: linear-gradient(145deg, rgba(var(--blue-rgb), 0.12), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+    .rarity-2, .rarity-green {
+      border-color: rgba(var(--pos-rgb), 0.38) !important;
+      background: linear-gradient(145deg, rgba(var(--pos-rgb), 0.1), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+    .rarity-1, .rarity-white {
+      border-color: rgba(142, 155, 174, 0.28) !important;
+      background: linear-gradient(145deg, rgba(142, 155, 174, 0.07), rgba(var(--surface-rgb), 0.94)) !important;
+    }
+
+    /* Semantic Badges & TTK Tiers Calibrated to Master Palette */
+    .badge-pos {
+      background: rgba(var(--pos-rgb), 0.12);
+      color: var(--pos);
+      border: 1px solid rgba(var(--pos-rgb), 0.3);
+    }
+    .badge-neg {
+      background: rgba(var(--red-rgb), 0.12);
+      color: var(--red);
+      border: 1px solid rgba(var(--red-rgb), 0.3);
+    }
+    .badge-gold {
+      background: rgba(var(--gold-rgb), 0.13);
+      color: var(--gold);
+      border: 1px solid rgba(var(--gold-rgb), 0.34);
+    }
+    .badge-blue {
+      background: rgba(var(--blue-rgb), 0.13);
+      color: var(--blue);
+      border: 1px solid rgba(var(--blue-rgb), 0.34);
+    }
+    .badge-purple {
+      background: rgba(var(--purple-rgb), 0.13);
+      color: var(--purple);
+      border: 1px solid rgba(var(--purple-rgb), 0.34);
+    }
+    .ttk-fast { color: var(--pos); font-weight: 800; }
+    .ttk-good { color: var(--blue); font-weight: 700; }
+    .ttk-mid  { color: var(--gold); }
+    .ttk-slow { color: var(--red); }
+
+    /* Master Tonal Palette Switcher in Sticky Header */
+    .tonal-palette-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border-light);
+      border-radius: 999px;
+      padding: 3px 6px;
+      box-shadow: var(--specular-inset);
+    }
+    .tonal-palette-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--text-dim);
+      padding: 0 4px 0 3px;
+      letter-spacing: 0.3px;
+      user-select: none;
+    }
+    .tonal-swatch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      white-space: nowrap;
+    }
+    .tonal-swatch-btn:hover {
+      color: var(--text-bright);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .tonal-swatch-btn.active {
+      color: var(--text-bright);
+      background: var(--bg-card-hover);
+      border-color: rgba(var(--accent-rgb), 0.45);
+      box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.18);
+    }
+    .swatch-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
   </style>
 </head>
 <body>
@@ -2852,6 +3162,21 @@
           <span class="brand-sub" id="updated-at-badge">SDK全量解包 + 实时物价校准</span>
         </div>
         <div class="header-actions">
+          <div class="tonal-palette-bar" role="group" aria-label="大师色调预设">
+            <span class="tonal-palette-label">🎨 色调</span>
+            <button type="button" class="tonal-swatch-btn active" data-theme-btn="gti" onclick="setMasterTheme('gti')" title="G.T.I. 钛黑翡翠 · 阳极氧化石墨与青瓷翠 (默认)">
+              <span class="swatch-dot" style="background:linear-gradient(135deg,#2ed3a2,#5ab0e8)"></span>钛翡
+            </button>
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="haavk" onclick="setMasterTheme('haavk')" title="哈夫克黑金 · 奢华暖曜黑与香槟赤金">
+              <span class="swatch-dot" style="background:linear-gradient(135deg,#e2b45c,#8f6b29)"></span>黑金
+            </button>
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="ahsarah" onclick="setMasterTheme('ahsarah')" title="阿萨拉砂岩 · 玄武钛灰与战术赤铜珀">
+              <span class="swatch-dot" style="background:linear-gradient(135deg,#e68a4c,#42c79a)"></span>砂珀
+            </button>
+            <button type="button" class="tonal-swatch-btn" data-theme-btn="cobalt" onclick="setMasterTheme('cobalt')" title="深空钴蓝 · 航太冷石墨与极光冰青">
+              <span class="swatch-dot" style="background:linear-gradient(135deg,#4ec2f2,#34d3a2)"></span>钴蓝
+            </button>
+          </div>
           <button class="cmd-search-trigger" onclick="openCmdModal()" title="全局快速检索 (快捷键 Cmd+K 或 /)">
             <span>🔍 全局检索武器 / 配件 / 弹药 / 改枪码...</span>
             <span class="cmd-kbd">⌘K /</span>
@@ -3196,7 +3521,7 @@
           <div id="builder-weapon-base-info" style="display:none"></div>
 
           <!-- Posture & Patch Multipliers Bar -->
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:10px; padding:7px 12px; background:rgba(0,242,169,0.05); border:1px solid rgba(0,242,169,0.25); border-radius:var(--radius-sm)">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-top:10px; padding:7px 12px; background:rgba(var(--accent-rgb),0.05); border:1px solid rgba(var(--accent-rgb),0.25); border-radius:var(--radius-sm)">
             <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:12px; font-weight:700; color:var(--accent)">
               <input type="checkbox" id="builder-laser-active" checked onchange="recalculateBuilder()" style="accent-color:var(--accent); width:14px; height:14px" />
               🔦 开启激光姿态 (腰射+12 / 操控+16)
@@ -3238,7 +3563,7 @@
           </div>
 
           <!-- Total Cost Box -->
-          <div style="background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(18,26,38,0.92)); border:1px solid rgba(251,191,36,0.4); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
+          <div style="background:linear-gradient(135deg, rgba(var(--gold-rgb),0.14), rgba(18,26,38,0.92)); border:1px solid rgba(var(--gold-rgb),0.4); border-radius:var(--radius-sm); padding:10px 12px; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center">
             <div>
               <div style="font-size:10.5px; color:var(--text-muted)">配件造价</div>
               <div class="price-text" style="font-size:19px" id="sum-total-price">0 哈夫币</div>
@@ -3505,6 +3830,19 @@
       return 'rarity-1';
     }
 
+    function setMasterTheme(themeKey = 'gti') {
+      const valid = ['gti', 'haavk', 'ahsarah', 'cobalt'].includes(themeKey) ? themeKey : 'gti';
+      document.documentElement.setAttribute('data-theme', valid);
+      try { localStorage.setItem('df_master_theme', valid); } catch (e) {}
+      document.querySelectorAll('.tonal-swatch-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-theme-btn') === valid);
+      });
+    }
+    try {
+      const savedTheme = localStorage.getItem('df_master_theme');
+      if (savedTheme) setMasterTheme(savedTheme);
+    } catch (e) {}
+
     function getWeaponFallbackSvg(catCn = '', label = '') {
       const c = String(catCn);
       let path = 'M10,24 L42,24 L48,18 L92,18 L92,14 L118,14 L118,22 L95,22 L88,28 L66,28 L62,40 L52,40 L55,28 L38,28 L32,38 L22,38 L26,28 L10,32 Z';
@@ -3515,33 +3853,33 @@
       } else if (c.includes('狙') || c.includes('射手')) {
         path = 'M4,24 L38,24 L46,18 L118,18 L118,21 L88,22 L82,27 L58,27 L54,37 L46,37 L49,27 L28,27 L16,33 L4,31 Z M52,13 L78,13 L76,17 L54,17 Z';
       }
-      const svg = `<svg viewBox="0 0 124 48" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="rgba(0,242,169,0.25)" stroke="#00f2a9" stroke-width="1.5"/></svg>`;
+      const svg = `<svg viewBox="0 0 124 48" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="rgba(46,211,162,0.22)" stroke="#2ed3a2" stroke-width="1.5"/></svg>`;
       return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
     function getPartFallbackSvg(slotEn = '') {
       const s = String(slotEn);
-      let inner = '<rect x="10" y="16" width="28" height="16" rx="3" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.6"/>';
-      if (s === 'barrel') inner = '<line x1="6" y1="24" x2="42" y2="24" stroke="#00f2a9" stroke-width="5" stroke-linecap="round"/><line x1="12" y1="20" x2="32" y2="20" stroke="#38bdf8" stroke-width="2"/>';
-      else if (s === 'muzzle') inner = '<rect x="10" y="17" width="28" height="14" rx="2" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.6"/><line x1="17" y1="17" x2="17" y2="31" stroke="#00f2a9" stroke-width="1.5"/><line x1="25" y1="17" x2="25" y2="31" stroke="#00f2a9" stroke-width="1.5"/>';
-      else if (s === 'foregrip' || s === 'rearGrip') inner = '<path d="M16,12 L32,12 L28,36 L18,36 Z" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.6"/>';
-      else if (s === 'magazine' || s === 'magAssist') inner = '<path d="M16,10 L30,10 C32,22 34,30 28,38 L16,36 C20,28 18,20 16,10 Z" fill="rgba(251,191,36,0.22)" stroke="#fbbf24" stroke-width="1.6"/>';
-      else if (s === 'optic' || s === 'opticAcc') inner = '<circle cx="24" cy="22" r="10" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1.6"/><line x1="24" y1="15" x2="24" y2="29" stroke="#ff4d4f" stroke-width="1.4"/><line x1="17" y1="22" x2="31" y2="22" stroke="#ff4d4f" stroke-width="1.4"/>';
-      else if (s === 'stock' || s === 'stockAcc') inner = '<path d="M10,16 L36,16 L36,24 L24,26 L12,34 L10,16 Z" fill="rgba(192,132,252,0.22)" stroke="#c084fc" stroke-width="1.6"/>';
-      else if (s === 'laser') inner = '<rect x="10" y="18" width="20" height="12" rx="2" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.5"/><line x1="30" y1="24" x2="42" y2="24" stroke="#ff4d4f" stroke-width="2" stroke-dasharray="2,2"/>';
+      let inner = '<rect x="10" y="16" width="28" height="16" rx="3" fill="rgba(90,176,232,0.2)" stroke="#5ab0e8" stroke-width="1.6"/>';
+      if (s === 'barrel') inner = '<line x1="6" y1="24" x2="42" y2="24" stroke="#2ed3a2" stroke-width="5" stroke-linecap="round"/><line x1="12" y1="20" x2="32" y2="20" stroke="#5ab0e8" stroke-width="2"/>';
+      else if (s === 'muzzle') inner = '<rect x="10" y="17" width="28" height="14" rx="2" fill="rgba(46,211,162,0.2)" stroke="#2ed3a2" stroke-width="1.6"/><line x1="17" y1="17" x2="17" y2="31" stroke="#2ed3a2" stroke-width="1.5"/><line x1="25" y1="17" x2="25" y2="31" stroke="#2ed3a2" stroke-width="1.5"/>';
+      else if (s === 'foregrip' || s === 'rearGrip') inner = '<path d="M16,12 L32,12 L28,36 L18,36 Z" fill="rgba(46,211,162,0.2)" stroke="#2ed3a2" stroke-width="1.6"/>';
+      else if (s === 'magazine' || s === 'magAssist') inner = '<path d="M16,10 L30,10 C32,22 34,30 28,38 L16,36 C20,28 18,20 16,10 Z" fill="rgba(229,182,91,0.2)" stroke="#e5b65b" stroke-width="1.6"/>';
+      else if (s === 'optic' || s === 'opticAcc') inner = '<circle cx="24" cy="22" r="10" fill="rgba(90,176,232,0.18)" stroke="#5ab0e8" stroke-width="1.6"/><line x1="24" y1="15" x2="24" y2="29" stroke="#e86464" stroke-width="1.4"/><line x1="17" y1="22" x2="31" y2="22" stroke="#e86464" stroke-width="1.4"/>';
+      else if (s === 'stock' || s === 'stockAcc') inner = '<path d="M10,16 L36,16 L36,24 L24,26 L12,34 L10,16 Z" fill="rgba(174,133,242,0.2)" stroke="#ae85f2" stroke-width="1.6"/>';
+      else if (s === 'laser') inner = '<rect x="10" y="18" width="20" height="12" rx="2" fill="rgba(46,211,162,0.2)" stroke="#2ed3a2" stroke-width="1.5"/><line x1="30" y1="24" x2="42" y2="24" stroke="#e86464" stroke-width="2" stroke-dasharray="2,2"/>';
       const svg = `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
       return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
     function getAmmoSvgIcon(caliberOrLv = '', penLv = 5) {
       const lv = (typeof caliberOrLv === 'number') ? caliberOrLv : (Number(penLv) || 5);
-      const colors = { 6: '#ff4d4f', 5: '#fbbf24', 4: '#c084fc', 3: '#38bdf8', 2: '#00f2a9', 1: '#94a3b8' };
-      const col = colors[lv] || '#fbbf24';
-      const svg = `<svg viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M14,14 C14,7 18,3 18,3 C18,3 22,7 22,14 Z" fill="${col}"/><rect x="13" y="14" width="10" height="16" rx="1.5" fill="rgba(251,191,36,0.35)" stroke="${col}" stroke-width="1.4"/><line x1="12" y1="30" x2="24" y2="30" stroke="${col}" stroke-width="2"/></svg>`;
+      const colors = { 6: '#e86464', 5: '#e5b65b', 4: '#ae85f2', 3: '#5ab0e8', 2: '#2ed3a2', 1: '#8e9bae' };
+      const col = colors[lv] || '#e5b65b';
+      const svg = `<svg viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M14,14 C14,7 18,3 18,3 C18,3 22,7 22,14 Z" fill="${col}"/><rect x="13" y="14" width="10" height="16" rx="1.5" fill="rgba(229,182,91,0.3)" stroke="${col}" stroke-width="1.4"/><line x1="12" y1="30" x2="24" y2="30" stroke="${col}" stroke-width="2"/></svg>`;
       return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
-    function renderMiniRadarSvg(statsInput, size = 100, color = '#00f2a9') {
+    function renderMiniRadarSvg(statsInput, size = 100, color = 'var(--accent)') {
       const stats5 = Array.isArray(statsInput) ? statsInput : [
         { label: '威力', val: statsInput?.dmg ?? 60 },
         { label: '射速', val: statsInput?.rof ?? 60 },
@@ -3558,23 +3896,23 @@
       };
       const gridRings = [0.35, 0.7, 1.0].map(rt => {
         const pts = stats5.map((_, i) => ptFor(i, rt)).join(' ');
-        return `<polygon points="${pts}" fill="none" stroke="rgba(143,163,184,0.22)" stroke-width="0.8"/>`;
+        return `<polygon points="${pts}" fill="none" stroke="rgba(147,160,176,0.2)" stroke-width="0.8"/>`;
       }).join('');
       const axes = stats5.map((st, i) => {
         const a = angleFor(i);
         const x2 = cx + r * Math.cos(a), y2 = cy + r * Math.sin(a);
         const lx = cx + (r + 11) * Math.cos(a), ly = cy + (r + 10) * Math.sin(a) + 3;
-        return `<line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="rgba(143,163,184,0.2)" stroke-width="0.8"/>
-                <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" fill="#9fb2c8" font-size="8.5" font-weight="700">${st.label}</text>`;
+        return `<line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="rgba(147,160,176,0.18)" stroke-width="0.8"/>
+                <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" fill="var(--text-muted)" font-size="8.5" font-weight="700">${st.label}</text>`;
       }).join('');
       const valPts = stats5.map((st, i) => ptFor(i, Math.min(1, Math.max(0.15, (st.val || 50) / 100)))).join(' ');
       return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
         ${gridRings}${axes}
-        <polygon points="${valPts}" fill="${color}33" stroke="${color}" stroke-width="1.8"/>
+        <polygon points="${valPts}" fill="${color}" fill-opacity="0.2" stroke="${color}" stroke-width="1.8"/>
       </svg>`;
     }
 
-    function renderRangeStepMiniSvg(wObj, range1Num, color = '#38bdf8') {
+    function renderRangeStepMiniSvg(wObj, range1Num, color = 'var(--blue)') {
       const r1 = Math.max(8, Number(range1Num) || wObj?.range_step1_m || 35);
       const r2 = Math.max(r1 + 12, Math.round((wObj?.range_step2_m || r1 * 1.65) * (r1 / Math.max(10, wObj?.range_step1_m || r1))));
       const m1 = wObj?.dmg_mult_step1 ?? 0.85;
@@ -3588,13 +3926,13 @@
       const areaD = `${pathD} L 106,44 L 6,44 Z`;
       return `
         <svg viewBox="0 0 112 52" width="108" height="48" title="距离伤害阶梯: 0~${r1}m(100%) → ${r1}~${r2}m(${Math.round(m1*100)}%) → >${r2}m(${Math.round(m2*100)}%)">
-          <path d="${areaD}" fill="${color}22" />
+          <path d="${areaD}" fill="${color}" fill-opacity="0.14" />
           <path d="${pathD}" fill="none" stroke="${color}" stroke-width="1.8" />
-          <circle cx="${x1}" cy="${y0}" r="2.2" fill="#fff" />
+          <circle cx="${x1}" cy="${y0}" r="2.2" fill="var(--text-bright)" />
           <circle cx="${x2}" cy="${y1}" r="2" fill="${color}" />
-          <text x="${Math.max(16, x1 - 4)}" y="10" text-anchor="middle" fill="#e2e8f0" font-size="8" font-weight="800">${r1}m</text>
-          <text x="${Math.min(98, x2 + 2)}" y="${Math.max(20, y1 - 3)}" text-anchor="middle" fill="#94a3b8" font-size="7.5">${r2}m</text>
-          <text x="56" y="49" text-anchor="middle" fill="#64748b" font-size="7.5">射程衰减阶梯</text>
+          <text x="${Math.max(16, x1 - 4)}" y="10" text-anchor="middle" fill="var(--text-main)" font-size="8" font-weight="800">${r1}m</text>
+          <text x="${Math.min(98, x2 + 2)}" y="${Math.max(20, y1 - 3)}" text-anchor="middle" fill="var(--text-muted)" font-size="7.5">${r2}m</text>
+          <text x="56" y="49" text-anchor="middle" fill="var(--text-dim)" font-size="7.5">射程衰减阶梯</text>
         </svg>
       `;
     }
@@ -3639,7 +3977,7 @@
           cls: 'zone-cqb',
           badge: '0m ~ 18m',
           title: '⚡ 巴别塔室内 CQB',
-          color: '#fb7185',
+          color: 'var(--red)',
           picks: [
             { wid: '18020000010', name: 'MP7 HVK', stat: '253ms / 头126ms' },
             { wid: '18030000005', name: '725 双管', stat: '0~200ms 鹿弹' },
@@ -3651,7 +3989,7 @@
           cls: 'zone-mid',
           badge: '18m ~ 48m',
           title: '🔥 巴克什街区主力',
-          color: '#00f2a9',
+          color: 'var(--accent)',
           picks: [
             { wid: '18040000001', name: 'PKM 短管', stat: '269ms · 4枪5甲' },
             { wid: '18040000004', name: 'QJB201', stat: '279ms · 0延迟' },
@@ -3663,7 +4001,7 @@
           cls: 'zone-far',
           badge: '45m ~ 90m',
           title: '🎯 外围长街架枪',
-          color: '#fbbf24',
+          color: 'var(--gold)',
           picks: [
             { wid: '18050000033', name: 'SVCH 爆发', stat: '114ms · 4弹229ms' },
             { wid: '18050000032', name: 'Marlin 蜂鸟', stat: '0ms 一枪秒5头' },
@@ -3678,24 +4016,24 @@
           <div class="topo-tree-grid">
             <div class="topo-root-node">
               <div style="font-size:10px; color:var(--accent); font-weight:800; letter-spacing:0.5px">TOPOLOGY // 决策树</div>
-              <div style="font-size:14px; font-weight:900; color:#fff; margin:3px 0">烽火交战距离拓扑</div>
+              <div style="font-size:14px; font-weight:900; color:var(--text-bright); margin:3px 0">烽火交战距离拓扑</div>
               <div style="font-size:10.5px; color:var(--text-muted)">点击节点直连靶场</div>
             </div>
             <svg class="topo-tree-connector-svg" width="44" height="162" viewBox="0 0 44 162">
-              <path d="M 2,81 C 22,81 18,26 42,26" fill="none" stroke="#fb7185" stroke-width="1.8" stroke-dasharray="3,2"/>
-              <path d="M 2,81 L 42,81" fill="none" stroke="#00f2a9" stroke-width="2"/>
-              <path d="M 2,81 C 22,81 18,136 42,136" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-dasharray="3,2"/>
-              <circle cx="4" cy="81" r="3.5" fill="#00f2a9"/>
-              <circle cx="40" cy="26" r="3" fill="#fb7185"/>
-              <circle cx="40" cy="81" r="3" fill="#00f2a9"/>
-              <circle cx="40" cy="136" r="3" fill="#fbbf24"/>
+              <path d="M 2,81 C 22,81 18,26 42,26" fill="none" stroke="var(--red)" stroke-width="1.8" stroke-dasharray="3,2"/>
+              <path d="M 2,81 L 42,81" fill="none" stroke="var(--accent)" stroke-width="2"/>
+              <path d="M 2,81 C 22,81 18,136 42,136" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-dasharray="3,2"/>
+              <circle cx="4" cy="81" r="3.5" fill="var(--accent)"/>
+              <circle cx="40" cy="26" r="3" fill="var(--red)"/>
+              <circle cx="40" cy="81" r="3" fill="var(--accent)"/>
+              <circle cx="40" cy="136" r="3" fill="var(--gold)"/>
             </svg>
             <div class="topo-branches-col">
               ${zones.map(z => `
                 <div class="topo-branch-row">
                   <div class="topo-zone-pill" style="border-left-color:${z.color}">
                     <span class="mono" style="font-size:10px; color:${z.color}; font-weight:800">${z.badge}</span>
-                    <span style="font-size:12px; font-weight:800; color:#fff">${z.title}</span>
+                    <span style="font-size:12px; font-weight:800; color:var(--text-bright)">${z.title}</span>
                   </div>
                   <div style="color:${z.color}; font-weight:900; text-align:center; font-size:12px">──►</div>
                   <div class="topo-leaf-list">
@@ -4090,8 +4428,8 @@
           ctrl: Math.min(100, Math.max(25, Math.round((wObj.recoil_control || 45) + netRec + (1 - randMult) * 45))),
           mob: Math.min(100, Math.max(25, Math.round((wObj.handling || 45) + netHnd + netHip * 0.4)))
         };
-        const miniRadarHtml = renderMiniRadarSvg(radarStats, 90, isBudget ? '#38bdf8' : '#00f2a9');
-        const rangeStepSvgHtml = renderRangeStepMiniSvg(wObj, rangeNum, isBudget ? '#fbbf24' : '#00f2a9');
+        const miniRadarHtml = renderMiniRadarSvg(radarStats, 90, isBudget ? 'var(--blue)' : 'var(--accent)');
+        const rangeStepSvgHtml = renderRangeStepMiniSvg(wObj, rangeNum, isBudget ? 'var(--gold)' : 'var(--accent)');
 
         const branchButtonsHtml = item.branches.map((b, bIdx) => {
           const shortLbl = b.label.replace(/流派[AB]:\s*/g, '').replace(/\s*\(.*?\)/g, '');
@@ -4530,22 +4868,22 @@
               <svg class="mannequin-svg" viewBox="0 0 120 155">
                 <!-- Head Zone -->
                 <g onclick="selectDuelHitZone('head')" style="cursor:pointer">
-                  <circle cx="60" cy="22" r="14" fill="${activeHead ? 'rgba(251,113,133,0.45)' : 'rgba(56,189,248,0.15)'}" stroke="${activeHead ? '#fb7185' : '#38bdf8'}" stroke-width="${activeHead ? '2.5' : '1.4'}" />
-                  <text x="60" y="25" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800" font-family="monospace">×${v.head_mult || 1.9}</text>
+                  <circle cx="60" cy="22" r="14" fill="${activeHead ? 'rgba(var(--red-rgb),0.42)' : 'rgba(var(--blue-rgb),0.14)'}" stroke="${activeHead ? 'var(--red)' : 'var(--blue)'}" stroke-width="${activeHead ? '2.4' : '1.4'}" />
+                  <text x="60" y="25" text-anchor="middle" fill="var(--text-bright)" font-size="8.5" font-weight="800" font-family="monospace">×${v.head_mult || 1.9}</text>
                 </g>
                 <!-- Chest & Abdomen Zone -->
                 <g onclick="selectDuelHitZone('chest')" style="cursor:pointer">
-                  <rect x="40" y="40" width="40" height="48" rx="6" fill="${activeChest ? 'rgba(0,242,169,0.38)' : 'rgba(56,189,248,0.15)'}" stroke="${activeChest ? '#00f2a9' : '#38bdf8'}" stroke-width="${activeChest ? '2.5' : '1.4'}" />
-                  <text x="60" y="62" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" font-family="monospace">胸×${v.chest_mult || 1.0}</text>
-                  <text x="60" y="78" text-anchor="middle" fill="#94a3b8" font-size="7.5" font-family="monospace">腹×${v.abdomen_mult || 0.9}</text>
+                  <rect x="40" y="40" width="40" height="48" rx="6" fill="${activeChest ? 'rgba(var(--pos-rgb),0.34)' : 'rgba(var(--blue-rgb),0.14)'}" stroke="${activeChest ? 'var(--pos)' : 'var(--blue)'}" stroke-width="${activeChest ? '2.4' : '1.4'}" />
+                  <text x="60" y="62" text-anchor="middle" fill="var(--text-bright)" font-size="9" font-weight="800" font-family="monospace">胸×${v.chest_mult || 1.0}</text>
+                  <text x="60" y="78" text-anchor="middle" fill="var(--text-muted)" font-size="7.5" font-family="monospace">腹×${v.abdomen_mult || 0.9}</text>
                 </g>
                 <!-- Arms & Legs Zone (Limbs) -->
                 <g onclick="selectDuelHitZone('limb')" style="cursor:pointer">
-                  <rect x="22" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
-                  <rect x="84" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
-                  <rect x="41" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
-                  <rect x="63" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
-                  <text x="60" y="122" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800" font-family="monospace">四肢×${v.limb_mult || 0.4}</text>
+                  <rect x="22" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(var(--gold-rgb),0.38)' : 'rgba(var(--blue-rgb),0.09)'}" stroke="${activeLimb ? 'var(--gold)' : 'var(--border-light)'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="84" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(var(--gold-rgb),0.38)' : 'rgba(var(--blue-rgb),0.09)'}" stroke="${activeLimb ? 'var(--gold)' : 'var(--border-light)'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="41" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(var(--gold-rgb),0.38)' : 'rgba(var(--blue-rgb),0.09)'}" stroke="${activeLimb ? 'var(--gold)' : 'var(--border-light)'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="63" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(var(--gold-rgb),0.38)' : 'rgba(var(--blue-rgb),0.09)'}" stroke="${activeLimb ? 'var(--gold)' : 'var(--border-light)'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <text x="60" y="122" text-anchor="middle" fill="var(--text-bright)" font-size="8.5" font-weight="800" font-family="monospace">四肢×${v.limb_mult || 0.4}</text>
                 </g>
               </svg>
             </div>
@@ -4977,7 +5315,7 @@
         }
         const tds = parts.map(p => {
           const isBest = bestVal !== null && r.val(p) === bestVal && new Set(parts.map(r.val)).size > 1;
-          return `<td class="mono" style="${isBest ? 'background:rgba(0,242,169,0.09); color:var(--accent); font-weight:800' : ''}">${r.fn(p)}</td>`;
+          return `<td class="mono" style="${isBest ? 'background:rgba(var(--accent-rgb),0.09); color:var(--accent); font-weight:800' : ''}">${r.fn(p)}</td>`;
         }).join('');
         return `<tr><td style="font-weight:700; color:var(--text-muted)">${r.label}</td>${tds}</tr>`;
       }).join('');
@@ -5034,7 +5372,7 @@
     let variantsSortAsc = true;
     let chartComparedIndices = [];
 
-    const CHART_COLORS = ['#00f2a9', '#38bdf8', '#fbbf24', '#fb7185', '#c084fc'];
+    const CHART_COLORS = ['var(--pos)', 'var(--blue)', 'var(--gold)', 'var(--red)', 'var(--purple)'];
 
     function initVariantsFilters() {
       const catSelect = document.getElementById('variants-cat');
@@ -5109,7 +5447,7 @@
           const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
           const active = chartComparedIndices.includes(vIdx);
           return `
-            <div class="tier-weapon-card" style="${active ? 'border-color:var(--accent); box-shadow:0 0 12px rgba(0,242,169,0.2)' : ''}" onclick="toggleVariantChartCompare(${vIdx}); renderVariantsTable()" title="点击加入/移出下方距离衰减曲线对比">
+            <div class="tier-weapon-card" style="${active ? 'border-color:var(--accent); box-shadow:0 0 12px rgba(var(--accent-rgb),0.2)' : ''}" onclick="toggleVariantChartCompare(${vIdx}); renderVariantsTable()" title="点击加入/移出下方距离衰减曲线对比">
               <img class="twc-img" src="${v.image || wObj.image || ''}" alt="${v.weapon_name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
               <div class="twc-info">
                 <div class="twc-name">${v.weapon_name} ${active ? '<span style="color:var(--accent)">●</span>' : ''}</div>
@@ -5246,12 +5584,12 @@
       // Shaded combat-zone backdrops (0-18m CQB / 18-45m Mid / 45-100m Far)
       const x0 = xFor(0), x18 = xFor(18), x45 = xFor(45), x100 = xFor(100);
       let zoneBgSvg = `
-        <rect x="${x0}" y="${padT}" width="${x18 - x0}" height="${plotH}" fill="rgba(251,113,133,0.05)" />
-        <rect x="${x18}" y="${padT}" width="${x45 - x18}" height="${plotH}" fill="rgba(0,242,169,0.045)" />
-        <rect x="${x45}" y="${padT}" width="${x100 - x45}" height="${plotH}" fill="rgba(56,189,248,0.045)" />
-        <text x="${(x0 + x18) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(251,113,133,0.65)" font-size="10" font-weight="700">⚡ 0-18m 贴脸CQB</text>
-        <text x="${(x18 + x45) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(0,242,169,0.65)" font-size="10" font-weight="700">🎯 18-45m 中距交火</text>
-        <text x="${(x45 + x100) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(56,189,248,0.65)" font-size="10" font-weight="700">🦅 45-100m 远距架点</text>
+        <rect x="${x0}" y="${padT}" width="${x18 - x0}" height="${plotH}" fill="rgba(var(--red-rgb),0.05)" />
+        <rect x="${x18}" y="${padT}" width="${x45 - x18}" height="${plotH}" fill="rgba(var(--accent-rgb),0.045)" />
+        <rect x="${x45}" y="${padT}" width="${x100 - x45}" height="${plotH}" fill="rgba(var(--blue-rgb),0.045)" />
+        <text x="${(x0 + x18) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(var(--red-rgb),0.65)" font-size="10" font-weight="700">⚡ 0-18m 贴脸CQB</text>
+        <text x="${(x18 + x45) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(var(--accent-rgb),0.65)" font-size="10" font-weight="700">🎯 18-45m 中距交火</text>
+        <text x="${(x45 + x100) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(var(--blue-rgb),0.65)" font-size="10" font-weight="700">🦅 45-100m 远距架点</text>
       `;
 
       let gridSvg = '';
@@ -5598,7 +5936,7 @@
           const effHnd = p.laser_active_handling_bonus ? p.laser_active_handling_bonus : (p.handling || 0);
 
           return `
-            <div class="part-armory-card ${rClass}" style="cursor:pointer; ${isSelected ? 'outline:2px solid var(--accent); box-shadow:0 0 18px rgba(0,242,169,0.25)' : ''}" onclick="onSlotSelect('${slotKey}', '${p.part_id}'); closeSlotPickerModal()">
+            <div class="part-armory-card ${rClass}" style="cursor:pointer; ${isSelected ? 'outline:2px solid var(--accent); box-shadow:0 0 18px rgba(var(--accent-rgb),0.25)' : ''}" onclick="onSlotSelect('${slotKey}', '${p.part_id}'); closeSlotPickerModal()">
               <div class="pac-top">
                 <div class="pac-img-box">
                   <img src="${p.image || ''}" alt="${p.name}" onerror="this.onerror=null;this.src='${getPartFallbackSvg(slotKey)}'" />
@@ -5959,9 +6297,9 @@
           </div>
           <div style="display:flex; align-items:center; justify-content:center">
             <svg width="24" height="106" viewBox="0 0 24 106" style="overflow:visible">
-              <path d="M 0,12 C 12,12 10,36 22,36 M 0,38 C 12,38 10,36 22,36 M 0,66 C 12,66 10,74 22,74 M 0,92 C 12,92 10,74 22,74" fill="none" stroke="rgba(0,242,169,0.45)" stroke-width="1.4" stroke-dasharray="2,2"/>
-              <circle cx="22" cy="36" r="2.8" fill="#00f2a9"/>
-              <circle cx="22" cy="74" r="2.8" fill="#38bdf8"/>
+              <path d="M 0,12 C 12,12 10,36 22,36 M 0,38 C 12,38 10,36 22,36 M 0,66 C 12,66 10,74 22,74 M 0,92 C 12,92 10,74 22,74" fill="none" stroke="rgba(var(--accent-rgb), 0.45)" stroke-width="1.4" stroke-dasharray="2,2"/>
+              <circle cx="22" cy="36" r="2.8" fill="var(--accent)"/>
+              <circle cx="22" cy="74" r="2.8" fill="var(--blue)"/>
             </svg>
           </div>
           <div style="display:flex; flex-direction:column; gap:6px">
@@ -5969,9 +6307,9 @@
               <div style="font-size:9.5px; color:var(--text-dim); font-weight:800">🛡️ 综合防抖压制力</div>
               <div class="mono" style="font-size:15px; font-weight:900; color:var(--accent)">${stabScore} <span style="font-size:10px; color:var(--text-muted)">/ 100</span></div>
             </div>
-            <div class="mult-topo-out" style="border-color:rgba(56,189,248,0.35); background:rgba(56,189,248,0.08)">
+            <div class="mult-topo-out" style="border-color:rgba(var(--blue-rgb), 0.32); background:rgba(var(--blue-rgb), 0.08)">
               <div style="font-size:9.5px; color:var(--text-dim); font-weight:800">🚀 初速 / 弹容 / 隐蔽</div>
-              <div class="mono" style="font-size:11.5px; font-weight:900; color:#fff">${newVel}m/s · <span style="color:var(--gold)">${liveMag}发</span> · <span style="color:var(--blue)">音${soundMult.toFixed(1)}×</span></div>
+              <div class="mono" style="font-size:11.5px; font-weight:900; color:var(--text-bright)">${newVel}m/s · <span style="color:var(--gold)">${liveMag}发</span> · <span style="color:var(--blue)">音${soundMult.toFixed(1)}×</span></div>
             </div>
           </div>
         </div>
@@ -6056,20 +6394,20 @@
         ` : '';
 
         const svgLines = allResolved.map(n => {
-          const strokeCol = n.equipped ? 'rgba(0,242,169,0.75)' : 'rgba(148,163,184,0.28)';
-          const dotCol = n.equipped ? '#00f2a9' : '#64748b';
+          const strokeCol = n.equipped ? 'rgba(var(--accent-rgb), 0.72)' : 'rgba(147, 160, 176, 0.25)';
+          const dotCol = n.equipped ? 'var(--accent)' : 'var(--text-dim)';
           const midY = n.y1 < 100 ? 32 : 188;
           return `
             <polyline vector-effect="non-scaling-stroke" points="${n.x1},${n.y1} ${n.x1},${midY} ${n.ax},${n.ay}" fill="none" stroke="${strokeCol}" stroke-width="${n.equipped ? '1.8' : '1.1'}" stroke-dasharray="${n.equipped ? 'none' : '3,3'}" />
-            <circle cx="${n.ax}" cy="${n.ay}" r="${n.equipped ? '4' : '2.5'}" fill="${dotCol}" stroke="#06090f" stroke-width="1.2" />
-            ${n.equipped ? `<circle cx="${n.ax}" cy="${n.ay}" r="7.5" fill="none" stroke="rgba(0,242,169,0.45)" stroke-width="1" />` : ''}
+            <circle cx="${n.ax}" cy="${n.ay}" r="${n.equipped ? '4' : '2.5'}" fill="${dotCol}" stroke="var(--bg-base)" stroke-width="1.2" />
+            ${n.equipped ? `<circle cx="${n.ax}" cy="${n.ay}" r="7.5" fill="none" stroke="rgba(var(--accent-rgb), 0.42)" stroke-width="1" />` : ''}
           `;
         }).join('');
 
         vpEl.innerHTML = `
           <div style="display:flex; justify-content:space-between; align-items:center; position:relative; z-index:3; flex-wrap:wrap; gap:6px; margin-bottom:8px">
             <div style="display:flex; align-items:center; gap:8px">
-              <span class="stage-hud-tag" style="color:var(--accent); border-color:rgba(0,242,169,0.35)">SPATIAL TOPOLOGY // 枪械槽位空间拓扑图</span>
+              <span class="stage-hud-tag" style="color:var(--accent); border-color:rgba(var(--accent-rgb), 0.35)">SPATIAL TOPOLOGY // 枪械槽位空间拓扑图</span>
               <span class="stage-hud-tag">${w.name} · ${w.caliber} · 已挂 ${equippedParts.length} 件</span>
             </div>
             <div style="display:flex; gap:5px; flex-wrap:wrap">
@@ -6117,13 +6455,13 @@
         };
         const ringPolys = [0.33, 0.66, 1.0].map(f => {
           const pts = axes.map((_, i) => ptFor(i, f * 100)).join(' ');
-          return `<polygon points="${pts}" fill="none" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>`;
+          return `<polygon points="${pts}" fill="none" stroke="rgba(147,160,176,0.18)" stroke-width="1"/>`;
         }).join('');
         const spokes = axes.map((a, i) => {
           const end = ptFor(i, 100).split(',');
           const lbl = ptFor(i, 124).split(',');
-          return `<line x1="${cx}" y1="${cy}" x2="${end[0]}" y2="${end[1]}" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
-                  <text x="${lbl[0]}" y="${Number(lbl[1]) + 3}" text-anchor="middle" fill="#94a3b8" font-size="8.5" font-weight="700">${a.label}</text>`;
+          return `<line x1="${cx}" y1="${cy}" x2="${end[0]}" y2="${end[1]}" stroke="rgba(147,160,176,0.18)" stroke-width="1"/>
+                  <text x="${lbl[0]}" y="${Number(lbl[1]) + 3}" text-anchor="middle" fill="var(--text-muted)" font-size="8.5" font-weight="700">${a.label}</text>`;
         }).join('');
         const basePoly = axes.map((a, i) => ptFor(i, a.base)).join(' ');
         const modPoly = axes.map((a, i) => ptFor(i, a.mod)).join(' ');
@@ -6142,35 +6480,35 @@
           by -= (5.8 * vFactorBase);
           mx += wave * hSpreadMod * 0.22;
           my -= (5.8 * vFactorMod);
-          bareDots += `<circle cx="${bx.toFixed(1)}" cy="${Math.max(14, by).toFixed(1)}" r="2.2" fill="rgba(251,113,133,0.75)" />`;
-          modDots += `<circle cx="${mx.toFixed(1)}" cy="${Math.max(14, my).toFixed(1)}" r="2.5" fill="#00f2a9" />`;
+          bareDots += `<circle cx="${bx.toFixed(1)}" cy="${Math.max(14, by).toFixed(1)}" r="2.2" fill="rgba(var(--red-rgb), 0.78)" />`;
+          modDots += `<circle cx="${mx.toFixed(1)}" cy="${Math.max(14, my).toFixed(1)}" r="2.5" fill="var(--pos)" />`;
         }
         const hipRadiusBase = Math.max(12, Math.min(34, 38 - (w.hipfire_accuracy || 45) * 0.25));
         const hipRadiusMod = Math.max(6, Math.min(34, 38 - Math.min(100, (w.hipfire_accuracy || 45) + dHipfire) * 0.3));
 
         vaEl.innerHTML = `
           <div class="analytics-svg-box">
-            <div class="analytics-box-title">📡 六维属性雷达 (虚线裸枪 vs 翠绿满改)</div>
+            <div class="analytics-box-title">📡 六维属性雷达 (虚线裸枪 vs 实线满改)</div>
             <svg width="170" height="162" viewBox="0 0 170 162">
               ${ringPolys}
               ${spokes}
-              <polygon points="${basePoly}" fill="rgba(148,163,184,0.12)" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="3,2"/>
-              <polygon points="${modPoly}" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="2"/>
+              <polygon points="${basePoly}" fill="rgba(147,160,176,0.12)" stroke="var(--text-muted)" stroke-width="1.4" stroke-dasharray="3,2"/>
+              <polygon points="${modPoly}" fill="rgba(var(--accent-rgb), 0.2)" stroke="var(--accent)" stroke-width="2"/>
             </svg>
           </div>
           <div class="analytics-svg-box">
             <div class="analytics-box-title">🎯 弹道散布与腰射光圈 (红:裸枪 / 绿:改装)</div>
             <svg width="170" height="162" viewBox="0 0 170 162">
-              <line x1="10" y1="142" x2="160" y2="142" stroke="rgba(148,163,184,0.2)" stroke-dasharray="2,2"/>
-              <line x1="88" y1="10" x2="88" y2="152" stroke="rgba(148,163,184,0.15)" stroke-dasharray="2,2"/>
+              <line x1="10" y1="142" x2="160" y2="142" stroke="rgba(147,160,176,0.2)" stroke-dasharray="2,2"/>
+              <line x1="88" y1="10" x2="88" y2="152" stroke="rgba(147,160,176,0.15)" stroke-dasharray="2,2"/>
               <!-- Hipfire Reticle Circles at bottom right -->
-              <circle cx="136" cy="122" r="${hipRadiusBase.toFixed(1)}" fill="none" stroke="rgba(251,113,133,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
-              <circle cx="136" cy="122" r="${hipRadiusMod.toFixed(1)}" fill="rgba(0,242,169,0.08)" stroke="#00f2a9" stroke-width="1.6"/>
-              <text x="136" y="154" text-anchor="middle" fill="#8fa3b8" font-size="8">腰射散布圈</text>
+              <circle cx="136" cy="122" r="${hipRadiusBase.toFixed(1)}" fill="none" stroke="rgba(var(--red-rgb), 0.48)" stroke-width="1.2" stroke-dasharray="3,2"/>
+              <circle cx="136" cy="122" r="${hipRadiusMod.toFixed(1)}" fill="rgba(var(--pos-rgb), 0.08)" stroke="var(--pos)" stroke-width="1.6"/>
+              <text x="136" y="154" text-anchor="middle" fill="var(--text-muted)" font-size="8">腰射散布圈</text>
               ${bareDots}
               ${modDots}
-              <text x="52" y="154" text-anchor="middle" fill="#fb7185" font-size="8">裸枪弹道</text>
-              <text x="98" y="154" text-anchor="middle" fill="#00f2a9" font-size="8">满改弹道</text>
+              <text x="52" y="154" text-anchor="middle" fill="var(--red)" font-size="8">裸枪弹道</text>
+              <text x="98" y="154" text-anchor="middle" fill="var(--pos)" font-size="8">满改弹道</text>
             </svg>
           </div>
         `;
@@ -6355,43 +6693,43 @@
       const bannerHtml = `
         <div class="tactical-topo-board" style="margin-bottom:14px">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:6px">
-            <span class="stage-hud-tag" style="color:var(--accent); border-color:rgba(0,242,169,0.35)">ENGINE TOPOLOGY // 烽火底层伤害与改枪乘区拓扑</span>
+            <span class="stage-hud-tag" style="color:var(--accent); border-color:rgba(var(--accent-rgb), 0.35)">ENGINE TOPOLOGY // 烽火底层伤害与改枪乘区拓扑</span>
             <div style="display:flex; gap:6px; flex-wrap:wrap">
               <span class="badge badge-pos">🔫 ${DATA.weapons.length} 枪 / ${DATA.variants.length} 形态</span>
               <span class="badge badge-blue">🧩 ${DATA.parts.length} 配件暗改</span>
               <span class="badge badge-gold">🧱 ${DATA.ammo.length} 弹药 / ${(DATA.armors || []).length} 护甲</span>
             </div>
           </div>
-          <svg viewBox="0 0 820 92" style="width:100%; height:auto; display:block; background:rgba(6,9,15,0.65); border:1px solid rgba(255,255,255,0.06); border-radius:8px; padding:4px">
+          <svg viewBox="0 0 820 92" style="width:100%; height:auto; display:block; background:rgba(var(--stage-rgb), 0.85); border:1px solid var(--border); border-radius:8px; padding:4px">
             <!-- Nodes -->
-            <rect x="12" y="14" width="150" height="64" rx="7" fill="rgba(16,24,38,0.95)" stroke="#38bdf8" stroke-width="1.3"/>
-            <text x="87" y="34" text-anchor="middle" fill="#38bdf8" font-size="10.5" font-weight="800">① 枪械基础乘区</text>
-            <text x="87" y="51" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-family="JetBrains Mono">肉伤/甲伤 × 距离阶梯</text>
-            <text x="87" y="66" text-anchor="middle" fill="#64748b" font-size="9" font-family="JetBrains Mono">× 部位倍率 (头/胸/腹/肢)</text>
+            <rect x="12" y="14" width="150" height="64" rx="7" fill="rgba(var(--surface-rgb), 0.95)" stroke="var(--blue)" stroke-width="1.3"/>
+            <text x="87" y="34" text-anchor="middle" fill="var(--blue)" font-size="10.5" font-weight="800">① 枪械基础乘区</text>
+            <text x="87" y="51" text-anchor="middle" fill="var(--text-main)" font-size="9.5" font-family="JetBrains Mono">肉伤/甲伤 × 距离阶梯</text>
+            <text x="87" y="66" text-anchor="middle" fill="var(--text-dim)" font-size="9" font-family="JetBrains Mono">× 部位倍率 (头/胸/腹/肢)</text>
 
-            <path d="M 162,46 L 214,46" stroke="#00f2a9" stroke-width="1.6" stroke-dasharray="3,2"/>
-            <polygon points="214,42 222,46 214,50" fill="#00f2a9"/>
+            <path d="M 162,46 L 214,46" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="3,2"/>
+            <polygon points="214,42 222,46 214,50" fill="var(--accent)"/>
 
-            <rect x="224" y="14" width="166" height="64" rx="7" fill="rgba(16,24,38,0.95)" stroke="#fbbf24" stroke-width="1.3"/>
-            <text x="307" y="34" text-anchor="middle" fill="#fbbf24" font-size="10.5" font-weight="800">② 弹药穿甲矩阵 (Lv1~6)</text>
-            <text x="307" y="51" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-family="JetBrains Mono">穿透率 P(Lv) × 甲伤系数</text>
-            <text x="307" y="66" text-anchor="middle" fill="#64748b" font-size="9" font-family="JetBrains Mono">同级减伤 25% · 越级跳弹</text>
+            <rect x="224" y="14" width="166" height="64" rx="7" fill="rgba(var(--surface-rgb), 0.95)" stroke="var(--gold)" stroke-width="1.3"/>
+            <text x="307" y="34" text-anchor="middle" fill="var(--gold)" font-size="10.5" font-weight="800">② 弹药穿甲矩阵 (Lv1~6)</text>
+            <text x="307" y="51" text-anchor="middle" fill="var(--text-main)" font-size="9.5" font-family="JetBrains Mono">穿透率 P(Lv) × 甲伤系数</text>
+            <text x="307" y="66" text-anchor="middle" fill="var(--text-dim)" font-size="9" font-family="JetBrains Mono">同级减伤 25% · 越级跳弹</text>
 
-            <path d="M 390,46 L 442,46" stroke="#00f2a9" stroke-width="1.6" stroke-dasharray="3,2"/>
-            <polygon points="442,42 450,46 442,50" fill="#00f2a9"/>
+            <path d="M 390,46 L 442,46" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="3,2"/>
+            <polygon points="442,42 450,46 442,50" fill="var(--accent)"/>
 
-            <rect x="452" y="14" width="166" height="64" rx="7" fill="rgba(16,24,38,0.95)" stroke="#a855f7" stroke-width="1.3"/>
-            <text x="535" y="34" text-anchor="middle" fill="#c084fc" font-size="10.5" font-weight="800">③ 护甲消融 & 隐藏乘区</text>
-            <text x="535" y="51" text-anchor="middle" fill="#e2e8f0" font-size="9.5" font-family="JetBrains Mono">枪跳×0.76 · 垂/水后坐-%</text>
-            <text x="535" y="66" text-anchor="middle" fill="#64748b" font-size="9" font-family="JetBrains Mono">开镭指 +30腰/+14操</text>
+            <rect x="452" y="14" width="166" height="64" rx="7" fill="rgba(var(--surface-rgb), 0.95)" stroke="var(--purple)" stroke-width="1.3"/>
+            <text x="535" y="34" text-anchor="middle" fill="var(--purple)" font-size="10.5" font-weight="800">③ 护甲消融 & 隐藏乘区</text>
+            <text x="535" y="51" text-anchor="middle" fill="var(--text-main)" font-size="9.5" font-family="JetBrains Mono">枪跳×0.76 · 垂/水后坐-%</text>
+            <text x="535" y="66" text-anchor="middle" fill="var(--text-dim)" font-size="9" font-family="JetBrains Mono">开镭指 +30腰/+14操</text>
 
-            <path d="M 618,46 L 668,46" stroke="#00f2a9" stroke-width="1.6" stroke-dasharray="3,2"/>
-            <polygon points="668,42 676,46 668,50" fill="#00f2a9"/>
+            <path d="M 618,46 L 668,46" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="3,2"/>
+            <polygon points="668,42 676,46 668,50" fill="var(--accent)"/>
 
-            <rect x="678" y="14" width="130" height="64" rx="7" fill="rgba(0,242,169,0.1)" stroke="#00f2a9" stroke-width="1.5"/>
-            <text x="743" y="34" text-anchor="middle" fill="#00f2a9" font-size="10.5" font-weight="900">④ 实战 BTK / TTK</text>
-            <text x="743" y="51" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="800" font-family="JetBrains Mono">(BTK-1)×60/RPM</text>
-            <text x="743" y="66" text-anchor="middle" fill="#00f2a9" font-size="9" font-family="JetBrains Mono">+ 扳机延迟 Delay</text>
+            <rect x="678" y="14" width="130" height="64" rx="7" fill="rgba(var(--accent-rgb), 0.1)" stroke="var(--accent)" stroke-width="1.5"/>
+            <text x="743" y="34" text-anchor="middle" fill="var(--accent)" font-size="10.5" font-weight="900">④ 实战 BTK / TTK</text>
+            <text x="743" y="51" text-anchor="middle" fill="var(--text-bright)" font-size="10" font-weight="800" font-family="JetBrains Mono">(BTK-1)×60/RPM</text>
+            <text x="743" y="66" text-anchor="middle" fill="var(--accent)" font-size="9" font-family="JetBrains Mono">+ 扳机延迟 Delay</text>
           </svg>
         </div>
       `;
@@ -6478,10 +6816,10 @@
       const renderHeatmapCells = (vals, isPen) => {
         return `<div class="pen-heatmap">` + vals.map((v, i) => {
           const pct = Math.round((v || 0) * 100);
-          let bg = 'rgba(255,255,255,0.04)', col = '#64748b';
-          if (pct >= 75) { bg = isPen ? 'rgba(0,242,169,0.22)' : 'rgba(56,189,248,0.22)'; col = isPen ? '#00f2a9' : '#38bdf8'; }
-          else if (pct >= 45) { bg = 'rgba(251,191,36,0.18)'; col = '#fbbf24'; }
-          else if (pct > 0) { bg = 'rgba(251,113,133,0.16)'; col = '#fb7185'; }
+          let bg = 'rgba(255,255,255,0.035)', col = 'var(--text-dim)';
+          if (pct >= 75) { bg = isPen ? 'rgba(var(--pos-rgb), 0.2)' : 'rgba(var(--blue-rgb), 0.2)'; col = isPen ? 'var(--pos)' : 'var(--blue)'; }
+          else if (pct >= 45) { bg = 'rgba(var(--gold-rgb), 0.16)'; col = 'var(--gold)'; }
+          else if (pct > 0) { bg = 'rgba(var(--red-rgb), 0.15)'; col = 'var(--red)'; }
           return `<div class="pen-cell" style="background:${bg}; color:${col}" title="对 Lv${i+1} 护甲: ${pct}%"><span class="lv-tag">L${i+1}</span><span>${pct}%</span></div>`;
         }).join('') + `</div>`;
       };
@@ -6493,7 +6831,7 @@
         return `
           <tr>
             <td class="mono" style="color:var(--blue); font-weight:700">${a.caliber}</td>
-            <td style="font-weight:700; color:#fff">
+            <td style="font-weight:700; color:var(--text-bright)">
               <div style="display:flex; align-items:center; gap:8px">
                 <img src="${getAmmoSvgIcon(a.caliber, a.penetration_level)}" alt="${a.name}" style="width:18px; height:28px; flex-shrink:0" />
                 <span>${a.name}</span>
@@ -6513,24 +6851,24 @@
     function getArmorCoverageSvg(ar) {
       if (ar.category === 'helmet') {
         return `<span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; color:var(--blue); font-weight:700" title="防护部位: 头部">
-          <svg width="18" height="22" viewBox="0 0 24 28"><circle cx="12" cy="9" r="6.5" fill="rgba(56,189,248,0.35)" stroke="#38bdf8" stroke-width="1.8"/><path d="M5,24 C5,18 19,18 19,24" fill="none" stroke="rgba(148,163,184,0.25)" stroke-width="1.5"/></svg>
+          <svg width="18" height="22" viewBox="0 0 24 28"><circle cx="12" cy="9" r="6.5" fill="rgba(var(--blue-rgb), 0.32)" stroke="var(--blue)" stroke-width="1.8"/><path d="M5,24 C5,18 19,18 19,24" fill="none" stroke="rgba(147,160,176,0.25)" stroke-width="1.5"/></svg>
           <span>护头</span>
         </span>`;
       }
       const covAbd = Boolean(ar.covers_abdomen);
       const covArm = Boolean(ar.covers_upper_arm);
       const label = covArm ? '胸+腹+臂' : (covAbd ? '护胸+腹' : '仅护上胸');
-      const col = covArm ? '#00f2a9' : (covAbd ? '#38bdf8' : '#fbbf24');
+      const col = covArm ? 'var(--pos)' : (covAbd ? 'var(--blue)' : 'var(--gold)');
       return `<span style="display:inline-flex; align-items:center; gap:4px; font-size:11px; color:${col}; font-weight:700" title="防护部位: ${label}">
         <svg width="20" height="24" viewBox="0 0 28 32">
-          <circle cx="14" cy="5" r="3.5" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="1.2"/>
+          <circle cx="14" cy="5" r="3.5" fill="none" stroke="rgba(147,160,176,0.3)" stroke-width="1.2"/>
           <!-- Upper Arms -->
-          <rect x="3" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(0,242,169,0.45)' : 'rgba(148,163,184,0.12)'}" stroke="${covArm ? '#00f2a9' : 'rgba(148,163,184,0.25)'}" stroke-width="1"/>
-          <rect x="21" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(0,242,169,0.45)' : 'rgba(148,163,184,0.12)'}" stroke="${covArm ? '#00f2a9' : 'rgba(148,163,184,0.25)'}" stroke-width="1"/>
+          <rect x="3" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(var(--pos-rgb), 0.42)' : 'rgba(147,160,176,0.12)'}" stroke="${covArm ? 'var(--pos)' : 'rgba(147,160,176,0.25)'}" stroke-width="1"/>
+          <rect x="21" y="10" width="4" height="9" rx="1.5" fill="${covArm ? 'rgba(var(--pos-rgb), 0.42)' : 'rgba(147,160,176,0.12)'}" stroke="${covArm ? 'var(--pos)' : 'rgba(147,160,176,0.25)'}" stroke-width="1"/>
           <!-- Upper Chest -->
-          <rect x="8" y="10" width="12" height="8" rx="1.5" fill="rgba(56,189,248,0.45)" stroke="${col}" stroke-width="1.3"/>
+          <rect x="8" y="10" width="12" height="8" rx="1.5" fill="rgba(var(--blue-rgb), 0.42)" stroke="${col}" stroke-width="1.3"/>
           <!-- Abdomen -->
-          <rect x="8.5" y="19" width="11" height="7" rx="1.5" fill="${covAbd ? 'rgba(56,189,248,0.45)' : 'rgba(148,163,184,0.1)'}" stroke="${covAbd ? col : 'rgba(148,163,184,0.25)'}" stroke-width="1.2"/>
+          <rect x="8.5" y="19" width="11" height="7" rx="1.5" fill="${covAbd ? 'rgba(var(--blue-rgb), 0.42)' : 'rgba(147,160,176,0.1)'}" stroke="${covAbd ? col : 'rgba(147,160,176,0.25)'}" stroke-width="1.2"/>
         </svg>
         <span>${label}</span>
       </span>`;
