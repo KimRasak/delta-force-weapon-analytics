@@ -1251,6 +1251,727 @@
       color: var(--text-dim);
       font-size: 12px;
     }
+
+    /* ==================== v4.0 WORLD-CLASS VISUAL & GAME-HUD DESIGN SYSTEM ==================== */
+    :root {
+      --rarity-6: #ff4d4f;
+      --rarity-5: #fbbf24;
+      --rarity-4: #c084fc;
+      --rarity-3: #38bdf8;
+      --rarity-2: #00f2a9;
+      --rarity-1: #94a3b8;
+    }
+
+    /* Rarity Borders & Glows */
+    .rarity-6, .rarity-red { border-color: rgba(255, 77, 79, 0.55) !important; background: linear-gradient(145deg, rgba(255, 77, 79, 0.14), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-5, .rarity-gold { border-color: rgba(251, 191, 36, 0.55) !important; background: linear-gradient(145deg, rgba(251, 191, 36, 0.14), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-4, .rarity-purple { border-color: rgba(192, 132, 252, 0.5) !important; background: linear-gradient(145deg, rgba(192, 132, 252, 0.13), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-3, .rarity-blue { border-color: rgba(56, 189, 248, 0.45) !important; background: linear-gradient(145deg, rgba(56, 189, 248, 0.11), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-2, .rarity-green { border-color: rgba(0, 242, 169, 0.4) !important; background: linear-gradient(145deg, rgba(0, 242, 169, 0.09), rgba(14, 20, 30, 0.92)) !important; }
+    .rarity-1, .rarity-white { border-color: rgba(148, 163, 184, 0.3) !important; background: linear-gradient(145deg, rgba(148, 163, 184, 0.07), rgba(14, 20, 30, 0.92)) !important; }
+
+    /* Visual Range-Zone Meta Strip (Tab 1 Hero Upgrade) */
+    .meta-zone-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    @media (max-width: 980px) {
+      .meta-zone-strip { grid-template-columns: 1fr; }
+    }
+    .meta-zone-card {
+      background:
+        radial-gradient(circle at 88% 20%, rgba(0, 242, 169, 0.11), transparent 55%),
+        linear-gradient(135deg, rgba(17, 25, 38, 0.96), rgba(10, 15, 23, 0.98));
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      position: relative;
+      overflow: hidden;
+    }
+    .meta-zone-card::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--accent);
+    }
+    .meta-zone-card.zone-cqb::before { background: var(--red); }
+    .meta-zone-card.zone-mid::before { background: var(--accent); }
+    .meta-zone-card.zone-far::before { background: var(--gold); }
+    .meta-zone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .meta-zone-guns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .meta-zone-gun {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(7, 10, 15, 0.72);
+      border: 1px solid rgba(44, 64, 90, 0.65);
+      border-radius: var(--radius-sm);
+      padding: 6px 8px;
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+    .meta-zone-gun:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+      background: rgba(0, 242, 169, 0.08);
+    }
+    .meta-zone-gun img, .meta-zone-gun svg {
+      width: 64px;
+      height: 32px;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.75));
+      flex-shrink: 0;
+    }
+
+    /* Weapon Showcase Stage inside Loadout Cards */
+    .weapon-stage {
+      position: relative;
+      height: 128px;
+      border-radius: var(--radius-sm);
+      background:
+        radial-gradient(ellipse at 42% 55%, rgba(0, 242, 169, 0.14), rgba(14, 21, 32, 0.2) 65%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
+        linear-gradient(180deg, #090d14 0%, #101824 100%);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      overflow: hidden;
+    }
+    .budget-card .weapon-stage {
+      background:
+        radial-gradient(ellipse at 42% 55%, rgba(251, 191, 36, 0.16), rgba(14, 21, 32, 0.2) 65%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,0.018) 0px, rgba(255,255,255,0.018) 1px, transparent 1px, transparent 16px),
+        linear-gradient(180deg, #0b0e14 0%, #161820 100%);
+      border-color: rgba(251, 191, 36, 0.28);
+    }
+    .weapon-stage-watermark {
+      position: absolute;
+      left: 12px;
+      bottom: -6px;
+      font-size: 44px;
+      font-weight: 900;
+      font-family: var(--font-mono);
+      color: rgba(255, 255, 255, 0.035);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 2px;
+      white-space: nowrap;
+    }
+    .weapon-render-wrap {
+      flex: 1;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .weapon-render-img {
+      max-width: 245px;
+      max-height: 102px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 12px rgba(0, 242, 169, 0.15));
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .loadout-card:hover .weapon-render-img {
+      transform: scale(1.06) translateY(-2px);
+    }
+    .stage-hud-left {
+      position: absolute;
+      top: 8px;
+      left: 10px;
+      display: flex;
+      gap: 6px;
+      z-index: 3;
+    }
+    .stage-hud-pill {
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(7, 10, 15, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-muted);
+      backdrop-filter: blur(4px);
+    }
+    .stage-radar-wrap {
+      width: 106px;
+      height: 106px;
+      flex-shrink: 0;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(7, 10, 15, 0.55);
+      border: 1px solid rgba(44, 64, 90, 0.55);
+      border-radius: 8px;
+    }
+
+    /* Visual Metric Progress Gauges */
+    .metric-bar-track {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 5px;
+    }
+    .metric-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Visual Attachment Tile Grid inside Loadout Card */
+    .visual-part-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+      gap: 6px;
+    }
+    .visual-part-tile {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 7px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: rgba(13, 19, 28, 0.9);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+      overflow: hidden;
+    }
+    .visual-part-tile:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent) !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+    .visual-part-tile.core-part {
+      box-shadow: inset 0 0 12px rgba(0, 242, 169, 0.12);
+    }
+    .vp-thumb {
+      width: 34px;
+      height: 34px;
+      border-radius: 5px;
+      background: rgba(7, 10, 15, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .vp-thumb img, .vp-thumb svg {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.7));
+    }
+    .vp-info {
+      min-width: 0;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .vp-slot {
+      font-size: 9.5px;
+      color: var(--text-dim);
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .vp-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 1px;
+    }
+    .vp-price {
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--gold);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+
+    /* Concise Tactical Highlights instead of Text Walls */
+    .loadout-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      padding: 8px 10px;
+      background: rgba(13, 19, 28, 0.65);
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+    }
+    .budget-card .loadout-highlights {
+      border-left-color: var(--gold);
+    }
+    .hl-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(0, 242, 169, 0.11);
+      color: var(--accent);
+      border: 1px solid rgba(0, 242, 169, 0.25);
+    }
+    .hl-pill.gold {
+      background: rgba(251, 191, 36, 0.12);
+      color: var(--gold);
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+    .hl-pill.blue {
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--blue);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+    .hl-summary-text {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      flex: 1 1 100%;
+      margin-top: 2px;
+    }
+
+    /* 3-Column Duel Arena & Interactive Hitbox Mannequin */
+    .duel-arena-grid {
+      display: grid;
+      grid-template-columns: 280px 230px 1fr;
+      gap: 14px;
+      align-items: stretch;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 1100px) {
+      .duel-arena-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .duel-visual-card {
+      background:
+        radial-gradient(circle at 50% 25%, rgba(56, 189, 248, 0.09), transparent 70%),
+        var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .hitbox-zone {
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+    .hitbox-zone:hover {
+      filter: brightness(1.3);
+    }
+    .shot-segment-bar {
+      display: flex;
+      gap: 2px;
+      height: 7px;
+      margin: 4px 0 6px 0;
+    }
+    .shot-seg {
+      flex: 1;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    /* Tab 2 View Switcher & Armory Card Grid */
+    .view-mode-switch {
+      display: inline-flex;
+      background: var(--bg-base);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 3px;
+      gap: 4px;
+    }
+    .view-mode-btn {
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .view-mode-btn.active {
+      background: var(--accent);
+      color: #04120d;
+    }
+    .parts-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .part-armory-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.18s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .part-armory-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .pac-top {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .pac-img-stage {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      position: relative;
+    }
+    .pac-img-stage img, .pac-img-stage svg {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.75));
+    }
+    .pac-stat-bars {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5px 10px;
+      background: rgba(7, 10, 15, 0.65);
+      padding: 7px 9px;
+      border-radius: 6px;
+      border: 1px solid rgba(44, 64, 90, 0.45);
+    }
+    .pac-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .pac-stat-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: var(--text-muted);
+    }
+    .pac-bar-bg {
+      height: 4px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .pac-bar-fill {
+      height: 100%;
+      border-radius: 99px;
+    }
+
+    /* Tab 3 Visual Meta Tier Board */
+    .tier-board {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+    .tier-row {
+      display: grid;
+      grid-template-columns: 95px 1fr;
+      gap: 10px;
+      align-items: stretch;
+      background: rgba(7, 10, 15, 0.55);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    @media (max-width: 760px) {
+      .tier-row { grid-template-columns: 1fr; }
+    }
+    .tier-badge-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 6px;
+      font-weight: 900;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .tier-weapons-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 10px;
+      align-items: center;
+    }
+    .tier-weapon-card {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 5px 10px 5px 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .tier-weapon-card:hover, .tier-weapon-card.active-in-chart {
+      border-color: var(--accent);
+      background: rgba(0, 242, 169, 0.1);
+      box-shadow: 0 0 12px rgba(0, 242, 169, 0.15);
+    }
+    .tier-weapon-card img, .tier-weapon-card svg {
+      width: 58px;
+      height: 30px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.8));
+    }
+
+    /* Tab 4 Gunsmith Blueprint Viewport & Visual Slot Cards */
+    .gunsmith-viewport {
+      margin-top: 14px;
+      border-radius: var(--radius-md);
+      background:
+        radial-gradient(ellipse at 50% 45%, rgba(0, 242, 169, 0.15), rgba(9, 14, 22, 0.4) 70%),
+        repeating-linear-gradient(0deg, rgba(56, 189, 248, 0.03) 0px, rgba(56, 189, 248, 0.03) 1px, transparent 1px, transparent 20px),
+        repeating-linear-gradient(90deg, rgba(56, 189, 248, 0.03) 0px, rgba(56, 189, 248, 0.03) 1px, transparent 1px, transparent 20px),
+        linear-gradient(180deg, #070b12 0%, #0f1724 100%);
+      border: 1px solid rgba(0, 242, 169, 0.32);
+      padding: 14px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blueprint-main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      min-height: 135px;
+    }
+    .blueprint-gun-wrap {
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .blueprint-gun-img {
+      max-width: 340px;
+      max-height: 130px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.9)) drop-shadow(0 0 18px rgba(0,242,169,0.2));
+    }
+    .blueprint-equipped-strip {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed rgba(44, 64, 90, 0.7);
+    }
+    .bp-mini-part {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(7, 10, 15, 0.8);
+      border: 1px solid var(--border-light);
+      border-radius: 5px;
+      padding: 3px 7px;
+      font-size: 11px;
+    }
+    .bp-mini-part img, .bp-mini-part svg {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+    .slot-visual-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .slot-icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 7px;
+      background: rgba(7, 10, 15, 0.85);
+      border: 1px dashed var(--border-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s;
+      overflow: hidden;
+    }
+    .slot-box.equipped .slot-icon-box {
+      border-style: solid;
+      border-color: rgba(0, 242, 169, 0.5);
+      background: radial-gradient(circle, rgba(0,242,169,0.12), rgba(7,10,15,0.9));
+    }
+    .slot-icon-box:hover {
+      border-color: var(--accent);
+      transform: scale(1.04);
+    }
+    .slot-icon-box img, .slot-icon-box svg {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.75));
+    }
+    .visual-analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .va-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Tab 5 Visual Penetration Heatmap, Armor Gallery & Markdown Thumbnails */
+    .pen-heatmap {
+      display: inline-grid;
+      grid-template-columns: repeat(6, 36px);
+      gap: 3px;
+    }
+    .pen-cell {
+      text-align: center;
+      font-size: 10.5px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 3px 0;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .armor-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(215px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .armor-visual-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      transition: transform 0.15s, border-color 0.15s;
+    }
+    .armor-visual-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .armor-img-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .armor-img-box img, .armor-img-box svg {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.8));
+    }
+
+    /* Markdown Injected Weapon Badges & Table Cell Thumbnails */
+    .md-head-gun-badge {
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      background: rgba(0, 242, 169, 0.1);
+      border: 1px solid rgba(0, 242, 169, 0.35);
+      border-radius: 6px;
+      padding: 2px 8px;
+      margin-right: 8px;
+    }
+    .md-head-gun-img {
+      height: 28px;
+      width: auto;
+      max-width: 72px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+    }
+    .md-cell-media {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .md-cell-thumb {
+      width: 38px;
+      height: 24px;
+      object-fit: contain;
+      background: rgba(7, 10, 15, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 1px 2px;
+      flex-shrink: 0;
+    }
+    .doc-infographic-banner {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+      padding: 14px;
+      background: linear-gradient(135deg, rgba(0, 242, 169, 0.08), rgba(56, 189, 248, 0.05));
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+    }
   </style>
 </head>
 <body>
@@ -1303,18 +2024,21 @@
 
     <!-- ==================== TAB 1: CURATED LOADOUTS & DUEL SIMULATOR ==================== -->
     <section id="tab-loadouts" class="tab-panel active">
-      <div class="hero-banner">
+      <div class="hero-banner" style="padding:14px 20px; margin-bottom:12px">
         <div>
-          <h2>🎯 绝密巴克什（外围中远 + 巴别塔CQB）高容错实战配枪终端</h2>
-          <p>
-            融合 <strong>577 个配件真实物价、底层暗改乘数（随机枪跳/回弹抖动/开镜耗时/腰射开关）与弹甲穿透模型</strong>。支持卡片内直接切换<strong>长/短枪管或导气分支</strong>，实时重算整枪哈夫币造价与面板增幅，并可一键带入单枪模拟器或下方<strong>逐枪扣血与碎甲推演器</strong>。
+          <h2>🎯 绝密巴克什（外围中远 + 巴别塔CQB）高容错视觉配枪终端</h2>
+          <p style="font-size:12.5px">
+            全量接入 <strong>62 把武器高清渲染立绘、577 个配件品质图鉴、五维战术雷达与部位受击靶纸</strong>。支持卡片内直接切换<strong>长/短枪管或导气分支</strong>，一键带入模拟器或下方<strong>可交互人形靶逐枪扣血推演器</strong>。
           </p>
         </div>
         <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn" onclick="switchTab('tab-docs'); switchDoc('custom_guide')">📖 阅读完整定制配枪报告</button>
-          <button class="btn btn-primary" onclick="switchTab('tab-builder')">🛠️ 进入自由配枪模拟器</button>
+          <button class="btn" onclick="switchTab('tab-docs'); switchDoc('custom_guide')">📖 定制配枪图文报告</button>
+          <button class="btn btn-primary" onclick="switchTab('tab-builder')">🛠️ 进入全槽位改枪台</button>
         </div>
       </div>
+
+      <!-- Visual Range-Zone Meta Strip (0-18m CQB / 18-45m Mid / 45-90m Far) -->
+      <div class="meta-zone-strip" id="meta-zone-strip-container"></div>
 
       <!-- Category Filter Pills -->
       <div class="pill-bar" id="loadout-filter-pills">
@@ -1333,10 +2057,10 @@
         <div class="duel-sim-header">
           <div>
             <h3 style="font-size:16px; font-weight:800; color:#fff; display:flex; align-items:center; gap:8px">
-              🩸 实战逐枪扣血与护甲耐久碎裂推演器 (Shot-by-Shot TTK & Armor Break Visualizer)
+              🩸 实战人形靶部位受击 & 护甲碎裂逐枪推演器 (Interactive Hitbox & TTK Visualizer)
             </h3>
             <p style="font-size:12px; color:var(--text-muted); margin-top:2px">
-              自由选择任意武器改装形态、弹药等级、目标护甲与交战距离，直观推演第 1 枪至击杀每一发子弹的<strong>护甲剩余耐久</strong>与<strong>敌方剩余生命值 (100 HP)</strong>。
+              点击中间<strong>人形靶部位（头部/胸部/腹部/四肢）</strong>或切换下拉框，实时演示每一发子弹的<strong>护甲格碎裂进度</strong>与<strong>生命值扣减</strong>。
             </p>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
@@ -1365,19 +2089,19 @@
       <!-- Quick Comparison Matrix -->
       <div class="table-container">
         <div style="padding:14px 18px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px">
-          <h3 style="font-size:15px; font-weight:800; color:#fff">📊 巴克什 5 级弹对轰（5弹打5甲 vs 4弹打5甲 vs 修脚/爆头）核心指标速查矩阵</h3>
-          <span style="font-size:12px; color:var(--text-muted)">点击任意行可直接将该枪带入上方【逐枪扣血推演器】</span>
+          <h3 style="font-size:15px; font-weight:800; color:#fff">📊 巴克什 5 级弹对轰（5弹打5甲 vs 4弹打5甲 vs 修脚/爆头）视觉速查矩阵</h3>
+          <span style="font-size:12px; color:var(--text-muted)">点击任意行可直接将该枪带入上方【人形靶逐枪推演器】</span>
         </div>
         <div class="table-scroll">
           <table class="data-table">
             <thead>
               <tr>
                 <th>流派分类</th>
-                <th>武器与核心改装形态</th>
+                <th>武器立绘与核心改装形态</th>
                 <th>整枪参考预算</th>
                 <th>实战射速 / 延迟</th>
                 <th>一段射程</th>
-                <th>5级弹打5甲 (BTK / TTK)</th>
+                <th>5级弹打5甲 (BTK / TTK条)</th>
                 <th>4级弹打5甲 / 特种打法</th>
                 <th>核心战术定位与暗改精髓</th>
               </tr>
@@ -1390,15 +2114,19 @@
 
     <!-- ==================== TAB 2: 577 PARTS EXPLORER & PK ==================== -->
     <section id="tab-parts" class="tab-panel">
-      <div class="hero-banner">
+      <div class="hero-banner" style="padding:14px 20px">
         <div>
-          <h2>🧩 577 个配件底层数据全表 & 同槽位性价比横评</h2>
-          <p>
-            已将原笼统的“功能配件”精细拆分为 <strong>导气箍、枪机/杠杆、扳机、激光镭指、护木贴片、两脚架、快拔套、增高架、托腮板</strong> 等 19 个独立真实槽位。支持勾选任意 2~4 个配件开启<strong>底层 40 项参数并排 PK 对比</strong>。
+          <h2>🧩 577 个配件高清视觉图鉴 & 19 槽位性价比横评</h2>
+          <p style="font-size:12.5px">
+            精细拆分为 <strong>导气箍、枪机/杠杆、扳机、激光镭指、护木贴片、两脚架、快拔套、增高架、托腮板</strong> 等 19 个真实槽位。支持<strong>视觉图鉴卡片 / 紧凑数据表</strong>一键切换与 2~4 件并排 PK。
           </p>
         </div>
-        <div style="display:flex; gap:8px; flex-wrap:wrap">
-          <button class="btn" onclick="exportPartsCSV()">📥 导出当前筛选 CSV</button>
+        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+          <div class="view-mode-switch">
+            <button class="view-mode-btn active" id="btn-parts-view-cards" onclick="setPartsViewMode('cards')">🖼️ 视觉图鉴卡片</button>
+            <button class="view-mode-btn" id="btn-parts-view-table" onclick="setPartsViewMode('table')">📋 紧凑数据全表</button>
+          </div>
+          <button class="btn" onclick="exportPartsCSV()">📥 导出 CSV</button>
         </div>
       </div>
 
@@ -1450,13 +2178,19 @@
         <div class="result-counter" id="parts-count-label">共 577 个配件</div>
       </div>
 
-      <div class="table-container">
+      <!-- Visual Armory Card Grid View -->
+      <div id="parts-visual-grid-wrap">
+        <div class="parts-card-grid" id="parts-visual-grid"></div>
+      </div>
+
+      <!-- Compact Data Table View -->
+      <div class="table-container" id="parts-table-container" style="display:none">
         <div class="table-scroll" style="max-height: 74vh">
           <table class="data-table" id="parts-table">
             <thead>
               <tr>
                 <th style="width:42px; text-align:center">PK</th>
-                <th class="sortable" onclick="sortParts('name')">配件名称 & 评级</th>
+                <th class="sortable" onclick="sortParts('name')">配件图标 · 名称 & 评级</th>
                 <th class="sortable" onclick="sortParts('category_cn')">细分槽位</th>
                 <th class="sortable sorted-asc" onclick="sortParts('market_price')">交易行均价</th>
                 <th class="sortable" onclick="sortParts('net_panel_points')">四维净和</th>
@@ -1478,21 +2212,24 @@
 
     <!-- ==================== TAB 3: 226 WEAPON VARIANTS & MULTI-WEAPON CURVE CHART ==================== -->
     <section id="tab-variants" class="tab-panel">
-      <div class="hero-banner">
+      <div class="hero-banner" style="padding:14px 20px">
         <div>
-          <h2>⚔️ 62 把武器 · 226 种核心改装形态 TTK 天梯与多枪衰减曲线对比</h2>
-          <p>
-            不仅涵盖全部原厂基线，更枚举了所有<strong>改变射速、伤害、扳机延迟、部位倍率与射程衰减</strong>的枪管/导气箍/枪机组合。勾选表格中任意 2~5 个武器形态即可在上方<strong>实时绘制多武器距离-TTK 阶梯曲线与伤害衰减对比图</strong>。
+          <h2>⚔️ 62 把武器 · 226 种改装形态视觉天梯榜 & 距离衰减曲线</h2>
+          <p style="font-size:12.5px">
+            点击下方<strong>视觉天梯榜武器立绘卡片</strong>或勾选表格，即可在上方<strong>实时叠加绘制多武器 0m~100m TTK 阶梯与伤害衰减曲线</strong>。
           </p>
         </div>
       </div>
+
+      <!-- Visual Meta Tier Board -->
+      <div class="tier-board" id="variants-tier-board"></div>
 
       <!-- Interactive Multi-Weapon Curve Chart Box -->
       <div class="duel-sim-box" style="margin-bottom:18px">
         <div class="duel-sim-header" style="margin-bottom:10px; padding-bottom:10px">
           <div>
             <h3 style="font-size:15px; font-weight:800; color:#fff">📈 多武器远近距离 TTK 阶梯曲线 & 伤害衰减可视化对比 (0m ~ 100m)</h3>
-            <p style="font-size:12px; color:var(--text-muted)">点击下方快速预设或在下表勾选【曲线对比】复选框（最多同时对比 5 把武器形态）</p>
+            <p style="font-size:12px; color:var(--text-muted)">点击天梯卡片、快速预设或在下表勾选【曲线】复选框（最多同时对比 5 把武器形态）</p>
           </div>
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
             <select id="chart-metric-mode" class="select-control" onchange="renderVariantComparisonChart()">
@@ -1542,7 +2279,7 @@
             <thead>
               <tr>
                 <th style="width:44px; text-align:center">曲线</th>
-                <th class="sortable" onclick="sortVariants('weapon_name')">武器名称</th>
+                <th class="sortable" onclick="sortVariants('weapon_name')">武器立绘与名称</th>
                 <th class="sortable" onclick="sortVariants('variant_label')">核心改装组合</th>
                 <th class="sortable" onclick="sortVariants('mod_cost')">核心件成本</th>
                 <th class="sortable" onclick="sortVariants('rof_rpm')">射速(RPM)</th>
@@ -1565,11 +2302,11 @@
 
     <!-- ==================== TAB 4: SINGLE-GUN FULL-SLOT BUILDER & BUILD CODES ==================== -->
     <section id="tab-builder" class="tab-panel">
-      <div class="hero-banner">
+      <div class="hero-banner" style="padding:14px 20px">
         <div>
-          <h2>🛠️ 单枪全槽位改装模拟器 · 实战 TTK 联动推演 & 游戏内改枪码库</h2>
-          <p>
-            已升级为 <strong>19 个独立真实配件槽位</strong>（导气箍、枪机、激光镭指、快拔套、护木贴片互不顶替！）。切换任意枪管/导气箍/枪机时，右侧面板<strong>实时联动计算真实射速、一段射程、弹药穿甲 TTK、裸枪 vs 满改双轨进度条</strong>，并内置 <strong>103 组游戏内一键盘改枪码</strong>。
+          <h2>🛠️ 单枪全槽位视觉改枪台 · 弹道散布模拟 & 游戏内改枪码库</h2>
+          <p style="font-size:12.5px">
+            <strong>19 个独立真实配件槽位</strong>均配备官方配件立绘与<strong>🖼️ 视觉图鉴选件器</strong>。右侧实时绘制<strong>裸枪 vs 满改六维雷达图、连发弹道散布靶纸、腰射准星缩圈模拟与实战穿甲 TTK</strong>。
           </p>
         </div>
       </div>
@@ -1591,6 +2328,9 @@
               <button class="btn btn-sm" onclick="resetBuilderSlots()">🔄 清空配件</button>
             </div>
           </div>
+
+          <!-- Visual Gunsmith Blueprint Viewport -->
+          <div class="gunsmith-viewport" id="builder-gunsmith-viewport"></div>
 
           <!-- Weapon Baseline Stats Bar -->
           <div id="builder-weapon-base-info" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(125px, 1fr)); gap:10px; margin-top:14px; background:var(--bg-card); padding:12px; border-radius:var(--radius-sm); border:1px solid var(--border)"></div>
@@ -1633,12 +2373,12 @@
         <!-- Right: Live Combat & Stat Summary Sidebar -->
         <div class="summary-card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid var(--border)">
-            <h3 style="font-size:15.5px; font-weight:800; color:#fff">📊 改装前后全维对比与实战 TTK</h3>
+            <h3 style="font-size:15.5px; font-weight:800; color:#fff">📊 改装前后全维对比与弹道推演</h3>
             <button class="btn btn-sm btn-primary" onclick="copyBuilderShareText()">📋 复制配装清单</button>
           </div>
 
           <!-- Total Cost Box -->
-          <div style="background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(18,26,38,0.92)); border:1px solid rgba(251,191,36,0.4); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center">
+          <div style="background:linear-gradient(135deg, rgba(251,191,36,0.14), rgba(18,26,38,0.92)); border:1px solid rgba(251,191,36,0.4); border-radius:var(--radius-sm); padding:12px 14px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center">
             <div>
               <div style="font-size:11px; color:var(--text-muted)">已装配件总造价 (不含裸枪)</div>
               <div class="price-text" style="font-size:21px" id="sum-total-price">0 哈夫币</div>
@@ -1648,6 +2388,9 @@
               <div class="mono" style="font-size:13.5px; font-weight:700; color:var(--accent)" id="sum-net-points">+0 点</div>
             </div>
           </div>
+
+          <!-- Dual-Polygon 6-Axis Radar & Live Recoil / Hipfire Target Visualizer -->
+          <div class="visual-analytics-grid" id="builder-visual-analytics"></div>
 
           <!-- Bare vs Modded Progress Bars -->
           <div id="sum-comparison-bars" style="margin-bottom:14px"></div>
@@ -1735,6 +2478,17 @@
         <button class="btn btn-sm" onclick="closePkModal()">关闭窗口</button>
       </div>
       <div class="cmd-results" id="pk-modal-body" style="max-height:78vh; padding:18px"></div>
+    </div>
+  </div>
+
+  <!-- Visual Slot Attachment Picker Modal (for Builder) -->
+  <div class="modal-backdrop" id="slot-picker-modal-backdrop" onclick="if(event.target===this) closeSlotPickerModal()">
+    <div class="cmd-modal" style="max-width:940px; width:95%">
+      <div class="cmd-input-wrap" style="justify-content:space-between">
+        <h3 style="font-size:16px; font-weight:800; color:#fff" id="slot-picker-modal-title">🖼️ 选择槽位配件</h3>
+        <button class="btn btn-sm" onclick="closeSlotPickerModal()">ESC 关闭</button>
+      </div>
+      <div class="cmd-results" id="slot-picker-modal-body" style="max-height:76vh; padding:16px"></div>
     </div>
   </div>
 
@@ -1883,6 +2637,146 @@
       if (ms <= 310) return 'ttk-good';
       if (ms <= 400) return 'ttk-mid';
       return 'ttk-slow';
+    }
+
+    // ==================== BESPOKE SVG FALLBACKS & TACTICAL RADAR ENGINE ====================
+    function getRarityClass(rarity, marketPrice = 0) {
+      const r = Number(rarity) || (marketPrice >= 60000 ? 5 : (marketPrice >= 25000 ? 4 : (marketPrice >= 10000 ? 3 : 2)));
+      if (r >= 6) return 'rarity-6';
+      if (r === 5) return 'rarity-5';
+      if (r === 4) return 'rarity-4';
+      if (r === 3) return 'rarity-3';
+      if (r === 2) return 'rarity-2';
+      return 'rarity-1';
+    }
+
+    function getWeaponFallbackSvg(catCn = '') {
+      const c = String(catCn);
+      let path = 'M10,24 L42,24 L48,18 L92,18 L92,14 L118,14 L118,22 L95,22 L88,28 L66,28 L62,40 L52,40 L55,28 L38,28 L32,38 L22,38 L26,28 L10,32 Z';
+      if (c.includes('冲锋')) {
+        path = 'M22,22 L45,22 L50,16 L85,16 L85,24 L72,24 L70,38 L62,38 L63,25 L48,25 L44,36 L36,36 L39,26 L22,28 Z';
+      } else if (c.includes('机枪')) {
+        path = 'M6,22 L35,22 L42,15 L98,15 L118,17 L118,22 L95,22 L90,34 L70,34 L68,26 L52,26 L47,38 L38,38 L41,26 L6,30 Z';
+      } else if (c.includes('狙') || c.includes('射手')) {
+        path = 'M4,24 L38,24 L46,18 L118,18 L118,21 L88,22 L82,27 L58,27 L54,37 L46,37 L49,27 L28,27 L16,33 L4,31 Z M52,13 L78,13 L76,17 L54,17 Z';
+      }
+      return `<svg viewBox="0 0 124 48" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="rgba(0,242,169,0.25)" stroke="#00f2a9" stroke-width="1.5"/></svg>`;
+    }
+
+    function getPartFallbackSvg(slotEn = '') {
+      const s = String(slotEn);
+      let inner = '<rect x="10" y="16" width="28" height="16" rx="3" fill="rgba(56,189,248,0.2)" stroke="#38bdf8" stroke-width="1.6"/>';
+      if (s === 'barrel') inner = '<line x1="6" y1="24" x2="42" y2="24" stroke="#00f2a9" stroke-width="5" stroke-linecap="round"/><line x1="12" y1="20" x2="32" y2="20" stroke="#38bdf8" stroke-width="2"/>';
+      else if (s === 'muzzle') inner = '<rect x="10" y="17" width="28" height="14" rx="2" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.6"/><line x1="17" y1="17" x2="17" y2="31" stroke="#00f2a9" stroke-width="1.5"/><line x1="25" y1="17" x2="25" y2="31" stroke="#00f2a9" stroke-width="1.5"/>';
+      else if (s === 'foregrip' || s === 'rearGrip') inner = '<path d="M16,12 L32,12 L28,36 L18,36 Z" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.6"/>';
+      else if (s === 'magazine' || s === 'magAssist') inner = '<path d="M16,10 L30,10 C32,22 34,30 28,38 L16,36 C20,28 18,20 16,10 Z" fill="rgba(251,191,36,0.22)" stroke="#fbbf24" stroke-width="1.6"/>';
+      else if (s === 'optic' || s === 'opticAcc') inner = '<circle cx="24" cy="22" r="10" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1.6"/><line x1="24" y1="15" x2="24" y2="29" stroke="#ff4d4f" stroke-width="1.4"/><line x1="17" y1="22" x2="31" y2="22" stroke="#ff4d4f" stroke-width="1.4"/>';
+      else if (s === 'stock' || s === 'stockAcc') inner = '<path d="M10,16 L36,16 L36,24 L24,26 L12,34 L10,16 Z" fill="rgba(192,132,252,0.22)" stroke="#c084fc" stroke-width="1.6"/>';
+      else if (s === 'laser') inner = '<rect x="10" y="18" width="20" height="12" rx="2" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.5"/><line x1="30" y1="24" x2="42" y2="24" stroke="#ff4d4f" stroke-width="2" stroke-dasharray="2,2"/>';
+      return `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+    }
+
+    function getAmmoSvgIcon(penLv = 5) {
+      const colors = { 6: '#ff4d4f', 5: '#fbbf24', 4: '#c084fc', 3: '#38bdf8', 2: '#00f2a9', 1: '#94a3b8' };
+      const col = colors[penLv] || '#fbbf24';
+      return `<svg viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14,14 C14,7 18,3 18,3 C18,3 22,7 22,14 Z" fill="${col}"/>
+        <rect x="13" y="14" width="10" height="16" rx="1.5" fill="rgba(251,191,36,0.35)" stroke="${col}" stroke-width="1.4"/>
+        <line x1="12" y1="30" x2="24" y2="30" stroke="${col}" stroke-width="2"/>
+      </svg>`;
+    }
+
+    function renderMiniRadarSvg(stats5, size = 100, color = '#00f2a9') {
+      // stats5: [{label, val (0..100)}]
+      const cx = size / 2, cy = size / 2, r = size * 0.34;
+      const n = stats5.length;
+      const angleFor = i => -Math.PI / 2 + (i * 2 * Math.PI) / n;
+      const ptFor = (i, ratio) => {
+        const a = angleFor(i);
+        return `${(cx + r * ratio * Math.cos(a)).toFixed(1)},${(cy + r * ratio * Math.sin(a)).toFixed(1)}`;
+      };
+      const gridRings = [0.35, 0.7, 1.0].map(rt => {
+        const pts = stats5.map((_, i) => ptFor(i, rt)).join(' ');
+        return `<polygon points="${pts}" fill="none" stroke="rgba(143,163,184,0.22)" stroke-width="0.8"/>`;
+      }).join('');
+      const axes = stats5.map((st, i) => {
+        const a = angleFor(i);
+        const x2 = cx + r * Math.cos(a), y2 = cy + r * Math.sin(a);
+        const lx = cx + (r + 11) * Math.cos(a), ly = cy + (r + 10) * Math.sin(a) + 3;
+        return `<line x1="${cx}" y1="${cy}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="rgba(143,163,184,0.2)" stroke-width="0.8"/>
+                <text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" fill="#9fb2c8" font-size="8.5" font-weight="700">${st.label}</text>`;
+      }).join('');
+      const valPts = stats5.map((st, i) => ptFor(i, Math.min(1, Math.max(0.15, (st.val || 50) / 100)))).join(' ');
+      return `<svg viewBox="0 0 ${size} ${size}" width="${size}" height="${size}">
+        ${gridRings}${axes}
+        <polygon points="${valPts}" fill="${color}33" stroke="${color}" stroke-width="1.8"/>
+      </svg>`;
+    }
+
+    function renderMetaZoneStrip() {
+      const box = document.getElementById('meta-zone-strip-container');
+      if (!box) return;
+      const zones = [
+        {
+          cls: 'zone-cqb',
+          badge: '⚡ 0m ~ 18m 巴别塔室内CQB',
+          title: '贴脸瞬秒 & 满腰射统治区',
+          color: 'var(--red)',
+          picks: [
+            { wid: '18020000010', name: 'MP7 (HVK套件)', stat: '253ms / 头126ms' },
+            { wid: '18030000005', name: '725 双管霰弹', stat: '0~200ms 鹿弹修脚' },
+            { wid: '18020000002', name: 'P90 冲锋枪', stat: '267ms 自带50发' },
+            { wid: '18010000012', name: 'ASh-12 巨兽', stat: '56甲伤 / 头120ms' }
+          ]
+        },
+        {
+          cls: 'zone-mid',
+          badge: '🔥 18m ~ 45m 巴克什街区主力',
+          title: '高容错全能压制区',
+          color: 'var(--accent)',
+          picks: [
+            { wid: '18040000001', name: 'PKM 壕战短管', stat: '269ms (4枪破5甲)' },
+            { wid: '18040000004', name: 'QJB201 高速流', stat: '279ms (0ms延迟)' },
+            { wid: '18010000038', name: '腾龙 稳固长管', stat: '枪跳0.67× 激光' },
+            { wid: '18010000042', name: 'KC17 突击步枪', stat: '324ms 便宜扩容' }
+          ]
+        },
+        {
+          cls: 'zone-far',
+          badge: '🎯 45m ~ 90m 外围长街架枪',
+          title: '超远无衰减 & 越级点名区',
+          color: 'var(--gold)',
+          picks: [
+            { wid: '18050000033', name: 'SVCH 爆发枪机', stat: '114ms / 4弹229ms' },
+            { wid: '18050000032', name: 'Marlin 蜂鸟杠杆', stat: '0ms 一枪秒5头' },
+            { wid: '18010000016', name: 'M7 实用长管', stat: '49m一段 4枪破甲' },
+            { wid: '18040000001', name: 'PKM 地平线重管', stat: '46m无衰减架点' }
+          ]
+        }
+      ];
+
+      box.innerHTML = zones.map(z => `
+        <div class="meta-zone-card ${z.cls}">
+          <div class="meta-zone-header">
+            <span style="font-size:12.5px; font-weight:800; color:#fff">${z.title}</span>
+            <span class="badge" style="color:${z.color}; border:1px solid ${z.color}; background:rgba(0,0,0,0.35)">${z.badge}</span>
+          </div>
+          <div class="meta-zone-guns">
+            ${z.picks.map(pk => {
+              const w = WEAPONS_BY_ID[pk.wid] || {};
+              return `
+                <div class="meta-zone-gun" onclick="loadWeaponIntoDuel('${pk.wid}')" title="点击载入【${pk.name}】到下方人形靶推演器">
+                  <img src="${w.image || ''}" alt="${pk.name}" loading="lazy" onerror="this.style.display='none'" />
+                  <div style="min-width:0">
+                    <div style="font-size:11.5px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${pk.name}</div>
+                    <div class="mono" style="font-size:10px; color:${z.color}; font-weight:700">${pk.stat}</div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+      `).join('');
     }
 
     // ==================== 12 VERIFIED CURATED LOADOUTS WITH BRANCHES ====================
@@ -2207,6 +3101,7 @@
     }
 
     function renderCuratedLoadouts() {
+      renderMetaZoneStrip();
       const grid = document.getElementById('curated-loadouts-grid');
       if (!grid) return;
 
@@ -2217,9 +3112,11 @@
 
       grid.innerHTML = filtered.map(({ item, idx }) => {
         const br = item.branches[item.activeBranch || 0];
+        const wObj = WEAPONS_BY_ID[item.weaponId] || DATA.weapons[0] || {};
         let partsCost = 0;
         let netRec = 0, netHip = 0, netHnd = 0, netStb = 0;
         let randMult = 1.0;
+        let moddedMag = wObj.mag_capacity || 30;
 
         const resolvedParts = br.presetIds.map(pid => PARTS_BY_ID[pid]).filter(Boolean);
         resolvedParts.forEach(p => {
@@ -2234,10 +3131,25 @@
           if (p.hidden_gunkick_rand_mult && p.hidden_gunkick_rand_mult !== 1) {
             randMult *= p.hidden_gunkick_rand_mult;
           }
+          if (p.mag_capacity_set) moddedMag = p.mag_capacity_set;
+          if (p.mag_capacity_add) moddedMag += p.mag_capacity_add;
         });
 
         const totalGunCost = item.barePrice + partsCost;
         const isBudget = item.group.includes('budget');
+
+        // Compute 5-axis radar values (0..100)
+        const rofNum = parseInt(br.rof, 10) || wObj.rof_rpm || 650;
+        const rangeNum = parseInt(br.range, 10) || wObj.range_step1_m || 35;
+        const ttkNum = parseInt((br.ttk5v5.match(/(\d+)\s*ms/) || [])[1], 10) || 260;
+        const radarStats = {
+          dmg: Math.min(100, Math.round(((wObj.flesh_dmg || 32) / 55) * 100)),
+          rof: Math.min(100, Math.round((rofNum / 980) * 100)),
+          range: Math.min(100, Math.round((rangeNum / 75) * 100)),
+          ctrl: Math.min(100, Math.max(25, Math.round((wObj.recoil_control || 45) + netRec + (1 - randMult) * 45))),
+          mob: Math.min(100, Math.max(25, Math.round((wObj.handling || 45) + netHnd + netHip * 0.4)))
+        };
+        const miniRadarHtml = renderMiniRadarSvg(radarStats, 92, isBudget ? '#38bdf8' : '#00f2a9');
 
         const branchButtonsHtml = item.branches.map((b, bIdx) => `
           <button class="branch-tab ${bIdx === (item.activeBranch || 0) ? 'active' : ''}" onclick="switchLoadoutBranch(${idx}, ${bIdx})">
@@ -2245,18 +3157,33 @@
           </button>
         `).join('');
 
-        const partChipsHtml = resolvedParts.map(p => {
+        const visualPartsHtml = resolvedParts.map(p => {
           const isCore = ['barrel', 'gasBlock', 'bolt', 'handguard'].includes(p.category_en) || (p.hidden_mechanics_summary && p.hidden_mechanics_summary.length > 0);
           const catShort = (p.category_cn || '').split('(')[0];
           const countTag = p.category_en === 'patch' ? '×2' : '';
+          const rClass = getRarityClass(p);
           return `
-            <span class="part-chip ${isCore ? 'core' : ''}" onclick="inspectPartInTab2('${p.name.replace(/'/g, "\\'")}')" title="${p.hidden_mechanics_summary || p.tooltip_advantages || '点击在配件库查看详情'}">
-              <span class="p-cat">[${catShort}]</span>
-              <span>${p.name}${countTag}</span>
-              <span class="p-price">${fmtWan((p.market_price || 0) * (p.category_en === 'patch' ? 2 : 1))}</span>
-            </span>
+            <div class="visual-part-tile ${rClass}" onclick="inspectPartInTab2('${p.name.replace(/'/g, "\\'")}')" title="${p.name} — ${p.hidden_mechanics_summary || p.tooltip_advantages || '点击在配件库查看详情'}">
+              ${isCore ? '<span class="vp-core-dot" title="核心质变/底层暗改件"></span>' : ''}
+              <div class="vp-thumb-box">
+                <img src="${p.image || ''}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
+              </div>
+              <div class="vp-info">
+                <div class="vp-cat">${catShort}</div>
+                <div class="vp-name">${p.name}${countTag}</div>
+                <div class="vp-price">${fmtWan((p.market_price || 0) * (p.category_en === 'patch' ? 2 : 1))}</div>
+              </div>
+            </div>
           `;
         }).join('');
+
+        // Extract concise 1-sentence summary + key badges instead of wall of text
+        const rawSentences = (br.desc || '').replace(/<[^>]+>/g, '').split(/[。！？]/).map(s => s.trim()).filter(Boolean);
+        const shortSummary = rawSentences.slice(0, 2).join('；') + '。';
+        const rofPct = Math.min(100, Math.round((rofNum / 1000) * 100));
+        const rangePct = Math.min(100, Math.round((rangeNum / 90) * 100));
+        const gkPct = Math.min(100, Math.max(15, Math.round((1.2 - randMult) * 140)));
+        const ttkPct = Math.min(100, Math.max(15, Math.round(((450 - ttkNum) / 350) * 100)));
 
         return `
           <div class="loadout-card ${isBudget ? 'budget-card' : ''}">
@@ -2266,8 +3193,12 @@
                   <span>${item.name}</span>
                   <span class="loadout-tag ${item.tagType}">${item.tag}</span>
                 </div>
-                <div style="font-size:11.5px; color:var(--text-muted); margin-top:4px">
-                  裸枪约 <span class="mono">${fmtWan(item.barePrice)}</span> + 配件实算 <span class="mono" style="color:var(--accent)">${fmtWan(partsCost)}</span> · 激活镭指四维: 后坐<strong>${netRec>=0?'+'+netRec:netRec}</strong> / 腰射<strong>${netHip>=0?'+'+netHip:netHip}</strong> / 操控<strong>${netHnd>=0?'+'+netHnd:netHnd}</strong> / 稳定<strong>${netStb>=0?'+'+netStb:netStb}</strong>
+                <div style="font-size:11.5px; color:var(--text-muted); margin-top:4px; display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+                  <span>裸枪 <b class="mono" style="color:#fff">${fmtWan(item.barePrice)}</b> + 配件 <b class="mono" style="color:var(--accent)">${fmtWan(partsCost)}</b></span>
+                  <span class="badge badge-neu">后坐 ${netRec>=0?'+'+netRec:netRec}</span>
+                  <span class="badge badge-neu">腰射 ${netHip>=0?'+'+netHip:netHip}</span>
+                  <span class="badge badge-neu">操控 ${netHnd>=0?'+'+netHnd:netHnd}</span>
+                  <span class="badge badge-neu">稳定 ${netStb>=0?'+'+netStb:netStb}</span>
                 </div>
               </div>
               <div class="loadout-price">
@@ -2276,38 +3207,65 @@
               </div>
             </div>
 
+            <!-- Visual Weapon Showcase Stage + 5-Axis Radar -->
+            <div class="weapon-stage">
+              <div class="weapon-stage-tags">
+                <span class="stage-hud-tag">${wObj.caliber || '主力口径'}</span>
+                <span class="stage-hud-tag" style="color:var(--accent)">弹匣 ${moddedMag}发</span>
+              </div>
+              <div class="weapon-stage-watermark">${item.name.split(' ')[0]}</div>
+              <div class="weapon-stage-img-wrap" onclick="openPresetInBuilder(${idx})" style="cursor:pointer" title="点击在满改模拟器中打开">
+                <img class="weapon-stage-img" src="${wObj.image || ''}" alt="${item.name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(wObj.category_cn, item.name)}'" />
+              </div>
+              <div class="weapon-stage-radar" title="五维战术雷达: 威力 / 射速 / 射程 / 控枪 / 机动">
+                ${miniRadarHtml}
+              </div>
+            </div>
+
             <div class="branch-tabs">${branchButtonsHtml}</div>
 
             <div class="loadout-metrics">
               <div class="metric-box">
-                <span class="m-label">实战射速 / 延迟</span>
-                <span class="m-val hi">${br.rof} <span style="font-size:11px;color:var(--text-muted)">(${br.delay})</span></span>
+                <span class="m-label">⚡ 实战射速 / 延迟</span>
+                <span class="m-val hi">${br.rof} <span style="font-size:10.5px;color:var(--text-muted)">(${br.delay})</span></span>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${rofPct}%; background:var(--accent)"></div></div>
               </div>
               <div class="metric-box">
-                <span class="m-label">一段无衰减射程</span>
+                <span class="m-label">🎯 一段无衰减射程</span>
                 <span class="m-val">${br.range}</span>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${rangePct}%; background:var(--blue)"></div></div>
               </div>
               <div class="metric-box">
-                <span class="m-label">随机枪跳乘数</span>
+                <span class="m-label">🛡️ 随机枪跳乘数</span>
                 <span class="m-val" style="color:${randMult < 1 ? 'var(--accent)' : 'var(--text-main)'}">${randMult.toFixed(2)}×</span>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${gkPct}%; background:var(--purple)"></div></div>
               </div>
               <div class="metric-box">
-                <span class="m-label">核心 TTK 指标</span>
+                <span class="m-label">💀 同级5甲 TTK</span>
                 <span class="m-val hi" style="font-size:12px">${br.ttk5v5}</span>
+                <div class="metric-bar-bg"><div class="metric-bar-fill" style="width:${ttkPct}%; background:var(--gold)"></div></div>
               </div>
             </div>
 
-            <div class="loadout-parts">${partChipsHtml}</div>
+            <!-- Visual Attachment Icon Grid -->
+            <div class="visual-part-grid">${visualPartsHtml}</div>
 
-            <div class="loadout-desc">${br.desc}</div>
+            <!-- Concise Visual Highlights + Short Tactical Summary -->
+            <div class="loadout-highlights">
+              <span class="hl-pill hl-core">🔥 满改 ${resolvedParts.length} 槽位全装</span>
+              ${randMult < 0.85 ? `<span class="hl-pill hl-mech">🔬 随机枪跳压至 ${randMult.toFixed(2)}×</span>` : ''}
+              ${netHip >= 20 ? `<span class="hl-pill hl-mech">⚡ 激活镭指腰射 +${netHip}</span>` : ''}
+              <span class="hl-pill hl-cost">💰 配件投入 ${fmtWan(partsCost)}</span>
+            </div>
+            <div class="loadout-desc" style="padding:7px 10px; font-size:11.5px; color:var(--text-muted)">${shortSummary}</div>
 
             <div class="loadout-actions">
               <div style="display:flex; gap:6px; flex-wrap:wrap">
-                <button class="btn btn-sm" onclick="loadWeaponIntoDuel('${item.weaponId}')">🩸 逐枪扣血推演</button>
-                <button class="btn btn-sm" onclick="copyLoadoutSummary(${idx})">📋 复制配装单</button>
+                <button class="btn btn-sm" onclick="loadWeaponIntoDuel('${item.weaponId}')">🩸 靶场实弹测试</button>
+                <button class="btn btn-sm" onclick="copyLoadoutSummary(${idx})">📋 复制清单</button>
               </div>
               <button class="btn btn-sm btn-primary" onclick="openPresetInBuilder(${idx})">
-                🛠️ 在模拟器中打开此分支 (${resolvedParts.length}件全装) →
+                🛠️ 载入军械台 (${resolvedParts.length}件) →
               </button>
             </div>
           </div>
@@ -2316,18 +3274,32 @@
 
       const tbody = document.getElementById('matrix-comparison-tbody');
       if (tbody && !tbody.innerHTML) {
-        tbody.innerHTML = COMPARISON_MATRIX_ROWS.map(r => `
+        tbody.innerHTML = COMPARISON_MATRIX_ROWS.map(r => {
+          const wMatch = WEAPONS_BY_NAME[r.variantMatch] || DATA.weapons.find(w => r.weapon.includes(w.name)) || {};
+          const ttkMs = parseInt((r.ttk5.match(/(\d+)\s*ms/) || [])[1], 10) || 260;
+          const barW = Math.min(100, Math.max(12, Math.round(((420 - ttkMs) / 360) * 100)));
+          return `
           <tr style="cursor:pointer" onclick="loadWeaponNameIntoDuel('${r.variantMatch}')">
             <td><span class="badge ${r.tier.includes('低战损') || r.tier.includes('一枪') || r.tier.includes('越级') || r.tier.includes('静音') ? 'badge-gold' : 'badge-pos'}">${r.tier}</span></td>
-            <td style="font-weight:700; color:#fff">${r.weapon}</td>
+            <td>
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${wMatch.image || ''}" alt="${r.weapon}" style="width:62px; height:24px; object-fit:contain; background:rgba(9,14,22,0.85); border:1px solid var(--border); border-radius:4px; padding:1px 3px" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(wMatch.category_cn, r.variantMatch)}'" />
+                <span style="font-weight:700; color:#fff">${r.weapon}</span>
+              </div>
+            </td>
             <td class="price-text">${r.cost}</td>
             <td class="mono">${r.rof}</td>
             <td class="mono">${r.range}</td>
-            <td class="mono ttk-fast">${r.ttk5}</td>
+            <td>
+              <div class="mono ttk-fast">${r.ttk5}</div>
+              <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; margin-top:3px; width:110px; overflow:hidden">
+                <div style="height:100%; width:${barW}%; background:var(--accent)"></div>
+              </div>
+            </td>
             <td class="mono" style="color:var(--blue)">${r.ttk4}</td>
             <td style="color:var(--text-muted); font-size:12px">${r.note}</td>
           </tr>
-        `).join('');
+        `}).join('');
       }
     }
 
@@ -2406,6 +3378,15 @@
       if (w) loadWeaponIntoDuel(w.weapon_id);
     }
 
+    function selectDuelHitZone(zone) {
+      const arSel = document.getElementById('duel-armor-select');
+      if (!arSel) return;
+      if (zone === 'head') arSel.value = '5_50_head';
+      else if (zone === 'limb') arSel.value = '0_0_limb';
+      else arSel.value = '5_110';
+      renderDuelSimulator();
+    }
+
     function simulateShotByShot(variant, ammoObj, armorPreset, distM) {
       const parts = armorPreset.split('_');
       const armorLv = Number(parts[0]) || 0;
@@ -2472,7 +3453,7 @@
           killed: hp <= 0.01
         });
       }
-      return { shots, rawFleshPerShot, rawArmorPerShot, distMult };
+      return { shots, rawFleshPerShot, rawArmorPerShot, distMult, penRatio, hitZone, armorLv };
     }
 
     function renderDuelSimulator() {
@@ -2492,46 +3473,152 @@
       const armorPreset = arSel.value;
       const distM = Number(dSel.value) || 15;
       const initArmorDur = Number(armorPreset.split('_')[1]) || 0;
+      const hitZone = armorPreset.split('_')[2] || 'chest';
+      const armorLv = Number(armorPreset.split('_')[0]) || 0;
 
       const sim = simulateShotByShot(v, ammoObj, armorPreset, distM);
       const killShot = sim.shots[sim.shots.length - 1];
+      const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
+
+      // Find representative armor/helmet item from DATA.armors for visual render
+      const repArmor = (DATA.armors || []).find(ar =>
+        ar.armor_level === Math.max(4, armorLv) &&
+        (hitZone === 'head' ? ar.category === 'helmet' : ar.category === 'armor')
+      ) || (DATA.armors || [])[0] || {};
 
       const sumEl = document.getElementById('duel-sim-summary');
       if (sumEl && killShot) {
+        const activeHead = hitZone === 'head';
+        const activeLimb = hitZone === 'limb';
+        const activeChest = !activeHead && !activeLimb;
+
         sumEl.innerHTML = `
-          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; background:var(--bg-card); padding:10px 14px; border-radius:var(--radius-sm); border:1px solid var(--border)">
-            <div>🎯 <strong>击杀所需子弹 (BTK):</strong> <span class="mono" style="color:var(--accent); font-size:15px; font-weight:800">${killShot.shot} 发</span></div>
-            <div>⏱️ <strong>实战击杀耗时 (TTK):</strong> <span class="mono ${ttkClass(killShot.timeMs)}" style="font-size:15px">${killShot.timeMs} ms</span> ${v.trigger_delay_ms ? `<span style="font-size:11px;color:var(--gold)">(含${v.trigger_delay_ms}ms扳机延迟)</span>` : ''}</div>
-            <div>💥 <strong>单发折算肉伤 / 甲伤:</strong> <span class="mono">${sim.rawFleshPerShot.toFixed(1)} HP / ${sim.rawArmorPerShot.toFixed(1)} 甲</span> (距离衰减×${sim.distMult.toFixed(2)})</div>
-            <div>💰 <strong>击杀弹药消耗成本:</strong> <span class="price-text">${fmtPrice((ammoObj?.market_price || 0) * killShot.shot)} 哈夫币</span></div>
+          <div class="duel-arena-grid">
+            <!-- Left: Attacker Weapon & Ammo Card -->
+            <div class="duel-fighter-card">
+              <div style="display:flex; align-items:center; gap:12px">
+                <div class="duel-fighter-img-box">
+                  <img src="${wObj.image || v.image || ''}" alt="${v.weapon_name}" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
+                </div>
+                <div style="min-width:0; flex:1">
+                  <div style="font-size:10.5px; color:var(--accent); font-weight:800; letter-spacing:0.5px">⚔️ 攻击方武器与弹药</div>
+                  <div style="font-size:15px; font-weight:900; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${v.weapon_name} · ${v.variant_label}</div>
+                  <div style="display:flex; align-items:center; gap:6px; margin-top:4px">
+                    <img src="${getAmmoSvgIcon(ammoObj?.caliber, ammoObj?.penetration_level)}" style="width:16px; height:26px" alt="ammo" />
+                    <span style="font-size:12px; font-weight:700; color:var(--gold)">[${ammoObj?.penetration_level || 5}级弹] ${ammoObj?.name || v.caliber}</span>
+                    <span class="mono" style="font-size:11px; color:var(--text-muted)">(${fmtPrice(ammoObj?.market_price || 0)}币/发)</span>
+                  </div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:6px">
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">🎯 击杀枪数</span>
+                  <span class="m-val hi">${killShot.shot} 发</span>
+                </div>
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">⏱️ 击杀TTK</span>
+                  <span class="m-val ${ttkClass(killShot.timeMs)}">${killShot.timeMs} ms</span>
+                </div>
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">💥 单发肉/甲</span>
+                  <span class="m-val" style="font-size:11.5px">${sim.rawFleshPerShot.toFixed(1)}/${sim.rawArmorPerShot.toFixed(1)}</span>
+                </div>
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">💰 弹药消耗</span>
+                  <span class="m-val" style="color:var(--gold); font-size:12px">${fmtPrice((ammoObj?.market_price || 0) * killShot.shot)}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Center: Interactive SVG Human Hitbox Mannequin -->
+            <div class="duel-mannequin-card" title="点击人体部位直接切换受击靶位 (头盔 / 胸甲 / 四肢)">
+              <div style="font-size:10.5px; color:var(--text-muted); font-weight:700; margin-bottom:2px">🎯 点击人体靶位切换倍率</div>
+              <svg class="mannequin-svg" viewBox="0 0 120 155">
+                <!-- Head Zone -->
+                <g onclick="selectDuelHitZone('head')" style="cursor:pointer">
+                  <circle cx="60" cy="22" r="14" fill="${activeHead ? 'rgba(251,113,133,0.45)' : 'rgba(56,189,248,0.15)'}" stroke="${activeHead ? '#fb7185' : '#38bdf8'}" stroke-width="${activeHead ? '2.5' : '1.4'}" />
+                  <text x="60" y="25" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800" font-family="monospace">×${v.head_mult || 1.9}</text>
+                </g>
+                <!-- Chest & Abdomen Zone -->
+                <g onclick="selectDuelHitZone('chest')" style="cursor:pointer">
+                  <rect x="40" y="40" width="40" height="48" rx="6" fill="${activeChest ? 'rgba(0,242,169,0.38)' : 'rgba(56,189,248,0.15)'}" stroke="${activeChest ? '#00f2a9' : '#38bdf8'}" stroke-width="${activeChest ? '2.5' : '1.4'}" />
+                  <text x="60" y="62" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" font-family="monospace">胸×${v.chest_mult || 1.0}</text>
+                  <text x="60" y="78" text-anchor="middle" fill="#94a3b8" font-size="7.5" font-family="monospace">腹×${v.abdomen_mult || 0.9}</text>
+                </g>
+                <!-- Arms & Legs Zone (Limbs) -->
+                <g onclick="selectDuelHitZone('limb')" style="cursor:pointer">
+                  <rect x="22" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="84" y="42" width="14" height="44" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="41" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <rect x="63" y="92" width="16" height="54" rx="5" fill="${activeLimb ? 'rgba(251,191,36,0.42)' : 'rgba(56,189,248,0.1)'}" stroke="${activeLimb ? '#fbbf24' : '#475569'}" stroke-width="${activeLimb ? '2.2' : '1.2'}" />
+                  <text x="60" y="122" text-anchor="middle" fill="#fff" font-size="8.5" font-weight="800" font-family="monospace">四肢×${v.limb_mult || 0.4}</text>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Right: Target Armor/Helmet Visual Card -->
+            <div class="duel-fighter-card">
+              <div style="display:flex; align-items:center; gap:12px">
+                <div class="duel-fighter-img-box" style="width:90px">
+                  <img src="${repArmor.image || ''}" alt="${repArmor.name || '靶标护甲'}" onerror="this.style.display='none'" />
+                </div>
+                <div style="min-width:0; flex:1">
+                  <div style="font-size:10.5px; color:var(--blue); font-weight:800; letter-spacing:0.5px">🛡️ 受击方护甲与靶位状态</div>
+                  <div style="font-size:15px; font-weight:900; color:#fff">${arSel.options[arSel.selectedIndex]?.text || '5级重甲'}</div>
+                  <div style="font-size:11.5px; color:var(--text-muted); margin-top:3px">
+                    代表防具: <strong style="color:#fff">${repArmor.name || '制式护甲'}</strong>
+                  </div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:6px">
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">🛡️ 初始耐久</span>
+                  <span class="m-val" style="color:var(--blue)">${initArmorDur} 点</span>
+                </div>
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">⚡ 护甲穿透率</span>
+                  <span class="m-val" style="color:var(--accent)">${Math.round((sim.penRatio || 0) * 100)}%</span>
+                </div>
+                <div class="metric-box" style="padding:6px 8px">
+                  <span class="m-label">📏 距离衰减</span>
+                  <span class="m-val">${distM}m (×${sim.distMult.toFixed(2)})</span>
+                </div>
+              </div>
+            </div>
           </div>
         `;
       }
 
       const gridEl = document.getElementById('duel-shots-grid');
       if (gridEl) {
-        gridEl.innerHTML = sim.shots.map(s => `
+        gridEl.innerHTML = sim.shots.map(s => {
+          const armorSegs = Math.round(initArmorDur > 0 ? (s.armorRemaining / initArmorDur) * 10 : 0);
+          const hpSegs = Math.round((s.hpRemaining / 100) * 10);
+          const armorSegHtml = Array.from({ length: 10 }, (_, i) =>
+            `<span class="shot-seg" style="background:${i < armorSegs ? 'var(--blue)' : 'rgba(255,255,255,0.06)'}"></span>`
+          ).join('');
+          const hpSegHtml = Array.from({ length: 10 }, (_, i) =>
+            `<span class="shot-seg" style="background:${i < hpSegs ? (s.hpRemaining > 35 ? 'var(--accent)' : 'var(--red)') : 'rgba(255,255,255,0.06)'}"></span>`
+          ).join('');
+
+          return `
           <div class="shot-card ${s.killed ? 'kill-shot' : ''}">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px">
               <span style="font-weight:800; color:${s.killed ? 'var(--accent)' : '#fff'}">第 ${s.shot} 枪 ${s.killed ? '💀 击杀!' : ''}</span>
               <span class="mono" style="font-size:11.5px; color:var(--text-muted)">${s.timeMs} ms</span>
             </div>
             <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content:space-between">
-              <span>🛡️ 护甲耐久 (-${s.armorLoss})</span>
+              <span>🛡️ 护甲 (-${s.armorLoss})</span>
               <span class="mono">${s.armorRemaining} / ${initArmorDur}</span>
             </div>
-            <div class="shot-bar-wrap">
-              <div class="shot-bar-fill" style="width:${initArmorDur > 0 ? Math.max(0, (s.armorRemaining / initArmorDur) * 100) : 0}%; background:var(--blue)"></div>
-            </div>
-            <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content:space-between">
-              <span>❤️ 敌方生命 (-${s.hpLoss})</span>
+            <div class="shot-segment-bar">${armorSegHtml}</div>
+            <div style="font-size:11px; color:var(--text-muted); display:flex; justify-content:space-between; margin-top:4px">
+              <span>❤️ 生命 (-${s.hpLoss})</span>
               <span class="mono" style="color:${s.killed ? 'var(--red)' : 'var(--accent)'}">${s.hpRemaining} / 100</span>
             </div>
-            <div class="shot-bar-wrap">
-              <div class="shot-bar-fill" style="width:${Math.max(0, s.hpRemaining)}%; background:${s.hpRemaining > 35 ? 'var(--accent)' : 'var(--red)'}"></div>
-            </div>
+            <div class="shot-segment-bar">${hpSegHtml}</div>
           </div>
-        `).join('');
+        `}).join('');
       }
     }
 
@@ -2539,6 +3626,40 @@
     let partsSortKey = 'market_price';
     let partsSortAsc = true;
     let pkBasketIds = [];
+    let partsViewMode = 'cards';
+
+    function setPartsViewMode(mode) {
+      partsViewMode = mode;
+      const cardsBtn = document.getElementById('btn-parts-view-cards');
+      const tableBtn = document.getElementById('btn-parts-view-table');
+      const cardsWrap = document.getElementById('parts-visual-grid-wrap');
+      const tableWrap = document.getElementById('parts-table-container');
+      if (cardsBtn) cardsBtn.classList.toggle('active', mode === 'cards');
+      if (tableBtn) tableBtn.classList.toggle('active', mode === 'table');
+      if (cardsWrap) cardsWrap.style.display = mode === 'cards' ? 'block' : 'none';
+      if (tableWrap) tableWrap.style.display = mode === 'table' ? 'block' : 'none';
+    }
+
+    function equipPartInBuilderFromTab2(partId) {
+      const p = PARTS_BY_ID[partId];
+      if (!p) return;
+      switchTab('tab-builder');
+      const cw = (p.compatible_weapons || '').split(' / ').map(s => s.trim()).filter(Boolean);
+      const sel = document.getElementById('builder-weapon-select');
+      if (sel && cw.length > 0 && currentBuilderWeapon && !cw.includes(currentBuilderWeapon.name)) {
+        const matchW = DATA.weapons.find(w => cw.includes(w.name));
+        if (matchW) {
+          sel.value = matchW.weapon_id;
+          onBuilderWeaponChange(false);
+        }
+      }
+      if (p.category_en) {
+        currentEquipped[p.category_en] = p.part_id;
+        renderBuilderSlots();
+        recalculateBuilder();
+        showToast(`🛠️ 已在军械台中装备【${p.name}】`);
+      }
+    }
 
     function getPartTier(p) {
       const hasCoreChange = p.rof_interval_pct !== 0 || p.fire_mode_override || p.trigger_delay_override_ms !== null || p.head_mult_override !== null || p.custom_damage_profile || p.range_velocity_pct >= 18;
@@ -2650,6 +3771,79 @@
 
       document.getElementById('parts-count-label').textContent = `当前筛选: ${filtered.length} / ${DATA.parts.length} 个配件`;
 
+      // 1. Render Visual Armory Card Grid (#parts-visual-grid)
+      const gridEl = document.getElementById('parts-visual-grid');
+      if (gridEl) {
+        const cardItems = filtered.slice(0, 180); // Render up to 180 cards smoothly
+        gridEl.innerHTML = cardItems.map(p => {
+          const rClass = getRarityClass(p);
+          const tierObj = getPartTier(p);
+          const inPk = pkBasketIds.includes(p.part_id);
+          const catShort = (p.category_cn || '').split('(')[0];
+          const compCount = p.compatible_all_weapons_count || 0;
+          const compLabel = compCount > 8 ? `通用 (${compCount}把)` : (p.compatible_weapons || '专属').split(' / ').slice(0, 3).join('/');
+
+          const statBar = (lbl, val) => {
+            const v = Number(val) || 0;
+            const wPct = Math.min(100, Math.abs(v) * 6.5);
+            const col = v > 0 ? 'var(--accent)' : (v < 0 ? 'var(--red)' : 'rgba(255,255,255,0.12)');
+            return `
+              <div class="pac-stat-item">
+                <div class="pac-stat-row">
+                  <span style="color:var(--text-muted)">${lbl}</span>
+                  <span class="mono" style="color:${v > 0 ? 'var(--accent)' : (v < 0 ? 'var(--red)' : 'var(--text-dim)')}; font-weight:700">${v > 0 ? '+' + v : v}</span>
+                </div>
+                <div class="pac-stat-bar">
+                  <div class="pac-stat-fill" style="width:${wPct}%; background:${col}"></div>
+                </div>
+              </div>
+            `;
+          };
+
+          const effHip = p.laser_active_hipfire_bonus ? p.laser_active_hipfire_bonus : (p.hipfire_accuracy || 0);
+          const effHnd = p.laser_active_handling_bonus ? p.laser_active_handling_bonus : (p.handling || 0);
+          const rvText = p.range_velocity_pct ? `射程/初速 ${p.range_velocity_pct > 0 ? '+' : ''}${p.range_velocity_pct}%` : (p.only_range_pct ? `射程 +${p.only_range_pct}%` : '');
+          const hidSummary = [rvText, p.hidden_mechanics_summary].filter(Boolean).join(' · ');
+
+          return `
+            <div class="part-armory-card ${rClass}">
+              <div class="pac-top">
+                <div class="pac-img-box">
+                  <img src="${p.image || ''}" alt="${p.name}" loading="lazy" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
+                </div>
+                <div class="pac-title-wrap">
+                  <div class="pac-cat">${catShort} · ${compLabel}</div>
+                  <div class="pac-name" title="${p.name}">${p.name}</div>
+                  <div class="pac-price-row">
+                    <span class="price-text" style="font-size:13px">${fmtPrice(p.market_price)} 币</span>
+                    ${tierObj.html}
+                    ${p.is_combat_tunable ? '<span class="badge badge-purple">🎛️精调</span>' : ''}
+                  </div>
+                </div>
+              </div>
+              <div class="pac-stats-grid">
+                ${statBar('后坐控制', p.recoil_control)}
+                ${statBar(p.laser_active_hipfire_bonus ? '开镭指腰射' : '腰射精度', effHip)}
+                ${statBar(p.laser_active_handling_bonus ? '开镭指操控' : '操控速度', effHnd)}
+                ${statBar('据枪稳定', p.stability)}
+              </div>
+              ${hidSummary ? `<div class="pac-hidden-pill">🔬 ${hidSummary}</div>` : ''}
+              <div class="pac-footer">
+                <label style="display:flex; align-items:center; gap:5px; font-size:11px; color:var(--text-muted); cursor:pointer">
+                  <input type="checkbox" ${inPk ? 'checked' : ''} onchange="togglePkPart('${p.part_id}', this)" style="accent-color:var(--accent); cursor:pointer" />
+                  <span>加入横评PK</span>
+                </label>
+                <div style="display:flex; gap:6px; align-items:center">
+                  <span class="mono" style="font-size:11px; color:var(--text-dim)">净${(p.net_panel_points || 0) >= 0 ? '+' : ''}${p.net_panel_points || 0}点</span>
+                  <button class="btn btn-sm" style="padding:3px 8px; font-size:11px" onclick="equipPartInBuilderFromTab2('${p.part_id}')">🛠️ 装入军械台</button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      // 2. Render Table View (#parts-tbody) with inline part thumbnails
       const tbody = document.getElementById('parts-tbody');
       tbody.innerHTML = filtered.map(p => {
         const ppp = p.price_per_positive_point !== null && p.price_per_positive_point !== undefined
@@ -2682,7 +3876,12 @@
               <input type="checkbox" ${inPk ? 'checked' : ''} onchange="togglePkPart('${p.part_id}', this)" title="加入配件横评PK篮" style="accent-color:var(--accent); cursor:pointer" />
             </td>
             <td style="font-weight:700; color:#fff">
-              ${p.name} ${tierObj.html} ${tuneBadge}
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${p.image || ''}" alt="${p.name}" loading="lazy" style="width:30px; height:30px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:5px; padding:2px; flex-shrink:0" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
+                <div>
+                  ${p.name} ${tierObj.html} ${tuneBadge}
+                </div>
+              </div>
             </td>
             <td><span class="badge badge-neu">${(p.category_cn || '').split('(')[0]}</span></td>
             <td class="price-text">${fmtPrice(p.market_price)}</td>
@@ -2764,7 +3963,17 @@
         { label: "底层暗改综合摘要", fn: p => `<span style="color:var(--accent)">${p.hidden_mechanics_summary || '无特殊暗改'}</span>` }
       ];
 
-      const ths = parts.map(p => `<th style="font-size:13.5px; color:#fff">${p.name}</th>`).join('');
+      const ths = parts.map(p => `
+        <th style="font-size:13px; color:#fff; min-width:160px">
+          <div style="display:flex; align-items:center; gap:8px">
+            <img src="${p.image || ''}" alt="${p.name}" style="width:42px; height:42px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:6px; padding:3px" onerror="this.onerror=null;this.src='${getPartFallbackSvg(p.category_en)}'" />
+            <div>
+              <div>${p.name}</div>
+              <div style="font-size:10.5px; color:var(--text-muted); font-weight:500">${(p.category_cn || '').split('(')[0]}</div>
+            </div>
+          </div>
+        </th>
+      `).join('');
       const trs = rows.map(r => {
         let bestVal = null;
         if (r.best && r.val) {
@@ -2852,6 +4061,79 @@
       });
 
       setPresetChartComparison('t0_main', true);
+      renderVariantsTierBoard();
+    }
+
+    function renderVariantsTierBoard() {
+      const boardEl = document.getElementById('variants-tier-board');
+      if (!boardEl) return;
+
+      const tiers = [
+        {
+          code: 'S+', sub: '统治级T0', cls: 'tier-s-plus',
+          matches: [
+            { w: 'PKM', match: v => v.weapon_name === 'PKM' && (v.variant_label.includes('长枪管') || v.variant_label.includes('基线')), tag: '270ms 3枪融化' },
+            { w: 'QJB201', match: v => v.weapon_name === 'QJB201' && v.variant_label.includes('獠牙') && v.variant_label.includes('高速'), tag: '868RPM 242ms' },
+            { w: 'MP7', match: v => v.weapon_name === 'MP7' && v.variant_label.includes('HVK'), tag: '950RPM 贴脸王' },
+            { w: 'M7', match: v => v.weapon_name === 'M7' && v.variant_label.includes('实用长枪管'), tag: '61m远距重炮' }
+          ]
+        },
+        {
+          code: 'S', sub: '全能主力', cls: 'tier-s',
+          matches: [
+            { w: '腾龙', match: v => v.weapon_name === '腾龙' && v.variant_label.includes('蛟龙') && v.variant_label.includes('稳固'), tag: '0.67×超稳激光' },
+            { w: 'P90', match: v => v.weapon_name === 'P90' && v.variant_label.includes('长枪管'), tag: '898RPM 267ms' },
+            { w: 'KC17', match: v => v.weapon_name === 'KC17' && v.variant_label.includes('刺刀'), tag: '740RPM 破甲王' },
+            { w: 'ASh-12', match: v => v.weapon_name === 'ASh-12' && v.variant_label.includes('长枪管'), tag: '56伤 240ms重锤' }
+          ]
+        },
+        {
+          code: 'A+', sub: '高性价比', cls: 'tier-a',
+          matches: [
+            { w: 'SVCH', match: v => v.weapon_name === 'SVCH' && v.variant_label.includes('长枪管') && v.variant_label.includes('爆发'), tag: '114ms 两连点杀' },
+            { w: 'K437', match: v => v.weapon_name === 'K437' && v.variant_label.includes('一体消音'), tag: '780RPM 静音突击' },
+            { w: 'AKM', match: v => v.weapon_name === 'AKM' && v.variant_label.includes('海狸'), tag: '0.72× 极稳中远' },
+            { w: 'SR-3M', match: v => v.weapon_name === 'SR-3M' && v.variant_label.includes('铸钢'), tag: '747RPM 9×39穿甲' }
+          ]
+        },
+        {
+          code: 'SPEC', sub: '特种夺舍', cls: 'tier-spec',
+          matches: [
+            { w: 'Marlin杠杆步枪', match: v => v.weapon_name === 'Marlin杠杆步枪' && v.variant_label.includes('狂飙'), tag: '0ms 一枪碎6头' },
+            { w: '725双管霰弹枪', match: v => v.weapon_name === '725双管霰弹枪' && v.variant_label.includes('截短'), tag: '0ms 贴脸瞬秒6甲' }
+          ]
+        }
+      ];
+
+      boardEl.innerHTML = tiers.map(t => {
+        const cardsHtml = t.matches.map(m => {
+          let vIdx = DATA.variants.findIndex(m.match);
+          if (vIdx === -1) vIdx = DATA.variants.findIndex(v => v.weapon_name === m.w);
+          const v = DATA.variants[vIdx];
+          if (!v) return '';
+          const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
+          const active = chartComparedIndices.includes(vIdx);
+          return `
+            <div class="tier-weapon-card" style="${active ? 'border-color:var(--accent); box-shadow:0 0 12px rgba(0,242,169,0.2)' : ''}" onclick="toggleVariantChartCompare(${vIdx}); renderVariantsTable()" title="点击加入/移出下方距离衰减曲线对比">
+              <img class="twc-img" src="${v.image || wObj.image || ''}" alt="${v.weapon_name}" loading="lazy" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
+              <div class="twc-info">
+                <div class="twc-name">${v.weapon_name} ${active ? '<span style="color:var(--accent)">●</span>' : ''}</div>
+                <div class="twc-meta">${m.tag} · ${v.range_step1_m}m</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="tier-row">
+            <div class="tier-badge-col ${t.cls}">
+              <div>${t.code}</div>
+              <div class="tier-sub">${t.sub}</div>
+            </div>
+            <div class="tier-weapons-strip">${cardsHtml}</div>
+          </div>
+        `;
+      }).join('');
     }
 
     function setPresetChartComparison(presetName, silent = false) {
@@ -2920,6 +4202,7 @@
     }
 
     function renderVariantComparisonChart() {
+      renderVariantsTierBoard();
       const container = document.getElementById('variant-chart-container');
       const legendEl = document.getElementById('variant-chart-legend');
       const mode = document.getElementById('chart-metric-mode')?.value || 'ttk_lv5';
@@ -2927,7 +4210,7 @@
 
       if (chartComparedIndices.length === 0) {
         legendEl.innerHTML = '';
-        container.innerHTML = '<div style="padding:26px; text-align:center; color:var(--text-dim)">请点击上方【预设】按钮或在下表勾选 1~5 个武器形态绘制远近距离衰减曲线</div>';
+        container.innerHTML = '<div style="padding:26px; text-align:center; color:var(--text-dim)">请点击上方【视觉天梯榜】、【预设】按钮或在下表勾选 1~5 个武器形态绘制远近距离衰减曲线</div>';
         return;
       }
 
@@ -2936,15 +4219,16 @@
       legendEl.innerHTML = selectedVars.map((item, cIdx) => {
         const color = CHART_COLORS[cIdx % CHART_COLORS.length];
         return `
-          <span class="badge" style="background:rgba(255,255,255,0.04); border:1px solid ${color}; color:${color}; padding:4px 10px; gap:6px">
+          <span class="badge" style="background:rgba(12,18,28,0.85); border:1px solid ${color}; color:${color}; padding:4px 10px; gap:7px">
             <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${color}"></span>
+            <img src="${item.v.image || ''}" alt="${item.v.weapon_name}" style="width:42px; height:16px; object-fit:contain" onerror="this.style.display='none'" />
             ${item.v.weapon_name} · ${item.v.variant_label} (${item.v.rof_rpm}RPM / ${item.v.range_step1_m}m)
             <span style="cursor:pointer; margin-left:4px" onclick="toggleVariantChartCompare(${item.idx}); renderVariantsTable()">×</span>
           </span>
         `;
       }).join('');
 
-      const W = 960, H = 250, padL = 54, padR = 24, padT = 18, padB = 32;
+      const W = 960, H = 256, padL = 54, padR = 24, padT = 22, padB = 32;
       const plotW = W - padL - padR;
       const plotH = H - padT - padB;
 
@@ -2964,6 +4248,17 @@
       const xFor = d => padL + (d / 100) * plotW;
       const yFor = val => padT + plotH - (Math.min(maxVal, Math.max(minVal, val)) / maxVal) * plotH;
 
+      // Shaded combat-zone backdrops (0-18m CQB / 18-45m Mid / 45-100m Far)
+      const x0 = xFor(0), x18 = xFor(18), x45 = xFor(45), x100 = xFor(100);
+      let zoneBgSvg = `
+        <rect x="${x0}" y="${padT}" width="${x18 - x0}" height="${plotH}" fill="rgba(251,113,133,0.05)" />
+        <rect x="${x18}" y="${padT}" width="${x45 - x18}" height="${plotH}" fill="rgba(0,242,169,0.045)" />
+        <rect x="${x45}" y="${padT}" width="${x100 - x45}" height="${plotH}" fill="rgba(56,189,248,0.045)" />
+        <text x="${(x0 + x18) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(251,113,133,0.65)" font-size="10" font-weight="700">⚡ 0-18m 贴脸CQB</text>
+        <text x="${(x18 + x45) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(0,242,169,0.65)" font-size="10" font-weight="700">🎯 18-45m 中距交火</text>
+        <text x="${(x45 + x100) / 2}" y="${padT + 13}" text-anchor="middle" fill="rgba(56,189,248,0.65)" font-size="10" font-weight="700">🦅 45-100m 远距架点</text>
+      `;
+
       let gridSvg = '';
       for (let i = 0; i <= 4; i++) {
         const gv = Math.round((maxVal / 4) * i);
@@ -2972,7 +4267,7 @@
         gridSvg += `<text x="${padL - 8}" y="${gy + 4}" text-anchor="end" fill="#8fa3b8" font-size="11" font-family="monospace">${gv}${mode === 'dmg_chest' ? '' : 'ms'}</text>`;
       }
 
-      [0, 15, 35, 50, 60, 80, 100].forEach(d => {
+      [0, 18, 35, 45, 60, 80, 100].forEach(d => {
         const gx = xFor(d);
         gridSvg += `<line x1="${gx}" y1="${padT}" x2="${gx}" y2="${H - padB}" stroke="rgba(44,64,90,0.4)" />`;
         gridSvg += `<text x="${gx}" y="${H - 10}" text-anchor="middle" fill="#8fa3b8" font-size="11" font-family="monospace">${d}m</text>`;
@@ -2984,8 +4279,8 @@
         const r1x = xFor(Math.min(100, v.range_step1_m || 35));
         const r1y = yFor(computeVariantMetricAtDist(v, v.range_step1_m || 35, mode));
         return `
-          <polyline fill="none" stroke="${color}" stroke-width="2.6" points="${pts}" />
-          <circle cx="${r1x.toFixed(1)}" cy="${r1y.toFixed(1)}" r="4" fill="${color}" stroke="#070a0f" stroke-width="1.5">
+          <polyline fill="none" stroke="${color}" stroke-width="2.8" points="${pts}" />
+          <circle cx="${r1x.toFixed(1)}" cy="${r1y.toFixed(1)}" r="4.5" fill="${color}" stroke="#070a0f" stroke-width="1.5">
             <title>${v.weapon_name} (${v.variant_label}) 一段衰减点: ${v.range_step1_m}m</title>
           </circle>
         `;
@@ -2993,6 +4288,7 @@
 
       container.innerHTML = `
         <svg viewBox="0 0 ${W} ${H}" style="width:100%; min-width:680px; height:auto; background:var(--bg-card); border-radius:var(--radius-sm); border:1px solid var(--border)">
+          ${zoneBgSvg}
           ${gridSvg}
           ${pathsSvg}
         </svg>
@@ -3071,6 +4367,8 @@
           ? `<span class="badge badge-gold">${v.trigger_delay_ms} ms</span>`
           : `<span style="color:var(--text-dim)">0</span>`;
         const inChart = chartComparedIndices.includes(v._globalIdx);
+        const wObj = WEAPONS_BY_ID[v.weapon_id] || WEAPONS_BY_NAME[v.weapon_name] || {};
+        const sameBarW = Math.min(100, Math.max(10, Math.round(((460 - (v.active_ttk_same || 350)) / 380) * 100)));
 
         return `
           <tr>
@@ -3078,8 +4376,13 @@
               <input type="checkbox" ${inChart ? 'checked' : ''} onchange="toggleVariantChartCompare(${v._globalIdx}, this)" title="加入上方距离-TTK衰减曲线对比" style="accent-color:var(--accent); cursor:pointer" />
             </td>
             <td style="font-weight:800; color:#fff">
-              ${v.weapon_name}
-              <div style="font-size:11px; color:var(--text-dim); font-weight:400">${v.caliber}</div>
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${v.image || wObj.image || ''}" alt="${v.weapon_name}" loading="lazy" style="width:54px; height:22px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:4px; padding:1px 3px; flex-shrink:0" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(v.category_cn, v.weapon_name)}'" />
+                <div>
+                  ${v.weapon_name}
+                  <div style="font-size:10.5px; color:var(--text-dim); font-weight:400">${v.caliber}</div>
+                </div>
+              </div>
             </td>
             <td>${labelHtml}</td>
             <td class="price-text">${v.mod_cost ? fmtPrice(v.mod_cost) : '-'}</td>
@@ -3088,7 +4391,12 @@
             <td class="mono">${v.flesh_dmg} / <span style="color:var(--blue)">${v.armor_dmg}</span></td>
             <td class="mono" style="font-size:11.5px; color:var(--text-muted)">${v.head_mult}/${v.chest_mult}/${v.abdomen_mult}/${v.limb_mult}</td>
             <td class="mono">${v.range_step1_m}m</td>
-            <td class="mono ${ttkClass(v.active_ttk_same)}">${v.active_ttk_same} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_same}枪)</span></td>
+            <td>
+              <div class="mono ${ttkClass(v.active_ttk_same)}">${v.active_ttk_same} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_same}枪)</span></div>
+              <div style="height:3.5px; width:92px; background:rgba(255,255,255,0.06); border-radius:2px; margin-top:3px; overflow:hidden">
+                <div style="height:100%; width:${sameBarW}%; background:${v.active_ttk_same <= 260 ? 'var(--accent)' : (v.active_ttk_same <= 340 ? 'var(--blue)' : 'var(--gold)')}"></div>
+              </div>
+            </td>
             <td class="mono ${ttkClass(v.active_ttk_4v5)}">${v.active_ttk_4v5} ms <span style="font-size:11px;color:var(--text-dim)">(${v.active_btk_4v5}枪)</span></td>
             <td class="mono ${ttkClass(v.ttk_0m_head_same_ms)}">${v.ttk_0m_head_same_ms} ms <span style="font-size:11px;color:var(--text-dim)">(${v.btk_0m_head_same}头)</span></td>
             <td class="mono">${v.ttk_0m_limb_ms} ms <span style="font-size:11px;color:var(--text-dim)">(${v.btk_0m_limb}肢)</span></td>
@@ -3216,6 +4524,7 @@
         const compatParts = getCompatiblePartsForSlot(w.name, slot.key);
         const eqId = currentEquipped[slot.key] || '';
         const eqPart = PARTS_BY_ID[eqId];
+        const rClass = eqPart ? getRarityClass(eqPart) : '';
 
         const opts = compatParts.map(p => {
           const sign = (p.net_panel_points || 0) >= 0 ? `+${p.net_panel_points}` : p.net_panel_points;
@@ -3224,7 +4533,7 @@
           return `<option value="${p.part_id}" ${p.part_id === eqId ? 'selected' : ''}>${p.name} (${fmtPrice(p.market_price)}币 | 净${sign}${laserNote})${hidNote}</option>`;
         }).join('');
 
-        let metaHtml = '<span style="color:var(--text-dim)">未安装配件</span>';
+        let metaHtml = '<span style="color:var(--text-dim)">未安装配件 · 点击左侧图标打开视觉图鉴选件</span>';
         if (eqPart) {
           const wpe = DATA.weapon_part_effects[`${w.weapon_id}:${eqPart.part_id}`];
           metaHtml = `
@@ -3238,20 +4547,98 @@
           `;
         }
 
+        const iconSrc = eqPart ? (eqPart.image || getPartFallbackSvg(slot.key)) : getPartFallbackSvg(slot.key);
+
         return `
-          <div class="slot-box ${eqPart ? 'equipped' : ''}" id="slot-box-${slot.key}">
+          <div class="slot-box ${eqPart ? 'equipped ' + rClass : ''}" id="slot-box-${slot.key}">
             <div class="slot-header">
               <span>${slot.label}</span>
-              <span class="mono" style="font-size:11px; color:var(--text-dim)">${compatParts.length} 选 1</span>
+              <span style="display:flex; align-items:center; gap:6px">
+                <button class="btn btn-sm" style="padding:1px 6px; font-size:10.5px" onclick="openSlotPickerModal('${slot.key}')">🖼️ 图鉴(${compatParts.length})</button>
+              </span>
             </div>
-            <select class="slot-select" id="slot-sel-${slot.key}" onchange="onSlotSelect('${slot.key}', this.value)">
-              <option value="">-- 未安装 (原厂空置) --</option>
-              ${opts}
-            </select>
-            <div class="slot-meta" id="slot-meta-${slot.key}">${metaHtml}</div>
+            <div class="slot-visual-row">
+              <div class="slot-icon-box" onclick="openSlotPickerModal('${slot.key}')" title="点击打开【${slot.label}】视觉配件选择器">
+                <img src="${iconSrc}" alt="${slot.label}" style="opacity:${eqPart ? '1' : '0.42'}" onerror="this.onerror=null;this.src='${getPartFallbackSvg(slot.key)}'" />
+              </div>
+              <div style="flex:1; min-width:0">
+                <select class="slot-select" id="slot-sel-${slot.key}" onchange="onSlotSelect('${slot.key}', this.value)">
+                  <option value="">-- 未安装 (原厂空置) --</option>
+                  ${opts}
+                </select>
+                <div class="slot-meta" id="slot-meta-${slot.key}" style="margin-top:4px">${metaHtml}</div>
+              </div>
+            </div>
           </div>
         `;
       }).join('');
+    }
+
+    function openSlotPickerModal(slotKey) {
+      const w = currentBuilderWeapon;
+      if (!w) return;
+      const slotObj = BUILDER_SLOTS.find(s => s.key === slotKey) || { key: slotKey, label: slotKey };
+      const compatParts = getCompatiblePartsForSlot(w.name, slotKey);
+      const eqId = currentEquipped[slotKey] || '';
+
+      const titleEl = document.getElementById('slot-picker-modal-title');
+      if (titleEl) {
+        titleEl.innerHTML = `🧩 ${w.name} — 选择【${slotObj.label}】(${compatParts.length} 款适配)`;
+      }
+
+      const bodyEl = document.getElementById('slot-picker-modal-body');
+      if (bodyEl) {
+        const unequipCard = `
+          <div class="part-armory-card" style="cursor:pointer; border-style:dashed; justify-content:center; align-items:center; min-height:120px" onclick="onSlotSelect('${slotKey}', ''); closeSlotPickerModal()">
+            <div style="font-size:22px">⭕</div>
+            <div style="font-weight:800; color:var(--text-muted)">卸下当前槽位配件 (恢复原厂空置)</div>
+          </div>
+        `;
+
+        const cardsHtml = compatParts.map(p => {
+          const isSelected = p.part_id === eqId;
+          const rClass = getRarityClass(p);
+          const tierObj = getPartTier(p);
+          const wpe = DATA.weapon_part_effects[`${w.weapon_id}:${p.part_id}`];
+          const effHip = p.laser_active_hipfire_bonus ? p.laser_active_hipfire_bonus : (p.hipfire_accuracy || 0);
+          const effHnd = p.laser_active_handling_bonus ? p.laser_active_handling_bonus : (p.handling || 0);
+
+          return `
+            <div class="part-armory-card ${rClass}" style="cursor:pointer; ${isSelected ? 'outline:2px solid var(--accent); box-shadow:0 0 18px rgba(0,242,169,0.25)' : ''}" onclick="onSlotSelect('${slotKey}', '${p.part_id}'); closeSlotPickerModal()">
+              <div class="pac-top">
+                <div class="pac-img-box">
+                  <img src="${p.image || ''}" alt="${p.name}" onerror="this.onerror=null;this.src='${getPartFallbackSvg(slotKey)}'" />
+                </div>
+                <div class="pac-title-wrap">
+                  <div class="pac-cat">${isSelected ? '✅ 当前已安装' : slotObj.label}</div>
+                  <div class="pac-name">${p.name}</div>
+                  <div class="pac-price-row">
+                    <span class="price-text">${fmtPrice(p.market_price)} 币</span>
+                    ${tierObj.html}
+                  </div>
+                </div>
+              </div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; font-size:11px">
+                <span class="badge badge-neu">后坐 ${p.recoil_control>=0?'+'+p.recoil_control:p.recoil_control}</span>
+                <span class="badge badge-neu">腰射 ${effHip>=0?'+'+effHip:effHip}</span>
+                <span class="badge badge-neu">操控 ${effHnd>=0?'+'+effHnd:effHnd}</span>
+                <span class="badge badge-neu">稳定 ${p.stability>=0?'+'+p.stability:p.stability}</span>
+                ${p.range_velocity_pct ? `<span class="badge badge-blue">射程+${p.range_velocity_pct}%</span>` : ''}
+              </div>
+              ${wpe ? `<div style="font-size:11px; color:var(--gold); font-weight:700">⚡ 专属质变: ${wpe.note}</div>` : ''}
+              ${p.hidden_mechanics_summary ? `<div class="pac-hidden-pill">🔬 ${p.hidden_mechanics_summary}</div>` : ''}
+            </div>
+          `;
+        }).join('');
+
+        bodyEl.innerHTML = `<div class="parts-card-grid" style="max-height:70vh">${unequipCard}${cardsHtml}</div>`;
+      }
+
+      document.getElementById('slot-picker-modal-backdrop')?.classList.add('open');
+    }
+
+    function closeSlotPickerModal() {
+      document.getElementById('slot-picker-modal-backdrop')?.classList.remove('open');
     }
 
     function onSlotSelect(slotKey, partId) {
@@ -3530,16 +4917,130 @@
       `;
       document.getElementById('sum-stats-list').innerHTML = statsHtml;
 
+      // Render Interactive Gunsmith Blueprint Viewport (#builder-gunsmith-viewport)
+      const vpEl = document.getElementById('builder-gunsmith-viewport');
+      if (vpEl) {
+        const eqStripHtml = equippedParts.length > 0
+          ? equippedParts.map(({ slotKey, part: p, mult }) => `
+              <div class="bp-part-thumb" onclick="openSlotPickerModal('${slotKey}')" title="${p.name} — 点击更换槽位配件">
+                <img src="${p.image || ''}" alt="${p.name}" onerror="this.onerror=null;this.src='${getPartFallbackSvg(slotKey)}'" />
+                <span>${(p.category_cn || '').split('(')[0]}${mult > 1 ? '×' + mult : ''}</span>
+              </div>
+            `).join('')
+          : `<div style="font-size:11.5px; color:var(--text-dim); padding:6px 4px">当前为原厂裸枪状态 · 点击下方任意槽位图标或上方【👑 T0满改推荐】装填配件</div>`;
+
+        vpEl.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; position:relative; z-index:2; flex-wrap:wrap; gap:6px">
+            <div style="display:flex; align-items:center; gap:8px">
+              <span class="stage-hud-tag" style="color:var(--accent); border-color:rgba(0,242,169,0.35)">GUNSMITH BLUEPRINT // 战术蓝图视窗</span>
+              <span class="stage-hud-tag">${w.name} (${w.caliber})</span>
+            </div>
+            <div style="display:flex; gap:6px; flex-wrap:wrap">
+              <span class="badge badge-pos">⚡ 射速 ${liveRof} RPM</span>
+              <span class="badge badge-blue">🎯 一段 ${newRange1}m</span>
+              <span class="badge badge-gold">📦 弹匣 ${liveMag}发</span>
+              <span class="badge badge-purple">🛡️ 枪跳 ${gkRandMult.toFixed(2)}×</span>
+            </div>
+          </div>
+          <div class="blueprint-stage">
+            <div class="weapon-stage-watermark" style="font-size:48px">${w.name}</div>
+            <img class="blueprint-gun-img" src="${w.image || ''}" alt="${w.name}" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(w.category_cn, w.name)}'" />
+          </div>
+          <div class="blueprint-equipped-strip">${eqStripHtml}</div>
+        `;
+      }
+
+      // Render Dual-Polygon 6-Axis Radar + Live Recoil Spray Pattern & Hipfire Reticle (#builder-visual-analytics)
+      const vaEl = document.getElementById('builder-visual-analytics');
+      if (vaEl) {
+        const axes = [
+          { label: '后坐控制', base: Math.min(100, Math.max(12, w.recoil_control || 45)), mod: Math.min(100, Math.max(12, (w.recoil_control || 45) + dRecoil)) },
+          { label: '腰射精度', base: Math.min(100, Math.max(12, w.hipfire_accuracy || 45)), mod: Math.min(100, Math.max(12, (w.hipfire_accuracy || 45) + dHipfire)) },
+          { label: '操控速度', base: Math.min(100, Math.max(12, w.handling || 45)), mod: Math.min(100, Math.max(12, (w.handling || 45) + dHandling)) },
+          { label: '据枪稳定', base: Math.min(100, Math.max(12, w.stability || 45)), mod: Math.min(100, Math.max(12, (w.stability || 45) + dStability)) },
+          { label: '有效射程', base: Math.min(100, Math.round(((w.range_step1_m || 30) / 80) * 100)), mod: Math.min(100, Math.round((newRange1 / 80) * 100)) },
+          { label: '防抖压制', base: 50, mod: Math.min(100, Math.max(20, Math.round(50 + (1 - gkRandMult) * 110 - hidRecVPct * 0.6))) }
+        ];
+        const cx = 85, cy = 82, maxR = 56;
+        const ptFor = (i, val) => {
+          const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 6;
+          const r = (val / 100) * maxR;
+          return `${(cx + r * Math.cos(ang)).toFixed(1)},${(cy + r * Math.sin(ang)).toFixed(1)}`;
+        };
+        const ringPolys = [0.33, 0.66, 1.0].map(f => {
+          const pts = axes.map((_, i) => ptFor(i, f * 100)).join(' ');
+          return `<polygon points="${pts}" fill="none" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>`;
+        }).join('');
+        const spokes = axes.map((a, i) => {
+          const end = ptFor(i, 100).split(',');
+          const lbl = ptFor(i, 124).split(',');
+          return `<line x1="${cx}" y1="${cy}" x2="${end[0]}" y2="${end[1]}" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
+                  <text x="${lbl[0]}" y="${Number(lbl[1]) + 3}" text-anchor="middle" fill="#94a3b8" font-size="8.5" font-weight="700">${a.label}</text>`;
+        }).join('');
+        const basePoly = axes.map((a, i) => ptFor(i, a.base)).join(' ');
+        const modPoly = axes.map((a, i) => ptFor(i, a.mod)).join(' ');
+
+        // Simulated 20-shot Recoil Spray Trajectory (Bare vs Modded) + Hipfire Reticle Circle
+        const vFactorBase = Math.max(0.35, (100 - (w.recoil_control || 45)) / 55);
+        const vFactorMod = Math.max(0.18, ((100 - Math.min(98, (w.recoil_control || 45) + dRecoil)) / 55) * (1 + hidRecVPct / 100));
+        const hSpreadBase = 16;
+        const hSpreadMod = Math.max(2.5, 16 * gkRandMult * (1 + hidRecHPct / 100));
+
+        let bareDots = '', modDots = '';
+        let bx = 68, by = 142, mx = 112, my = 142;
+        for (let s = 0; s < 18; s++) {
+          const wave = Math.sin(s * 1.35) * (s > 3 ? 1 : 0.4);
+          bx += wave * hSpreadBase * 0.28;
+          by -= (5.8 * vFactorBase);
+          mx += wave * hSpreadMod * 0.22;
+          my -= (5.8 * vFactorMod);
+          bareDots += `<circle cx="${bx.toFixed(1)}" cy="${Math.max(14, by).toFixed(1)}" r="2.2" fill="rgba(251,113,133,0.75)" />`;
+          modDots += `<circle cx="${mx.toFixed(1)}" cy="${Math.max(14, my).toFixed(1)}" r="2.5" fill="#00f2a9" />`;
+        }
+        const hipRadiusBase = Math.max(12, Math.min(34, 38 - (w.hipfire_accuracy || 45) * 0.25));
+        const hipRadiusMod = Math.max(6, Math.min(34, 38 - Math.min(100, (w.hipfire_accuracy || 45) + dHipfire) * 0.3));
+
+        vaEl.innerHTML = `
+          <div class="analytics-svg-box">
+            <div class="analytics-box-title">📡 六维属性雷达 (虚线裸枪 vs 翠绿满改)</div>
+            <svg width="170" height="162" viewBox="0 0 170 162">
+              ${ringPolys}
+              ${spokes}
+              <polygon points="${basePoly}" fill="rgba(148,163,184,0.12)" stroke="#94a3b8" stroke-width="1.4" stroke-dasharray="3,2"/>
+              <polygon points="${modPoly}" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="analytics-svg-box">
+            <div class="analytics-box-title">🎯 弹道散布与腰射光圈 (红:裸枪 / 绿:改装)</div>
+            <svg width="170" height="162" viewBox="0 0 170 162">
+              <line x1="10" y1="142" x2="160" y2="142" stroke="rgba(148,163,184,0.2)" stroke-dasharray="2,2"/>
+              <line x1="88" y1="10" x2="88" y2="152" stroke="rgba(148,163,184,0.15)" stroke-dasharray="2,2"/>
+              <!-- Hipfire Reticle Circles at bottom right -->
+              <circle cx="136" cy="122" r="${hipRadiusBase.toFixed(1)}" fill="none" stroke="rgba(251,113,133,0.45)" stroke-width="1.2" stroke-dasharray="3,2"/>
+              <circle cx="136" cy="122" r="${hipRadiusMod.toFixed(1)}" fill="rgba(0,242,169,0.08)" stroke="#00f2a9" stroke-width="1.6"/>
+              <text x="136" y="154" text-anchor="middle" fill="#8fa3b8" font-size="8">腰射散布圈</text>
+              ${bareDots}
+              ${modDots}
+              <text x="52" y="154" text-anchor="middle" fill="#fb7185" font-size="8">裸枪弹道</text>
+              <text x="98" y="154" text-anchor="middle" fill="#00f2a9" font-size="8">满改弹道</text>
+            </svg>
+          </div>
+        `;
+      }
+
       document.getElementById('sum-parts-count').textContent = equippedParts.length;
       const eqListEl = document.getElementById('sum-equipped-list');
       if (equippedParts.length === 0) {
         eqListEl.innerHTML = `<div style="color:var(--text-dim); font-size:12px; padding:8px 0">当前未选择任何配件，可点击左上方【👑 一键满改T0推荐】快速装填。</div>`;
       } else {
-        eqListEl.innerHTML = equippedParts.map(({ part: p, mult }) => `
-          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-card); padding:6px 10px; border-radius:4px; border:1px solid var(--border); font-size:12px">
-            <div>
-              <span style="color:#fff; font-weight:600">${p.name}${mult > 1 ? ` ×${mult}` : ''}</span>
-              <span style="color:var(--text-dim); font-size:11px; margin-left:4px">[${(p.category_cn || '').split('(')[0]}]</span>
+        eqListEl.innerHTML = equippedParts.map(({ slotKey, part: p, mult }) => `
+          <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg-card); padding:5px 10px; border-radius:5px; border:1px solid var(--border); font-size:12px; cursor:pointer" onclick="openSlotPickerModal('${slotKey}')">
+            <div style="display:flex; align-items:center; gap:8px">
+              <img src="${p.image || ''}" alt="${p.name}" style="width:24px; height:24px; object-fit:contain; background:rgba(8,13,21,0.9); border-radius:4px; padding:1px" onerror="this.onerror=null;this.src='${getPartFallbackSvg(slotKey)}'" />
+              <div>
+                <span style="color:#fff; font-weight:600">${p.name}${mult > 1 ? ` ×${mult}` : ''}</span>
+                <span style="color:var(--text-dim); font-size:11px; margin-left:4px">[${(p.category_cn || '').split('(')[0]}]</span>
+              </div>
             </div>
             <span class="price-text">${fmtPrice((p.market_price || 0) * mult)}</span>
           </div>
@@ -3703,7 +5204,32 @@
 
       const docData = DATA.docs[docKey];
       if (!docData) return;
-      contentEl.innerHTML = docData.html;
+      const bannerHtml = `
+        <div class="doc-infographic-banner">
+          <div class="dib-card">
+            <div class="dib-icon">🔫</div>
+            <div>
+              <div class="dib-val">${DATA.weapons.length} 把武器 / ${DATA.variants.length} 形态</div>
+              <div class="dib-lbl">全武器内联高清立绘已嵌入章节</div>
+            </div>
+          </div>
+          <div class="dib-card">
+            <div class="dib-icon">🧩</div>
+            <div>
+              <div class="dib-val">${DATA.parts.length} 款改装配件</div>
+              <div class="dib-lbl">表格自动渲染配件缩略图与暗改</div>
+            </div>
+          </div>
+          <div class="dib-card">
+            <div class="dib-icon">🧱</div>
+            <div>
+              <div class="dib-val">${DATA.ammo.length} 弹药 / ${(DATA.armors || []).length} 护甲</div>
+              <div class="dib-lbl">基于 2026-04 交易行实时物价精算</div>
+            </div>
+          </div>
+        </div>
+      `;
+      contentEl.innerHTML = bannerHtml + docData.html;
       tocEl.innerHTML = (docData.toc || []).map(item => `
         <li class="toc-item level-${item.level}">
           <a href="#${item.id}">${item.text}</a>
@@ -3714,7 +5240,7 @@
     function renderAmmoMatrixView(container) {
       const cals = [...new Set(DATA.ammo.map(a => a.caliber))].filter(Boolean).sort();
       container.innerHTML = `
-        <h1 class="md-h1">🧱 114 种全口径弹药穿甲矩阵与交易行单价总表</h1>
+        <h1 class="md-h1">🧱 114 种全口径弹药穿甲热力矩阵与交易行单价总表</h1>
         <div class="filter-bar" style="margin-bottom:14px">
           <div class="filter-group">
             <input type="text" id="ammo-search-input" class="input-control" placeholder="🔍 搜索弹药名称或口径 (如: 9x19, 7.62, M995, BS)..." oninput="filterAmmoTable()" />
@@ -3737,12 +5263,12 @@
             <thead>
               <tr>
                 <th>口径</th>
-                <th>弹药名称</th>
+                <th>弹药视觉与名称</th>
                 <th>穿甲等级</th>
                 <th>单发均价</th>
                 <th>肉伤系数</th>
-                <th>对1~6级甲伤系数 (Lv1/2/3/4/5/6)</th>
-                <th>对1~6级甲穿透率 (Lv1/2/3/4/5/6)</th>
+                <th>对 1~6 级甲伤热力矩阵 (Lv1 → Lv6)</th>
+                <th>对 1~6 级甲穿透率热力矩阵 (Lv1 → Lv6)</th>
                 <th>获取方式</th>
               </tr>
             </thead>
@@ -3773,17 +5299,36 @@
 
       const tbody = document.getElementById('ammo-matrix-tbody');
       if (!tbody) return;
+
+      const renderHeatmapCells = (vals, isPen) => {
+        return `<div class="pen-heatmap">` + vals.map((v, i) => {
+          const pct = Math.round((v || 0) * 100);
+          let bg = 'rgba(255,255,255,0.04)', col = '#64748b';
+          if (pct >= 75) { bg = isPen ? 'rgba(0,242,169,0.22)' : 'rgba(56,189,248,0.22)'; col = isPen ? '#00f2a9' : '#38bdf8'; }
+          else if (pct >= 45) { bg = 'rgba(251,191,36,0.18)'; col = '#fbbf24'; }
+          else if (pct > 0) { bg = 'rgba(251,113,133,0.16)'; col = '#fb7185'; }
+          return `<div class="pen-cell" style="background:${bg}; color:${col}" title="对 Lv${i+1} 护甲: ${pct}%"><span class="lv-tag">L${i+1}</span><span>${pct}%</span></div>`;
+        }).join('') + `</div>`;
+      };
+
       tbody.innerHTML = list.map(a => {
         const lvBadge = a.penetration_level >= 6 ? 'badge-neg' : (a.penetration_level === 5 ? 'badge-gold' : (a.penetration_level === 4 ? 'badge-purple' : 'badge-neu'));
+        const armorVals = [a.armor_dmg_lv1, a.armor_dmg_lv2, a.armor_dmg_lv3, a.armor_dmg_lv4, a.armor_dmg_lv5, a.armor_dmg_lv6];
+        const penVals = [a.pen_ratio_lv1, a.pen_ratio_lv2, a.pen_ratio_lv3, a.pen_ratio_lv4, a.pen_ratio_lv5, a.pen_ratio_lv6];
         return `
           <tr>
-            <td class="mono" style="color:var(--blue)">${a.caliber}</td>
-            <td style="font-weight:700; color:#fff">${a.name}</td>
+            <td class="mono" style="color:var(--blue); font-weight:700">${a.caliber}</td>
+            <td style="font-weight:700; color:#fff">
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${getAmmoSvgIcon(a.caliber, a.penetration_level)}" alt="${a.name}" style="width:18px; height:28px; flex-shrink:0" />
+                <span>${a.name}</span>
+              </div>
+            </td>
             <td><span class="badge ${lvBadge}">${a.penetration_level} 级弹</span></td>
             <td class="price-text">${a.market_price ? fmtPrice(a.market_price) : '<span style="color:var(--text-dim)">不可交易/制造</span>'}</td>
-            <td class="mono" style="color:${a.flesh_dmg_mult > 1 ? 'var(--accent)' : 'var(--text-main)'}">${Math.round(a.flesh_dmg_mult * 100)}%</td>
-            <td class="mono" style="font-size:11.5px">${[a.armor_dmg_lv1, a.armor_dmg_lv2, a.armor_dmg_lv3, a.armor_dmg_lv4, a.armor_dmg_lv5, a.armor_dmg_lv6].map(x => Math.round((x||0)*100)+'%').join(' / ')}</td>
-            <td class="mono" style="font-size:11.5px; color:var(--accent)">${[a.pen_ratio_lv1, a.pen_ratio_lv2, a.pen_ratio_lv3, a.pen_ratio_lv4, a.pen_ratio_lv5, a.pen_ratio_lv6].map(x => Math.round((x||0)*100)+'%').join(' / ')}</td>
+            <td class="mono" style="color:${a.flesh_dmg_mult > 1 ? 'var(--accent)' : 'var(--text-main)'}; font-weight:700">${Math.round(a.flesh_dmg_mult * 100)}%</td>
+            <td>${renderHeatmapCells(armorVals, false)}</td>
+            <td>${renderHeatmapCells(penVals, true)}</td>
             <td style="font-size:11.5px; color:var(--text-muted)">${a.is_season_limited ? '赛季/工作台限定' : (a.is_tradable ? '交易行可买' : '制造/掉落')}</td>
           </tr>
         `;
@@ -3792,7 +5337,7 @@
 
     function renderArmorCatalogView(container) {
       container.innerHTML = `
-        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔耐久、防护部位与性价比图鉴</h1>
+        <h1 class="md-h1">🛡️ 51 款防弹衣与头盔视觉图鉴、耐久与性价比表</h1>
         <div class="filter-bar" style="margin-bottom:14px">
           <div class="filter-group">
             <input type="text" id="armor-search-input" class="input-control" placeholder="🔍 搜索护甲/头盔名称 (如: 达里安, 武士, Hvk, 重型)..." oninput="filterArmorTable()" />
@@ -3810,17 +5355,19 @@
           </div>
           <div class="result-counter" id="armor-count-label"></div>
         </div>
+        <!-- Visual Armor & Helmet Gallery -->
+        <div class="armor-gallery-grid" id="armor-visual-gallery"></div>
         <div class="table-scroll">
           <table class="data-table">
             <thead>
               <tr>
                 <th>类型</th>
-                <th>护甲 / 头盔名称</th>
+                <th>防具立绘与名称</th>
                 <th>防护等级</th>
                 <th>满耐久度</th>
                 <th>交易行均价</th>
                 <th>每点耐久单价</th>
-                <th>结果评析</th>
+                <th>实战评析</th>
               </tr>
             </thead>
             <tbody id="armor-catalog-tbody"></tbody>
@@ -3845,6 +5392,37 @@
       const lbl = document.getElementById('armor-count-label');
       if (lbl) lbl.textContent = `显示 ${list.length} / ${(DATA.armors || []).length} 款防具`;
 
+      const galleryEl = document.getElementById('armor-visual-gallery');
+      if (galleryEl) {
+        galleryEl.innerHTML = list.slice(0, 24).map(ar => {
+          const ppd = ar.market_price && ar.durability ? Math.round(ar.market_price / ar.durability) : null;
+          const lvBadge = ar.armor_level >= 6 ? 'badge-neg' : (ar.armor_level === 5 ? 'badge-gold' : (ar.armor_level === 4 ? 'badge-purple' : 'badge-neu'));
+          const rClass = `rarity-${Math.min(6, Math.max(2, ar.armor_level || 4))}`;
+          const durPct = Math.min(100, Math.round(((ar.durability || 50) / 150) * 100));
+          return `
+            <div class="armor-visual-card ${rClass}">
+              <div class="avc-img-box">
+                <img src="${ar.image || ''}" alt="${ar.name}" loading="lazy" onerror="this.style.display='none'" />
+              </div>
+              <div class="avc-body">
+                <div style="display:flex; justify-content:space-between; align-items:center">
+                  <span class="badge ${lvBadge}">${ar.armor_level}级${ar.category === 'helmet' ? '头盔' : '胸甲'}</span>
+                  <span class="mono" style="font-size:12px; font-weight:800; color:var(--accent)">${ar.durability} 耐久</span>
+                </div>
+                <div style="font-size:13px; font-weight:800; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">${ar.name}</div>
+                <div style="height:4px; background:rgba(255,255,255,0.06); border-radius:2px; overflow:hidden">
+                  <div style="height:100%; width:${durPct}%; background:var(--blue)"></div>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted)">
+                  <span class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + '币' : '制作/绑定'}</span>
+                  <span class="mono">${ppd ? ppd + '币/耐久' : ''}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
       const tbody = document.getElementById('armor-catalog-tbody');
       if (!tbody) return;
       tbody.innerHTML = list.map(ar => {
@@ -3853,7 +5431,12 @@
         return `
           <tr>
             <td><span class="badge badge-blue">${ar.category === 'helmet' ? '🪖 头盔' : '🦺 防弹衣'}</span></td>
-            <td style="font-weight:700; color:#fff">${ar.name}</td>
+            <td style="font-weight:700; color:#fff">
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${ar.image || ''}" alt="${ar.name}" loading="lazy" style="width:32px; height:32px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:5px; padding:2px" onerror="this.style.display='none'" />
+                <span>${ar.name}</span>
+              </div>
+            </td>
             <td><span class="badge ${lvBadge}">${ar.armor_level} 级防护</span></td>
             <td class="mono" style="font-weight:800; color:var(--accent)">${ar.durability} 耐久</td>
             <td class="price-text">${ar.market_price ? fmtPrice(ar.market_price) + ' 币' : '<span style="color:var(--text-dim)">绑定/制作</span>'}</td>
@@ -3874,7 +5457,12 @@
         const rangeDiff = (mp.range_step1_m || 0) - (sol.range_step1_m || 0);
         return `
           <tr>
-            <td style="font-weight:800; color:#fff">${sol.name} <span style="font-size:11px; color:var(--text-dim)">(${sol.category_cn})</span></td>
+            <td style="font-weight:800; color:#fff">
+              <div style="display:flex; align-items:center; gap:8px">
+                <img src="${sol.image || ''}" alt="${sol.name}" loading="lazy" style="width:54px; height:22px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:4px; padding:1px 3px" onerror="this.onerror=null;this.src='${getWeaponFallbackSvg(sol.category_cn, sol.name)}'" />
+                <div>${sol.name} <span style="font-size:11px; color:var(--text-dim)">(${sol.category_cn})</span></div>
+              </div>
+            </td>
             <td class="mono">${sol.rof_rpm} RPM</td>
             <td class="mono" style="color:var(--accent)">${sol.flesh_dmg} (头×${sol.head_mult})</td>
             <td class="mono" style="color:var(--blue)">${mp.flesh_dmg ?? '-'} (头×${mp.head_mult ?? '-'})</td>
@@ -3893,7 +5481,7 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>武器名称</th>
+                <th>武器立绘与名称</th>
                 <th>基础射速</th>
                 <th>烽火地带 (SOL) 肉伤/爆头</th>
                 <th>全面战场 (MP) 肉伤/爆头</th>
@@ -3934,6 +5522,8 @@
       DATA.weapons.filter(w => !q || `${w.name} ${w.category_cn} ${w.caliber}`.toLowerCase().includes(q)).slice(0, 6).forEach(w => {
         items.push({
           badge: '🛠️ 武器模拟',
+          img: w.image || getWeaponFallbackSvg(w.category_cn, w.name),
+          imgWide: true,
           title: `${w.name} (${w.category_cn} · ${w.caliber})`,
           sub: `${w.rof_rpm} RPM | 肉伤 ${w.flesh_dmg} / 甲伤 ${w.armor_dmg} | 一段射程 ${w.range_step1_m}m`,
           action: () => {
@@ -3950,7 +5540,9 @@
       // 2. Parts
       DATA.parts.filter(p => q && `${p.name} ${p.category_cn} ${p.hidden_mechanics_summary || ''}`.toLowerCase().includes(q)).slice(0, 8).forEach(p => {
         items.push({
-          badge: '🧩 配件底表',
+          badge: '🧩 配件图鉴',
+          img: p.image || getPartFallbackSvg(p.category_en),
+          imgWide: false,
           title: `${p.name} [${(p.category_cn || '').split('(')[0]}]`,
           sub: `${fmtPrice(p.market_price)} 币 | 四维净和 ${p.net_panel_points >= 0 ? '+' : ''}${p.net_panel_points} | ${p.hidden_mechanics_summary || '标准配件'}`,
           action: () => {
@@ -3964,6 +5556,8 @@
       DATA.ammo.filter(a => q && `${a.name} ${a.caliber}`.toLowerCase().includes(q)).slice(0, 5).forEach(a => {
         items.push({
           badge: `🧱 ${a.penetration_level}级弹药`,
+          img: getAmmoSvgIcon(a.caliber, a.penetration_level),
+          imgWide: false,
           title: `${a.name} (${a.caliber})`,
           sub: `单价: ${a.market_price ? fmtPrice(a.market_price) + ' 币' : '非卖品'} | 5甲伤: ${Math.round(a.armor_dmg_lv5 * 100)}%`,
           action: () => {
@@ -3983,9 +5577,12 @@
 
       box.innerHTML = items.map((it, idx) => `
         <div class="cmd-item" id="cmd-item-${idx}">
-          <div>
-            <div style="font-weight:700; color:#fff; font-size:13.5px">${it.title}</div>
-            <div style="font-size:11.5px; color:var(--text-muted)">${it.sub}</div>
+          <div style="display:flex; align-items:center; gap:10px">
+            <img src="${it.img}" alt="" style="width:${it.imgWide ? '56px' : '32px'}; height:30px; object-fit:contain; background:rgba(8,13,21,0.9); border:1px solid var(--border); border-radius:5px; padding:2px" onerror="this.style.display='none'" />
+            <div>
+              <div style="font-weight:700; color:#fff; font-size:13.5px">${it.title}</div>
+              <div style="font-size:11.5px; color:var(--text-muted)">${it.sub}</div>
+            </div>
           </div>
           <span class="badge badge-pos">${it.badge} →</span>
         </div>
@@ -4007,6 +5604,7 @@
       } else if (e.key === 'Escape') {
         closeCmdModal();
         closePkModal();
+        closeSlotPickerModal();
       }
     });
 

@@ -55,14 +55,50 @@ def inline_md(text: str) -> str:
     return text
 
 
-def md_to_html_and_toc(md_text: str, prefix: str = "doc"):
-    """Lightweight, dependency-free Markdown to HTML converter with table & TOC support."""
+def md_to_html_and_toc(md_text: str, prefix: str = "doc", weapon_img_map=None, part_img_map=None):
+    """Lightweight, dependency-free Markdown to HTML converter with table, TOC & visual icon injection."""
+    weapon_img_map = weapon_img_map or {}
+    part_img_map = part_img_map or {}
+    # Sort weapon names longest-first so "725双管霰弹枪" matches before "725"
+    sorted_weapon_names = sorted(weapon_img_map.keys(), key=len, reverse=True)
+
     lines = md_text.splitlines()
     out = []
     toc = []
     i = 0
     n = len(lines)
     heading_seq = 0
+
+    def find_weapon_img_in_text(txt: str):
+        clean = re.sub(r"[`*_]", "", txt)
+        for wname in sorted_weapon_names:
+            if len(wname) >= 2 and wname in clean:
+                return weapon_img_map[wname], wname
+        return None, None
+
+    def enrich_table_cell(raw_cell: str, col_idx: int) -> str:
+        rendered = inline_md(raw_cell)
+        if col_idx > 2:
+            return rendered
+        clean = re.sub(r"[`*_~]", "", raw_cell).strip()
+        # Direct part match
+        if clean in part_img_map:
+            img_url = part_img_map[clean]
+            return f'<span class="md-cell-media"><img src="{img_url}" class="md-cell-thumb part-thumb" alt="" loading="lazy" onerror="this.style.display=\'none\'" /><span>{rendered}</span></span>'
+        # Direct or prefix weapon match
+        if clean in weapon_img_map:
+            img_url = weapon_img_map[clean]
+            return f'<span class="md-cell-media"><img src="{img_url}" class="md-cell-thumb gun-thumb" alt="" loading="lazy" onerror="this.style.display=\'none\'" /><span>{rendered}</span></span>'
+        for wname in sorted_weapon_names:
+            if len(wname) >= 2 and (clean.startswith(wname + " ") or clean.startswith(wname + "(") or clean.startswith(wname + "（") or clean == wname):
+                img_url = weapon_img_map[wname]
+                return f'<span class="md-cell-media"><img src="{img_url}" class="md-cell-thumb gun-thumb" alt="" loading="lazy" onerror="this.style.display=\'none\'" /><span>{rendered}</span></span>'
+        # Also check if cell contains a part name before parentheses
+        base_clean = re.split(r"[\(（\s\+]", clean)[0].strip()
+        if base_clean and base_clean in part_img_map:
+            img_url = part_img_map[base_clean]
+            return f'<span class="md-cell-media"><img src="{img_url}" class="md-cell-thumb part-thumb" alt="" loading="lazy" onerror="this.style.display=\'none\'" /><span>{rendered}</span></span>'
+        return rendered
 
     while i < n:
         line = lines[i]
@@ -105,8 +141,13 @@ def md_to_html_and_toc(md_text: str, prefix: str = "doc"):
             clean_title = re.sub(r"[`*_]", "", raw_title)
             if level in (2, 3):
                 toc.append({"id": hid, "level": level, "text": clean_title})
+            head_img_html = ""
+            if level in (2, 3, 4):
+                w_img, _ = find_weapon_img_in_text(raw_title)
+                if w_img:
+                    head_img_html = f'<span class="md-head-gun-badge"><img src="{w_img}" class="md-head-gun-img" alt="" loading="lazy" onerror="this.parentElement.style.display=\'none\'" /></span>'
             out.append(
-                f'<h{level} id="{hid}" class="md-h{level}">{inline_md(raw_title)}</h{level}>'
+                f'<h{level} id="{hid}" class="md-h{level}">{head_img_html}<span>{inline_md(raw_title)}</span></h{level}>'
             )
             i += 1
             continue
@@ -137,7 +178,7 @@ def md_to_html_and_toc(md_text: str, prefix: str = "doc"):
             tr_html_list = []
             for rcells in tbody_rows:
                 tds = "".join(
-                    f'<td style="text-align:{aligns[idx] if idx < len(aligns) else "left"}">{inline_md(rc)}</td>'
+                    f'<td style="text-align:{aligns[idx] if idx < len(aligns) else "left"}">{enrich_table_cell(rc, idx)}</td>'
                     for idx, rc in enumerate(rcells)
                 )
                 tr_html_list.append(f"<tr>{tds}</tr>")
@@ -258,14 +299,29 @@ def main():
     lib_sol_path = DATA_DIR / "raw_cache" / "dfttk_v3" / "library_sol.json"
     lib_parts = load_json(lib_sol_path).get("parts", {}) if lib_sol_path.exists() else {}
 
+    weapon_img_map = {}
+    for w in weapons:
+        wid = str(w["weapon_id"])
+        w["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{wid}.png"
+        weapon_img_map[w["name"]] = w["image"]
+
+    for wmp in weapons_mp:
+        wid = str(wmp["weapon_id"])
+        wmp["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{wid}.png"
+
+    part_img_map = {}
     for p in parts:
-        pid = p["part_id"]
+        pid = str(p["part_id"])
         if pid[:4] in SLOT_BY_PREFIX:
             p["category_en"], p["category_cn"] = SLOT_BY_PREFIX[pid[:4]]
         p["laser_active_hipfire_bonus"] = 0
         p["laser_active_handling_bonus"] = 0
         p["empty_reload_set_s"] = None
         p_obj = lib_parts.get(pid)
+        p["image"] = (p_obj.get("image") if p_obj else None) or f"https://playerhub.df.qq.com/playerhub/60004/object/{pid}.png"
+        if p_obj and not p.get("rarity") and p_obj.get("rarity"):
+            p["rarity"] = p_obj["rarity"]
+        part_img_map[p["name"]] = p["image"]
         if p_obj and p_obj.get("effects"):
             ops = p_obj["effects"][0].get("data", {}).get("operations", [])
             passive_hip = 0
@@ -308,8 +364,10 @@ def main():
     # Pre-resolve mod_part_ids on each variant so clicking a variant in Tab 3 pre-equips its parts
     for v in variants:
         wname = v.get("weapon_name", "")
+        wid = str(v.get("weapon_id", ""))
+        v["image"] = weapon_img_map.get(wname) or f"https://playerhub.df.qq.com/playerhub/60004/object/{wid}.png"
         mod_str = v.get("mod_parts", "")
-        if not mod_str or mod_str == "无改装 (基线)":
+        if not mod_str or mod_str in ("无改装 (基线)", "原厂裸枪"):
             v["mod_part_ids"] = []
         else:
             names = [s.strip() for s in mod_str.split("+") if s.strip()]
@@ -321,6 +379,14 @@ def main():
                         pids.append(p["part_id"])
                         break
             v["mod_part_ids"] = pids
+
+    for ar in armors:
+        iid = str(ar.get("item_id", ""))
+        ar["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{iid}.png"
+
+    for am in ammo:
+        aid = str(am.get("ammo_id", ""))
+        am["image"] = f"https://playerhub.df.qq.com/playerhub/60004/object/{aid}.png"
 
     weapon_part_effects = {}
     for r in relations:
@@ -369,9 +435,9 @@ def main():
     insights_md = (DOCS_DIR / "INSIGHTS.md").read_text(encoding="utf-8")
     readme_md = (ROOT / "README.md").read_text(encoding="utf-8")
 
-    cg_html, cg_toc = md_to_html_and_toc(custom_guide_md, "cg")
-    in_html, in_toc = md_to_html_and_toc(insights_md, "in")
-    rm_html, rm_toc = md_to_html_and_toc(readme_md, "rm")
+    cg_html, cg_toc = md_to_html_and_toc(custom_guide_md, "cg", weapon_img_map, part_img_map)
+    in_html, in_toc = md_to_html_and_toc(insights_md, "in", weapon_img_map, part_img_map)
+    rm_html, rm_toc = md_to_html_and_toc(readme_md, "rm", weapon_img_map, part_img_map)
 
     payload = {
         "updated_at": "2026-10 (最新SDK底层解包 + 交易行实时物价校准)",
