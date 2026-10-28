@@ -3505,7 +3505,7 @@
       return 'rarity-1';
     }
 
-    function getWeaponFallbackSvg(catCn = '') {
+    function getWeaponFallbackSvg(catCn = '', label = '') {
       const c = String(catCn);
       let path = 'M10,24 L42,24 L48,18 L92,18 L92,14 L118,14 L118,22 L95,22 L88,28 L66,28 L62,40 L52,40 L55,28 L38,28 L32,38 L22,38 L26,28 L10,32 Z';
       if (c.includes('冲锋')) {
@@ -3515,7 +3515,8 @@
       } else if (c.includes('狙') || c.includes('射手')) {
         path = 'M4,24 L38,24 L46,18 L118,18 L118,21 L88,22 L82,27 L58,27 L54,37 L46,37 L49,27 L28,27 L16,33 L4,31 Z M52,13 L78,13 L76,17 L54,17 Z';
       }
-      return `<svg viewBox="0 0 124 48" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="rgba(0,242,169,0.25)" stroke="#00f2a9" stroke-width="1.5"/></svg>`;
+      const svg = `<svg viewBox="0 0 124 48" xmlns="http://www.w3.org/2000/svg"><path d="${path}" fill="rgba(0,242,169,0.25)" stroke="#00f2a9" stroke-width="1.5"/></svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
     function getPartFallbackSvg(slotEn = '') {
@@ -3528,17 +3529,16 @@
       else if (s === 'optic' || s === 'opticAcc') inner = '<circle cx="24" cy="22" r="10" fill="rgba(56,189,248,0.18)" stroke="#38bdf8" stroke-width="1.6"/><line x1="24" y1="15" x2="24" y2="29" stroke="#ff4d4f" stroke-width="1.4"/><line x1="17" y1="22" x2="31" y2="22" stroke="#ff4d4f" stroke-width="1.4"/>';
       else if (s === 'stock' || s === 'stockAcc') inner = '<path d="M10,16 L36,16 L36,24 L24,26 L12,34 L10,16 Z" fill="rgba(192,132,252,0.22)" stroke="#c084fc" stroke-width="1.6"/>';
       else if (s === 'laser') inner = '<rect x="10" y="18" width="20" height="12" rx="2" fill="rgba(0,242,169,0.22)" stroke="#00f2a9" stroke-width="1.5"/><line x1="30" y1="24" x2="42" y2="24" stroke="#ff4d4f" stroke-width="2" stroke-dasharray="2,2"/>';
-      return `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      const svg = `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
-    function getAmmoSvgIcon(penLv = 5) {
+    function getAmmoSvgIcon(caliberOrLv = '', penLv = 5) {
+      const lv = (typeof caliberOrLv === 'number') ? caliberOrLv : (Number(penLv) || 5);
       const colors = { 6: '#ff4d4f', 5: '#fbbf24', 4: '#c084fc', 3: '#38bdf8', 2: '#00f2a9', 1: '#94a3b8' };
-      const col = colors[penLv] || '#fbbf24';
-      return `<svg viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14,14 C14,7 18,3 18,3 C18,3 22,7 22,14 Z" fill="${col}"/>
-        <rect x="13" y="14" width="10" height="16" rx="1.5" fill="rgba(251,191,36,0.35)" stroke="${col}" stroke-width="1.4"/>
-        <line x1="12" y1="30" x2="24" y2="30" stroke="${col}" stroke-width="2"/>
-      </svg>`;
+      const col = colors[lv] || '#fbbf24';
+      const svg = `<svg viewBox="0 0 36 36" width="28" height="28" xmlns="http://www.w3.org/2000/svg"><path d="M14,14 C14,7 18,3 18,3 C18,3 22,7 22,14 Z" fill="${col}"/><rect x="13" y="14" width="10" height="16" rx="1.5" fill="rgba(251,191,36,0.35)" stroke="${col}" stroke-width="1.4"/><line x1="12" y1="30" x2="24" y2="30" stroke="${col}" stroke-width="2"/></svg>`;
+      return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg).replace(/'/g, '%27');
     }
 
     function renderMiniRadarSvg(statsInput, size = 100, color = '#00f2a9') {
